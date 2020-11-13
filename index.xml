@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>bruhtus | project&#39;s explanations and rants</title>
-    <link>http://bruhtus.github.io/</link>
+    <link>https://bruhtus.github.io/</link>
     <description>Recent content on bruhtus | project&#39;s explanations and rants</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 09 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://bruhtus.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 09 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://bruhtus.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Instasaver: Save Your Chosen Instagram Posts</title>
-      <link>http://bruhtus.github.io/posts/instasaver/</link>
+      <link>https://bruhtus.github.io/posts/instasaver/</link>
       <pubDate>Mon, 09 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://bruhtus.github.io/posts/instasaver/</guid>
+      <guid>https://bruhtus.github.io/posts/instasaver/</guid>
       <description>A brief explanation about instasaver, a tool to save instagram post build with instaloader python module and streamlit.
 Background Story  Nothing fancy, you should probably skip this.
  To make things short, basically i was inspired by Kevin Hazy&amp;rsquo;s project here. After i see Kevin&amp;rsquo;s project, i was like &amp;ldquo;can i make almost the same thing with python?&amp;rdquo; and that was the trigger.
@@ -21,10 +21,10 @@ If you ask me why i want to tool (kind of) to save instagram post, that&amp;rsqu
     
     <item>
       <title>Tiling Window Manager For Efficiency</title>
-      <link>http://bruhtus.github.io/posts/tiling-window-manager/</link>
+      <link>https://bruhtus.github.io/posts/tiling-window-manager/</link>
       <pubDate>Thu, 15 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://bruhtus.github.io/posts/tiling-window-manager/</guid>
+      <guid>https://bruhtus.github.io/posts/tiling-window-manager/</guid>
       <description>A brief explanation about tiling window manager and configuration tiling window manager that i&amp;rsquo;ve tried.
  A Brief Explanation About Window Manager  A window manager is a system software that controls the placement and appearance of windows within a windowing system in a graphical user interface (GUI). It can be part of desktop enviroment (DE) or be used standalone1.
  So basically window manager is how to place a window.</description>
@@ -32,20 +32,20 @@ If you ask me why i want to tool (kind of) to save instagram post, that&amp;rsqu
     
     <item>
       <title>Pavement Distress Detector Using Single Shot Detector (SSD)</title>
-      <link>http://bruhtus.github.io/posts/pavement-distress-detector/</link>
+      <link>https://bruhtus.github.io/posts/pavement-distress-detector/</link>
       <pubDate>Sun, 11 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://bruhtus.github.io/posts/pavement-distress-detector/</guid>
+      <guid>https://bruhtus.github.io/posts/pavement-distress-detector/</guid>
       <description>This was my graduation project, in this article i&amp;rsquo;m gonna explain what i did in my graduation project. This project was based on Congcong Li&amp;rsquo;s Project.
 Diagram Process of This Project A Brief Explanation About Single Shot Detector (SSD) Single shot detector is a deep learning method presented by Wei Liu, Dragomir Anguelov, Dumitru Erhan, Christian Szegedy, Scott Reed4, Cheng-Yang Fu, Alexander C. Berg in their research paper SSD: Single Shot Multibox Detector.</description>
     </item>
     
     <item>
       <title>About Robertus Diawan Chris</title>
-      <link>http://bruhtus.github.io/about/</link>
+      <link>https://bruhtus.github.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://bruhtus.github.io/about/</guid>
+      <guid>https://bruhtus.github.io/about/</guid>
       <description>To make things simpler I introduced myself as bertus and sometimes bruhtus.
  I like doing some experiment, trying things out, and analyze the results. I&amp;rsquo;m interested in technology and automation, basically I like to automate things.
 Other than tech, I&amp;rsquo;m also interested in psychology and sexual activity (not only sex). Observing the humans so that I can make a smooth user experience is a fun activity (at least for me).</description>
@@ -53,10 +53,10 @@ Other than tech, I&amp;rsquo;m also interested in psychology and sexual activity
     
     <item>
       <title>Projects</title>
-      <link>http://bruhtus.github.io/projects/</link>
+      <link>https://bruhtus.github.io/projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://bruhtus.github.io/projects/</guid>
+      <guid>https://bruhtus.github.io/projects/</guid>
       <description>Pavement distress detector  Detect pavement distresses with single shot detector (SSD).
     Repo Post    Instasaver  Save your chosen memes on instagram (hopefully only that).
     Repo Post Live demo    </description>

@@ -1,6 +1,6 @@
 [
     {
-        "ref": "http://bruhtus.github.io/posts/instasaver/",
+        "ref": "https://bruhtus.github.io/posts/instasaver/",
         "title": "Instasaver: Save Your Chosen Instagram Posts",
         "section": "posts",
         "tags": ["No one asked","English"],
@@ -9,7 +9,7 @@
     }
 ,
     {
-        "ref": "http://bruhtus.github.io/posts/tiling-window-manager/",
+        "ref": "https://bruhtus.github.io/posts/tiling-window-manager/",
         "title": "Tiling Window Manager For Efficiency",
         "section": "posts",
         "tags": ["Linux","English"],
@@ -18,7 +18,7 @@
     }
 ,
     {
-        "ref": "http://bruhtus.github.io/posts/pavement-distress-detector/",
+        "ref": "https://bruhtus.github.io/posts/pavement-distress-detector/",
         "title": "Pavement Distress Detector Using Single Shot Detector (SSD)",
         "section": "posts",
         "tags": ["Deep learning","English"],
