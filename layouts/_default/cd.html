@@ -1,0 +1,9 @@
+{{ define "main"}}
+  <h1>{{ .Title }}</h1>
+  {{ partial "back.html" . }}
+  <!-- content -->
+  <div id="contentBody">
+    {{ .Content }}
+  </div>
+  {{ partial "footer.html" . }}
+{{ end }}

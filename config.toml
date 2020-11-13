@@ -1,0 +1,56 @@
+baseURL = "http://bruhtus.github.io/"
+languageCode = "en-us"
+title = "bruhtus | project's explanations and rants"
+theme = "pulp"
+canonifyurls = true
+hasCJKLanguage = true
+
+[markup.goldmark.renderer]
+    unsafe = true
+
+[params]
+    author = "Robertus Diawan Chris"
+    favicon = "favicon.ico"
+    description = "i go normal from time to time"
+    custom_css = ["/css/custom.css"]
+    custom_js = ["/js/custom.js"]
+
+[outputs]
+    section = ["JSON", "HTML"]
+    term = ["JSON", "HTML"]
+    books = ["JSON", "HTML"]
+
+[[menu.main]]
+    indentifier = "about"
+    name = "About"
+    pre = "<i class='fa fa-user fa-lg'></i>"
+    url = "/About/"
+    weight = 10
+
+[[menu.main]]
+    indentifier = "projects"
+    name = "Projects"
+    pre = "<i class='fa fa-project-diagram fa-lg'></i>"
+    url = "/projects/"
+    weight = 20
+
+[[menu.main]]
+    indentifier = "posts"
+    name = "Posts"
+    pre = "<i class='fa fa-mug-hot fa-lg'></i>"
+    url = "/posts/"
+    weight = 30
+
+[[menu.tab]]
+    indentifier = "github"
+    name = "Github"
+    pre = "<i class='fab fa-github fa-lg'></i>"
+    url = "https://github.com/bruhtus"
+    weight = 50
+
+[[menu.main]]
+    indentifier = "email"
+    name = "Email"
+    pre = "<i class='fa fa-envelope fa-lg'></i>"
+    url = "mailto:diawan@pm.me"
+    weight = 60

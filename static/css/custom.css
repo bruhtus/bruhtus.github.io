@@ -1,0 +1,99 @@
+.author {
+    font-style: italic;
+    font-family: fantasy;
+}
+
+.cd {
+    font-family: monospace;
+}
+
+/* search results */
+#searchResults {
+    top: 200px;
+}
+
+nav ul {
+    flex-wrap: wrap;
+}
+
+/* content */
+#contentBody {
+    text-align: justify;
+}
+
+#contentBody img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: none;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+#contentBody table {
+    text-align: center;
+}
+
+#contentBody a {
+    text-decoration: none;
+}
+
+/* table of contents */
+.toc {
+    outline: solid;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: .5em;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.toc details summary {
+    cursor: zoom-in;
+}
+
+.toc details[open] summary {
+    cursor: zoom-out;
+}
+
+.toc .details {
+    display: inline;
+    font-weight: 500;
+}
+
+.toc blockquote {
+    margin: 0 10px;
+}
+
+.toc li {
+    text-align: justify;
+    margin-inline-start: var(--gap);
+}
+
+.toc summary:focus {
+    outline: none;
+}
+
+/* back to top */
+#myBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 60px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: transparent; /* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: none; /* Some padding */
+  border-radius: 70px; /* Rounded corners */
+  font-size: 18px; /* Increase font size */
+}
+
+#myBtn:hover {
+  background-color: transparent; /* Add a dark-grey background on hover */
+}
