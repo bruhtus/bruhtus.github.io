@@ -6,7 +6,7 @@
 
 - Change the baseurl in your config with `https://username.github.io`.
 - Build the static pages with command `hugo -D`.
-- Git init to your folder site.
+- Git init in your folder site.
 - Remove the public folder with command `rm -rf public`.
 - Use this command `git submodule add -b master https://github.com/username/username.github.io.git public`.
 - And then do the usual git workflow (git status, git add, git commit, git push) in public folder.
