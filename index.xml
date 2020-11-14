@@ -14,7 +14,7 @@
       
       <guid>https://bruhtus.github.io/posts/instasaver/</guid>
       <description>A brief explanation about instasaver, a tool to save instagram post build with instaloader python module and streamlit.
-Background Story  Nothing fancy, you should probably skip this.
+ Background Story  Nothing fancy, you should probably skip this.
  To make things short, basically i was inspired by Kevin Hazy&amp;rsquo;s project here. After i see Kevin&amp;rsquo;s project, i was like &amp;ldquo;can i make almost the same thing with python?&amp;rdquo; and that was the trigger.
 If you ask me why i want to tool (kind of) to save instagram post, that&amp;rsquo;s because i have a hard time to save video memes on instagram and i don&amp;rsquo;t really want to use a screen recorder (said the guy who made something that took longer than learning how to use screen recorder and edit the result 👀).</description>
     </item>
@@ -37,7 +37,7 @@ If you ask me why i want to tool (kind of) to save instagram post, that&amp;rsqu
       
       <guid>https://bruhtus.github.io/posts/pavement-distress-detector/</guid>
       <description>This was my graduation project, in this article i&amp;rsquo;m gonna explain what i did in my graduation project. This project was based on Congcong Li&amp;rsquo;s Project.
-Diagram Process of This Project A Brief Explanation About Single Shot Detector (SSD) Single shot detector is a deep learning method presented by Wei Liu, Dragomir Anguelov, Dumitru Erhan, Christian Szegedy, Scott Reed4, Cheng-Yang Fu, Alexander C. Berg in their research paper SSD: Single Shot Multibox Detector.</description>
+ Diagram Process of This Project A Brief Explanation About Single Shot Detector (SSD) Single shot detector is a deep learning method presented by Wei Liu, Dragomir Anguelov, Dumitru Erhan, Christian Szegedy, Scott Reed4, Cheng-Yang Fu, Alexander C. Berg in their research paper SSD: Single Shot Multibox Detector.</description>
     </item>
     
     <item>
@@ -58,9 +58,10 @@ Well that&amp;rsquo;s all, I&amp;rsquo;m still figuring out what it must be to l
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://bruhtus.github.io/projects/</guid>
-      <description>Pavement distress detector  Detect pavement distresses with single shot detector (SSD).
-    Repo Post    Instasaver  Save your chosen memes on instagram (hopefully only that).
-    Repo Post Live demo    </description>
+      <description>Instasaver  Save your chosen memes on instagram (hopefully only that).
+    Repo Post Live demo    Markdown CV  A jekyll-based markdown CV based on blmoore&amp;rsquo;s CV and elipapa&amp;rsquo;s CV.
+    Repo Live demo    Pavement distress detector  Detect pavement distresses with single shot detector (SSD).
+    Repo Post    </description>
     </item>
     
   </channel>
