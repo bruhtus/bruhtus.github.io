@@ -39,7 +39,7 @@
 <meta itemprop="description" content="Detect pavement distress using single shot detector (SSD) model.">
 <meta itemprop="datePublished" content="2020-10-11T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2020-10-11T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2897">
+<meta itemprop="wordCount" content="2906">
 
 
 
@@ -156,12 +156,14 @@
   
   <div id="contentBody">
     <blockquote>
-<p>This was my graduation project, in this article i&rsquo;m gonna explain what i did in my graduation project. This project was based on <a href="https://github.com/lufficc/SSD">Congcong Li&rsquo;s Project</a>.</p>
+<p>This was my graduation project, in this article i&rsquo;m gonna explain what i did in my graduation project. This project was based on <a href="https://github.com/lufficc/SSD" target="_blank" rel="noreferrer noopener">Congcong Li&rsquo;s Project</a>
+.</p>
 </blockquote>
 <h2 id="diagram-process-of-this-project">Diagram Process of This Project</h2>
 <p><img src="diagram-process.png" alt="Diagram process"><br></p>
 <h2 id="a-brief-explanation-about-single-shot-detector-ssd">A Brief Explanation About Single Shot Detector (SSD)</h2>
-<p>Single shot detector is a deep learning method presented by Wei Liu, Dragomir Anguelov, Dumitru Erhan, Christian Szegedy, Scott Reed4, Cheng-Yang Fu, Alexander C. Berg in their research paper <a href="https://arxiv.org/abs/1512.02325">SSD: Single Shot Multibox Detector</a>. There are 2 commonly used SSD model, that is, SSD300 and SSD512.
+<p>Single shot detector is a deep learning method presented by Wei Liu, Dragomir Anguelov, Dumitru Erhan, Christian Szegedy, Scott Reed4, Cheng-Yang Fu, Alexander C. Berg in their research paper <a href="https://arxiv.org/abs/1512.02325" target="_blank" rel="noreferrer noopener">SSD: Single Shot Multibox Detector</a>
+. There are 2 commonly used SSD model, that is, SSD300 and SSD512.
 <br>
 Here&rsquo;s a brief explanation about SSD300 and SSD512:</p>
 <ul>
@@ -175,7 +177,8 @@ Who want to watch a video with 3 fps?? If you&rsquo;re that kind of person then,
 <p>For those who still confused about live detection, to make things simpler, live detection is when you process the video, detect the object, and play the video at the same time. After you detect the object, you immediately display the frame that just recently processed and then processed the next frame. Repeat.</p>
 <h3 id="single-shot-detector-ssd-architecture-thats-used-in-this-project">Single Shot Detector (SSD) Architecture That&rsquo;s Used in This Project</h3>
 <p>As explained above, in this project we&rsquo;re gonna use SSD512. SSD512 is basically SSD with input image 512x512. The basic architecture of SSD contains 2 part, base network and extra feature layers. The base network layers are based on standard architecture used for high quality image classification (truncated before classification layers). The extra feature layers used for multi-scale feature maps for detection and convolutional predictors for detection.</p>
-<p>Here is an architecture single shot detector that used in this project (made this with <a href="http://alexlenail.me/NN-SVG/AlexNet.html">NN architecture maker</a>):</p>
+<p>Here is an architecture single shot detector that used in this project (made this with <a href="http://alexlenail.me/NN-SVG/AlexNet.html" target="_blank" rel="noreferrer noopener">NN architecture maker</a>
+):</p>
 <p><img src="ssd-architecture.png" alt="Architecture SSD"><br></p>
 <p>Information:</p>
 <ol>
@@ -200,7 +203,8 @@ Who want to watch a video with 3 fps?? If you&rsquo;re that kind of person then,
 <p>Information:</p>
 <ol>
 <li>kernel_size, stride, padding, and dilation can be 1 integer (in this case, the value for height and width are the same) or 2 integer (in this case, the first integer is height and the second integer is width).</li>
-<li>For more info you can see <a href="https://pytorch.org/docs/stable/generated/torch.nn.MaxPool2d.html">pytorch page</a>.</li>
+<li>For more info you can see <a href="https://pytorch.org/docs/stable/generated/torch.nn.MaxPool2d.html" target="_blank" rel="noreferrer noopener">pytorch page</a>
+.</li>
 </ol>
 <p>Here&rsquo;s some example of max pooling calculation with input 32x32, kernel filter 3x3, stride 1, padding 1, and dilation 1:</p>
 <p><img src="max-pooling-calculation.png" alt="Max-pooling calculation"></p>
@@ -220,7 +224,8 @@ Who want to watch a video with 3 fps?? If you&rsquo;re that kind of person then,
 <p>The black block is for testing and the white block is for training. You can check the position of the camera below:</p>
 <p><img src="camera-position.png" alt="Camera position"></p>
 <h2 id="setting-up-the-config-file">Setting Up The Config File</h2>
-<p>For more detailed configuration please check <a href="https://github.com/lufficc/SSD/blob/master/DEVELOP_GUIDE.md">develop guide by Congcong Li</a>. In this post i&rsquo;m gonna explain it the easiest way.</p>
+<p>For more detailed configuration please check <a href="https://github.com/lufficc/SSD/blob/master/DEVELOP_GUIDE.md" target="_blank" rel="noreferrer noopener">develop guide by Congcong Li</a>
+. In this post i&rsquo;m gonna explain it the easiest way.</p>
 <h3 id="basic-configuration">Basic Configuration</h3>
 <p>To make things easier, copy the format dataset you want. For example, in this project i want to use COCO dataset format. Then, i copied the <code>coco.py</code> in the path <code>ssd/data/datasets/</code> and rename it to <code>my_dataset.py</code>. After that, edit the class names for your classification class. In this project, the class i&rsquo;m gonna use is alligator crack, longitudinal crack, transverse crack, and pothole. Also, don&rsquo;t forget to change the class <code>COCODataset</code> to <code>MyDataset</code>.</p>
 <p>The next step is to add those configuration to <code>__init__.py</code> in ssd/data/datasets/. For example:</p>
@@ -296,7 +301,8 @@ _DATASETS <span style="color:#f92672">=</span> {
 </code></pre></div><h2 id="the-interface">The Interface</h2>
 <p>For the interface, i&rsquo;m using python library <code>streamlit</code>. Streamlit is more like web interface rather than common graphical user interface (GUI). Here&rsquo;s how the interface looks like:</p>
 <p><img src="streamlit-interface.png" alt="The interface"></p>
-<p>There&rsquo;s a problem with file uploader at the time (streamlit version 0.59.0), i can&rsquo;t upload file larger than 100 mb meanwhile the limit of file uploader should be 200 mb at that time. You can check the issue <a href="https://discuss.streamlit.io/t/network-error-when-uploading-files-larger-than-100mb/2646">here</a>, it seems like they&rsquo;re already fixed it but i haven&rsquo;t try it yet. So, when making this project i&rsquo;m using the dropdown menu bar.</p>
+<p>There&rsquo;s a problem with file uploader at the time (streamlit version 0.59.0), i can&rsquo;t upload file larger than 100 mb meanwhile the limit of file uploader should be 200 mb at that time. You can check the issue <a href="https://discuss.streamlit.io/t/network-error-when-uploading-files-larger-than-100mb/2646" target="_blank" rel="noreferrer noopener">here</a>
+, it seems like they&rsquo;re already fixed it but i haven&rsquo;t try it yet. So, when making this project i&rsquo;m using the dropdown menu bar.</p>
 <h2 id="training-preparation">Training Preparation</h2>
 <p>Before training the model, we need to do some preparation. There&rsquo;re two steps in this process, frame extraction and labeling. Without further ado, let&rsquo;s get started.</p>
 <h3 id="frame-extraction">Frame Extraction</h3>
@@ -366,9 +372,12 @@ _DATASETS <span style="color:#f92672">=</span> {
 </tbody>
 </table>
 <h3 id="labeling">Labeling</h3>
-<p>For the labeling i use labelme, you could check the tutorial <a href="https://www.dlology.com/blog/how-to-create-custom-coco-data-set-for-instance-segmentation/">here</a> and to change labelme format to coco dataset format <a href="https://github.com/Tony607/labelme2coco">here</a>. There&rsquo;s nothing much to explain about labeling, you just give box to an object and save with the label you want. So, let&rsquo;s move on.</p>
+<p>For the labeling i use labelme, you could check the tutorial <a href="https://www.dlology.com/blog/how-to-create-custom-coco-data-set-for-instance-segmentation/" target="_blank" rel="noreferrer noopener">here</a>
+ and to change labelme format to coco dataset format <a href="https://github.com/Tony607/labelme2coco" target="_blank" rel="noreferrer noopener">here</a>
+. There&rsquo;s nothing much to explain about labeling, you just give box to an object and save with the label you want. So, let&rsquo;s move on.</p>
 <h2 id="here-we-go-its-training-time">Here We Go, It&rsquo;s Training Time!</h2>
-<p>For the training process i use google colaboratory (how to use google colaboratory is beyond this post, sorry) but you could also use other services such as <a href="https://www.paperspace.com/?utm_expid=.XZhCPCNrQCuE1jH9t8bIgg.0&amp;utm_referrer=">paperspace</a>. Here&rsquo;s an example of command line if you use you local machine or cloud services: <br>
+<p>For the training process i use google colaboratory (how to use google colaboratory is beyond this post, sorry) but you could also use other services such as <a href="https://www.paperspace.com/?utm_expid=.XZhCPCNrQCuE1jH9t8bIgg.0&amp;utm_referrer=" target="_blank" rel="noreferrer noopener">paperspace</a>
+. Here&rsquo;s an example of command line if you use you local machine or cloud services: <br>
 Local: <br></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">python train.py --config-file configs/config.yaml
 </code></pre></div><p>Cloud: <br></p>
@@ -742,15 +751,18 @@ Local: <br></p>
 <li>Use a camera that has wide angle lens (because 50mm lens is not wide enough).</li>
 </ol>
 <h2 id="side-notes">Side Notes</h2>
-<p>This is not really important, it&rsquo;s more like a momento for me. In the undergraduate thesis defence(?) there&rsquo;s this examiner who has a misconception about testing process and validation process. That examiner switch the possition of testing process as validation process and validation process as testing process, so that really confusing and we have quite an argument there. I even ask in <a href="https://stats.stackexchange.com/q/484584">stackexchange</a> if i&rsquo;m wrong or not and it turns out that examiner has switch the term for testing and validation. Now i feel stupid for having an argument with that examiner.</p>
+<p>This is not really important, it&rsquo;s more like a momento for me. In the undergraduate thesis defence(?) there&rsquo;s this examiner who has a misconception about testing process and validation process. That examiner switch the possition of testing process as validation process and validation process as testing process, so that really confusing and we have quite an argument there. I even ask in <a href="https://stats.stackexchange.com/q/484584" target="_blank" rel="noreferrer noopener">stackexchange</a>
+ if i&rsquo;m wrong or not and it turns out that examiner has switch the term for testing and validation. Now i feel stupid for having an argument with that examiner.</p>
 <section class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn:1" role="doc-endnote">
-<p><a href="https://pytorch.org/docs/stable/generated/torch.nn.MaxPool2d.html">Pytorch maxpool2d</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="https://pytorch.org/docs/stable/generated/torch.nn.MaxPool2d.html" target="_blank" rel="noreferrer noopener">Pytorch maxpool2d</a>
+ <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2" role="doc-endnote">
-<p><a href="https://arxiv.org/abs/1512.02325">SSD: Single Shot Multibox Detector</a>. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="https://arxiv.org/abs/1512.02325" target="_blank" rel="noreferrer noopener">SSD: Single Shot Multibox Detector</a>
+. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>
@@ -758,9 +770,9 @@ Local: <br></p>
   </div>
   <footer>
   <p>
-  &copy; 2020 <a style="text-decoration:none" href="https://bruhtus.github.io/cv">Robertus Diawan Chris</a>
+  &copy; 2020 <a style="text-decoration:none" href="https://bruhtus.github.io/cv" target="_blank" rel="noreferrer noopener">Robertus Diawan Chris</a>
   <span>&middot;</span>
-  Based on <a style="text-decoration:none" href="https://github.com/koirand/pulp/" target="_blank">pulp</a> and <a style="text-decoration:none" href="https://git.io/hugopapermod" target="_blank">papermod</a> theme
+  Based on <a style="text-decoration:none" href="https://github.com/koirand/pulp/" target="_blank" rel="noreferrer noopener">pulp</a> and <a style="text-decoration:none" href="https://git.io/hugopapermod" target="_blank" rel="noreferrer noopener">papermod</a> theme
   </p>
 </footer>
 <button onclick="topFunction()" id="myBtn" title="Go to top">

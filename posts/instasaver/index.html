@@ -39,7 +39,7 @@
 <meta itemprop="description" content="Save your chosen instagram posts, efficiently.">
 <meta itemprop="datePublished" content="2020-11-09T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2020-11-09T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1154">
+<meta itemprop="wordCount" content="1167">
 
 
 
@@ -141,27 +141,32 @@
 <blockquote>
 <p>Nothing fancy, you should probably skip this.</p>
 </blockquote>
-<p>To make things short, basically i was inspired by Kevin Hazy&rsquo;s project <a href="https://instasave.egoist.sh/">here</a>. After i see Kevin&rsquo;s project, i was like &ldquo;can i make almost the same thing with python?&rdquo; and that was the trigger.</p>
+<p>To make things short, basically i was inspired by Kevin Hazy&rsquo;s project <a href="https://instasave.egoist.sh/" target="_blank" rel="noreferrer noopener">here</a>
+. After i see Kevin&rsquo;s project, i was like &ldquo;can i make almost the same thing with python?&rdquo; and that was the trigger.</p>
 <p>If you ask me why i want to tool (kind of) to save instagram post, that&rsquo;s because i have a hard time to save video memes on instagram and i don&rsquo;t really want to use a screen recorder (said the guy who made something that took longer than learning how to use screen recorder and edit the result 👀). So anyway, that&rsquo;s my motivation to made this. <strong>For the memes!</strong></p>
 <h2 id="instaloader-python-module">Instaloader Python Module</h2>
 <blockquote>
-<p>In this part, i&rsquo;m only gonna explain the part that i&rsquo;ve used and tried along with the problem that i&rsquo;ve encountered. So for the full documentations, you can check <a href="https://instaloader.github.io/module/instaloader.html">here</a>.</p>
+<p>In this part, i&rsquo;m only gonna explain the part that i&rsquo;ve used and tried along with the problem that i&rsquo;ve encountered. So for the full documentations, you can check <a href="https://instaloader.github.io/module/instaloader.html" target="_blank" rel="noreferrer noopener">here</a>
+.</p>
 </blockquote>
 <h3 id="instaloader-feature-that-i-used">Instaloader Feature That I Used</h3>
 <p>There&rsquo;re a lot of things you can do with instaloader like saving instagram stories, follower list, following list, and so on, but for this project i only use saving post feature. Why i only use that feature? because other features require login to instagram account, i&rsquo;ll explain on that later.</p>
 <p>So, even only saving post feature has a lot going on but i&rsquo;m not quite sure how to implement that, the only thing i&rsquo;m sure is how to implement saving post using a url (well, also other features that require login too). If you want to learn other features you can check their documentations which is quite confusing. Well, maybe i&rsquo;m just a complete idiot but you know what, you&rsquo;re gonna have other complete idiots that didn&rsquo;t understand their documentations. I don&rsquo;t really want to be hard on them but they could have done better, especially on the examples (not only advance examples but basic examples too).</p>
 <h3 id="instaloader-feature-that-ive-tried">Instaloader Feature That I&rsquo;ve Tried</h3>
-<p>Apart from saving post feature, i&rsquo;ve also implemented saving stories, following list, and follower list. As i&rsquo;ve mentioned above, those three features require login to instagram account. Well, you can made a fake account to login to instagram but it&rsquo;s not ideal to deploy it. There&rsquo;s this problem when you login quite often so you need to wait around 15 minute to use it again, i mean if i want everyone else to access it then that problem gonna be a hassle. I&rsquo;ve never tried to make a lot of fake account and rotate through all of them to login but i might do it later, who knows. If you want to see all the features that i didn&rsquo;t implement in the public version, you can check my github repo <a href="https://github.com/bruhtus/instasaver-local">here</a>.</p>
+<p>Apart from saving post feature, i&rsquo;ve also implemented saving stories, following list, and follower list. As i&rsquo;ve mentioned above, those three features require login to instagram account. Well, you can made a fake account to login to instagram but it&rsquo;s not ideal to deploy it. There&rsquo;s this problem when you login quite often so you need to wait around 15 minute to use it again, i mean if i want everyone else to access it then that problem gonna be a hassle. I&rsquo;ve never tried to make a lot of fake account and rotate through all of them to login but i might do it later, who knows. If you want to see all the features that i didn&rsquo;t implement in the public version, you can check my github repo <a href="https://github.com/bruhtus/instasaver-local" target="_blank" rel="noreferrer noopener">here</a>
+.</p>
 <h2 id="implementation-with-streamlit">Implementation With Streamlit</h2>
 <blockquote>
 <p>In this part, i&rsquo;m gonna explain the implementation with streamlit and how to deploy on streamlit sharing.</p>
 </blockquote>
 <h3 id="instaloader-main-class">Instaloader (Main Class)</h3>
-<p>For starter, in instaloader main class (<a href="https://instaloader.github.io/module/instaloader.html#instaloader.Instaloader">Instaloader</a>) the parameters that used in this project was <code>dirname_pattern</code>, <code>download_comments</code>, <code>download_geotags</code>, <code>download_video_thumbnails</code>, and <code>save_metadata</code>.</p>
+<p>For starter, in instaloader main class (<a href="https://instaloader.github.io/module/instaloader.html#instaloader.Instaloader" target="_blank" rel="noreferrer noopener">Instaloader</a>
+) the parameters that used in this project was <code>dirname_pattern</code>, <code>download_comments</code>, <code>download_geotags</code>, <code>download_video_thumbnails</code>, and <code>save_metadata</code>.</p>
 <p><code>dirname_pattern</code> was to make the default folder to save the file which in this case i use temporary folder because i don&rsquo;t want to save the images or videos on my github repo but download it to my device (whether smartphone or pc).</p>
 <p><code>download_comments</code>, <code>download_geotags</code>, <code>download_video_thumbnails</code>, and <code>save_metadata</code> is set to <code>False</code> just to make it simple, i just want to download the memes (whether images or videos) and i don&rsquo;t want anything else. You could turn that on to get all that stuff tho.</p>
 <h3 id="short-code">Short code</h3>
-<p>To extract the short code, i used regular expression from this <a href="https://github.com/instaloader/instaloader/issues/816#issuecomment-703758078">source</a> and then using instaloader <code>Post.from_shortcode</code> and <code>download_post</code> to finally download the post (saved in temporary folder first and then generate download button to save to device).</p>
+<p>To extract the short code, i used regular expression from this <a href="https://github.com/instaloader/instaloader/issues/816#issuecomment-703758078" target="_blank" rel="noreferrer noopener">source</a>
+ and then using instaloader <code>Post.from_shortcode</code> and <code>download_post</code> to finally download the post (saved in temporary folder first and then generate download button to save to device).</p>
 <h3 id="public-version">Public Version</h3>
 <p>What i mean by public version is the version that i deploy so that everyone can use it. For the public version, i only use saving post with url input. The diagram process is below:</p>
 <p><img src="diagram-process-final.png" alt="Diagram process public"></p>
@@ -196,7 +201,8 @@ file_list <span style="color:#f92672">=</span> [filename <span style="color:#66d
                 zip<span style="color:#f92672">.</span>write(f<span style="color:#e6db74">&#39;{temp}/{filename}&#39;</span>)
 
     st<span style="color:#f92672">.</span>markdown(download_button(f<span style="color:#e6db74">&#39;{temp}/{filename}&#39;</span>, temp), unsafe_allow_html<span style="color:#f92672">=</span>True)
-</code></pre></div><p>please keep in mind that the implementation above is only a partial from all the code, it&rsquo;s just a glimpse of what&rsquo;s going on inside the process. For the full code you can check <a href="https://github.com/bruhtus/instasaver">here</a>.</p>
+</code></pre></div><p>please keep in mind that the implementation above is only a partial from all the code, it&rsquo;s just a glimpse of what&rsquo;s going on inside the process. For the full code you can check <a href="https://github.com/bruhtus/instasaver" target="_blank" rel="noreferrer noopener">here</a>
+.</p>
 <h3 id="local-version">Local Version</h3>
 <p>What i mean by local version is the version that has a more features than the public version that requires login to instagram account. For the local version, i use download the post from url feature (like the public version), download stories (download all the stories of the user, public profile only or you already followed the private account), and download following and follower list.</p>
 <h4 id="download-stories">Download stories</h4>
@@ -230,24 +236,33 @@ profile <span style="color:#f92672">=</span> instaloader<span style="color:#f926
 
 st<span style="color:#f92672">.</span>markdown(download_button(f<span style="color:#e6db74">&#39;{temp}/{profile.username}_follower.txt&#39;</span>, temp), unsafe_allow_html<span style="color:#f92672">=</span>True)
 </code></pre></div><h3 id="deploy-using-streamlit-sharing">Deploy Using Streamlit Sharing</h3>
-<p>To deploy on streamlit sharing you need to <a href="https://www.streamlit.io/sharing">request an invite</a> in their website and then after that you can deploy your streamlit app. It takes a few minutes to deploy the first time but after that it&rsquo;s deploy in an instant. You can check the live demo <a href="https://share.streamlit.io/bruhtus/instasaver/instasaver.py">here</a>.</p>
+<p>To deploy on streamlit sharing you need to <a href="https://www.streamlit.io/sharing" target="_blank" rel="noreferrer noopener">request an invite</a>
+ in their website and then after that you can deploy your streamlit app. It takes a few minutes to deploy the first time but after that it&rsquo;s deploy in an instant. You can check the live demo <a href="https://share.streamlit.io/bruhtus/instasaver/instasaver.py" target="_blank" rel="noreferrer noopener">here</a>
+.</p>
 <h2 id="references">References</h2>
 <ul>
-<li><a href="https://instasave.egoist.sh/">The one who trigger me to made this</a>.</li>
-<li><a href="https://instaloader.github.io/as-module.html">Instaloader documentations</a>.</li>
-<li><a href="https://www.streamlit.io/">Streamlit</a>.</li>
-<li><a href="https://github.com/instaloader/instaloader/issues/561">Download instagram stories</a>.</li>
-<li><a href="https://insta-stories.ru/">View public profile anonymous (more advance version)</a>.</li>
-<li><a href="https://github.com/streamlit/streamlit/issues/826">Streamlit multiselect nested in if</a>.</li>
-<li><a href="https://discuss.streamlit.io/t/how-to-download-file-in-streamlit/1806/23">Streamlit download file</a>.</li>
+<li><a href="https://instasave.egoist.sh/" target="_blank" rel="noreferrer noopener">The one who trigger me to made this</a>
+.</li>
+<li><a href="https://instaloader.github.io/as-module.html" target="_blank" rel="noreferrer noopener">Instaloader documentations</a>
+.</li>
+<li><a href="https://www.streamlit.io/" target="_blank" rel="noreferrer noopener">Streamlit</a>
+.</li>
+<li><a href="https://github.com/instaloader/instaloader/issues/561" target="_blank" rel="noreferrer noopener">Download instagram stories</a>
+.</li>
+<li><a href="https://insta-stories.ru/" target="_blank" rel="noreferrer noopener">View public profile anonymous (more advance version)</a>
+.</li>
+<li><a href="https://github.com/streamlit/streamlit/issues/826" target="_blank" rel="noreferrer noopener">Streamlit multiselect nested in if</a>
+.</li>
+<li><a href="https://discuss.streamlit.io/t/how-to-download-file-in-streamlit/1806/23" target="_blank" rel="noreferrer noopener">Streamlit download file</a>
+.</li>
 </ul>
 
   </div>
   <footer>
   <p>
-  &copy; 2020 <a style="text-decoration:none" href="https://bruhtus.github.io/cv">Robertus Diawan Chris</a>
+  &copy; 2020 <a style="text-decoration:none" href="https://bruhtus.github.io/cv" target="_blank" rel="noreferrer noopener">Robertus Diawan Chris</a>
   <span>&middot;</span>
-  Based on <a style="text-decoration:none" href="https://github.com/koirand/pulp/" target="_blank">pulp</a> and <a style="text-decoration:none" href="https://git.io/hugopapermod" target="_blank">papermod</a> theme
+  Based on <a style="text-decoration:none" href="https://github.com/koirand/pulp/" target="_blank" rel="noreferrer noopener">pulp</a> and <a style="text-decoration:none" href="https://git.io/hugopapermod" target="_blank" rel="noreferrer noopener">papermod</a> theme
   </p>
 </footer>
 <button onclick="topFunction()" id="myBtn" title="Go to top">
