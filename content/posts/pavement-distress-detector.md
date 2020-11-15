@@ -8,7 +8,7 @@ ShowToc: true
 TocOpen: false
 ---
 
-This was my graduation project, in this article i'm gonna explain what i did in my graduation project. This project was based on [Congcong Li's Project](https://github.com/lufficc/SSD).
+> This was my graduation project, in this article i'm gonna explain what i did in my graduation project. This project was based on [Congcong Li's Project](https://github.com/lufficc/SSD).
 
 ## Diagram Process of This Project
 

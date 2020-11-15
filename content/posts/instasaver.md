@@ -8,7 +8,7 @@ ShowToc: true
 TocOpen: false
 ---
 
-A brief explanation about instasaver, a tool to save instagram post build with instaloader python module and streamlit.
+> A brief explanation about instasaver, a tool to save instagram post build with instaloader python module and streamlit.
 
 ## Background Story
 
@@ -36,8 +36,8 @@ Apart from saving post feature, i've also implemented saving stories, following 
 
 >In this part, i'm gonna explain the implementation with streamlit and how to deploy on streamlit sharing.
 
-### [Instaloader (Main Class)](https://instaloader.github.io/module/instaloader.html#instaloader.Instaloader)
-For starter, in instaloader main class (Instaloader) the parameters that used in this project was `dirname_pattern`, `download_comments`, `download_geotags`, `download_video_thumbnails`, and `save_metadata`.
+### Instaloader (Main Class)
+For starter, in instaloader main class ([Instaloader](https://instaloader.github.io/module/instaloader.html#instaloader.Instaloader)) the parameters that used in this project was `dirname_pattern`, `download_comments`, `download_geotags`, `download_video_thumbnails`, and `save_metadata`.
 
 `dirname_pattern` was to make the default folder to save the file which in this case i use temporary folder because i don't want to save the images or videos on my github repo but download it to my device (whether smartphone or pc).
 

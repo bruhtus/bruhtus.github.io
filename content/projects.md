@@ -4,14 +4,21 @@ layout = "cd"
 url = "/projects"
 +++
 
-### Pavement distress detector 
-> Detect pavement distresses with single shot detector (SSD).
-
-[Repo](https://git.io/JTMM8) | [Post](../posts/pavement-distress-detector)
---- | ---
-
 ### Instasaver
 > Save your chosen memes on instagram (hopefully only that).
 
-[Repo](https://git.io/JkJ0q) | [Post](../posts/instasaver) | [Live demo](https://share.streamlit.io/bruhtus/instasaver/instasaver.py)
+[Repo](https://git.io/JkJ0q) | [Post](/posts/instasaver) | [Live demo](https://share.streamlit.io/bruhtus/instasaver/instasaver.py)
 --- | --- | ---
+
+### Markdown CV
+> A jekyll-based markdown CV based on blmoore's CV and elipapa's CV.
+
+[Repo](https://github.com/bruhtus/cv) | [Live demo](https://bruhtus.github.io/cv/)
+--- | ---
+
+### Pavement distress detector 
+> Detect pavement distresses with single shot detector (SSD).
+
+[Repo](https://git.io/JTMM8) | [Post](/posts/pavement-distress-detector)
+--- | ---
+

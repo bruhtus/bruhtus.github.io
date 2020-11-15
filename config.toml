@@ -18,7 +18,10 @@ hasCJKLanguage = true
 [outputs]
     section = ["JSON", "HTML"]
     term = ["JSON", "HTML"]
-    books = ["JSON", "HTML"]
+
+[taxonomies]
+    category = "categories"
+    tag = "tags"
 
 [[menu.main]]
     indentifier = "about"
@@ -41,16 +44,16 @@ hasCJKLanguage = true
     url = "/posts/"
     weight = 30
 
+[[menu.main]]
+    indentifier = "email"
+    name = "Email"
+    pre = "<i class='fa fa-envelope fa-lg'></i>"
+    url = "mailto:diawan@pm.me"
+    weight = 40
+
 [[menu.tab]]
     indentifier = "github"
     name = "Github"
     pre = "<i class='fab fa-github fa-lg'></i>"
     url = "https://github.com/bruhtus"
     weight = 50
-
-[[menu.main]]
-    indentifier = "email"
-    name = "Email"
-    pre = "<i class='fa fa-envelope fa-lg'></i>"
-    url = "mailto:diawan@pm.me"
-    weight = 60
