@@ -1,6 +1,7 @@
 .author {
     font-style: italic;
-    font-family: fantasy;
+    font-family: 'Noto Serif', serif;
+    font-size: 165%;
 }
 
 .cd {
