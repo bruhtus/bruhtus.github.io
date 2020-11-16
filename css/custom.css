@@ -5,16 +5,16 @@
 }
 
 .cd {
-    font-family: monospace;
+    font-family: 'Inconsolata', monospace;;
+}
+
+nav ul {
+    flex-wrap: wrap;
 }
 
 /* search results */
 #searchResults {
     top: 200px;
-}
-
-nav ul {
-    flex-wrap: wrap;
 }
 
 /* content */
