@@ -17,4 +17,4 @@
 
 - [Hugo github pages hosting and deployment tutorial](https://gohugo.io/hosting-and-deployment/hosting-on-github/#step-by-step-instructions).
 - [Hugo quick start](https://gohugo.io/getting-started/quick-start/).
-- [Search feature on pulp theme](https://koirand.github.io/blog/2018/pulp-search/)
+- [Search feature on pulp theme](https://koirand.github.io/blog/2018/pulp-search/).
