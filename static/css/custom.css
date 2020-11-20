@@ -1,19 +1,21 @@
 .author {
     font-style: italic;
-    font-family: fantasy;
+    font-family: 'EB Garamond', serif;
+    font-size: 220%;
+    margin-bottom: -0.3em;
 }
 
 .cd {
-    font-family: monospace;
+    font-family: 'Inconsolata', monospace;;
+}
+
+nav ul {
+    flex-wrap: wrap;
 }
 
 /* search results */
 #searchResults {
     top: 200px;
-}
-
-nav ul {
-    flex-wrap: wrap;
 }
 
 /* content */
@@ -36,6 +38,7 @@ nav ul {
 
 #contentBody a {
     text-decoration: none;
+    font-weight: bold;
 }
 
 /* table of contents */
@@ -46,7 +49,7 @@ nav ul {
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: .5em;
-    max-width: 600px;
+    max-width: 450px;
     margin-left: auto;
     margin-right: auto;
 }
