@@ -38,6 +38,7 @@ nav ul {
 
 #contentBody a {
     text-decoration: none;
+    font-weight: bold;
 }
 
 /* table of contents */
@@ -78,6 +79,8 @@ nav ul {
 .toc summary:focus {
     outline: none;
 }
+
+/* admonition */
 
 /* back to top */
 #myBtn {
