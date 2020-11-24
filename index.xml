@@ -14,7 +14,7 @@
       
       <guid>https://bruhtus.github.io/posts/manjaro-backup/</guid>
       <description>A few options about backing up your system, especially on arch-based distro. It&amp;rsquo;s mostly for linux, i&amp;rsquo;m not sure if you can use it for mac os or windows too.
- Why Should You Backup Your System? In case you&amp;rsquo;re wondering why you should backup your system (for some reason), let me briefly explain. There&amp;rsquo;s always a risk of failure when you&amp;rsquo;re updating or installing a new package (to make things easier, it&amp;rsquo;s basically a program), when that happens, do you want to restore your system before the error occur or you want to re-install the whole system from scratch?</description>
+ Why Should You Backup Your System? In case you&amp;rsquo;re wondering why you should backup your system (for some reason), let me briefly explain. There&amp;rsquo;s always a risk of failure when you&amp;rsquo;re updating or installing a new package (to make things easier to understand, it&amp;rsquo;s basically a program), when that happens, do you want to restore your system before the error occur or you want to re-install the whole system from scratch?</description>
     </item>
     
     <item>
@@ -69,7 +69,7 @@ Well that&amp;rsquo;s all, I&amp;rsquo;m still figuring out what it must be to l
       
       <guid>https://bruhtus.github.io/projects/</guid>
       <description>Instasaver  Save your chosen memes on instagram (hopefully only that).
-    Repo  Post  Live demo     Markdown CV  A jekyll-based markdown CV based on blmoore&amp;rsquo;s CV and elipapa&amp;rsquo;s CV.
+    Repo  Post  Live demo heroku  Live demo streamlit sharing     Markdown CV  A jekyll-based markdown CV based on blmoore&amp;rsquo;s CV and elipapa&amp;rsquo;s CV.
     Repo  Live demo     Pavement distress detector  Detect pavement distresses with single shot detector (SSD).
     Repo  Post     </description>
     </item>

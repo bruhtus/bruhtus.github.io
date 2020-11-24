@@ -41,7 +41,7 @@
 <meta itemprop="description" content="Save your chosen instagram posts, efficiently.">
 <meta itemprop="datePublished" content="2020-11-09T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2020-11-09T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1167">
+<meta itemprop="wordCount" content="1399">
 
 
 
@@ -82,7 +82,7 @@
   <p class="date">
   November 9, 2020
   <span>&middot;</span>
-  6 mins
+  7 mins
   <span>&middot;</span>
   Robertus Diawan Chris
   </p>
@@ -129,7 +129,11 @@
         <a style="text-decoration:none" href="#download-stories" aria-label="Download stories">Download stories</a></li><li>
         <a style="text-decoration:none" href="#download-following-and-follower-list" aria-label="Download following and follower list">Download following and follower list</a></li></ul>
     </li><li>
-        <a style="text-decoration:none" href="#deploy-using-streamlit-sharing" aria-label="Deploy Using Streamlit Sharing">Deploy Using Streamlit Sharing</a></li></ul>
+        <a style="text-decoration:none" href="#deployment" aria-label="Deployment">Deployment</a><ul>
+            <li>
+        <a style="text-decoration:none" href="#streamlit-sharing" aria-label="Streamlit Sharing">Streamlit Sharing</a></li><li>
+        <a style="text-decoration:none" href="#heroku" aria-label="Heroku">Heroku</a></li></ul>
+    </li></ul>
     </li><li>
         <a style="text-decoration:none" href="#references" aria-label="References">References</a></li></ul>
           </blockquote>
@@ -239,9 +243,33 @@ profile <span style="color:#f92672">=</span> instaloader<span style="color:#f926
         f<span style="color:#f92672">.</span>write(f<span style="color:#e6db74">&#39;{following.username}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)
 
 st<span style="color:#f92672">.</span>markdown(download_button(f<span style="color:#e6db74">&#39;{temp}/{profile.username}_follower.txt&#39;</span>, temp), unsafe_allow_html<span style="color:#f92672">=</span>True)
-</code></pre></div><h3 id="deploy-using-streamlit-sharing">Deploy Using Streamlit Sharing</h3>
+</code></pre></div><h3 id="deployment">Deployment</h3>
+<p>I use streamlit sharing and heroku to deploy this project, why i use two services to deploy this project? that&rsquo;s because i want to try web app deployement on heroku and streamlit sharing (which is quite new).</p>
+<h4 id="streamlit-sharing">Streamlit Sharing</h4>
 <p>To deploy on streamlit sharing you need to <a href="https://www.streamlit.io/sharing" target="_blank" rel="noreferrer noopener">request an invite</a>
- in their website and then after that you can deploy your streamlit app. It takes a few minutes to deploy the first time but after that it&rsquo;s deploy in an instant. You can check the live demo <a href="https://share.streamlit.io/bruhtus/instasaver/instasaver.py" target="_blank" rel="noreferrer noopener">here</a>
+ in their website and then after that you can deploy your streamlit app. It takes a few minutes to deploy the first time but after that it&rsquo;s deploy in an instant. You can check the live demo on streamlit sharing <a href="https://share.streamlit.io/bruhtus/instasaver/instasaver.py" target="_blank" rel="noreferrer noopener">here</a>
+.</p>
+<h4 id="heroku">Heroku</h4>
+<p>To deploy on heroku, you need a few thing and here&rsquo;s the list:</p>
+<ul>
+<li><code>runtime.txt</code> -&gt; to specify python version.</li>
+<li><code>Procfile</code> -&gt; to specify type of our application and run command, check <a href="https://devcenter.heroku.com/articles/procfile" target="_blank" rel="noreferrer noopener">here</a>
+ for more info.</li>
+<li><code>create_config.sh</code> (or setup.sh, whatever you want) -&gt; to make config.toml for streamlit to run.</li>
+</ul>
+<p>I don&rsquo;t really need to explain about runtime.txt, do i? you just need to type your python version, for example <code>python-3.7.5</code>, that&rsquo;s all (i explain it anyway, dammit).</p>
+<p>For <code>.sh</code> file (in this case i&rsquo;m gonna name it <code>create_config.sh</code> because i&rsquo;m not creative, sorry), type this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p ~/.streamlit
+
+echo <span style="color:#e6db74">&#34;[server]
+</span><span style="color:#e6db74">headless = true
+</span><span style="color:#e6db74">port = </span>$PORT<span style="color:#e6db74">
+</span><span style="color:#e6db74">enableCORS = false
+</span><span style="color:#e6db74">&#34;</span> &gt; ~/.streamlit/config.toml
+</code></pre></div><p>For <code>Procfile</code>, you don&rsquo;t need to add an extention there. Just <code>Procfile</code> is enough. In the <code>Procfile</code>, type this:</p>
+<pre><code>web: sh create_config.sh &amp;&amp; streamlit run instasaver.py
+</code></pre><p>You don&rsquo;t need to name it <code>create_config.sh</code>, be creative, don&rsquo;t be like me.</p>
+<p>After all that, you can deploy it using git or from github or something else (i don&rsquo;t remember all the choices). If you want to deploy it using git workflow, you can check <a href="https://devcenter.heroku.com/articles/git#:~:text=To%20deploy%20your%20app%20to,heroku%20master%20Initializing%20repository%2C%20done." target="_blank" rel="noreferrer noopener">here</a>
 .</p>
 <h2 id="references">References</h2>
 <ul>
@@ -258,6 +286,8 @@ st<span style="color:#f92672">.</span>markdown(download_button(f<span style="col
 <li><a href="https://github.com/streamlit/streamlit/issues/826" target="_blank" rel="noreferrer noopener">Streamlit multiselect nested in if</a>
 .</li>
 <li><a href="https://discuss.streamlit.io/t/how-to-download-file-in-streamlit/1806/23" target="_blank" rel="noreferrer noopener">Streamlit download file</a>
+.</li>
+<li><a href="https://github.com/tconkling/streamlit_heroku_example" target="_blank" rel="noreferrer noopener">Deploy streamlit app on heroku example</a>
 .</li>
 </ul>
 

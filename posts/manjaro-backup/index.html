@@ -33,17 +33,17 @@
 
   <meta property="og:title" content="Backup: The Options" />
 <meta property="og:description" content="A few options about backing up your system, especially on arch-based distro. It&rsquo;s mostly for linux, i&rsquo;m not sure if you can use it for mac os or windows too.
- Why Should You Backup Your System? In case you&rsquo;re wondering why you should backup your system (for some reason), let me briefly explain. There&rsquo;s always a risk of failure when you&rsquo;re updating or installing a new package (to make things easier, it&rsquo;s basically a program), when that happens, do you want to restore your system before the error occur or you want to re-install the whole system from scratch?" />
+ Why Should You Backup Your System? In case you&rsquo;re wondering why you should backup your system (for some reason), let me briefly explain. There&rsquo;s always a risk of failure when you&rsquo;re updating or installing a new package (to make things easier to understand, it&rsquo;s basically a program), when that happens, do you want to restore your system before the error occur or you want to re-install the whole system from scratch?" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://bruhtus.github.io/posts/manjaro-backup/" />
 <meta property="article:published_time" content="2020-11-22T05:21:31+07:00" />
 <meta property="article:modified_time" content="2020-11-22T05:21:31+07:00" />
 <meta itemprop="name" content="Backup: The Options">
 <meta itemprop="description" content="A few options about backing up your system, especially on arch-based distro. It&rsquo;s mostly for linux, i&rsquo;m not sure if you can use it for mac os or windows too.
- Why Should You Backup Your System? In case you&rsquo;re wondering why you should backup your system (for some reason), let me briefly explain. There&rsquo;s always a risk of failure when you&rsquo;re updating or installing a new package (to make things easier, it&rsquo;s basically a program), when that happens, do you want to restore your system before the error occur or you want to re-install the whole system from scratch?">
+ Why Should You Backup Your System? In case you&rsquo;re wondering why you should backup your system (for some reason), let me briefly explain. There&rsquo;s always a risk of failure when you&rsquo;re updating or installing a new package (to make things easier to understand, it&rsquo;s basically a program), when that happens, do you want to restore your system before the error occur or you want to re-install the whole system from scratch?">
 <meta itemprop="datePublished" content="2020-11-22T05:21:31+07:00" />
 <meta itemprop="dateModified" content="2020-11-22T05:21:31+07:00" />
-<meta itemprop="wordCount" content="801">
+<meta itemprop="wordCount" content="839">
 
 
 
@@ -52,7 +52,7 @@
 <meta name="twitter:image" content="https://bruhtus.github.io//img/"/>
 <meta name="twitter:title" content="Backup: The Options"/>
 <meta name="twitter:description" content="A few options about backing up your system, especially on arch-based distro. It&rsquo;s mostly for linux, i&rsquo;m not sure if you can use it for mac os or windows too.
- Why Should You Backup Your System? In case you&rsquo;re wondering why you should backup your system (for some reason), let me briefly explain. There&rsquo;s always a risk of failure when you&rsquo;re updating or installing a new package (to make things easier, it&rsquo;s basically a program), when that happens, do you want to restore your system before the error occur or you want to re-install the whole system from scratch?"/>
+ Why Should You Backup Your System? In case you&rsquo;re wondering why you should backup your system (for some reason), let me briefly explain. There&rsquo;s always a risk of failure when you&rsquo;re updating or installing a new package (to make things easier to understand, it&rsquo;s basically a program), when that happens, do you want to restore your system before the error occur or you want to re-install the whole system from scratch?"/>
 
   <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -130,7 +130,7 @@
 <p>A few options about backing up your system, especially on arch-based distro. It&rsquo;s mostly for linux, i&rsquo;m not sure if you can use it for mac os or windows too.</p>
 </blockquote>
 <h2 id="why-should-you-backup-your-system">Why Should You Backup Your System?</h2>
-<p>In case you&rsquo;re wondering why you should backup your system (for some reason), let me briefly explain. There&rsquo;s always a risk of failure when you&rsquo;re updating or installing a new package (to make things easier, it&rsquo;s basically a program), when that happens, do you want to restore your system before the error occur or you want to re-install the whole system from scratch? your choice. For me personally, i want to restore my system before the error occur rather than re-install everything from scratch. <em>Ideally</em>, before you install something you should backup your system just in case there&rsquo;s some trouble. If you&rsquo;re insane enough to backup your system everytime you install new stuff or update your system then go ahead, you do you.</p>
+<p>In case you&rsquo;re wondering why you should backup your system (for some reason), let me briefly explain. There&rsquo;s always a risk of failure when you&rsquo;re updating or installing a new package (to make things easier to understand, it&rsquo;s basically a program), when that happens, do you want to restore your system before the error occur or you want to re-install the whole system from scratch? your choice. For me personally, i want to restore my system before the error occur rather than re-install everything from scratch. <em>Ideally</em>, before you install something, you should backup your system just in case there&rsquo;s some trouble. If you&rsquo;re insane enough to backup your system everytime you want to install new stuff or update your system then go ahead, you do you.</p>
 <p>In this post, i&rsquo;m gonna explain two most popular backup solution, that is <a href="https://clonezilla.org/" target="_blank" rel="noreferrer noopener">clonezilla</a>
  and <a href="https://teejeetech.in/timeshift/" target="_blank" rel="noreferrer noopener">timeshift</a>
 , and also a bonus tip for arch-based linux user.</p>
@@ -139,10 +139,13 @@
 .</p>
 <p>Clonezilla is a tool to backup your entire system. That&rsquo;s right, it backup your whole system. You might think &ldquo;wow that&rsquo;s great, i don&rsquo;t need other backup tool!&rdquo;, you might want to hold that thought. Yeah it backup your entire system, even your empty storage. Let me explain, for example your system has 200 GB allocated storage and let&rsquo;s say you used only 100 GB so you have another 100 GB storage left. When i said clonezilla backup your entire system, it means clonezilla gonna backup the 200 GB of allocated storage for your system and not only 100 GB of used storage. So if you&rsquo;re gonna install the whole system again (which is possible with clonezilla apparently), you need minimum the allocated storage space from previous machine for your system. If you didn&rsquo;t provide the minimum storage space, you gonna get the error. Unless you strive for that error then it&rsquo;s not gonna be a problem but if you didn&rsquo;t expect the error then you might get confused. That&rsquo;s the downside of clonezilla as far as i know it. I personally didn&rsquo;t use it because of that downside but if it&rsquo;s an advatage for you then you should try it.</p>
 <h2 id="timeshift">Timeshift</h2>
-<p>This is a backup tool that i&rsquo;ve always used. The concept is simple, it made <em>checkpoint</em> for your system and then you can revert back to that <em>checkpoint</em> if something wrong after the update or after installing new stuff.</p>
+<p>This is a backup tool that i&rsquo;ve always used since i started using linux on daily basis. The concept is simple, it made <em>checkpoint</em> for your system and then you can revert back to that <em>checkpoint</em> if something wrong after the update or after installing new stuff.</p>
 <p>For arch-based linux user, this tool is a <strong>must</strong>. Arch-based linux is a rolling release linux, that means you get an update regularly and those update not always gonna work so there&rsquo;s a high chance your system gonna break from the update. This tool is a livesaver.</p>
 <p>The difference between this and clonezilla is that this tool only backup the used storage and also exclude the home directory (you can include backup home directory in the setting). In case you&rsquo;re wandering why exclude the home directory is a default, here&rsquo;s an example: <br>
 If you have 3 file on your home directory, let&rsquo;s just say &lsquo;anu.py&rsquo;, &lsquo;nganu.py&rsquo;, &lsquo;anumu.py&rsquo; then you backup your system. After backing up your system you add another file, let&rsquo;s say &lsquo;itumu.py&rsquo;, then you revert back to the <em>checkpoint</em> you created previously. After you revert back, the file &lsquo;itumu.py&rsquo; is gone because it&rsquo;s re-write everything according to <em>checkpoint</em> list and file &lsquo;itumu.py&rsquo; not in the <em>checkpoint</em> list yet. That&rsquo;s why excluding home directory is a default, you can change it in the setting if you want.</p>
+<blockquote>
+<p>I&rsquo;ve never used this tool on newly installed system like clonezilla did, so i&rsquo;m not sure if you can using that <code>checkpoint</code> on newly installed system.</p>
+</blockquote>
 <h2 id="bonus-tip">Bonus Tip</h2>
 <p>Here&rsquo;s a bonus tip for arch-based linux user, just in case those two tools didn&rsquo;t save your system (it&rsquo;s not gonna hurt if you have another backup option you know).</p>
 <p>Type this two command in your terminal: <br></p>
