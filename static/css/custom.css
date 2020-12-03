@@ -18,6 +18,10 @@ nav ul {
     top: 200px;
 }
 
+#searchResults .searchResultTitle {
+    text-decoration: none;
+}
+
 /* content */
 #contentBody {
     text-align: justify;
