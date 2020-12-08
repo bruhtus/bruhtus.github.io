@@ -16,7 +16,7 @@ TocOpen: false
 
 To make things short, basically i was inspired by Kevin Hazy's project [here](https://instasave.egoist.sh/). After i see Kevin's project, i was like "can i make almost the same thing with python?" and that was the trigger.
 
-If you ask me why i want to tool (kind of) to save instagram post, that's because i have a hard time to save video memes on instagram and i don't really want to use a screen recorder (said the guy who made something that took longer than learning how to use screen recorder and edit the result 👀). So anyway, that's my motivation to made this. **For the memes!**
+If you ask me why i want a tool (kind of) to save instagram post, that's because i have a hard time to save video memes on instagram and i don't really want to use a screen recorder (said the guy who made something that took longer than learning how to use screen recorder and edit the result 👀). So anyway, that's my motivation to made this. **For the memes!**
 
 ## Instaloader Python Module
 
@@ -137,9 +137,41 @@ with open(f'{temp}/{profile.username}_following.txt', 'w') as f:
 st.markdown(download_button(f'{temp}/{profile.username}_follower.txt', temp), unsafe_allow_html=True)
 ```
 
-### Deploy Using Streamlit Sharing
+### Deployment
 
-To deploy on streamlit sharing you need to [request an invite](https://www.streamlit.io/sharing) in their website and then after that you can deploy your streamlit app. It takes a few minutes to deploy the first time but after that it's deploy in an instant. You can check the live demo [here](https://share.streamlit.io/bruhtus/instasaver/instasaver.py).
+I use streamlit sharing and heroku to deploy this project, why i use two services to deploy this project? that's because i want to try web app deployement on heroku and streamlit sharing (which is quite new).
+
+#### Streamlit Sharing
+To deploy on streamlit sharing you need to [request an invite](https://www.streamlit.io/sharing) in their website and then after that you can deploy your streamlit app. It takes a few minutes to deploy the first time but after that it's deploy in an instant. You can check the live demo on streamlit sharing [here](https://share.streamlit.io/bruhtus/instasaver/instasaver.py).
+
+#### Heroku
+To deploy on heroku, you need a few thing and here's the list:
+- `runtime.txt` -> to specify python version.
+- `Procfile` -> to specify type of our application and run command, check [here](https://devcenter.heroku.com/articles/procfile) for more info.
+- `create_config.sh` (or setup.sh, whatever you want) -> to make config.toml for streamlit to run.
+
+I don't really need to explain about runtime.txt, do i? you just need to type your python version, for example `python-3.7.5`, that's all (i explain it anyway, dammit).
+
+For `.sh` file (in this case i'm gonna name it `create_config.sh` because i'm not creative, sorry), type this:
+```bash
+mkdir -p ~/.streamlit
+
+echo "[server]
+headless = true
+port = $PORT
+enableCORS = false
+" > ~/.streamlit/config.toml
+```
+
+For `Procfile`, you don't need to add an extention there. Just `Procfile` is enough. In the `Procfile`, type this:
+```
+web: sh create_config.sh && streamlit run instasaver.py
+```
+You don't need to name it `create_config.sh`, be creative, don't be like me.
+
+After all that, you can deploy it using git or from github or something else (i don't remember all the choices). If you want to deploy it using git workflow, you can check [here](https://devcenter.heroku.com/articles/git#:~:text=To%20deploy%20your%20app%20to,heroku%20master%20Initializing%20repository%2C%20done.).
+
+For live demo on heroku, you can check [here](https://instasaver.js.org/).
 
 ## References
 
@@ -150,3 +182,4 @@ To deploy on streamlit sharing you need to [request an invite](https://www.strea
 - [View public profile anonymous (more advance version)](https://insta-stories.ru/).
 - [Streamlit multiselect nested in if](https://github.com/streamlit/streamlit/issues/826).
 - [Streamlit download file](https://discuss.streamlit.io/t/how-to-download-file-in-streamlit/1806/23).
+- [Deploy streamlit app on heroku example](https://github.com/tconkling/streamlit_heroku_example).
