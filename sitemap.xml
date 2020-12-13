@@ -3,32 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://bruhtus.github.io/posts/manjaro-backup/</loc>
-    <lastmod>2020-11-22T05:21:31+07:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://bruhtus.github.io/</loc>
-    <lastmod>2020-11-22T05:21:31+07:00</lastmod>
+    <lastmod>2020-12-13T09:40:36+07:00</lastmod>
   </url>
   
   <url>
     <loc>https://bruhtus.github.io/tags/english/</loc>
-    <lastmod>2020-11-22T05:21:31+07:00</lastmod>
+    <lastmod>2020-12-13T09:40:36+07:00</lastmod>
   </url>
   
   <url>
     <loc>https://bruhtus.github.io/tags/linux/</loc>
-    <lastmod>2020-11-22T05:21:31+07:00</lastmod>
+    <lastmod>2020-12-13T09:40:36+07:00</lastmod>
   </url>
   
   <url>
     <loc>https://bruhtus.github.io/posts/</loc>
-    <lastmod>2020-11-22T05:21:31+07:00</lastmod>
+    <lastmod>2020-12-13T09:40:36+07:00</lastmod>
   </url>
   
   <url>
     <loc>https://bruhtus.github.io/tags/</loc>
+    <lastmod>2020-12-13T09:40:36+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bruhtus.github.io/posts/zsh-aliases/</loc>
+    <lastmod>2020-12-13T09:40:36+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bruhtus.github.io/posts/manjaro-backup/</loc>
     <lastmod>2020-11-22T05:21:31+07:00</lastmod>
   </url>
   
