@@ -131,7 +131,7 @@
         <a style="text-decoration:none" href="#tips-to-make-some-aliases" aria-label="Tips To make some Aliases">Tips To make some Aliases</a></li><li>
         <a style="text-decoration:none" href="#conclusion" aria-label="Conclusion">Conclusion</a><ul>
             <li>
-        <a style="text-decoration:none" href="#bonus-usefull-alias" aria-label="Bonus Usefull Alias">Bonus Usefull Alias</a></li></ul>
+        <a style="text-decoration:none" href="#bonus-useful-alias" aria-label="Bonus Useful Alias">Bonus Useful Alias</a></li></ul>
     </li><li>
         <a style="text-decoration:none" href="#references" aria-label="References">References</a></li></ul>
           </blockquote>
@@ -189,7 +189,7 @@ From above example, it&rsquo;s basically telling the terminal to open every exte
 <p>Second, don&rsquo;t make to much specific simple aliases. For example, you want to make alias to install packages from your package manager, let&rsquo;s say debian package manager (apt), you need to type <code>sudo apt install &lt;package-name&gt;</code>, and you want to make it simple by using alias like <code>alias sai='sudo apt install'</code>. So everytime you want to install something you just need to type <code>sai &lt;package-name&gt;</code>, simple right? well, honestly it&rsquo;s not really a good practice because over time you&rsquo;re gonna forget what the command behind those alias. If you&rsquo;re really forgot what the command then there&rsquo;s <code>which</code> command as a livesaver, but do you really want that? Imagine you&rsquo;re using another machine without your aliases, then you forgot a simple command because you&rsquo;re using to much alias, isn&rsquo;t that kind of sad?</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>Shell alias is like a double edge sword, use it carefully and don&rsquo;t be dependent on it. If possible, only make aliases if you&rsquo;re using it a lot and already know the basic or maybe make aliases that represent the executed command.</p>
-<h3 id="bonus-usefull-alias">Bonus Usefull Alias</h3>
+<h3 id="bonus-useful-alias">Bonus Useful Alias</h3>
 <pre><code>function sd(){cd &quot;$(du ~ | awk '{print $2}' | fzf)&quot;}
 </code></pre><blockquote>
 <p>That&rsquo;s my first attempt using <code>fzf</code>, it basically change directory using <code>fzf</code> output as an input.</p>
