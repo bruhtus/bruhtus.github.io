@@ -6,7 +6,18 @@
     <description>Recent content on bruhtus | project&#39;s explanations and rants</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 13 Dec 2020 09:40:36 +0700</lastBuildDate><atom:link href="https://bruhtus.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 22 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://bruhtus.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Manjaro i3 Edition</title>
+      <link>https://bruhtus.github.io/posts/manjaro-i3/</link>
+      <pubDate>Tue, 22 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://bruhtus.github.io/posts/manjaro-i3/</guid>
+      <description>A minimalist approach to new arch linux user or new linux user in general. No more, maybe less.
+ Skip-able Part  Just a background story why i use manjaro i3 edition.
+ Have you ever bored with your current desktop environment? because that&amp;rsquo;s what made me wanted to try manjaro i3 edition. Why manjaro i3 edition and not something else like regolith linux? Here&amp;rsquo;s the reason:  I want a rolling release distro because it&amp;rsquo;s kind of a pain to reinstall the whole system just to upgrade to the new version in fixed-point release distro just like regolith linux (because it&amp;rsquo;s based on ubuntu).</description>
+    </item>
+    
     <item>
       <title>Zsh Aliases: Be Lazy!</title>
       <link>https://bruhtus.github.io/posts/zsh-aliases/</link>
