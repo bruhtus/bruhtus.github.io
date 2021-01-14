@@ -6,7 +6,18 @@
     <description>Recent content on bruhtus | project&#39;s explanations and rants</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 29 Dec 2020 13:26:08 +0700</lastBuildDate><atom:link href="https://bruhtus.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 14 Jan 2021 06:00:07 +0700</lastBuildDate><atom:link href="https://bruhtus.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python Script vs. Shell Script: Command Line Use Case</title>
+      <link>https://bruhtus.github.io/posts/python-vs-shell/</link>
+      <pubDate>Thu, 14 Jan 2021 06:00:07 +0700</pubDate>
+      
+      <guid>https://bruhtus.github.io/posts/python-vs-shell/</guid>
+      <description>In this post i&amp;rsquo;m comparing performance python script and shell script that i&amp;rsquo;ve made. The script objective is to check git status on every git repo directory.
+ Skip-able Part  Just a background story why i made this post
+ Have you wondered what performance between python script and shell script (or some people might say bash script) to run command on terminal? no? same, just kidding. I&amp;rsquo;m curious about shell script because i can do command line stuff with python script too which for my past self is easier to read.</description>
+    </item>
+    
     <item>
       <title>The Difference Between GNU/Linux and Mac OS</title>
       <link>https://bruhtus.github.io/posts/mac-os-linux/</link>
