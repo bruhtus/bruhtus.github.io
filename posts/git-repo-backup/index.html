@@ -43,7 +43,7 @@
  Skip-able Part Git is a version control system for tracking any changes in any set of files.">
 <meta itemprop="datePublished" content="2021-01-18T03:43:38+07:00" />
 <meta itemprop="dateModified" content="2021-01-18T03:43:38+07:00" />
-<meta itemprop="wordCount" content="1282">
+<meta itemprop="wordCount" content="1335">
 
 
 
@@ -206,6 +206,7 @@ git push &lt;platform&gt; &lt;branch&gt;
 </code></pre></div><blockquote>
 <p>You can change <code>&lt;platform&gt;</code> name to whatever you want such as <code>anu</code> or <code>nganu</code>, you do you.</p>
 </blockquote>
+<p>The difference between both command is that you can get all the branch if you use <code>git push --mirror</code> meanwhile you only get main branch if you use the usual <code>git push</code> command (without <code>--mirror</code> flag). So if you want to backup all the branch then you should probably use <code>git push --mirror</code>.</p>
 <p>The disadvantage of using git bare is that you cannot use git workflow such as <code>git add</code> or <code>git commit</code>, you can only use <code>git push</code> command. If you want to update your git bare repository, you can do</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git remote update
 </code></pre></div><p>inside your git bare directory.</p>
