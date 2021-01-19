@@ -119,6 +119,8 @@ git push <platform> <branch>
 ```
 > You can change `<platform>` name to whatever you want such as `anu` or `nganu`, you do you.
 
+The difference between both command is that you can get all the branch if you use `git push --mirror` meanwhile you only get main branch if you use the usual `git push` command (without `--mirror` flag). So if you want to backup all the branch then you should probably use `git push --mirror`.
+
 The disadvantage of using git bare is that you cannot use git workflow such as `git add` or `git commit`, you can only use `git push` command. If you want to update your git bare repository, you can do
 ```shell
 git remote update
