@@ -18,7 +18,7 @@ Honestly i like to take it easy when typing, i'm not really those rush type who 
 
 The second option is where piques my interest. From that point i did some research how i can shorten the command i use on internet (google, youtube, and even pornhub but unfortunately no one uploaded on pornhub yet (maybe i should be the one to upload on pornhub? hmm)).
 
-## A Brief Intro To Shell Alias
+## A Brief Intro to Shell Alias
 
 Basically shell alias is a key shortcut for the command that you want to use. Here's an example: <br>
 If you want to make a new directory, let's say the name of the directory is "anu", then if the directory already exist, you want the command doesn't give an error message as a feedback. So here's the command: `mkdir -p anu`. Everytime you want to make a new directory without an error message if the directory already exist, you need to type `mkdir -p <directory-name>` and further more if there's a typo while you type it, uh that's such a pain.
