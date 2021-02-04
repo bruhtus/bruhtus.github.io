@@ -57,7 +57,7 @@ In the second test, the runtime of python script is around 0.05 - 0.07 seconds a
 
 ### The Explanation
 
-The effect of checking git status in git submodules is quite a lot but still less than a second which gonna make people think "it's not that much of a difference", well, in case you forgot that this script objective is just to check git status on each git repo directory, it's just a simple task. If you're gonna to make a more complicated task with a lot of command, that's where you're gonna see the gap.
+The effect of checking git status in git submodules is quite a lot but still less than a second which gonna make people think "it's not that much of a difference", well, in case you forgot that this script objective is just to check git status on each git repo directory, it's just a simple task. If you're going to make a more complicated task with a lot of command, that's where you're gonna see the gap.
 
 I'm gonna explain the first test source code first, below is the python script for the first test:
 ```python
