@@ -14,7 +14,7 @@
       
       <guid>https://bruhtus.github.io/posts/linux-ownership-permissions/</guid>
       <description>How to change ownership and permission on linux (and probably other unix-like system? i&amp;rsquo;m not sure). Plain boring and important.
- A Brief Intro File ownership is basically who owns the file, for example, if we create a file as admin or root in this case and if we want to edit those file as user then we need to change the file ownership because that file owned by root or access root privilege using sudo or doas or something else and then change permission to write or to edit the file for everyone or specific group.</description>
+ A Brief Intro File/directory ownership is basically who owns the file/directory, for example, if we create a file/directory as admin or root in this case and if we want to edit those file/directory as user then we need to change the file/directory ownership because that file/directory owned by the root and we have no access to change that file/directory.</description>
     </item>
     
     <item>

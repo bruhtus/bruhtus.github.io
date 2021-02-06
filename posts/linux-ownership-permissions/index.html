@@ -33,17 +33,17 @@
 
   <meta property="og:title" content="Linux Ownership and Permissions" />
 <meta property="og:description" content="How to change ownership and permission on linux (and probably other unix-like system? i&rsquo;m not sure). Plain boring and important.
- A Brief Intro File ownership is basically who owns the file, for example, if we create a file as admin or root in this case and if we want to edit those file as user then we need to change the file ownership because that file owned by root or access root privilege using sudo or doas or something else and then change permission to write or to edit the file for everyone or specific group." />
+ A Brief Intro File/directory ownership is basically who owns the file/directory, for example, if we create a file/directory as admin or root in this case and if we want to edit those file/directory as user then we need to change the file/directory ownership because that file/directory owned by the root and we have no access to change that file/directory." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://bruhtus.github.io/posts/linux-ownership-permissions/" />
 <meta property="article:published_time" content="2021-02-06T13:56:01+07:00" />
 <meta property="article:modified_time" content="2021-02-06T13:56:01+07:00" />
 <meta itemprop="name" content="Linux Ownership and Permissions">
 <meta itemprop="description" content="How to change ownership and permission on linux (and probably other unix-like system? i&rsquo;m not sure). Plain boring and important.
- A Brief Intro File ownership is basically who owns the file, for example, if we create a file as admin or root in this case and if we want to edit those file as user then we need to change the file ownership because that file owned by root or access root privilege using sudo or doas or something else and then change permission to write or to edit the file for everyone or specific group.">
+ A Brief Intro File/directory ownership is basically who owns the file/directory, for example, if we create a file/directory as admin or root in this case and if we want to edit those file/directory as user then we need to change the file/directory ownership because that file/directory owned by the root and we have no access to change that file/directory.">
 <meta itemprop="datePublished" content="2021-02-06T13:56:01+07:00" />
 <meta itemprop="dateModified" content="2021-02-06T13:56:01+07:00" />
-<meta itemprop="wordCount" content="876">
+<meta itemprop="wordCount" content="833">
 
 
 
@@ -52,7 +52,7 @@
 <meta name="twitter:image" content="https://bruhtus.github.io//img/"/>
 <meta name="twitter:title" content="Linux Ownership and Permissions"/>
 <meta name="twitter:description" content="How to change ownership and permission on linux (and probably other unix-like system? i&rsquo;m not sure). Plain boring and important.
- A Brief Intro File ownership is basically who owns the file, for example, if we create a file as admin or root in this case and if we want to edit those file as user then we need to change the file ownership because that file owned by root or access root privilege using sudo or doas or something else and then change permission to write or to edit the file for everyone or specific group."/>
+ A Brief Intro File/directory ownership is basically who owns the file/directory, for example, if we create a file/directory as admin or root in this case and if we want to edit those file/directory as user then we need to change the file/directory ownership because that file/directory owned by the root and we have no access to change that file/directory."/>
 
   <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -85,7 +85,7 @@
   <p class="date">
   February 6, 2021
   <span>&middot;</span>
-  5 mins
+  4 mins
   <span>&middot;</span>
   Robertus Diawan Chris
   </p>
@@ -115,7 +115,7 @@
 <p>How to change ownership and permission on linux (and probably other unix-like system? i&rsquo;m not sure). Plain boring and important.</p>
 </blockquote>
 <h2 id="a-brief-intro">A Brief Intro</h2>
-<p>File ownership is basically who owns the file, for example, if we create a file as admin or root in this case and if we want to edit those file as user then we need to change the file ownership because that file owned by root or access root privilege using <code>sudo</code> or <code>doas</code> or something else and then change permission to <code>write</code> or to edit the file for everyone or specific group. THe easiest way is to change ownership of the file so we can edit the file without root privilege (if the file owner is the root).</p>
+<p>File/directory ownership is basically who owns the file/directory, for example, if we create a file/directory as admin or root in this case and if we want to edit those file/directory as user then we need to change the file/directory ownership because that file/directory owned by the root and we have no access to change that file/directory.</p>
 <p>To check the ownership and permission you can use <code>ls -l</code>, to make it simpler, <code>-l</code> means long format and the file ownership on column 3 (username) or 4 (group). Below is the example output when you run <code>ls -l</code> command:</p>
 <p><img src="ls-l.png" alt="ls -l"></p>
 <p>As you can see from example above, most of the files owned by bruhtus user and only one file owned by root (the admin) so if we want to change that file then we need to change the ownership or access root privilege everytime we want to change that file (which is such a pain). Your choice.</p>
