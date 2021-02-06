@@ -6,7 +6,17 @@
     <description>Recent content on bruhtus &gt; /dev/null</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 Jan 2021 03:43:38 +0700</lastBuildDate><atom:link href="https://bruhtus.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 06 Feb 2021 13:56:01 +0700</lastBuildDate><atom:link href="https://bruhtus.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux Ownership and Permissions</title>
+      <link>https://bruhtus.github.io/posts/linux-ownership-permissions/</link>
+      <pubDate>Sat, 06 Feb 2021 13:56:01 +0700</pubDate>
+      
+      <guid>https://bruhtus.github.io/posts/linux-ownership-permissions/</guid>
+      <description>How to change ownership and permission on linux (and probably other unix-like system? i&amp;rsquo;m not sure). Plain boring and important.
+ A Brief Intro File ownership is basically who owns the file, for example, if we create a file as admin or root in this case and if we want to edit those file as user then we need to change the file ownership because that file owned by root or access root privilege using sudo or doas or something else and then change permission to write or to edit the file for everyone or specific group.</description>
+    </item>
+    
     <item>
       <title>Git Repository Backup</title>
       <link>https://bruhtus.github.io/posts/git-repo-backup/</link>
