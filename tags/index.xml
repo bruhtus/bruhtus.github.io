@@ -6,13 +6,22 @@
     <description>Recent content in Tags on bruhtus &gt; /dev/null</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 Jan 2021 03:43:38 +0700</lastBuildDate><atom:link href="https://bruhtus.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 06 Feb 2021 13:56:01 +0700</lastBuildDate><atom:link href="https://bruhtus.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>English</title>
       <link>https://bruhtus.github.io/tags/english/index.json</link>
-      <pubDate>Mon, 18 Jan 2021 03:43:38 +0700</pubDate>
+      <pubDate>Sat, 06 Feb 2021 13:56:01 +0700</pubDate>
       
       <guid>https://bruhtus.github.io/tags/english/index.json</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://bruhtus.github.io/tags/linux/index.json</link>
+      <pubDate>Sat, 06 Feb 2021 13:56:01 +0700</pubDate>
+      
+      <guid>https://bruhtus.github.io/tags/linux/index.json</guid>
       <description></description>
     </item>
     
@@ -22,15 +31,6 @@
       <pubDate>Mon, 18 Jan 2021 03:43:38 +0700</pubDate>
       
       <guid>https://bruhtus.github.io/tags/git/index.json</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Linux</title>
-      <link>https://bruhtus.github.io/tags/linux/index.json</link>
-      <pubDate>Thu, 14 Jan 2021 06:00:07 +0700</pubDate>
-      
-      <guid>https://bruhtus.github.io/tags/linux/index.json</guid>
       <description></description>
     </item>
     
