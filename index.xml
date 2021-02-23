@@ -6,7 +6,17 @@
     <description>Recent content on bruhtus &gt; /dev/null</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 06 Feb 2021 13:56:01 +0700</lastBuildDate><atom:link href="https://bruhtus.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 23 Feb 2021 07:14:39 +0700</lastBuildDate><atom:link href="https://bruhtus.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Arch Linux Installation Guide (Feb 2021)</title>
+      <link>https://bruhtus.github.io/posts/arch-installation-guide/</link>
+      <pubDate>Tue, 23 Feb 2021 07:14:39 +0700</pubDate>
+      
+      <guid>https://bruhtus.github.io/posts/arch-installation-guide/</guid>
+      <description>Don&amp;rsquo;t install arch linux, install TempleOS instead. All hail HolyC! (R.I.P Terry). Jokes aside, please keep in mind that this guide might become obsolete because the nature of rolling release so you should always check the arch wiki installation guide .
+ A Brief Intro I&amp;rsquo;m trying to install an OS as minimal as possible but not from scratch like Linux From Scratch or compiling everything like Gentoo . I might try to install both of them but i don&amp;rsquo;t think i&amp;rsquo;m gonna use one of them as my main OS.</description>
+    </item>
+    
     <item>
       <title>Linux Ownership and Permissions</title>
       <link>https://bruhtus.github.io/posts/linux-ownership-permissions/</link>
