@@ -43,7 +43,7 @@
  A Brief Intro I&rsquo;m trying to install an OS as minimal as possible but not from scratch like Linux From Scratch or compiling everything like Gentoo . I might try to install both of them but i don&rsquo;t think i&rsquo;m gonna use one of them as my main OS.">
 <meta itemprop="datePublished" content="2021-02-23T07:14:39+07:00" />
 <meta itemprop="dateModified" content="2021-02-23T07:14:39+07:00" />
-<meta itemprop="wordCount" content="2123">
+<meta itemprop="wordCount" content="2124">
 
 
 
@@ -382,7 +382,7 @@ passwd bruhtus
 <blockquote>
 <p>Twm is default xorg window manager, in case you&rsquo;re wondering.</p>
 </blockquote>
-<p>Please keep in mind that use i3 window manager so i use <code>exec i3</code>. To makes thing simpler, <code>exec</code> is where you start your window manager or desktop environment so the usual syntax would be like this <code>exec &lt;window-manager&gt;</code>.</p>
+<p>Please keep in mind that i use i3 window manager so i use <code>exec i3</code>. To makes thing simpler, <code>exec</code> is where you start your window manager or desktop environment so the usual syntax would be like this <code>exec &lt;window-manager&gt;</code>.</p>
 <p>After that, enable login manager by using this command:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo sysmtemctl enable lightdm
 </code></pre></div><p>The last step is to check if there&rsquo;s an error or not by using this command <code>startx</code> to start xorg. If everything fine (you can access your window manager or desktop environment) then reboot.</p>
