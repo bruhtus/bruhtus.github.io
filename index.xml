@@ -6,7 +6,17 @@
     <description>Recent content on bruhtus &gt; /dev/null</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 23 Feb 2021 07:14:39 +0700</lastBuildDate><atom:link href="https://bruhtus.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 02 Mar 2021 05:36:43 +0700</lastBuildDate><atom:link href="https://bruhtus.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Managing Python Virtual Environment</title>
+      <link>https://bruhtus.github.io/posts/python-venv/</link>
+      <pubDate>Tue, 02 Mar 2021 05:36:43 +0700</pubDate>
+      
+      <guid>https://bruhtus.github.io/posts/python-venv/</guid>
+      <description>Have you ever want python virtual environment that decoupled from the project directory like conda but not actually conda (dejavu)? That&amp;rsquo;s what this post is about, a simple way to manage a python virtual environment similar to how conda manage virtual environment without python version management.
+ A Brief Into to Python Virtual Environment To makes thing simpler, python virtual environment is a self-contained directory tree that contains a python installation for a particular version of python plus a number of additional packages.</description>
+    </item>
+    
     <item>
       <title>Arch Linux Installation Guide (Feb 2021)</title>
       <link>https://bruhtus.github.io/posts/arch-installation-guide/</link>
