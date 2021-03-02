@@ -43,7 +43,7 @@
  A Brief Into to Python Virtual Environment To makes thing simpler, python virtual environment is a self-contained directory tree that contains a python installation for a particular version of python plus a number of additional packages.">
 <meta itemprop="datePublished" content="2021-03-02T05:36:43+07:00" />
 <meta itemprop="dateModified" content="2021-03-02T05:36:43+07:00" />
-<meta itemprop="wordCount" content="1331">
+<meta itemprop="wordCount" content="1332">
 
 
 
@@ -201,7 +201,7 @@ venvdir<span style="color:#f92672">=</span>$HOME/.cache/python-venv
 </code></pre></div><h3 id="activate-and-deactivate-python-virtual-environment">Activate and Deactivate Python Virtual Environment</h3>
 <p>For activating the virtual environment, i use shell function and then <code>source</code> that function with your shell config, like <code>.bashrc</code> or <code>.zshrc</code> or something else.</p>
 <p>I did that because i can&rsquo;t really <code>source</code> inside a shell script (it&rsquo;s just gonna create a subprocess and didn&rsquo;t effect the current shell, so you can&rsquo;t activate the virtual environment).</p>
-<p>The concept is similar to create and remove script above if the virtual environment name not found then give message if there&rsquo;s no virtual environment ever created, the difference is that we&rsquo;re sourcing the virtual environment to activate it. With that in mind, here&rsquo;s the code:</p>
+<p>The concept is similar to create and remove script above, if the virtual environment name not found then give message &ldquo;Python virtual environment not found, create new one&rdquo;, the difference is that we&rsquo;re sourcing the virtual environment to activate it. With that in mind, here&rsquo;s the code:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#66d9ef">function</span> pae<span style="color:#f92672">(){</span>
 	local gitroot<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>git rev-parse --show-toplevel 2&gt; /dev/null<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
 	local trim<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>gitroot%<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>gitroot##*[!/]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
