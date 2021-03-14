@@ -29,7 +29,7 @@ Here's how we make a simple shell script to manage our python environment. First
 
 After that, we decide whether we give the name to virtual environment ourself or just use git repo root name. Like i told you before, we can use git repo to decide the name of our virtual environment. To make things simpler, what i mean git repo root is the directory where you use command `git init` to initialize git repo.
 
-For example, if you use `git init` command in `nganu` directory then you can have your virtual environment can be named `nganu` without you enter any name, but if you didn't want to use your git repo root name then you can also insert the name you want, similar to `conda create -n <name-env>`. With that brief intro, here's the code:
+For example, if you use `git init` command in `nganu` directory then you can have your virtual environment named `nganu` without you enter any name, but if you didn't want to use your git repo root name then you can also insert the name you want, similar to `conda create -n <name-env>`. With that brief intro, here's the code:
 ```sh
 #!/bin/sh
 
