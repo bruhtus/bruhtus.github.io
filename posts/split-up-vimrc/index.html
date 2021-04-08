@@ -43,7 +43,7 @@
 <meta itemprop="description" content="If you&rsquo;re the type of person who like to place all your source code in one file, then this article is not for you. But, if you&rsquo;re the type of person who like to split up your source code into a few sub-modules, then this article is for you.
  Skip-able Part When i look at my vimrc (vimrc is a vim config file for those who don&rsquo;t know), i always feel confused where should i add new configuration for new plugin."><meta itemprop="datePublished" content="2021-03-22T05:37:41&#43;07:00" />
 <meta itemprop="dateModified" content="2021-03-22T05:37:41&#43;07:00" />
-<meta itemprop="wordCount" content="522">
+<meta itemprop="wordCount" content="525">
 <meta itemprop="keywords" content="Vim,English," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:image" content="https://bruhtus.github.io//img/"/>
 <meta name="twitter:title" content="Split Up Vimrc"/>
@@ -147,7 +147,7 @@
 <li>You need to download a lot of file if you want to have full experience of your vim.</li>
 </ul>
 <h2 id="split-up-vimrc">Split Up Vimrc</h2>
-<p>If you still one despite the downside, then it&rsquo;s time to split up your vimrc.</p>
+<p>If you still want to go on despite the downside, then it&rsquo;s time to split up your vimrc.</p>
 <p>First thing first, you need to know that vim has runtime path which gonna be loaded everytime you start vim. And we can use the default runtime path to our advantage. For the full list, you can check <a href="https://learnvimscriptthehardway.stevelosh.com/chapters/42.html" target="_blank" rel="noreferrer noopener">here</a>
 , but to make it simpler we&rsquo;re only gonna use <code>~/.vim/plugin</code> (for vanilla vim) or <code>~/.config/nvim/plugin</code> (for neovim) directory. Every file in those directory gonna get loaded every time you open vim, so you can add your config in those directory.</p>
 <p>For example, you can move your defaults config such as <code>set number relativenumber</code> into file <code>defaults.vim</code> and place it in <code>~/.vim/plugin</code> (for vanilla vim) or <code>~/.config/nvim/plugin</code> (for neovim) and defaults config such as <code>number</code> and <code>relativenumber</code> gonna get loaded everytime you open vim.</p>
