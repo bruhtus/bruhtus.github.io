@@ -31,7 +31,7 @@ Before we move on, you need to know the upside and downside for split up your vi
 
 ## Split Up Vimrc
 
-If you still one despite the downside, then it's time to split up your vimrc.
+If you still want to go on despite the downside, then it's time to split up your vimrc.
 
 First thing first, you need to know that vim has runtime path which gonna be loaded everytime you start vim. And we can use the default runtime path to our advantage. For the full list, you can check [here](https://learnvimscriptthehardway.stevelosh.com/chapters/42.html), but to make it simpler we're only gonna use `~/.vim/plugin` (for vanilla vim) or `~/.config/nvim/plugin` (for neovim) directory. Every file in those directory gonna get loaded every time you open vim, so you can add your config in those directory.
 
