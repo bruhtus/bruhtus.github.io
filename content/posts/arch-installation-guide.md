@@ -308,7 +308,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 If there's no error, exit from chroot using `exit` command. After that, unmount the system using `umount -R /mnt` and then reboot (please make sure the disk partition is priority in bios).
 
 ## Graphical User Interface
-If you only use command line interface, then you already done. You don't need to continue. But, if you still need graphical user interface (GUI) to open browser or something like that, then keep going.
+If you only use command line interface, then you don't need to continue. But, if you still need graphical user interface (GUI) to open browser or something like that, then keep going.
 
 ### Login To Your Arch Installation
 After reboot, login to your user you just created (in my case, it's `bruhtus`). After that check the internet connection by using `ping` command (for example: `ping google.com`). If there's an error then connect to your network using `nmtui` command. After that check the connection using `ping` command again. If there's still an error, please check arch wiki or use your search engine.
