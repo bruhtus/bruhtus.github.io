@@ -174,11 +174,11 @@ Well that&amp;rsquo;s all, I&amp;rsquo;m still figuring out what it means to liv
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://bruhtus.github.io/projects/</guid>
-      <description>Vim-peek  Vim plugin to take a peek of the content at a given line number
+      <description>Pyv  Minimalist python venv management tool
+    Repo  Post     Vim-peek  Vim plugin to take a peek of the content at a given line number
     Repo     Vim-simpmark  Simple vim plugin to manage mark.
     Repo     Vim-simpsplit  Simple vim split management.
-    Repo     Vim-simpbuf  Simple vim buffer management.
-    Repo     Instasaver  Save your chosen memes on instagram (hopefully only that).</description>
+    Repo     Vim-simpbuf  Simple vim buffer management.</description>
     </item>
     
   </channel>
