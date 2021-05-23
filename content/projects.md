@@ -4,6 +4,12 @@ layout = "cd"
 url = "/projects"
 +++
 
+### Pyv
+> Minimalist python venv management tool
+
+[Repo](https://github.com/bruhtus/pyv) | [Post](https://bruhtus.github.io/posts/pyv/)
+---                                    | ---
+
 ### Vim-peek
 > Vim plugin to take a peek of the content at a given line number
 
