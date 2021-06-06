@@ -42,7 +42,7 @@
 <meta itemprop="description" content="Detect pavement distress using single shot detector (SSD) model."><meta itemprop="datePublished" content="2020-10-11T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-10-11T00:00:00&#43;00:00" />
 <meta itemprop="wordCount" content="2905">
-<meta itemprop="keywords" content="Deep learning,English," /><meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="Deep learning," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:image" content="https://bruhtus.github.io//img/"/>
 <meta name="twitter:title" content="Pavement Distress Detector Using Single Shot Detector (SSD)"/>
 <meta name="twitter:description" content="Detect pavement distress using single shot detector (SSD) model."/>
@@ -91,11 +91,6 @@
         
         
           <li><a style="text-decoration:none" href="https://bruhtus.github.io/tags/deep-learning/">Deep learning</a></li>
-        
-      
-        
-        
-          <li><a style="text-decoration:none" href="https://bruhtus.github.io/tags/english/">English</a></li>
         
       
     </ul>
@@ -252,7 +247,7 @@ _DATASETS <span style="color:#f92672">=</span> {
             <span style="color:#e6db74">&#34;ann_file&#34;</span>: <span style="color:#e6db74">&#34;annotations/validation.json&#34;</span>
         },
     }
-    
+
     <span style="color:#a6e22e">@staticmethod</span>
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get</span>(name):
         <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;my_custom_train_dataset&#34;</span> <span style="color:#f92672">in</span> name:
@@ -283,7 +278,7 @@ _DATASETS <span style="color:#f92672">=</span> {
         <span style="color:#f92672">...</span>
         BATCH_SIZE: <span style="color:#ae81ff">4</span>
         <span style="color:#f92672">...</span>
-    
+
     OUTPUT_DIR: <span style="color:#e6db74">&#39;outputs/ssd_custom_coco_format&#39;</span>
 </code></pre></div><p>You don&rsquo;t need to create folder <code>ssd_custom_coco_format</code>, when the training begin the folder gonna created automatically (if the folder didn&rsquo;t exist).</p>
 <h3 id="validation-configuration">Validation Configuration</h3>
@@ -314,14 +309,14 @@ _DATASETS <span style="color:#f92672">=</span> {
 
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>(video_file, path_save, speed): <span style="color:#75715e"># the lower the speed the fastest the frame_rates, speed = 0 (pause)</span>
     vidcap <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>VideoCapture(video_file)
-    current_frame <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> 
+    current_frame <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
     speed_frame <span style="color:#f92672">=</span> speed
 
-    <span style="color:#66d9ef">while</span> (vidcap<span style="color:#f92672">.</span>isOpened()): 
-        success, frame <span style="color:#f92672">=</span> vidcap<span style="color:#f92672">.</span>read() <span style="color:#75715e"># success = retrival value for frame </span>
-        length <span style="color:#f92672">=</span> int(vidcap<span style="color:#f92672">.</span>get(cv2<span style="color:#f92672">.</span>CAP_PROP_FRAME_COUNT)) 
+    <span style="color:#66d9ef">while</span> (vidcap<span style="color:#f92672">.</span>isOpened()):
+        success, frame <span style="color:#f92672">=</span> vidcap<span style="color:#f92672">.</span>read() <span style="color:#75715e"># success = retrival value for frame</span>
+        length <span style="color:#f92672">=</span> int(vidcap<span style="color:#f92672">.</span>get(cv2<span style="color:#f92672">.</span>CAP_PROP_FRAME_COUNT))
         <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#39;Current Frame: {current_frame}/{length}&#39;</span>)
-        current_frame <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span> 
+        current_frame <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
 
         <span style="color:#66d9ef">if</span> success <span style="color:#f92672">==</span> True:
             cv2<span style="color:#f92672">.</span>imshow(<span style="color:#e6db74">&#39;Video&#39;</span>, frame)

@@ -42,7 +42,7 @@
 <meta itemprop="description" content="Save your chosen instagram posts, efficiently."><meta itemprop="datePublished" content="2020-11-09T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-11-09T00:00:00&#43;00:00" />
 <meta itemprop="wordCount" content="1409">
-<meta itemprop="keywords" content="No one asked,English," /><meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="No one asked," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:image" content="https://bruhtus.github.io//img/"/>
 <meta name="twitter:title" content="Instasaver: Save Your Chosen Instagram Posts"/>
 <meta name="twitter:description" content="Save your chosen instagram posts, efficiently."/>
@@ -91,11 +91,6 @@
         
         
           <li><a style="text-decoration:none" href="https://bruhtus.github.io/tags/no-one-asked/">No one asked</a></li>
-        
-      
-        
-        
-          <li><a style="text-decoration:none" href="https://bruhtus.github.io/tags/english/">English</a></li>
         
       
     </ul>
@@ -191,7 +186,7 @@ file_list <span style="color:#f92672">=</span> [filename <span style="color:#66d
     <span style="color:#66d9ef">except</span>:
         st<span style="color:#f92672">.</span>video(f<span style="color:#e6db74">&#39;{temp}/{file_list[0]}&#39;</span>)
         st<span style="color:#f92672">.</span>markdown(download_button(f<span style="color:#e6db74">&#39;{temp}/{file_list[0]}&#39;</span>, temp), unsafe_allow_html<span style="color:#f92672">=</span>True) <span style="color:#75715e">#download_button is to generate link to download the file</span>
-        
+
 <span style="color:#66d9ef">else</span>: <span style="color:#75715e">#if more than one item in one post</span>
     <span style="color:#66d9ef">with</span> ZipFile(f<span style="color:#e6db74">&#39;{temp}/{shortcode}_posts.zip&#39;</span>, <span style="color:#e6db74">&#39;w&#39;</span>) <span style="color:#66d9ef">as</span> zip: <span style="color:#75715e">#put all the posts into zip file</span>
         <span style="color:#66d9ef">for</span> filename <span style="color:#f92672">in</span> file_list:
