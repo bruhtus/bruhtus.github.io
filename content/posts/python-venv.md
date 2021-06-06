@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Managing Python Virtual Environment"
 date: 2021-03-02T05:36:43+07:00
-tags: [No one asked, English]
+tags: [No one asked]
 ShowToc: true
 ---
 

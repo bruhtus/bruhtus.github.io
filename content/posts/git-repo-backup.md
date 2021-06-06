@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Git Repository Backup"
 date: 2021-01-18T03:43:38+07:00
-tags: [Git, English]
+tags: [Git]
 ShowToc: true
 ---
 
@@ -94,7 +94,7 @@ git push anu <branch>
 
 So if you want to add another platform and you have your full git working directory (not git bare version), you just need too assign another git repository service url.
 
-For example, i want to add instasaver to gitlab. I just need to do 
+For example, i want to add instasaver to gitlab. I just need to do
 ```shell
 git remote add gitlab https://gitlab.com/bruhtus/instasaver.git
 ```

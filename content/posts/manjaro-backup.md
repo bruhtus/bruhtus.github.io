@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Backup: The Options"
 date: 2020-11-22T05:21:31+07:00
-tags: [Linux, English]
+tags: [Linux]
 ShowToc: true
 ---
 

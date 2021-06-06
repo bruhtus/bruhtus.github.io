@@ -3,7 +3,7 @@ author: Robertus Diawan Chris
 title: Pavement Distress Detector Using Single Shot Detector (SSD)
 date: 2020-10-11
 description: Detect pavement distress using single shot detector (SSD) model.
-tags: [Deep learning, English]
+tags: [Deep learning]
 ShowToc: true
 TocOpen: false
 ---
@@ -22,7 +22,7 @@ Here's a brief explanation about SSD300 and SSD512:
 - SSD300: More fast.
 - SSD512: More accurate.
 
-Long story short, SSD300 is about speed. If you need speed than you should probably use SSD300 (i haven't tried the mobilenet as base network at the time to type this, so at this time knowledge SSD300 is faster than SSD512). Meanwhile, SSD512 is about accuracy. It doesn't really show up in image processing but in video processing, i notice that there's a frame rate drop while doing live object detection. To be fair, SSD300 has frame rate drop as well but it's still usable (around 7-10 frame per second) but SSD512 has frame rate around 3-5 frame per second. 
+Long story short, SSD300 is about speed. If you need speed than you should probably use SSD300 (i haven't tried the mobilenet as base network at the time to type this, so at this time knowledge SSD300 is faster than SSD512). Meanwhile, SSD512 is about accuracy. It doesn't really show up in image processing but in video processing, i notice that there's a frame rate drop while doing live object detection. To be fair, SSD300 has frame rate drop as well but it's still usable (around 7-10 frame per second) but SSD512 has frame rate around 3-5 frame per second.
 Who want to watch a video with 3 fps?? If you're that kind of person then, go ahead. You do you mate.
 
 For the record, at that time when I try live detection, i use opencv to display live detection video. i'm not sure whether it is opencv fault or the model fault because if I save the video result, the video itself has no frame rate drop. It's weird but it happens, so let's go on with saving the video and forget about live detection (for now, until i find some way to do live detection).
@@ -132,7 +132,7 @@ class DatasetCatalog:
             "ann_file": "annotations/validation.json"
         },
     }
-    
+
     @staticmethod
     def get(name):
         if "my_custom_train_dataset" in name:
@@ -166,7 +166,7 @@ Model:
         ...
         BATCH_SIZE: 4
         ...
-    
+
     OUTPUT_DIR: 'outputs/ssd_custom_coco_format'
 ```
 You don't need to create folder `ssd_custom_coco_format`, when the training begin the folder gonna created automatically (if the folder didn't exist).
@@ -208,14 +208,14 @@ from tqdm import tqdm
 
 def main(video_file, path_save, speed): # the lower the speed the fastest the frame_rates, speed = 0 (pause)
     vidcap = cv2.VideoCapture(video_file)
-    current_frame = 0 
+    current_frame = 0
     speed_frame = speed
 
-    while (vidcap.isOpened()): 
-        success, frame = vidcap.read() # success = retrival value for frame 
-        length = int(vidcap.get(cv2.CAP_PROP_FRAME_COUNT)) 
+    while (vidcap.isOpened()):
+        success, frame = vidcap.read() # success = retrival value for frame
+        length = int(vidcap.get(cv2.CAP_PROP_FRAME_COUNT))
         print(f'Current Frame: {current_frame}/{length}')
-        current_frame += 1 
+        current_frame += 1
 
         if success == True:
             cv2.imshow('Video', frame)

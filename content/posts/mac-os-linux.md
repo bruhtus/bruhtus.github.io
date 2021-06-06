@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "The Difference Between GNU/Linux and Mac OS"
 date: 2020-12-29T13:26:08+07:00
-tags: [Linux, English]
+tags: [Linux]
 ShowToc: true
 ---
 

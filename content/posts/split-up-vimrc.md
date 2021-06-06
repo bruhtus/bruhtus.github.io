@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Split Up Vimrc"
 date: 2021-03-22T05:37:41+07:00
-tags: [Vim, English]
+tags: [Vim]
 ShowToc: true
 ---
 

@@ -3,7 +3,7 @@ author: Robertus Diawan Chris
 title: 'Instasaver: Save Your Chosen Instagram Posts'
 date: 2020-11-09
 description: Save your chosen instagram posts, efficiently.
-tags: [No one asked, English]
+tags: [No one asked]
 ShowToc: true
 TocOpen: false
 ---
@@ -72,7 +72,7 @@ if len(file_list) == 1: #if only one item in one post
     except:
         st.video(f'{temp}/{file_list[0]}')
         st.markdown(download_button(f'{temp}/{file_list[0]}', temp), unsafe_allow_html=True) #download_button is to generate link to download the file
-        
+
 else: #if more than one item in one post
     with ZipFile(f'{temp}/{shortcode}_posts.zip', 'w') as zip: #put all the posts into zip file
         for filename in file_list:

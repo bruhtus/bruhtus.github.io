@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Arch Linux Installation Guide (Feb 2021)"
 date: 2021-02-23T07:14:39+07:00
-tags: [Linux, English]
+tags: [Linux]
 ShowToc: true
 ---
 

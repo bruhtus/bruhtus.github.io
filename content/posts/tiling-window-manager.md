@@ -3,7 +3,7 @@ author: Robertus Diawan Chris
 title: Tiling Window Manager For Efficiency
 date: 2020-10-15
 description: Efficient way to manage your opened window.
-tags: [Linux, English]
+tags: [Linux]
 ShowToc: true
 TocOpen: false
 ---
@@ -44,7 +44,7 @@ First of all, i changed the mod keybinding from super key (or some people call i
 For setting up keybinding you can use `bindsym`, for example: `bindsym $mod+q kill` for close focused or currenly active window. Other than setting up keybindings, you can also set a program to do a certain thing, for example: `set $myTerm alacritty`, every thing that used $myTerm gonna access the command via terminal alacritty. Alacritty is my current (at the time of typing this post) terminal emulator, i also have xterm as a backup terminal emulator. Example of using `$myTerm`: `bindsym $mod+e exec $myTerm -e ranger` to open ranger file manager.
 
 #### Setting Up Polybar
-For setting up polybar, you need to move the default polybar config. In my case, the default config is in /usr/share/doc/polybar/ but if it's not there, you can use `locate polybar | grep config`. 
+For setting up polybar, you need to move the default polybar config. In my case, the default config is in /usr/share/doc/polybar/ but if it's not there, you can use `locate polybar | grep config`.
 
 First of all, make a polybar folder in `.config` folder. After that move the default polybar config into those folder (the path should be like this `.config/polybar/config`). You can change the default config to anything you want, but remember the bar name because we're gonna use the bar name to launch the polybar. The default bar name should be like this `[bar/example]`, you can change it to the name you want and please specify the monitor for the polybar. You can check you monitor name by typing `xrandr` on terminal. Here's an example how to set a monitor in polybar config: <br>
 > After i typed `xrandr` on my terminal, i got my laptop screen name `eDP-1` so i'm gonna use my laptop screen to display the polybar.

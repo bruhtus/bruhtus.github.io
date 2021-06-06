@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Manjaro i3 Edition"
 date: 2020-12-22
-tags: [Linux, English]
+tags: [Linux]
 ShowToc: true
 ---
 

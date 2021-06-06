@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Linux Ownership and Permissions"
 date: 2021-02-06T13:56:01+07:00
-tags: [Linux, English]
+tags: [Linux]
 ShowToc: true
 ---
 
