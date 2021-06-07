@@ -3,7 +3,7 @@ author: Robertus Diawan Chris
 title: Pavement Distress Detector Using Single Shot Detector (SSD)
 date: 2020-10-11
 description: Detect pavement distress using single shot detector (SSD) model.
-tags: [Deep learning]
+tags: [Deep learning, Python]
 ShowToc: true
 TocOpen: false
 ---

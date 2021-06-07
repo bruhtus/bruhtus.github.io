@@ -3,7 +3,7 @@ author: Robertus Diawan Chris
 title: 'Instasaver: Save Your Chosen Instagram Posts'
 date: 2020-11-09
 description: Save your chosen instagram posts, efficiently.
-tags: [No one asked]
+tags: [No one asked, Python]
 ShowToc: true
 TocOpen: false
 ---
