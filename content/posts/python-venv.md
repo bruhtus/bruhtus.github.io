@@ -8,7 +8,7 @@ ShowToc: true
 
 > Have you ever want python virtual environment that decoupled from the project directory like conda but not actually conda (dejavu)? That's what this post is about, a simple way to manage a python virtual environment similar to how conda manage virtual environment without python version management.
 
-## A Brief Into to Python Virtual Environment
+## A Brief Intro to Python Virtual Environment
 
 To makes thing simpler, python virtual environment is a self-contained directory tree that contains a python installation for a particular version of python plus a number of additional packages.
 
