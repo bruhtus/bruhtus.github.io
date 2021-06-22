@@ -6,7 +6,17 @@
     <description>Recent content on bruhtus &gt; /dev/null</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 16 Apr 2021 11:43:18 +0700</lastBuildDate><atom:link href="https://bruhtus.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 22 Jun 2021 09:32:28 +0700</lastBuildDate><atom:link href="https://bruhtus.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Access Google Colab Through SSH and SSHFS</title>
+      <link>https://bruhtus.github.io/posts/ssh-google-colab/</link>
+      <pubDate>Tue, 22 Jun 2021 09:32:28 +0700</pubDate>
+      
+      <guid>https://bruhtus.github.io/posts/ssh-google-colab/</guid>
+      <description>Have you ever want a terminal emulator in google colab instead of jupyter notebook? Well, here it is bois!
+ Skip-able Part First thing first, i prefer to use vim/neovim instead of jupyter notebook and that&amp;rsquo;s why i prefer to use terminal or terminal emulator to do things as much as possible. I know jupyter notebook has it&amp;rsquo;s own vim emulation, but it&amp;rsquo;s not as good as the OG vim/neovim.</description>
+    </item>
+    
     <item>
       <title>Pyv: Minimalist Python Venv Management Tool</title>
       <link>https://bruhtus.github.io/posts/pyv/</link>
