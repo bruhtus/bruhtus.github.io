@@ -10,9 +10,9 @@ ShowToc: true
 
 ## Skip-able Part
 
-When i look at my vimrc (vimrc is a vim config file for those who don't know), i always feel confused where should i add new configuration for new plugin. I want to organize my vimrc so that it makes me easier to maintain and adding stuff, and that's where the problem comes in.
+When i look at my vimrc (vimrc is a vim config file for those who don't know), i always feel confused where should i add new configuration for new plugin. I want to organize my vimrc so that it is easier to maintain and adding stuff, and that's where the problem comes in.
 
-Overtime, when you're keep adding configuration to vim, slowly your vimrc gonna become a huge mess and at some point it gonna feels cumbersome to access your vimrc. And that's why i thought "can i split up my vimrc so that i don't feel overwhelm every time i want to add new configuration or mapping to vim?" and it turns out i can.
+Overtime, when you keep adding configuration to vim, slowly your vimrc gonna become a huge mess and at some point it gonna feels cumbersome to access your vimrc. And that's why i thought "can i split up my vimrc so that i don't feel overwhelm every time i want to add new configuration or mapping to vim?" and it turns out i can.
 
 ## Upside and Downside
 
@@ -26,14 +26,14 @@ Before we move on, you need to know the upside and downside for split up your vi
 
 ### Downside
 
-- You need to use grep or something similar if you want to check if the mapping already exist or not. If you didn't split up your vimrc, you can just use vim built-in search function.
+- You need to use `grep` or something similar if you want to check if the mapping already exist or not. If you didn't split up your vimrc, you can just use vim built-in search function.
 - You need to download a lot of file if you want to have full experience of your vim.
 
 ## Split Up Vimrc
 
 If you still want to go on despite the downside, then it's time to split up your vimrc.
 
-First thing first, you need to know that vim has runtime path which gonna be loaded everytime you start vim. And we can use the default runtime path to our advantage. For the full list, you can check [here](https://learnvimscriptthehardway.stevelosh.com/chapters/42.html), but to make it simpler we're only gonna use `~/.vim/plugin` (for vanilla vim) or `~/.config/nvim/plugin` (for neovim) directory. Every file in those directory gonna get loaded every time you open vim, so you can add your config in those directory.
+First thing first, you need to know that vim has runtime path which gonna be loaded everytime you start vim. And we can use the default runtime path to our advantage. For the full list, you can check [here](https://learnvimscriptthehardway.stevelosh.com/chapters/42.html), but to make it simple, we're only gonna use `~/.vim/plugin` (for vanilla vim) or `~/.config/nvim/plugin` (for neovim) directory. Every file in those directory get loaded every time you open vim, so you can add your config in those directory.
 
 For example, you can move your defaults config such as `set number relativenumber` into file `defaults.vim` and place it in `~/.vim/plugin` (for vanilla vim) or `~/.config/nvim/plugin` (for neovim) and defaults config such as `number` and `relativenumber` gonna get loaded everytime you open vim.
 
