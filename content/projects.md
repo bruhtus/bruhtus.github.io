@@ -4,6 +4,18 @@ layout = "cd"
 url = "/projects"
 +++
 
+### Vim-como
+> Copy or move one line in vim without hassle.
+
+[Repo](https://github.com/bruhtus/vim-como) |
+---                                         |
+
+### Vim-groot
+> Toggle between git root and file directory as current working directory in vim.
+
+[Repo](https://github.com/bruhtus/vim-groot) |
+---                                          |
+
 ### Pyv
 > Minimalist python venv management tool.
 
@@ -40,11 +52,11 @@ url = "/projects"
 [Repo](https://git.io/JkJ0q) | [Post](/posts/instasaver) | [Live demo heroku](https://instasaver.js.org/) | [Live demo streamlit sharing](https://share.streamlit.io/bruhtus/instasaver/instasaver.py)
 ---                          | ---                       | ---                                            | ---
 
-### Markdown CV
-> A jekyll-based markdown CV based on blmoore's CV and elipapa's CV.
+### Resume
+> A fork of [elipapa's markdown-cv project](https://github.com/elipapa/markdown-cv) and based on [blmoore's CV](https://github.com/blmoore/md-cv) which I use as my resume.
 
-[Repo](https://github.com/bruhtus/cv) | [Live demo](https://bruhtus.github.io/cv/)
----                                   | ---
+[Repo](https://github.com/bruhtus/resume) | [Live demo](https://bruhtus.github.io/resume/)
+---                                       | ---
 
 ### Pavement distress detector
 > Detect pavement distresses with single shot detector (SSD).
