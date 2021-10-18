@@ -1,5 +1,5 @@
 +++
-title = "About Robertus Diawan Chris"
+title = "About Robertus Chris"
 layout = "about"
 url = "/about"
 +++

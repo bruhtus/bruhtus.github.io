@@ -1,6 +1,6 @@
 baseURL = "https://bruhtus.github.io/"
 languageCode = "en-us"
-title = "bruhtus > /dev/null"
+title = "bruhtus >/dev/null"
 theme = "pulp"
 canonifyurls = true
 hasCJKLanguage = true
@@ -9,7 +9,7 @@ hasCJKLanguage = true
     unsafe = true
 
 [params]
-    author = "Robertus Diawan Chris"
+    author = "Robertus Chris"
     favicon = "favicon.ico"
     custom_css = ["/css/custom.css"]
     custom_js = ["/js/custom.js"]
@@ -28,13 +28,6 @@ hasCJKLanguage = true
     pre = "<i class='fa fa-user fa-lg'></i>"
     url = "/About/"
     weight = 10
-
-[[menu.main]]
-    indentifier = "projects"
-    name = "Projects"
-    pre = "<i class='fa fa-project-diagram fa-lg'></i>"
-    url = "/projects/"
-    weight = 20
 
 [[menu.main]]
     indentifier = "posts"
