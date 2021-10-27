@@ -8,6 +8,22 @@ hasCJKLanguage = true
 [markup.goldmark.renderer]
     unsafe = true
 
+# ref: https://discourse.gohugo.io/t/syntax-highlighting-how-do-i-change-the-theme/30323
+# ref: https://xyproto.github.io/splash/docs/all.html
+[markup]
+  [markup.highlight]
+    anchorLineNos = false
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ''
+    lineAnchors = ''
+    lineNoStart = 1
+    lineNos = true
+    lineNumbersInTable = false
+    noClasses = true
+    style = 'native'
+    tabWidth = 2
+
 [params]
     author = "Robertus Chris"
     favicon = "favicon.ico"
