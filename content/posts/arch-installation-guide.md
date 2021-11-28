@@ -128,7 +128,7 @@ pacstrap /mnt base base-devel linux linux-firmware vim
 ```
 - `/mnt` is where you mount your root partition.
 - `base` is base packages.
-- `base-devel` is development tool such as `sudo` and `grep.
+- `base-devel` is development tool such as `sudo` and `grep`.
 - `linux` is the kernel.
 - `linux-firmware` is the necessary part of linux kernel.
 - `vim` is the text editor (i don't even install `nano`, sorry).
