@@ -1,0 +1,118 @@
+<!doctype html><html>
+<head>
+<title>
+Backup: The Options
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=author content="Robertus Chris">
+<link rel="shortcut icon" type=image/x-icon href=https://bruhtus.github.io/img/favicon.ico>
+<link rel=stylesheet href=https://bruhtus.github.io/style.min.4f970aa135421035a71bdc9bbd750aa2cfbe0ddb080ab1ec5db4173f45494cad.css integrity="sha256-T5cKoTVCEDWnG9ybvXUKos++DdsICrHsXbQXP0VJTK0=">
+<link disabled rel=stylesheet href=https://bruhtus.github.io/style-dark.min.0a647fb6c07e04b77b54fa0515d0a683d39ecdb251dba960fe1f966f7ff36fc2.css media="(prefers-color-scheme: dark)" integrity="sha256-CmR/tsB+BLd7VPoFFdCmg9OezbJR26lg/h+Wb3/zb8I=">
+<link rel=stylesheet href=https://use.fontawesome.com/releases/v5.8.1/css/all.css integrity=sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf crossorigin=anonymous>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@300&family=EB+Garamond&family=PT+Sans&family=Sura&family=Zilla+Slab&family=Inconsolata&family=Libre+Baskerville&display=swap" rel=stylesheet>
+<link rel=stylesheet href=https://bruhtus.github.io/css/custom.css>
+<meta property="og:title" content="Backup: The Options">
+<meta property="og:description" content="A few options about backing up your system, especially on arch-based distro. It&rsquo;s mostly for linux, i&rsquo;m not sure if you can use it for mac os or windows too.
+ Why Should You Backup Your System? In case you&rsquo;re wondering why you should backup your system (for some reason), let me briefly explain. There&rsquo;s always a risk of failure when you&rsquo;re updating or installing a new package (to make things easier to understand, it&rsquo;s basically a program), when that happens, do you want to restore your system before the error occur or you want to re-install the whole system from scratch?">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bruhtus.github.io/posts/manjaro-backup/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2020-11-22T05:21:31+07:00">
+<meta property="article:modified_time" content="2020-11-22T05:21:31+07:00">
+<meta itemprop=name content="Backup: The Options">
+<meta itemprop=description content="A few options about backing up your system, especially on arch-based distro. It&rsquo;s mostly for linux, i&rsquo;m not sure if you can use it for mac os or windows too.
+ Why Should You Backup Your System? In case you&rsquo;re wondering why you should backup your system (for some reason), let me briefly explain. There&rsquo;s always a risk of failure when you&rsquo;re updating or installing a new package (to make things easier to understand, it&rsquo;s basically a program), when that happens, do you want to restore your system before the error occur or you want to re-install the whole system from scratch?"><meta itemprop=datePublished content="2020-11-22T05:21:31+07:00">
+<meta itemprop=dateModified content="2020-11-22T05:21:31+07:00">
+<meta itemprop=wordCount content="839">
+<meta itemprop=keywords content="Linux,"><meta name=twitter:card content="summary">
+<meta name=twitter:image content="https://bruhtus.github.io//img/">
+<meta name=twitter:title content="Backup: The Options">
+<meta name=twitter:description content="A few options about backing up your system, especially on arch-based distro. It&rsquo;s mostly for linux, i&rsquo;m not sure if you can use it for mac os or windows too.
+ Why Should You Backup Your System? In case you&rsquo;re wondering why you should backup your system (for some reason), let me briefly explain. There&rsquo;s always a risk of failure when you&rsquo;re updating or installing a new package (to make things easier to understand, it&rsquo;s basically a program), when that happens, do you want to restore your system before the error occur or you want to re-install the whole system from scratch?"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
+</head>
+<body>
+<h1>Backup: The Options</h1>
+<header>
+<div class=cd>
+<h2><a style=text-decoration:none class=cd href=https://bruhtus.github.io//posts>cd ..</a> | <a style=text-decoration:none class=cd href=https://bruhtus.github.io/>cd</a></h2>
+</div>
+</header>
+<p class=date>
+November 22, 2020
+<span>&#183;</span>
+4 mins
+<span>&#183;</span>
+Robertus Chris
+</p>
+<div id=tags>
+<ul>
+<li><a style=text-decoration:none href=https://bruhtus.github.io/tags/linux/>Linux</a></li>
+</ul>
+</div>
+<div class=toc>
+<details>
+<summary>
+<div class=details>Table of Contents</div>
+</summary>
+<blockquote><ul><li>
+<a style=text-decoration:none href=#why-should-you-backup-your-system aria-label="Why Should You Backup Your System?">Why Should You Backup Your System?</a></li><li>
+<a style=text-decoration:none href=#clonezilla aria-label=Clonezilla>Clonezilla</a></li><li>
+<a style=text-decoration:none href=#timeshift aria-label=Timeshift>Timeshift</a></li><li>
+<a style=text-decoration:none href=#bonus-tip aria-label="Bonus Tip">Bonus Tip</a></li></ul>
+</blockquote>
+</details>
+</div>
+<div id=contentBody>
+<blockquote>
+<p>A few options about backing up your system, especially on arch-based distro. It&rsquo;s mostly for linux, i&rsquo;m not sure if you can use it for mac os or windows too.</p>
+</blockquote>
+<h2 id=why-should-you-backup-your-system>Why Should You Backup Your System?</h2>
+<p>In case you&rsquo;re wondering why you should backup your system (for some reason), let me briefly explain. There&rsquo;s always a risk of failure when you&rsquo;re updating or installing a new package (to make things easier to understand, it&rsquo;s basically a program), when that happens, do you want to restore your system before the error occur or you want to re-install the whole system from scratch? your choice. For me personally, i want to restore my system before the error occur rather than re-install everything from scratch. <em>Ideally</em>, before you install something, you should backup your system just in case there&rsquo;s some trouble. If you&rsquo;re insane enough to backup your system everytime you want to install new stuff or update your system then go ahead, you do you.</p>
+<p>In this post, i&rsquo;m gonna explain two most popular backup solution, that is <a href=https://clonezilla.org/ target=_blank rel="noreferrer noopener">clonezilla</a>
+and <a href=https://teejeetech.in/timeshift/ target=_blank rel="noreferrer noopener">timeshift</a>
+, and also a bonus tip for arch-based linux user.</p>
+<h2 id=clonezilla>Clonezilla</h2>
+<p>For the record, i&rsquo;ve never tried this. I only do the research about backup on linux and this tool came up quite often. For more info on how to use this tool, you can check youtube video <a href=https://youtu.be/yQ9NpWZ74BU target=_blank rel="noreferrer noopener">here</a>
+.</p>
+<p>Clonezilla is a tool to backup your entire system. That&rsquo;s right, it backup your whole system. You might think &ldquo;wow that&rsquo;s great, i don&rsquo;t need other backup tool!&rdquo;, you might want to hold that thought. Yeah it backup your entire system, even your empty storage. Let me explain, for example your system has 200 GB allocated storage and let&rsquo;s say you used only 100 GB so you have another 100 GB storage left. When i said clonezilla backup your entire system, it means clonezilla gonna backup the 200 GB of allocated storage for your system and not only 100 GB of used storage. So if you&rsquo;re gonna install the whole system again (which is possible with clonezilla apparently), you need minimum the allocated storage space from previous machine for your system. If you didn&rsquo;t provide the minimum storage space, you gonna get the error. Unless you strive for that error then it&rsquo;s not gonna be a problem but if you didn&rsquo;t expect the error then you might get confused. That&rsquo;s the downside of clonezilla as far as i know it. I personally didn&rsquo;t use it because of that downside but if it&rsquo;s an advatage for you then you should try it.</p>
+<h2 id=timeshift>Timeshift</h2>
+<p>This is a backup tool that i&rsquo;ve always used since i started using linux on daily basis. The concept is simple, it made <em>checkpoint</em> for your system and then you can revert back to that <em>checkpoint</em> if something wrong after the update or after installing new stuff.</p>
+<p>For arch-based linux user, this tool is a <strong>must</strong>. Arch-based linux is a rolling release linux, that means you get an update regularly and those update not always gonna work so there&rsquo;s a high chance your system gonna break from the update. This tool is a livesaver.</p>
+<p>The difference between this and clonezilla is that this tool only backup the used storage and also exclude the home directory (you can include backup home directory in the setting). In case you&rsquo;re wandering why exclude the home directory is a default, here&rsquo;s an example: <br>
+If you have 3 file on your home directory, let&rsquo;s just say &lsquo;anu.py&rsquo;, &lsquo;nganu.py&rsquo;, &lsquo;anumu.py&rsquo; then you backup your system. After backing up your system you add another file, let&rsquo;s say &lsquo;itumu.py&rsquo;, then you revert back to the <em>checkpoint</em> you created previously. After you revert back, the file &lsquo;itumu.py&rsquo; is gone because it&rsquo;s re-write everything according to <em>checkpoint</em> list and file &lsquo;itumu.py&rsquo; not in the <em>checkpoint</em> list yet. That&rsquo;s why excluding home directory is a default, you can change it in the setting if you want.</p>
+<blockquote>
+<p>I&rsquo;ve never used this tool on newly installed system like clonezilla did, so i&rsquo;m not sure if you can using that <code>checkpoint</code> on newly installed system.</p>
+</blockquote>
+<h2 id=bonus-tip>Bonus Tip</h2>
+<p>Here&rsquo;s a bonus tip for arch-based linux user, just in case those two tools didn&rsquo;t save your system (it&rsquo;s not gonna hurt if you have another backup option you know).</p>
+<p>Type this two command in your terminal: <br></p>
+<ul>
+<li>For official arch repository: <code>pacman -Qqen > pkglist-repo.txt</code></li>
+<li>For arch user repository (AUR): <code>pacman -Qqem > pkglist-aur.txt</code></li>
+</ul>
+<p>What it did is make a package list installed on your system from official arch repository and AUR and save it to <code>.txt</code> file. After that you can install all your package with those file using the command below: <br></p>
+<ul>
+<li>For official arch repository: <code>sudo pacman -S --needed - &lt; pkglist-repo.txt</code></li>
+<li>For arch user repository (AUR): <code>for x in $(cat pkglist-aur.txt); do pamac build $x; done</code> <br>
+(you can also use other alternative such as <code>yay</code>, you don&rsquo;t need to use <code>pamac</code> if you don&rsquo;t want to).</li>
+</ul>
+<p>For more info you can check my repo <a href=https://github.com/bruhtus/package-backup target=_blank rel="noreferrer noopener">here</a>
+, i write a few references there.</p>
+</div>
+<footer>
+<p>
+&copy; 2020-present <a style=text-decoration:none href=https://bruhtus.github.io/resume target=_blank rel="noreferrer noopener">Robertus Chris</a>
+<span>&#183;</span>
+<a style=text-decoration:none href=https://bruhtus.github.io/index.xml target=_blank rel="noreferrer noopener">RSS Feed</a>
+<span>&#183;</span>
+Based on <a style=text-decoration:none href=https://github.com/koirand/pulp/ target=_blank rel="noreferrer noopener">pulp</a> and <a style=text-decoration:none href=https://git.io/hugopapermod target=_blank rel="noreferrer noopener">papermod</a> theme
+</p>
+</footer>
+<button onclick=topFunction() id=myBtn title="Go to top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d0d0d0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+<script>var mybutton=document.getElementById("myBtn");window.onscroll=function(){scrollFunction()};function scrollFunction(){document.body.scrollTop>20||document.documentElement.scrollTop>20?mybutton.style.display="block":mybutton.style.display="none"}function topFunction(){document.body.scrollTop=0,document.documentElement.scrollTop=0}</script><script src=https://bruhtus.github.io/js/custom.js></script>
+</body>
+</html>
