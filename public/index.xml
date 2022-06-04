@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>bruhtus &gt;/dev/null</title>
+    <link>https://bruhtus.github.io/</link>
+    <description>Recent content on bruhtus &gt;/dev/null</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 Aug 2021 08:31:29 +0700</lastBuildDate><atom:link href="https://bruhtus.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Guide to Make Your Own Vim/Neovim Statusline</title>
+      <link>https://bruhtus.github.io/posts/vim-statusline/</link>
+      <pubDate>Fri, 20 Aug 2021 08:31:29 +0700</pubDate>
+      
+      <guid>https://bruhtus.github.io/posts/vim-statusline/</guid>
+      <description>We don&amp;rsquo;t have to install vim plugin to get a statusline if we don&amp;rsquo;t want to.
+ Introduction Hi everyone! In this post I will talk about making your custom statusline in vim. There are a lot of plugins out there that makes vim statusline way better and works out of the box.
+&amp;ldquo;Why would someone going through all the trouble while there&amp;rsquo;s a plugin for that?&amp;rdquo;, you might ask.</description>
+    </item>
+    
+    <item>
+      <title>Access Google Colab Through SSH and SSHFS</title>
+      <link>https://bruhtus.github.io/posts/ssh-google-colab/</link>
+      <pubDate>Tue, 22 Jun 2021 09:32:28 +0700</pubDate>
+      
+      <guid>https://bruhtus.github.io/posts/ssh-google-colab/</guid>
+      <description>Have you ever want a terminal emulator in google colab instead of jupyter notebook? Well, here it is bois!
+ Skip-able Part First thing first, i prefer to use vim/neovim instead of jupyter notebook and that&amp;rsquo;s why i prefer to use terminal or terminal emulator to do things as much as possible. I know jupyter notebook has it&amp;rsquo;s own vim emulation, but it&amp;rsquo;s not as good as the OG vim/neovim.</description>
+    </item>
+    
+    <item>
+      <title>Pyv: Minimalist Python Venv Management Tool</title>
+      <link>https://bruhtus.github.io/posts/pyv/</link>
+      <pubDate>Fri, 16 Apr 2021 11:43:18 +0700</pubDate>
+      
+      <guid>https://bruhtus.github.io/posts/pyv/</guid>
+      <description>This is a continuation from my previous post (you can check it here ). Long story short, this is a minimalist way to manage your python virtual environment. All you need is python and git.
+ What Is Pyv? Here&amp;rsquo;s a brief intro to what is pyv:
+ Pyv is a simple shell function that let you manage python virtual environment that decoupled from project directory.
+ To put it simply, pyv move the virtual environment to $PYV_dir which by default is $HOME/.</description>
+    </item>
+    
+    <item>
+      <title>Split Up Vimrc</title>
+      <link>https://bruhtus.github.io/posts/split-up-vimrc/</link>
+      <pubDate>Mon, 22 Mar 2021 05:37:41 +0700</pubDate>
+      
+      <guid>https://bruhtus.github.io/posts/split-up-vimrc/</guid>
+      <description>If you&amp;rsquo;re the type of person who like to place all your source code in one file, then this article is not for you. But, if you&amp;rsquo;re the type of person who like to split up your source code into a few sub-modules, then this article is for you.
+ Skip-able Part When i look at my vimrc (vimrc is a vim config file for those who don&amp;rsquo;t know), i always feel confused where should i add new configuration for new plugin.</description>
+    </item>
+    
+    <item>
+      <title>Managing Python Virtual Environment</title>
+      <link>https://bruhtus.github.io/posts/python-venv/</link>
+      <pubDate>Tue, 02 Mar 2021 05:36:43 +0700</pubDate>
+      
+      <guid>https://bruhtus.github.io/posts/python-venv/</guid>
+      <description>Have you ever want python virtual environment that decoupled from the project directory like conda but not actually conda (dejavu)? That&amp;rsquo;s what this post is about, a simple way to manage a python virtual environment similar to how conda manage virtual environment without python version management.
+ A Brief Intro to Python Virtual Environment To makes thing simpler, python virtual environment is a self-contained directory tree that contains a python installation for a particular version of python plus a number of additional packages.</description>
+    </item>
+    
+    <item>
+      <title>Arch Linux Installation Guide (Feb 2021)</title>
+      <link>https://bruhtus.github.io/posts/arch-installation-guide/</link>
+      <pubDate>Tue, 23 Feb 2021 07:14:39 +0700</pubDate>
+      
+      <guid>https://bruhtus.github.io/posts/arch-installation-guide/</guid>
+      <description>Don&amp;rsquo;t install arch linux, install TempleOS instead. All hail HolyC! (R.I.P Terry). Jokes aside, please keep in mind that this guide might become obsolete because the nature of rolling release so you should always check the arch wiki installation guide .
+ A Brief Intro I&amp;rsquo;m trying to install an OS as minimal as possible but not from scratch like Linux From Scratch or compiling everything like Gentoo . I might try to install both of them but i don&amp;rsquo;t think i&amp;rsquo;m gonna use one of them as my main OS.</description>
+    </item>
+    
+    <item>
+      <title>Linux Ownership and Permissions</title>
+      <link>https://bruhtus.github.io/posts/linux-ownership-permissions/</link>
+      <pubDate>Sat, 06 Feb 2021 13:56:01 +0700</pubDate>
+      
+      <guid>https://bruhtus.github.io/posts/linux-ownership-permissions/</guid>
+      <description>How to change ownership and permission on linux (and probably other unix-like system? i&amp;rsquo;m not sure). Plain boring and important.
+ A Brief Intro File/directory ownership is basically who owns the file/directory, for example, if we create a file/directory as admin or root in this case and if we want to edit those file/directory as user then we need to change the file/directory ownership because that file/directory owned by the root and we have no access to change that file/directory.</description>
+    </item>
+    
+    <item>
+      <title>Git Repository Backup</title>
+      <link>https://bruhtus.github.io/posts/git-repo-backup/</link>
+      <pubDate>Mon, 18 Jan 2021 03:43:38 +0700</pubDate>
+      
+      <guid>https://bruhtus.github.io/posts/git-repo-backup/</guid>
+      <description>Have you ever thought that some day your git remote repository service account got banned or even their server went down? It always crossed my mind and if that happen i would lose all my source code. So in this post i&amp;rsquo;m gonna explain how to backup your git repository locally and to other git remote repository services.
+ Skip-able Part Git is a version control system for tracking any changes in any set of files.</description>
+    </item>
+    
+    <item>
+      <title>Python Script vs. Shell Script: Command Line Use Case</title>
+      <link>https://bruhtus.github.io/posts/python-vs-shell/</link>
+      <pubDate>Thu, 14 Jan 2021 06:00:07 +0700</pubDate>
+      
+      <guid>https://bruhtus.github.io/posts/python-vs-shell/</guid>
+      <description>In this post i&amp;rsquo;m comparing performance python script and shell script that i&amp;rsquo;ve made. The script objective is to check git status on every git repo directory.
+ Skip-able Part  Just a background story why i made this post
+ Have you wondered what performance between python script and shell script (or some people might say bash script) to run command on terminal? no? same, just kidding. I&amp;rsquo;m curious about shell script because i can do command line stuff with python script too which for my past self is easier to read.</description>
+    </item>
+    
+    <item>
+      <title>The Difference Between GNU/Linux and Mac OS</title>
+      <link>https://bruhtus.github.io/posts/mac-os-linux/</link>
+      <pubDate>Tue, 29 Dec 2020 13:26:08 +0700</pubDate>
+      
+      <guid>https://bruhtus.github.io/posts/mac-os-linux/</guid>
+      <description>To make things clear that GNU/Linux and Mac OS is different and don&amp;rsquo;t expect both of them do the same thing.
+ Skip-able Part What motivates me to make this post is a tweet from someone named David Bombal that trying to install ubuntu on macbook with M1 chip, here is the tweet .
+That tweet makes me wonder why would someone install ubuntu on mac, isn&amp;rsquo;t mac os and linux similar?</description>
+    </item>
+    
+    <item>
+      <title>Manjaro i3 Edition</title>
+      <link>https://bruhtus.github.io/posts/manjaro-i3/</link>
+      <pubDate>Tue, 22 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://bruhtus.github.io/posts/manjaro-i3/</guid>
+      <description>A minimalist approach to new arch linux user or new linux user in general. No more, maybe less.
+ Skip-able Part  Just a background story why i use manjaro i3 edition.
+ Have you ever bored with your current desktop environment? because that&amp;rsquo;s what made me wanted to try manjaro i3 edition. Why manjaro i3 edition and not something else like regolith linux? Here&amp;rsquo;s the reason:  I want a rolling release distro because it&amp;rsquo;s kind of a pain to reinstall the whole system just to upgrade to the new version in fixed-point release distro just like regolith linux (because it&amp;rsquo;s based on ubuntu).</description>
+    </item>
+    
+    <item>
+      <title>Zsh Aliases: Be Lazy!</title>
+      <link>https://bruhtus.github.io/posts/zsh-aliases/</link>
+      <pubDate>Sun, 13 Dec 2020 09:40:36 +0700</pubDate>
+      
+      <guid>https://bruhtus.github.io/posts/zsh-aliases/</guid>
+      <description>Have you ever thought that typing a long command is such a pain? well, here&amp;rsquo;s one of the solution for you.
+ Skip-able Part  Just a background story why i write this in the first place.
+ At some random time back then i thought &amp;ldquo;can i increase my speed while using the command line interface?&amp;rdquo; and there&amp;rsquo;s two option i could think of back then, the first one is to increase my typing speed and the second one is to make everything i type shorter.</description>
+    </item>
+    
+    <item>
+      <title>Backup: The Options</title>
+      <link>https://bruhtus.github.io/posts/manjaro-backup/</link>
+      <pubDate>Sun, 22 Nov 2020 05:21:31 +0700</pubDate>
+      
+      <guid>https://bruhtus.github.io/posts/manjaro-backup/</guid>
+      <description>A few options about backing up your system, especially on arch-based distro. It&amp;rsquo;s mostly for linux, i&amp;rsquo;m not sure if you can use it for mac os or windows too.
+ Why Should You Backup Your System? In case you&amp;rsquo;re wondering why you should backup your system (for some reason), let me briefly explain. There&amp;rsquo;s always a risk of failure when you&amp;rsquo;re updating or installing a new package (to make things easier to understand, it&amp;rsquo;s basically a program), when that happens, do you want to restore your system before the error occur or you want to re-install the whole system from scratch?</description>
+    </item>
+    
+    <item>
+      <title>Instasaver: Save Your Chosen Instagram Posts</title>
+      <link>https://bruhtus.github.io/posts/instasaver/</link>
+      <pubDate>Mon, 09 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://bruhtus.github.io/posts/instasaver/</guid>
+      <description>A brief explanation about instasaver, a tool to save instagram post build with instaloader python module and streamlit.
+ Background Story  Nothing fancy, you should probably skip this.
+ To make things short, basically i was inspired by Kevin Hazy&amp;rsquo;s project here . After i see Kevin&amp;rsquo;s project, i was like &amp;ldquo;can i make almost the same thing with python?&amp;rdquo; and that was the trigger.
+If you ask me why i want a tool (kind of) to save instagram post, that&amp;rsquo;s because i have a hard time to save video memes on instagram and i don&amp;rsquo;t really want to use a screen recorder (said the guy who made something that took longer than learning how to use screen recorder and edit the result 👀).</description>
+    </item>
+    
+    <item>
+      <title>Tiling Window Manager For Efficiency</title>
+      <link>https://bruhtus.github.io/posts/tiling-window-manager/</link>
+      <pubDate>Thu, 15 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://bruhtus.github.io/posts/tiling-window-manager/</guid>
+      <description>A brief explanation about tiling window manager and configuration tiling window manager that i&amp;rsquo;ve tried.
+ A Brief Explanation About Window Manager  A window manager is a system software that controls the placement and appearance of windows within a windowing system in a graphical user interface (GUI). It can be part of desktop enviroment (DE) or be used standalone1.
+ So basically window manager is how to place a window.</description>
+    </item>
+    
+    <item>
+      <title>Pavement Distress Detector Using Single Shot Detector (SSD)</title>
+      <link>https://bruhtus.github.io/posts/pavement-distress-detector/</link>
+      <pubDate>Sun, 11 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://bruhtus.github.io/posts/pavement-distress-detector/</guid>
+      <description>This was my graduation project, in this article i&amp;rsquo;m gonna explain what i did in my graduation project. This project was based on Congcong Li&amp;rsquo;s Project .
+ Diagram Process of This Project A Brief Explanation About Single Shot Detector (SSD) Single shot detector is a deep learning method presented by Wei Liu, Dragomir Anguelov, Dumitru Erhan, Christian Szegedy, Scott Reed4, Cheng-Yang Fu, Alexander C. Berg in their research paper SSD: Single Shot Multibox Detector .</description>
+    </item>
+    
+    <item>
+      <title>About Robertus Chris</title>
+      <link>https://bruhtus.github.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bruhtus.github.io/about/</guid>
+      <description>To make things simpler I introduced myself as bertus and sometimes bruhtus.
+ I like doing some experiment, trying things out, and analyze the results. I&amp;rsquo;m interested in technology and automation, basically I like to automate things.
+Other than tech, I&amp;rsquo;m also interested in photography, psychology, and sexology.
+Well that&amp;rsquo;s all, I&amp;rsquo;m still figuring out what it means to live the life of a human being so I can&amp;rsquo;t really explain much.</description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>https://bruhtus.github.io/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bruhtus.github.io/projects/</guid>
+      <description>Vim-como  Copy or move one line in vim without hassle.
+    Repo     Vim-groot  Toggle between git root and file directory as current working directory in vim.
+    Repo     Pyv  Minimalist python venv management tool.
+    Repo  Post     Vim-peek  Vim plugin to take a peek of the content at a given line number.</description>
+    </item>
+    
+  </channel>
+</rss>

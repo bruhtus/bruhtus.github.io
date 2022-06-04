@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>
+      
+          Git Repository Backup
+      
+  </title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Robertus Chris" />
+  <link rel="shortcut icon" type="image/x-icon" href="https://bruhtus.github.io/img/favicon.ico">
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://bruhtus.github.io/style.min.4f970aa135421035a71bdc9bbd750aa2cfbe0ddb080ab1ec5db4173f45494cad.css" integrity="sha256-T5cKoTVCEDWnG9ybvXUKos&#43;&#43;DdsICrHsXbQXP0VJTK0=">
+  
+  
+  
+  <link disabled rel="stylesheet" href="https://bruhtus.github.io/style-dark.min.0a647fb6c07e04b77b54fa0515d0a683d39ecdb251dba960fe1f966f7ff36fc2.css" media="(prefers-color-scheme: dark)" integrity="sha256-CmR/tsB&#43;BLd7VPoFFdCmg9OezbJR26lg/h&#43;Wb3/zb8I=">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@300&family=EB+Garamond&family=PT+Sans&family=Sura&family=Zilla+Slab&family=Inconsolata&family=Libre+Baskerville&display=swap" rel="stylesheet">
+
+  
+  
+  <link rel="stylesheet" href="https://bruhtus.github.io/css/custom.css">
+  
+
+  <meta property="og:title" content="Git Repository Backup" />
+<meta property="og:description" content="Have you ever thought that some day your git remote repository service account got banned or even their server went down? It always crossed my mind and if that happen i would lose all my source code. So in this post i&rsquo;m gonna explain how to backup your git repository locally and to other git remote repository services.
+ Skip-able Part Git is a version control system for tracking any changes in any set of files." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bruhtus.github.io/posts/git-repo-backup/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-01-18T03:43:38+07:00" />
+<meta property="article:modified_time" content="2021-01-18T03:43:38+07:00" />
+
+<meta itemprop="name" content="Git Repository Backup">
+<meta itemprop="description" content="Have you ever thought that some day your git remote repository service account got banned or even their server went down? It always crossed my mind and if that happen i would lose all my source code. So in this post i&rsquo;m gonna explain how to backup your git repository locally and to other git remote repository services.
+ Skip-able Part Git is a version control system for tracking any changes in any set of files."><meta itemprop="datePublished" content="2021-01-18T03:43:38+07:00" />
+<meta itemprop="dateModified" content="2021-01-18T03:43:38+07:00" />
+<meta itemprop="wordCount" content="1335">
+<meta itemprop="keywords" content="Git," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:image" content="https://bruhtus.github.io//img/"/>
+<meta name="twitter:title" content="Git Repository Backup"/>
+<meta name="twitter:description" content="Have you ever thought that some day your git remote repository service account got banned or even their server went down? It always crossed my mind and if that happen i would lose all my source code. So in this post i&rsquo;m gonna explain how to backup your git repository locally and to other git remote repository services.
+ Skip-able Part Git is a version control system for tracking any changes in any set of files."/>
+
+  <!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+  <!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <![endif]-->
+
+  
+  
+</head>
+
+  <body>
+    
+  <h1>Git Repository Backup</h1>
+  <header>
+  
+  
+  
+  <div class='cd'>
+      <h2><a style="text-decoration:none" class="cd" href="https://bruhtus.github.io//posts">cd ..</a> | <a style="text-decoration:none" class="cd" href="https://bruhtus.github.io/">cd</a></h2>
+  </div>
+</header>
+
+  
+  
+  
+  <p class="date">
+  January 18, 2021
+  <span>&middot;</span>
+  7 mins
+  <span>&middot;</span>
+  Robertus Chris
+  </p>
+  
+  
+  
+  <div id="tags">
+    <ul>
+      
+        
+        
+          <li><a style="text-decoration:none" href="https://bruhtus.github.io/tags/git/">Git</a></li>
+        
+      
+    </ul>
+  </div>
+  
+  
+  
+  <div class="toc">
+      <details >
+          <summary>
+              <div class="details">Table of Contents</div>
+          </summary>
+          <blockquote><ul><li>
+        <a style="text-decoration:none" href="#skip-able-part" aria-label="Skip-able Part">Skip-able Part</a></li><li>
+        <a style="text-decoration:none" href="#backup-git-repository" aria-label="Backup Git Repository">Backup Git Repository</a><ul>
+            <li>
+        <a style="text-decoration:none" href="#backup-git-repository-locally" aria-label="Backup Git Repository Locally">Backup Git Repository Locally</a><ul>
+            <li>
+        <a style="text-decoration:none" href="#clone-everything-in-git-repository" aria-label="Clone Everything in Git Repository">Clone Everything in Git Repository</a></li><li>
+        <a style="text-decoration:none" href="#clone-git-bare" aria-label="Clone Git Bare">Clone Git Bare</a></li></ul>
+    </li><li>
+        <a style="text-decoration:none" href="#backup-git-repository-on-multiple-platforms" aria-label="Backup Git Repository on Multiple Platforms">Backup Git Repository on Multiple Platforms</a><ul>
+            <li>
+        <a style="text-decoration:none" href="#add-git-remote-repository" aria-label="Add Git Remote Repository">Add Git Remote Repository</a></li><li>
+        <a style="text-decoration:none" href="#push-git-bare" aria-label="Push Git Bare">Push Git Bare</a></li></ul>
+    </li></ul>
+    </li><li>
+        <a style="text-decoration:none" href="#the-conclusion" aria-label="The Conclusion">The Conclusion</a></li><li>
+        <a style="text-decoration:none" href="#references" aria-label="References">References</a></li></ul>
+          </blockquote>
+      </details>
+  </div>
+  
+  
+  <div id="contentBody">
+    <blockquote>
+<p>Have you ever thought that some day your git remote repository service account got banned or even their server went down? It always crossed my mind and if that happen i would lose all my source code. So in this post i&rsquo;m gonna explain how to backup your git repository locally and to other git remote repository services.</p>
+</blockquote>
+<h2 id="skip-able-part">Skip-able Part</h2>
+<p>Git is a version control system for tracking any changes in any set of files. It&rsquo;s basically a tool that makes tracking changes on your code easier, so you would know which line fix a certain bug and so on.</p>
+<p>There&rsquo;re a lot of git remote repository such as github, gitlab, bitbucket, codeberg and so on. The most popular one is github, but like other platform, github could decide whether to let you continue in their platform or banned you in their platform. You can check an article about github banned developer account on <a href="https://techcrunch.com/2019/07/29/github-ban-sanctioned-countries/" target="_blank" rel="noreferrer noopener">here</a>
+ and it seems like github in the process of restoring access to all developer in iran, you can check the github CEO tweet <a href="https://twitter.com/natfriedman/status/1346517149603438593" target="_blank" rel="noreferrer noopener">here</a>
+.</p>
+<p>You might be thinking &ldquo;well, i&rsquo;m not on those country so why should i worry about that?&rdquo;. My point is not about the country that got banned, but about what would you do if your account got banned and all access to you code was gone. We can&rsquo;t take anything for granted these days so better start backup your git repository rather than regret it later.</p>
+<h2 id="backup-git-repository">Backup Git Repository</h2>
+<p>First of all, there&rsquo;re two ways you can backup a git repository that i knew. The first one is to backup locally in your machine, and the second one is to backup on multiple platforms or even on your own server.</p>
+<h3 id="backup-git-repository-locally">Backup Git Repository Locally</h3>
+<p>There&rsquo;re two ways to backup your git repository locally on your local machine, that is clone everything (basically the normal <code>git clone</code> command) and clone git bare.</p>
+<h4 id="clone-everything-in-git-repository">Clone Everything in Git Repository</h4>
+<p>You can backup every file in your git repository by doing the normal <code>git clone &lt;git-url.git&gt;</code> command. By doing that, you download every file in your repository with their actual size and you can do git workflow in it.</p>
+<p>It&rsquo;s basically the usual way to clone a git repository.</p>
+<h4 id="clone-git-bare">Clone Git Bare</h4>
+<p>You can backup only the git bare from a git repository. To make it simpler, git bare is a <code>.git</code> directory when you initialize a directory as a git repository using <code>git init</code> command.</p>
+<p>So if you clone the git bare instead of the full git repository, you can get all commit history and all the branch on your git repository without actually downloading all your file so the git bare size is quite small.</p>
+<p>You might ask &ldquo;if you didn&rsquo;t download all your file then how you called that a backup?&rdquo;. Ok so here&rsquo;s the thing, by cloning a git bare you backup all your commit history and if you decide to upload your git repository to another git services or even your own server, you just need to push those git bare backup and git gonna create all your file with all the commit history on the new git repository. So basically you have your git repository backup without taking too much space on your local storage.</p>
+<p>So, how can you backup using git bare clone? git have a backup mechanism but it&rsquo;s not obvious, git has a <code>--mirror</code> flag that you can use to backup or push a git bare repository.</p>
+<p>First, you need to clone a git bare from git repository by doing</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">1</span><span>git clone --bare &lt;git-repo-url.git&gt;
+</span></span></code></pre></div><p>or</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">1</span><span>git clone --mirror &lt;git-repo-url.git&gt;
+</span></span></code></pre></div><blockquote>
+<p>Both of the commands are basically the same, you can push using <code>--mirror</code> flag or add git remote repository and then push using the usual command. How to push with git bare repository is later in this post.</p>
+</blockquote>
+<p>Here&rsquo;s an example, if i want to clone my <code>instasaver</code> git bare then the command i need is</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">1</span><span>git clone --bare https://github.com/bruhtus/instasaver.git
+</span></span></code></pre></div><p>or</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">1</span><span>git clone --mirror https://github.com/bruhtus/instasaver.git
+</span></span></code></pre></div><p>and then it&rsquo;s gonna make <code>instasaver.git</code> directory where it stores all the commit history and branch.</p>
+<p>If your git repository contains Git Large File Storage (LFS) objects then you need to download those git LFS objects too. First, you clone git bare with one of the command above (<code>--mirror</code> flag or <code>--bare</code> flag) and then download git LFS object with this command</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">1</span><span>git lfs fetch --all
+</span></span></code></pre></div><blockquote>
+<p>Don&rsquo;t forget to change directory (<code>cd</code>) into your git bare directory before applying those command.</p>
+</blockquote>
+<h3 id="backup-git-repository-on-multiple-platforms">Backup Git Repository on Multiple Platforms</h3>
+<p>There&rsquo;re two ways you can backup your git repository on multiple platforms. First, you can use <code>git remote add</code> command, and second, you can push git bare repository into another git services. Uploading into your own server is beyond the scope of this post, so i&rsquo;m not gonna explain about that here.</p>
+<h4 id="add-git-remote-repository">Add Git Remote Repository</h4>
+<p>With <code>git remote add</code> you can add another platform so that you can also push into that platform.</p>
+<p>For example, your main git repository service is github so you usually do</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">1</span><span>git remote add origin &lt;github-repo-url.git&gt;
+</span></span></code></pre></div><p>in your local git repository. That command is basically assign <code>origin</code> as your github repository, so if you want to push into your github repository you need to do</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">1</span><span>git push origin &lt;branch&gt;
+</span></span></code></pre></div><p>if you didn&rsquo;t like <code>origin</code> as your github repository alias, you can change it to whatever you want, you can change it into <code>github</code> or even <code>anu</code> but you also need to change your <code>git push</code> command like this</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">1</span><span>git push github &lt;branch&gt;
+</span></span></code></pre></div><p>or</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">1</span><span>git push anu &lt;branch&gt;
+</span></span></code></pre></div><p>So if you want to add another platform and you have your full git working directory (not git bare version), you just need too assign another git repository service url.</p>
+<p>For example, i want to add instasaver to gitlab. I just need to do</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">1</span><span>git remote add gitlab https://gitlab.com/bruhtus/instasaver.git
+</span></span></code></pre></div><p>and then if i want to push the changes to master branch, i just need to do</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">1</span><span>git push gitlab master
+</span></span></code></pre></div><p>other git workflow such as <code>git add</code> and <code>git commit</code> is the same.</p>
+<blockquote>
+<p>Don&rsquo;t forget to change directory (<code>cd</code>) into your local git repo directory.</p>
+</blockquote>
+<h4 id="push-git-bare">Push Git Bare</h4>
+<p>If you alreaady backup your git bare repository on your local machine, then all you gotta do is change directory (<code>cd</code>) into your <code>git-bare-repo.git</code> directory and then do</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">1</span><span>git push --mirror &lt;new-git-repo-url.git&gt;
+</span></span></code></pre></div><p>or you could also do</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">1</span><span>git remote add &lt;platform&gt; &lt;new-git-repo-url.git&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">2</span><span>git push &lt;platform&gt; &lt;branch&gt;
+</span></span></code></pre></div><blockquote>
+<p>You can change <code>&lt;platform&gt;</code> name to whatever you want such as <code>anu</code> or <code>nganu</code>, you do you.</p>
+</blockquote>
+<p>The difference between both command is that you can get all the branch if you use <code>git push --mirror</code> meanwhile you only get main branch if you use the usual <code>git push</code> command (without <code>--mirror</code> flag). So if you want to backup all the branch then you should probably use <code>git push --mirror</code>.</p>
+<p>The disadvantage of using git bare is that you cannot use git workflow such as <code>git add</code> or <code>git commit</code>, you can only use <code>git push</code> command. If you want to update your git bare repository, you can do</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">1</span><span>git remote update
+</span></span></code></pre></div><p>inside your git bare directory.</p>
+<p>If you have Git Large File Storage (LFS) objects, you need to push git LFS object separately using this command</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">1</span><span>git lfs push --all &lt;new-git-repo-url.git&gt;
+</span></span></code></pre></div><p>after you download all git LFS objects using <code>git lfs fetch --all</code> command.</p>
+<h2 id="the-conclusion">The Conclusion</h2>
+<blockquote>
+<p>Do this post really need a conclusion? well, whatever, here we go.</p>
+</blockquote>
+<p>There&rsquo;s no harm in backing up your git repository whether locally or on multiple platform, we can&rsquo;t be so sure that some platform gonna stay the same. Maybe the platform we use gonna become worse and mindlessly banned a lot of account, who knows. So it&rsquo;s better to start backup your git repository from now on before something like that happen.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://www.dantuck.com/article/git-backup/" target="_blank" rel="noreferrer noopener">How to backup a git repository</a>
+.</li>
+<li><a href="https://medium.com/cloud-native-the-gathering/how-to-mirror-copy-an-entire-existing-git-repository-into-a-new-one-3bb8faefad9e" target="_blank" rel="noreferrer noopener">How to mirror an entire existing git repository</a>
+.</li>
+<li><a href="https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/duplicating-a-repository" target="_blank" rel="noreferrer noopener">Duplicating a repository</a>
+.</li>
+<li><a href="https://stackoverflow.com/a/3960063" target="_blank" rel="noreferrer noopener">The difference between git clone &ndash;mirror and git clone &ndash;bare</a>
+.</li>
+</ul>
+
+  </div>
+  <footer>
+  <p>
+  &copy; 2020-present <a style="text-decoration:none" href="https://bruhtus.github.io/resume" target="_blank" rel="noreferrer noopener">Robertus Chris</a>
+  <span>&middot;</span>
+  <a style="text-decoration:none" href="https://bruhtus.github.io/index.xml" target="_blank" rel="noreferrer noopener">RSS Feed</a>
+  <span>&middot;</span>
+  Based on <a style="text-decoration:none" href="https://github.com/koirand/pulp/" target="_blank" rel="noreferrer noopener">pulp</a> and <a style="text-decoration:none" href="https://git.io/hugopapermod" target="_blank" rel="noreferrer noopener">papermod</a> theme
+  </p>
+</footer>
+<button onclick="topFunction()" id="myBtn" title="Go to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d0d0d0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+<script>
+
+var mybutton = document.getElementById("myBtn");
+
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script><script src="https://bruhtus.github.io/js/custom.js"></script>
+
+
+
+  </body>
+</html>

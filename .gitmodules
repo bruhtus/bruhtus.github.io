@@ -1,9 +1,3 @@
 [submodule "themes/pulp"]
 	path = themes/pulp
 	url = https://github.com/bruhtus/pulp.git
-[submodule "themes/Loveit"]
-	path = themes/Loveit
-	url = https://github.com/dillonzq/LoveIt.git
-[submodule "public"]
-	path = public
-	url = https://github.com/bruhtus/bruhtus.github.io.git

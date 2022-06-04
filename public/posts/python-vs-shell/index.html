@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>
+      
+          Python Script vs. Shell Script: Command Line Use Case
+      
+  </title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Robertus Chris" />
+  <link rel="shortcut icon" type="image/x-icon" href="https://bruhtus.github.io/img/favicon.ico">
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://bruhtus.github.io/style.min.4f970aa135421035a71bdc9bbd750aa2cfbe0ddb080ab1ec5db4173f45494cad.css" integrity="sha256-T5cKoTVCEDWnG9ybvXUKos&#43;&#43;DdsICrHsXbQXP0VJTK0=">
+  
+  
+  
+  <link disabled rel="stylesheet" href="https://bruhtus.github.io/style-dark.min.0a647fb6c07e04b77b54fa0515d0a683d39ecdb251dba960fe1f966f7ff36fc2.css" media="(prefers-color-scheme: dark)" integrity="sha256-CmR/tsB&#43;BLd7VPoFFdCmg9OezbJR26lg/h&#43;Wb3/zb8I=">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@300&family=EB+Garamond&family=PT+Sans&family=Sura&family=Zilla+Slab&family=Inconsolata&family=Libre+Baskerville&display=swap" rel="stylesheet">
+
+  
+  
+  <link rel="stylesheet" href="https://bruhtus.github.io/css/custom.css">
+  
+
+  <meta property="og:title" content="Python Script vs. Shell Script: Command Line Use Case" />
+<meta property="og:description" content="In this post i&rsquo;m comparing performance python script and shell script that i&rsquo;ve made. The script objective is to check git status on every git repo directory.
+ Skip-able Part  Just a background story why i made this post
+ Have you wondered what performance between python script and shell script (or some people might say bash script) to run command on terminal? no? same, just kidding. I&rsquo;m curious about shell script because i can do command line stuff with python script too which for my past self is easier to read." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bruhtus.github.io/posts/python-vs-shell/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-01-14T06:00:07+07:00" />
+<meta property="article:modified_time" content="2021-01-14T06:00:07+07:00" />
+
+<meta itemprop="name" content="Python Script vs. Shell Script: Command Line Use Case">
+<meta itemprop="description" content="In this post i&rsquo;m comparing performance python script and shell script that i&rsquo;ve made. The script objective is to check git status on every git repo directory.
+ Skip-able Part  Just a background story why i made this post
+ Have you wondered what performance between python script and shell script (or some people might say bash script) to run command on terminal? no? same, just kidding. I&rsquo;m curious about shell script because i can do command line stuff with python script too which for my past self is easier to read."><meta itemprop="datePublished" content="2021-01-14T06:00:07+07:00" />
+<meta itemprop="dateModified" content="2021-01-14T06:00:07+07:00" />
+<meta itemprop="wordCount" content="1366">
+<meta itemprop="keywords" content="No one asked,Linux,Python,Shell," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:image" content="https://bruhtus.github.io//img/"/>
+<meta name="twitter:title" content="Python Script vs. Shell Script: Command Line Use Case"/>
+<meta name="twitter:description" content="In this post i&rsquo;m comparing performance python script and shell script that i&rsquo;ve made. The script objective is to check git status on every git repo directory.
+ Skip-able Part  Just a background story why i made this post
+ Have you wondered what performance between python script and shell script (or some people might say bash script) to run command on terminal? no? same, just kidding. I&rsquo;m curious about shell script because i can do command line stuff with python script too which for my past self is easier to read."/>
+
+  <!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+  <!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <![endif]-->
+
+  
+  
+</head>
+
+  <body>
+    
+  <h1>Python Script vs. Shell Script: Command Line Use Case</h1>
+  <header>
+  
+  
+  
+  <div class='cd'>
+      <h2><a style="text-decoration:none" class="cd" href="https://bruhtus.github.io//posts">cd ..</a> | <a style="text-decoration:none" class="cd" href="https://bruhtus.github.io/">cd</a></h2>
+  </div>
+</header>
+
+  
+  
+  
+  <p class="date">
+  January 14, 2021
+  <span>&middot;</span>
+  7 mins
+  <span>&middot;</span>
+  Robertus Chris
+  </p>
+  
+  
+  
+  <div id="tags">
+    <ul>
+      
+        
+        
+          <li><a style="text-decoration:none" href="https://bruhtus.github.io/tags/no-one-asked/">No one asked</a></li>
+        
+      
+        
+        
+          <li><a style="text-decoration:none" href="https://bruhtus.github.io/tags/linux/">Linux</a></li>
+        
+      
+        
+        
+          <li><a style="text-decoration:none" href="https://bruhtus.github.io/tags/python/">Python</a></li>
+        
+      
+        
+        
+          <li><a style="text-decoration:none" href="https://bruhtus.github.io/tags/shell/">Shell</a></li>
+        
+      
+    </ul>
+  </div>
+  
+  
+  
+  <div class="toc">
+      <details >
+          <summary>
+              <div class="details">Table of Contents</div>
+          </summary>
+          <blockquote><ul><li>
+        <a style="text-decoration:none" href="#skip-able-part" aria-label="Skip-able Part">Skip-able Part</a></li><li>
+        <a style="text-decoration:none" href="#a-brief-intro-to-shell-script" aria-label="A Brief Intro to Shell Script">A Brief Intro to Shell Script</a></li><li>
+        <a style="text-decoration:none" href="#the-test" aria-label="The Test">The Test</a><ul>
+            <li>
+        <a style="text-decoration:none" href="#the-environment-of-the-test" aria-label="The Environment of The Test">The Environment of The Test</a></li><li>
+        <a style="text-decoration:none" href="#the-results" aria-label="The Results">The Results</a><ul>
+            <li>
+        <a style="text-decoration:none" href="#first-test" aria-label="First Test">First Test</a></li><li>
+        <a style="text-decoration:none" href="#second-test" aria-label="Second Test">Second Test</a></li></ul>
+    </li><li>
+        <a style="text-decoration:none" href="#the-explanation" aria-label="The Explanation">The Explanation</a></li></ul>
+    </li><li>
+        <a style="text-decoration:none" href="#the-conclusion" aria-label="The Conclusion">The Conclusion</a></li><li>
+        <a style="text-decoration:none" href="#references" aria-label="References">References</a></li></ul>
+          </blockquote>
+      </details>
+  </div>
+  
+  
+  <div id="contentBody">
+    <blockquote>
+<p>In this post i&rsquo;m comparing performance python script and shell script that i&rsquo;ve made. The script objective is to check git status on every git repo directory.</p>
+</blockquote>
+<h2 id="skip-able-part">Skip-able Part</h2>
+<blockquote>
+<p>Just a background story why i made this post</p>
+</blockquote>
+<p>Have you wondered what performance between python script and shell script (or some people might say bash script) to run command on terminal? no? same, just kidding. I&rsquo;m curious about shell script because i can do command line stuff with python script too which for my past self is easier to read.</p>
+<p>For around a month, i&rsquo;ve learned shell scripting from youtube (mostly <a href="https://www.youtube.com/channel/UC2eYFnH61tmytImy1mTYvhA" target="_blank" rel="noreferrer noopener">luke smith videos</a>
+) and i gotta say that for command line use case, shell script is more efficient than python script. Please keep in mind that i&rsquo;m not an expert when it comes to python scripting or shell scripting, so there might be some performance enhancement that you can make to my script.</p>
+<h2 id="a-brief-intro-to-shell-script">A Brief Intro to Shell Script</h2>
+<p>You might be wondering &ldquo;what is shell script?&rdquo; well, to put it simpler, it&rsquo;s a script that you can run with shell. Shell, like python, is a programming language and that&rsquo;s why you can run <code>for</code> loop in a terminal like a psychopath, just kidding i did that sometimes (maybe i&rsquo;m a pyschopath? 👀).</p>
+<p>There are quite a few ways to run shell script, here&rsquo;s some that i know:</p>
+<ul>
+<li>
+<p>Make script executable by doing <code>chmod +x &lt;script-name&gt;</code> and then run the script by doing <code>./&lt;script-name&gt;</code> if you&rsquo;re already in the same directory as the script or <code>chmod +x &lt;path-to-script&gt;/&lt;script-name&gt;</code> and then run the script by doing <code>&lt;path-to-script&gt;/&lt;script-name&gt;</code> if you&rsquo;re not in the same directory as the script. <br>
+For example: <br>
+If i want to run my <code>git-status-checker</code> script, then what i would do is type <code>chmod +x git-status-checker</code> if i already in the same directory as <code>git-status-checker</code> script and then run the script by typing <code>./git-status-checker</code>. <br> But, if i&rsquo;m not in the same directory as <code>git-status-checker</code>, let&rsquo;s say i&rsquo;m in Download directory meanwhile the script is in Script directory, then what i would do is type <code>chmod +x ~/script/git-status-checker</code> and then run the script by typing <code>~/script/git-status-checker</code>.</p>
+</li>
+<li>
+<p>Using <code>sh</code> or <code>bash</code> command. <br>
+For example: <br>
+If i want to run my <code>git-status-checker</code> script, then i run the script by typing <code>sh git-status-checker</code> or <code>bash git-status-checker</code>, both command basically do the same thing.</p>
+</li>
+</ul>
+<h2 id="the-test">The Test</h2>
+<p>In this post, i&rsquo;m gonna test the runtime both python script and shell script that i&rsquo;ve made. The script objective is to check git status in each git repo directory on my machine.</p>
+<h3 id="the-environment-of-the-test">The Environment of The Test</h3>
+<p>All my git repo directory is located in <code>all_git</code> directory on home directory, so i only need to focus on that directory which is gonna make the task of the script a little bit easier and faster than check all other directory too.</p>
+<p>The amount of not staged for commit is the same when running both script, which is around 13 in total. So the performance may decrease as the amount of unstaged increase.</p>
+<p>I&rsquo;m gonna run the in two way, the first test is including git status for git submodules and the second test is excluding git status for git submodules.</p>
+<h3 id="the-results">The Results</h3>
+<h4 id="first-test">First Test</h4>
+<p>In the first test, the runtime of python script is around 0.08 - 0.12 seconds and the runtime of shell script is around 0.07 - 0.08 seconds. Here&rsquo;s the example of runtime of both script (which at this time coincidentally the same):</p>
+<p><img src="runtime-first-test.png" alt="Runtime first test"></p>
+<h4 id="second-test">Second Test</h4>
+<p>In the second test, the runtime of python script is around 0.05 - 0.07 seconds and the runtime of shell script is around 0.01 - 0.02 seconds. Here&rsquo;s the example of runtime of both script:</p>
+<p><img src="runtime-second-test.png" alt="Runtime second test"></p>
+<h3 id="the-explanation">The Explanation</h3>
+<p>The effect of checking git status in git submodules is quite a lot but still less than a second which gonna make people think &ldquo;it&rsquo;s not that much of a difference&rdquo;, well, in case you forgot that this script objective is just to check git status on each git repo directory, it&rsquo;s just a simple task. If you&rsquo;re going to make a more complicated task with a lot of command, that&rsquo;s where you&rsquo;re gonna see the gap.</p>
+<p>I&rsquo;m gonna explain the first test source code first, below is the python script for the first test:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 1</span><span><span style="color:#6ab825;font-weight:bold">import</span> <span style="color:#447fcf;text-decoration:underline">os</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 3</span><span>home = <span style="color:#ed9d13">&#39;/home/bruhtus/&#39;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 4</span><span>dir_list = [dirname <span style="color:#6ab825;font-weight:bold">for</span> dirname <span style="color:#6ab825;font-weight:bold">in</span> os.listdir(<span style="color:#ed9d13">f</span><span style="color:#ed9d13">&#39;</span><span style="color:#ed9d13">{</span>home<span style="color:#ed9d13">}</span><span style="color:#ed9d13">/all_git&#39;</span>) <span style="color:#6ab825;font-weight:bold">if</span> os.path.isdir(<span style="color:#ed9d13">f</span><span style="color:#ed9d13">&#39;</span><span style="color:#ed9d13">{</span>home<span style="color:#ed9d13">}</span><span style="color:#ed9d13">/all_git/</span><span style="color:#ed9d13">{</span>dirname<span style="color:#ed9d13">}</span><span style="color:#ed9d13">&#39;</span>) == <span style="color:#6ab825;font-weight:bold">True</span>]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 5</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 6</span><span><span style="color:#6ab825;font-weight:bold">for</span> dirname <span style="color:#6ab825;font-weight:bold">in</span> dir_list:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 7</span><span>    path = <span style="color:#ed9d13">f</span><span style="color:#ed9d13">&#39;</span><span style="color:#ed9d13">{</span>home<span style="color:#ed9d13">}</span><span style="color:#ed9d13">/all_git/</span><span style="color:#ed9d13">{</span>dirname<span style="color:#ed9d13">}</span><span style="color:#ed9d13">&#39;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 8</span><span>    os.system(<span style="color:#ed9d13">f</span><span style="color:#ed9d13">&#39;echo </span><span style="color:#ed9d13">{</span>path<span style="color:#ed9d13">}</span><span style="color:#ed9d13">&#39;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 9</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">10</span><span>    <span style="color:#6ab825;font-weight:bold">if</span> os.path.exists(<span style="color:#ed9d13">f</span><span style="color:#ed9d13">&#39;</span><span style="color:#ed9d13">{</span>path<span style="color:#ed9d13">}</span><span style="color:#ed9d13">/.gitmodules&#39;</span>) == <span style="color:#6ab825;font-weight:bold">True</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">11</span><span>        os.system(<span style="color:#ed9d13">f</span><span style="color:#ed9d13">&#39;git -C </span><span style="color:#ed9d13">{</span>path<span style="color:#ed9d13">}</span><span style="color:#ed9d13"> status -s&#39;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">12</span><span>        os.system(<span style="color:#ed9d13">f</span><span style="color:#ed9d13">&#39;git -C </span><span style="color:#ed9d13">{</span>path<span style="color:#ed9d13">}</span><span style="color:#ed9d13"> submodule foreach git status -s&#39;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">13</span><span>    <span style="color:#6ab825;font-weight:bold">else</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">14</span><span>        os.system(<span style="color:#ed9d13">f</span><span style="color:#ed9d13">&#39;git -C </span><span style="color:#ed9d13">{</span>path<span style="color:#ed9d13">}</span><span style="color:#ed9d13"> status -s&#39;</span>)
+</span></span></code></pre></div><p>And below is the shell script for the first test:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">1</span><span><span style="color:#cd2828;font-weight:bold">#!/bin/sh
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">2</span><span><span style="color:#cd2828;font-weight:bold"></span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">3</span><span><span style="color:#6ab825;font-weight:bold">for</span> d in <span style="color:#6ab825;font-weight:bold">$(</span>ls -d ~/all_git/*/<span style="color:#6ab825;font-weight:bold">)</span>; <span style="color:#6ab825;font-weight:bold">do</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">4</span><span>  <span style="color:#24909d">echo</span> <span style="color:#40ffff">$d</span> &amp;&amp; git -C <span style="color:#40ffff">$d</span> status -s &amp;&amp; ls -a <span style="color:#40ffff">$d</span> | grep -q .gitmodules &amp;&amp; git -C <span style="color:#40ffff">$d</span> submodule foreach git status -s
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">5</span><span><span style="color:#6ab825;font-weight:bold">done</span>
+</span></span></code></pre></div><p>Let&rsquo;s take step by step of the processes. The first process is to list all directory in <code>all_git</code> directory, because we already specify that all git repo directory gonna be in <code>all_git</code> directory so we don&rsquo;t need to check if it&rsquo;s a git repo or not (one less task). So, here&rsquo;s a comparison of the python script and shell script:</p>
+<p>The python part below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">1</span><span>home = <span style="color:#ed9d13">&#39;/home/bruhtus/&#39;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">2</span><span>dir_list = [dirname <span style="color:#6ab825;font-weight:bold">for</span> dirname <span style="color:#6ab825;font-weight:bold">in</span> os.listdir(<span style="color:#ed9d13">f</span><span style="color:#ed9d13">&#39;</span><span style="color:#ed9d13">{</span>home<span style="color:#ed9d13">}</span><span style="color:#ed9d13">/all_git&#39;</span>) <span style="color:#6ab825;font-weight:bold">if</span> os.path.isdir(<span style="color:#ed9d13">f</span><span style="color:#ed9d13">&#39;</span><span style="color:#ed9d13">{</span>home<span style="color:#ed9d13">}</span><span style="color:#ed9d13">/all_git/</span><span style="color:#ed9d13">{</span>dirname<span style="color:#ed9d13">}</span><span style="color:#ed9d13">&#39;</span>) == <span style="color:#6ab825;font-weight:bold">True</span>]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">3</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">4</span><span><span style="color:#6ab825;font-weight:bold">for</span> dirname <span style="color:#6ab825;font-weight:bold">in</span> dir_list:
+</span></span></code></pre></div><p>is equivalent to this part in shell script:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">1</span><span><span style="color:#6ab825;font-weight:bold">for</span> d in <span style="color:#6ab825;font-weight:bold">$(</span>ls -d ~/all_git/*/<span style="color:#6ab825;font-weight:bold">)</span>; <span style="color:#6ab825;font-weight:bold">do</span>
+</span></span></code></pre></div><p>Both of the script take list of directory in <code>all_git</code> directory and do a <code>for</code> loop to check each folder. You might be able to optimize my python script but i think that the shell script is much simpler than python script. What i mean simpler is less lines of code, not easier to understand. If you need an easier to understand code then python is the way, but it&rsquo;s not really the topic of this post (everyone knows that python script is human readable, right?).</p>
+<p>Let&rsquo;s continue, in the python part below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">1</span><span>    path = <span style="color:#ed9d13">f</span><span style="color:#ed9d13">&#39;</span><span style="color:#ed9d13">{</span>home<span style="color:#ed9d13">}</span><span style="color:#ed9d13">/all_git/</span><span style="color:#ed9d13">{</span>dirname<span style="color:#ed9d13">}</span><span style="color:#ed9d13">&#39;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">2</span><span>    os.system(<span style="color:#ed9d13">f</span><span style="color:#ed9d13">&#39;echo </span><span style="color:#ed9d13">{</span>path<span style="color:#ed9d13">}</span><span style="color:#ed9d13">&#39;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">3</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">4</span><span>    <span style="color:#6ab825;font-weight:bold">if</span> os.path.exists(<span style="color:#ed9d13">f</span><span style="color:#ed9d13">&#39;</span><span style="color:#ed9d13">{</span>path<span style="color:#ed9d13">}</span><span style="color:#ed9d13">/.gitmodules&#39;</span>) == <span style="color:#6ab825;font-weight:bold">True</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">5</span><span>        os.system(<span style="color:#ed9d13">f</span><span style="color:#ed9d13">&#39;git -C </span><span style="color:#ed9d13">{</span>path<span style="color:#ed9d13">}</span><span style="color:#ed9d13"> status -s&#39;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">6</span><span>        os.system(<span style="color:#ed9d13">f</span><span style="color:#ed9d13">&#39;git -C </span><span style="color:#ed9d13">{</span>path<span style="color:#ed9d13">}</span><span style="color:#ed9d13"> submodule foreach git status -s&#39;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">7</span><span>    <span style="color:#6ab825;font-weight:bold">else</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">8</span><span>        os.system(<span style="color:#ed9d13">f</span><span style="color:#ed9d13">&#39;git -C </span><span style="color:#ed9d13">{</span>path<span style="color:#ed9d13">}</span><span style="color:#ed9d13"> status -s&#39;</span>)
+</span></span></code></pre></div><p>is equivalent to this part in shell script:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">1</span><span>  <span style="color:#24909d">echo</span> <span style="color:#40ffff">$d</span> &amp;&amp; git -C <span style="color:#40ffff">$d</span> status -s &amp;&amp; ls -a <span style="color:#40ffff">$d</span> | grep -q .gitmodules &amp;&amp; git -C <span style="color:#40ffff">$d</span> submodule foreach git status -s
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">2</span><span><span style="color:#6ab825;font-weight:bold">done</span>
+</span></span></code></pre></div><p>That second process is to check the git status and git submodules status of all directories. The part where there&rsquo;s <code>echo</code> is basically print out anything that we give, in this case it&rsquo;s gonna print directory name so i&rsquo;m not gonna go into detail for that part.</p>
+<p>Now i&rsquo;m gonna explain a little bit about <code>&amp;&amp;</code> command in shell, it&rsquo;s basically let you run the second command (on the right side) if the first command (on the left side) success. So, it&rsquo;s basically an equivalent of <code>if-else</code> statement in most programming language. The shell script part below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">1</span><span>git -C <span style="color:#40ffff">$d</span> status -s &amp;&amp; ls -a <span style="color:#40ffff">$d</span> | grep -q .gitmodules &amp;&amp; git -C <span style="color:#40ffff">$d</span> submodule foreach git status -s
+</span></span></code></pre></div><p>is equivalent to this part of python script:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">1</span><span>    <span style="color:#6ab825;font-weight:bold">if</span> os.path.exists(<span style="color:#ed9d13">f</span><span style="color:#ed9d13">&#39;</span><span style="color:#ed9d13">{</span>path<span style="color:#ed9d13">}</span><span style="color:#ed9d13">/.gitmodules&#39;</span>) == <span style="color:#6ab825;font-weight:bold">True</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">2</span><span>        os.system(<span style="color:#ed9d13">f</span><span style="color:#ed9d13">&#39;git -C </span><span style="color:#ed9d13">{</span>path<span style="color:#ed9d13">}</span><span style="color:#ed9d13"> status -s&#39;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">3</span><span>        os.system(<span style="color:#ed9d13">f</span><span style="color:#ed9d13">&#39;git -C </span><span style="color:#ed9d13">{</span>path<span style="color:#ed9d13">}</span><span style="color:#ed9d13"> submodule foreach git status -s&#39;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">4</span><span>    <span style="color:#6ab825;font-weight:bold">else</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">5</span><span>        os.system(<span style="color:#ed9d13">f</span><span style="color:#ed9d13">&#39;git -C </span><span style="color:#ed9d13">{</span>path<span style="color:#ed9d13">}</span><span style="color:#ed9d13"> status -s&#39;</span>)
+</span></span></code></pre></div><p>The <code>ls -a $d | grep -q .gitmodules</code> is equivalent to <code>if os.path.exists(f'{path}/.gitmodules') == True</code>, both command check if there&rsquo;s a git submodules in the git repo directory or not. So in the second test, i&rsquo;m removing those <code>if-else</code> statement and then run only git status which makes shell script faster than python script.</p>
+<h2 id="the-conclusion">The Conclusion</h2>
+<p>For command line interface stuff, you should probably use shell script instead of python script. I&rsquo;m not saying that python is bad, it&rsquo;s just not the right tool for command line interface stuff. Yeah python can do almost everything but that doesn&rsquo;t mean python is the best at everything, at least not at command line interface use case which is shell script clearly better here.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://www.youtube.com/channel/UC2eYFnH61tmytImy1mTYvhA" target="_blank" rel="noreferrer noopener">Luke smith youtube channel</a>
+.</li>
+<li><a href="https://www.youtube.com/channel/UCVls1GmFKf6WlTraIb_IaJg" target="_blank" rel="noreferrer noopener">Distrotube youtube channel</a>
+.</li>
+<li><a href="https://stackoverflow.com/a/27952894" target="_blank" rel="noreferrer noopener">Git command without change directory</a>
+.</li>
+<li><a href="https://git-scm.com/docs/git-submodule" target="_blank" rel="noreferrer noopener">Git submodule documentation</a>
+.</li>
+</ul>
+
+  </div>
+  <footer>
+  <p>
+  &copy; 2020-present <a style="text-decoration:none" href="https://bruhtus.github.io/resume" target="_blank" rel="noreferrer noopener">Robertus Chris</a>
+  <span>&middot;</span>
+  <a style="text-decoration:none" href="https://bruhtus.github.io/index.xml" target="_blank" rel="noreferrer noopener">RSS Feed</a>
+  <span>&middot;</span>
+  Based on <a style="text-decoration:none" href="https://github.com/koirand/pulp/" target="_blank" rel="noreferrer noopener">pulp</a> and <a style="text-decoration:none" href="https://git.io/hugopapermod" target="_blank" rel="noreferrer noopener">papermod</a> theme
+  </p>
+</footer>
+<button onclick="topFunction()" id="myBtn" title="Go to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d0d0d0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+<script>
+
+var mybutton = document.getElementById("myBtn");
+
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script><script src="https://bruhtus.github.io/js/custom.js"></script>
+
+
+
+  </body>
+</html>

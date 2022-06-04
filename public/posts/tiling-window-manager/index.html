@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>
+      
+          Tiling Window Manager For Efficiency
+      
+  </title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Robertus Chris" />
+  <link rel="shortcut icon" type="image/x-icon" href="https://bruhtus.github.io/img/favicon.ico">
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://bruhtus.github.io/style.min.4f970aa135421035a71bdc9bbd750aa2cfbe0ddb080ab1ec5db4173f45494cad.css" integrity="sha256-T5cKoTVCEDWnG9ybvXUKos&#43;&#43;DdsICrHsXbQXP0VJTK0=">
+  
+  
+  
+  <link disabled rel="stylesheet" href="https://bruhtus.github.io/style-dark.min.0a647fb6c07e04b77b54fa0515d0a683d39ecdb251dba960fe1f966f7ff36fc2.css" media="(prefers-color-scheme: dark)" integrity="sha256-CmR/tsB&#43;BLd7VPoFFdCmg9OezbJR26lg/h&#43;Wb3/zb8I=">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@300&family=EB+Garamond&family=PT+Sans&family=Sura&family=Zilla+Slab&family=Inconsolata&family=Libre+Baskerville&display=swap" rel="stylesheet">
+
+  
+  
+  <link rel="stylesheet" href="https://bruhtus.github.io/css/custom.css">
+  
+
+  <meta property="og:title" content="Tiling Window Manager For Efficiency" />
+<meta property="og:description" content="Efficient way to manage your opened window." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bruhtus.github.io/posts/tiling-window-manager/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-10-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-10-15T00:00:00+00:00" />
+
+<meta itemprop="name" content="Tiling Window Manager For Efficiency">
+<meta itemprop="description" content="Efficient way to manage your opened window."><meta itemprop="datePublished" content="2020-10-15T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-10-15T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1438">
+<meta itemprop="keywords" content="Linux," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:image" content="https://bruhtus.github.io//img/"/>
+<meta name="twitter:title" content="Tiling Window Manager For Efficiency"/>
+<meta name="twitter:description" content="Efficient way to manage your opened window."/>
+
+  <!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+  <!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <![endif]-->
+
+  
+  
+</head>
+
+  <body>
+    
+  <h1>Tiling Window Manager For Efficiency</h1>
+  <header>
+  
+  
+  
+  <div class='cd'>
+      <h2><a style="text-decoration:none" class="cd" href="https://bruhtus.github.io//posts">cd ..</a> | <a style="text-decoration:none" class="cd" href="https://bruhtus.github.io/">cd</a></h2>
+  </div>
+</header>
+
+  
+  
+  
+  <p class="date">
+  October 15, 2020
+  <span>&middot;</span>
+  7 mins
+  <span>&middot;</span>
+  Robertus Chris
+  </p>
+  
+  
+  
+  <div id="tags">
+    <ul>
+      
+        
+        
+          <li><a style="text-decoration:none" href="https://bruhtus.github.io/tags/linux/">Linux</a></li>
+        
+      
+    </ul>
+  </div>
+  
+  
+  
+  <div class="toc">
+      <details >
+          <summary>
+              <div class="details">Table of Contents</div>
+          </summary>
+          <blockquote><ul><li>
+        <a style="text-decoration:none" href="#a-brief-explanation-about-window-manager" aria-label="A Brief Explanation About Window Manager">A Brief Explanation About Window Manager</a></li><li>
+        <a style="text-decoration:none" href="#the-window-manager-ive-tried" aria-label="The Window Manager I&amp;rsquo;ve Tried">The Window Manager I&rsquo;ve Tried</a><ul>
+            <li>
+        <a style="text-decoration:none" href="#i3-window-manager" aria-label="i3 Window Manager">i3 Window Manager</a><ul>
+            <li>
+        <a style="text-decoration:none" href="#setting-up-keybinding" aria-label="Setting Up Keybinding">Setting Up Keybinding</a></li><li>
+        <a style="text-decoration:none" href="#setting-up-polybar" aria-label="Setting Up Polybar">Setting Up Polybar</a></li><li>
+        <a style="text-decoration:none" href="#who-should-try-or-use-i3" aria-label="Who Should Try or Use i3?">Who Should Try or Use i3?</a></li></ul>
+    </li><li>
+        <a style="text-decoration:none" href="#qtile-window-manager" aria-label="Qtile Window Manager">Qtile Window Manager</a><ul>
+            <li>
+        <a style="text-decoration:none" href="#who-should-try-or-use-qtile" aria-label="Who Should Try or Use Qtile?">Who Should Try or Use Qtile?</a></li></ul>
+    </li></ul>
+    </li><li>
+        <a style="text-decoration:none" href="#the-pros-and-cons-of-tiling-window-manager" aria-label="The Pros and Cons of Tiling Window Manager">The Pros and Cons of Tiling Window Manager</a></li><li>
+        <a style="text-decoration:none" href="#to-wrap-things-up" aria-label="To Wrap Things Up">To Wrap Things Up</a></li><li>
+        <a style="text-decoration:none" href="#example-of-i3-window-manager" aria-label="Example of i3 Window Manager">Example of i3 Window Manager</a></li></ul>
+          </blockquote>
+      </details>
+  </div>
+  
+  
+  <div id="contentBody">
+    <blockquote>
+<p>A brief explanation about tiling window manager and configuration tiling window manager that i&rsquo;ve tried.</p>
+</blockquote>
+<h2 id="a-brief-explanation-about-window-manager">A Brief Explanation About Window Manager</h2>
+<blockquote>
+<p>A window manager is a system software that controls the placement and appearance of windows within a windowing system in a graphical user interface (GUI). It can be part of desktop enviroment (DE) or be used standalone<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+</blockquote>
+<p>So basically window manager is how to place a window. There&rsquo;re three types of window manager (according to arch wiki<sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>): stacking (aka floating) window manager, tiling window manager, and dynamic window manager.</p>
+<p>Here&rsquo;s a brief explanation about those three window manager:</p>
+<ul>
+<li>Stacking (aka floating) Window Manager:
+All window manager that allow the overlapping of windows are considered stacking window manager, although it is possible that not all stacking window manager use the same method. You can check a few list of stacking window manager <a href="https://wiki.archlinux.org/index.php/window_manager#Stacking_window_managers" target="_blank" rel="noreferrer noopener">here</a>
+.</li>
+<li>Tiling Window Manager:
+Tiling window manager manage the window so that no window are overlapping with each other. You can check a few list of tiling window manager <a href="https://wiki.archlinux.org/index.php/window_manager#Tiling_window_managers" target="_blank" rel="noreferrer noopener">here</a>
+.</li>
+<li>Dynamic Window Manager:
+Dynamic window manager is a tiling window manager that positioned based on the preset layouts which user can switch. You can check a few list of dynamic window manager <a href="https://wiki.archlinux.org/index.php/window_manager#Dynamic_window_managers" target="_blank" rel="noreferrer noopener">here</a>
+.</li>
+</ul>
+<p>For more detailed comparision of tiling window manager, you can check <a href="https://wiki.archlinux.org/index.php/Comparison_of_tiling_window_managers" target="_blank" rel="noreferrer noopener">here</a>
+.</p>
+<h2 id="the-window-manager-ive-tried">The Window Manager I&rsquo;ve Tried</h2>
+<p>For now (at the times of writing this post), i only have tried 2 window manager. My first window manager is qtile and my second window manager is i3. You can check below for more (not really) detailed explanation(?).</p>
+<h3 id="i3-window-manager">i3 Window Manager</h3>
+<p>i3 is one of tiling type window manager, for more info you can check at <a href="https://i3wm.org/" target="_blank" rel="noreferrer noopener">their website</a>
+. I&rsquo;m just gonna explain configuration that i&rsquo;ve made at my <a href="https://github.com/bruhtus/i3_config" target="_blank" rel="noreferrer noopener">github repo</a>
+. For the record, this is my current window manager (at the time writing this post). I&rsquo;m using the manjaro i3 edition.</p>
+<p>First of all, i changed the mod keybinding from super key (or some people call it windows key) to alt key. You can change the mod keybinding by change <code>set $mod Mod4</code> (super key) to <code>set $mod Mod1</code> (alt key) in config file (you can find config file in folder <code>.i3</code>). For the most part i used the default config from manjaro i3 edition but i add a few program and even changed the i3 status bar with polybar. Here&rsquo;s what i used in this config:</p>
+<ul>
+<li><a href="https://github.com/dylanaraps/pywal" target="_blank" rel="noreferrer noopener">pywal</a>
+: I use this for color scheme around my i3 environment (such as terminal, border color around window, etc)</li>
+<li><a href="https://github.com/polybar/polybar" target="_blank" rel="noreferrer noopener">polybar</a>
+: I use this to replace i3 status bar because i can place the clock and date in the middle (i have no ide how to do that in i3 status bar or even py3status) and it has quite a lot of customization. You can also use py3status if you want.</li>
+<li><a href="https://github.com/davatorium/rofi" target="_blank" rel="noreferrer noopener">rofi</a>
+: I use this as application manager instead of dmenu, because it&rsquo;s more convenient for me (rofi appear in the middle meanwhile dmenu appear at the top).</li>
+<li><a href="https://github.com/brndnmtthws/conky" target="_blank" rel="noreferrer noopener">conky</a>
+: I use this to take a glance what process currently taking up resources (for more detailed info i use htop).</li>
+<li><a href="https://github.com/flameshot-org/flameshot" target="_blank" rel="noreferrer noopener">flameshot</a>
+: I use this to take screenshot.</li>
+</ul>
+<h4 id="setting-up-keybinding">Setting Up Keybinding</h4>
+<p>For setting up keybinding you can use <code>bindsym</code>, for example: <code>bindsym $mod+q kill</code> for close focused or currenly active window. Other than setting up keybindings, you can also set a program to do a certain thing, for example: <code>set $myTerm alacritty</code>, every thing that used $myTerm gonna access the command via terminal alacritty. Alacritty is my current (at the time of typing this post) terminal emulator, i also have xterm as a backup terminal emulator. Example of using <code>$myTerm</code>: <code>bindsym $mod+e exec $myTerm -e ranger</code> to open ranger file manager.</p>
+<h4 id="setting-up-polybar">Setting Up Polybar</h4>
+<p>For setting up polybar, you need to move the default polybar config. In my case, the default config is in /usr/share/doc/polybar/ but if it&rsquo;s not there, you can use <code>locate polybar | grep config</code>.</p>
+<p>First of all, make a polybar folder in <code>.config</code> folder. After that move the default polybar config into those folder (the path should be like this <code>.config/polybar/config</code>). You can change the default config to anything you want, but remember the bar name because we&rsquo;re gonna use the bar name to launch the polybar. The default bar name should be like this <code>[bar/example]</code>, you can change it to the name you want and please specify the monitor for the polybar. You can check you monitor name by typing <code>xrandr</code> on terminal. Here&rsquo;s an example how to set a monitor in polybar config: <br></p>
+<blockquote>
+<p>After i typed <code>xrandr</code> on my terminal, i got my laptop screen name <code>eDP-1</code> so i&rsquo;m gonna use my laptop screen to display the polybar.</p>
+</blockquote>
+<pre tabindex="0"><code>[bar/mainbar-i3]
+
+monitor = {env:MONITOR:eDP-1}
+</code></pre><p>After you&rsquo;re done with your polybar config, the next step is to add launch.sh. What is launch.sh? well, it&rsquo;s basically to launch all of our polybar bar config (that has this naming scheme <code>[bar/example]</code>). Here&rsquo;s an example of launch.sh in two monitor (each bar config has different monitor assigned to it):</p>
+<pre tabindex="0"><code>#!/usr/bin/bash
+
+#Terminate already running bar instances
+killall -q polybar
+
+#Wait until the process have been shut down
+while pgrep -u $UID -x polybar &gt;/dev/null; do
+    sleep i; done
+
+#launch bar
+polybar mainbar-i3 &amp;
+polybar secondbar-i3 &amp;
+
+echo &#34;bars launched...&#34;
+</code></pre><h4 id="who-should-try-or-use-i3">Who Should Try or Use i3?</h4>
+<p>i3 is a &lsquo;manual&rsquo; tiling window manager so it doesn&rsquo;t really have default layout which is different from dynamic &rsquo;tiling&rsquo; window manager, you need to specify where the window opened (whether the window opened on the right or below). If you want to use i3 you might want to consider that. So, who should try or use i3? everyone who wants a tiling window manager and  doesn&rsquo;t really mind to have manually control where the window appear, that&rsquo;s all.</p>
+<h3 id="qtile-window-manager">Qtile Window Manager</h3>
+<p>Qtile is one of dynamic window manager that use python as basis configuration, for more info you can check at <a href="https://qtile.org/" target="_blank" rel="noreferrer noopener">their website</a>
+.</p>
+<p>In my <a href="https://github.com/bruhtus/qtile_config" target="_blank" rel="noreferrer noopener">config repo</a>
+ i usually use MonadTall layout or Max layout. MonadTall layout basically split the first two window into half vertically and then for the third and so on gonna split the right window horisontally. Max layout basically have the application automatically take up the whole screen, that&rsquo;s all. For more build-in layouts you can check their documentation <a href="http://docs.qtile.org/en/latest/manual/ref/layouts.html?highlight=layouts" target="_blank" rel="noreferrer noopener">here</a>
+.</p>
+<p>I used qtile window manager first before switch to i3 because the configuration is in python but what i don&rsquo;t really like is how qtile treat multiple screen. When i want to switch to second monitor, it swapped the application on second monitor to first monitor (currently active monitor) and that&rsquo;s not what i want, i just want to switch to different screen and not have application on that screen swapped with application on my currently active screen. It was confusing and then i tried i3wm after that.</p>
+<p>The config in my repo is a basic config i&rsquo;ve done because i don&rsquo;t really like the workflow of qtile. Sorry about that.</p>
+<h4 id="who-should-try-or-use-qtile">Who Should Try or Use Qtile?</h4>
+<p>If you&rsquo;re fine with the workflow of qtile, wants to try or use dynamic window manager, like to have or doesn&rsquo;t really mind  preconfigured layout, and have experience with python then you might want to try qtile. Don&rsquo;t get me wrong, qtile is good as a window manager but unfortunately it doesn&rsquo;t meet my needs.</p>
+<h2 id="the-pros-and-cons-of-tiling-window-manager">The Pros and Cons of Tiling Window Manager</h2>
+<p>Pros:</p>
+<ul>
+<li>You don&rsquo;t have to worry about placement of your window because it&rsquo;s automatically split the workplace for you.</li>
+<li>You use mouse less.</li>
+<li>All your application is right there without any overlap window.</li>
+</ul>
+<blockquote>
+<p>Surprise, you haven&rsquo;t close me yet so i&rsquo;m gonna take up your computer resources.</p>
+</blockquote>
+<p>Cons:</p>
+<ul>
+<li>If you open too much application then the application size gonna become smaller. (that&rsquo;s why use virtual desktop or workspace 1 to 8).</li>
+<li>It&rsquo;s kind of hard to setting for first time. After that hard time, you can backup your previous config and use it again in other computer. Nice.</li>
+</ul>
+<h2 id="to-wrap-things-up">To Wrap Things Up</h2>
+<p>If you want to use keyboard-oriented navigation or you don&rsquo;t want to use mouse often, then you probably should try using tiling window manager. But, as i&rsquo;ve mentioned above, it took time to learn how to configure it (and i think it&rsquo;s worth your time).</p>
+<p>If you&rsquo;re still not sure, you can try it first in virtual machine (such as virtualbox or virt-manager) and then you could copy those config file to your new installation.</p>
+<h2 id="example-of-i3-window-manager">Example of i3 Window Manager</h2>
+<ul>
+<li>Moderate use:</li>
+</ul>
+<p><img src="example-of-i3wm.jpg" alt="Example of i3wm"></p>
+<ul>
+<li>Too much window in one workspace can be bad:</li>
+</ul>
+<p><img src="too-much-window.jpg" alt="Too much window"></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://wiki.archlinux.org/index.php/window_manager" target="_blank" rel="noreferrer noopener">Arch linux wiki (window manager)</a>
+.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+  </div>
+  <footer>
+  <p>
+  &copy; 2020-present <a style="text-decoration:none" href="https://bruhtus.github.io/resume" target="_blank" rel="noreferrer noopener">Robertus Chris</a>
+  <span>&middot;</span>
+  <a style="text-decoration:none" href="https://bruhtus.github.io/index.xml" target="_blank" rel="noreferrer noopener">RSS Feed</a>
+  <span>&middot;</span>
+  Based on <a style="text-decoration:none" href="https://github.com/koirand/pulp/" target="_blank" rel="noreferrer noopener">pulp</a> and <a style="text-decoration:none" href="https://git.io/hugopapermod" target="_blank" rel="noreferrer noopener">papermod</a> theme
+  </p>
+</footer>
+<button onclick="topFunction()" id="myBtn" title="Go to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d0d0d0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+<script>
+
+var mybutton = document.getElementById("myBtn");
+
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script><script src="https://bruhtus.github.io/js/custom.js"></script>
+
+
+
+  </body>
+</html>

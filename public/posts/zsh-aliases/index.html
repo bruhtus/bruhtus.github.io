@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>
+      
+          Zsh Aliases: Be Lazy!
+      
+  </title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Robertus Chris" />
+  <link rel="shortcut icon" type="image/x-icon" href="https://bruhtus.github.io/img/favicon.ico">
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://bruhtus.github.io/style.min.4f970aa135421035a71bdc9bbd750aa2cfbe0ddb080ab1ec5db4173f45494cad.css" integrity="sha256-T5cKoTVCEDWnG9ybvXUKos&#43;&#43;DdsICrHsXbQXP0VJTK0=">
+  
+  
+  
+  <link disabled rel="stylesheet" href="https://bruhtus.github.io/style-dark.min.0a647fb6c07e04b77b54fa0515d0a683d39ecdb251dba960fe1f966f7ff36fc2.css" media="(prefers-color-scheme: dark)" integrity="sha256-CmR/tsB&#43;BLd7VPoFFdCmg9OezbJR26lg/h&#43;Wb3/zb8I=">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@300&family=EB+Garamond&family=PT+Sans&family=Sura&family=Zilla+Slab&family=Inconsolata&family=Libre+Baskerville&display=swap" rel="stylesheet">
+
+  
+  
+  <link rel="stylesheet" href="https://bruhtus.github.io/css/custom.css">
+  
+
+  <meta property="og:title" content="Zsh Aliases: Be Lazy!" />
+<meta property="og:description" content="Have you ever thought that typing a long command is such a pain? well, here&rsquo;s one of the solution for you.
+ Skip-able Part  Just a background story why i write this in the first place.
+ At some random time back then i thought &ldquo;can i increase my speed while using the command line interface?&rdquo; and there&rsquo;s two option i could think of back then, the first one is to increase my typing speed and the second one is to make everything i type shorter." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bruhtus.github.io/posts/zsh-aliases/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-12-13T09:40:36+07:00" />
+<meta property="article:modified_time" content="2020-12-13T09:40:36+07:00" />
+
+<meta itemprop="name" content="Zsh Aliases: Be Lazy!">
+<meta itemprop="description" content="Have you ever thought that typing a long command is such a pain? well, here&rsquo;s one of the solution for you.
+ Skip-able Part  Just a background story why i write this in the first place.
+ At some random time back then i thought &ldquo;can i increase my speed while using the command line interface?&rdquo; and there&rsquo;s two option i could think of back then, the first one is to increase my typing speed and the second one is to make everything i type shorter."><meta itemprop="datePublished" content="2020-12-13T09:40:36+07:00" />
+<meta itemprop="dateModified" content="2020-12-13T09:40:36+07:00" />
+<meta itemprop="wordCount" content="1273">
+<meta itemprop="keywords" content="Linux,Shell," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:image" content="https://bruhtus.github.io//img/"/>
+<meta name="twitter:title" content="Zsh Aliases: Be Lazy!"/>
+<meta name="twitter:description" content="Have you ever thought that typing a long command is such a pain? well, here&rsquo;s one of the solution for you.
+ Skip-able Part  Just a background story why i write this in the first place.
+ At some random time back then i thought &ldquo;can i increase my speed while using the command line interface?&rdquo; and there&rsquo;s two option i could think of back then, the first one is to increase my typing speed and the second one is to make everything i type shorter."/>
+
+  <!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+  <!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <![endif]-->
+
+  
+  
+</head>
+
+  <body>
+    
+  <h1>Zsh Aliases: Be Lazy!</h1>
+  <header>
+  
+  
+  
+  <div class='cd'>
+      <h2><a style="text-decoration:none" class="cd" href="https://bruhtus.github.io//posts">cd ..</a> | <a style="text-decoration:none" class="cd" href="https://bruhtus.github.io/">cd</a></h2>
+  </div>
+</header>
+
+  
+  
+  
+  <p class="date">
+  December 13, 2020
+  <span>&middot;</span>
+  6 mins
+  <span>&middot;</span>
+  Robertus Chris
+  </p>
+  
+  
+  
+  <div id="tags">
+    <ul>
+      
+        
+        
+          <li><a style="text-decoration:none" href="https://bruhtus.github.io/tags/linux/">Linux</a></li>
+        
+      
+        
+        
+          <li><a style="text-decoration:none" href="https://bruhtus.github.io/tags/shell/">Shell</a></li>
+        
+      
+    </ul>
+  </div>
+  
+  
+  
+  <div class="toc">
+      <details >
+          <summary>
+              <div class="details">Table of Contents</div>
+          </summary>
+          <blockquote><ul><li>
+        <a style="text-decoration:none" href="#skip-able-part" aria-label="Skip-able Part">Skip-able Part</a></li><li>
+        <a style="text-decoration:none" href="#a-brief-intro-to-shell-alias" aria-label="A Brief Intro to Shell Alias">A Brief Intro to Shell Alias</a></li><li>
+        <a style="text-decoration:none" href="#type-of-zsh-aliases" aria-label="Type of Zsh Aliases">Type of Zsh Aliases</a><ul>
+            <li>
+        <a style="text-decoration:none" href="#simple-aliases" aria-label="Simple Aliases">Simple Aliases</a></li><li>
+        <a style="text-decoration:none" href="#suffix-aliases" aria-label="Suffix Aliases">Suffix Aliases</a></li><li>
+        <a style="text-decoration:none" href="#function-aliases" aria-label="Function Aliases">Function Aliases</a></li><li>
+        <a style="text-decoration:none" href="#global-aliases" aria-label="Global Aliases">Global Aliases</a></li></ul>
+    </li><li>
+        <a style="text-decoration:none" href="#tips-to-make-some-aliases" aria-label="Tips To make some Aliases">Tips To make some Aliases</a></li><li>
+        <a style="text-decoration:none" href="#conclusion" aria-label="Conclusion">Conclusion</a><ul>
+            <li>
+        <a style="text-decoration:none" href="#bonus-useful-alias" aria-label="Bonus Useful Alias">Bonus Useful Alias</a></li></ul>
+    </li><li>
+        <a style="text-decoration:none" href="#references" aria-label="References">References</a></li></ul>
+          </blockquote>
+      </details>
+  </div>
+  
+  
+  <div id="contentBody">
+    <blockquote>
+<p>Have you ever thought that typing a long command is such a pain? well, here&rsquo;s one of the solution for you.</p>
+</blockquote>
+<h2 id="skip-able-part">Skip-able Part</h2>
+<blockquote>
+<p>Just a background story why i write this in the first place.</p>
+</blockquote>
+<p>At some random time back then i thought &ldquo;can i increase my speed while using the command line interface?&rdquo; and there&rsquo;s two option i could think of back then, the first one is to increase my typing speed and the second one is to make everything i type shorter.</p>
+<p>Honestly i like to take it easy when typing, i&rsquo;m not really those rush type who are trying to type fast. I don&rsquo;t really care about the speed of my typing as long as i&rsquo;m comfortable typing at that speed. It&rsquo;s more like durability rather than speed and that&rsquo;s why i take it easy. So, increasing my typing speed is a no (at least for me).</p>
+<p>The second option is where piques my interest. From that point i did some research how i can shorten the command i use on internet (google, youtube, and even pornhub but unfortunately no one uploaded on pornhub yet (maybe i should be the one to upload on pornhub? hmm)).</p>
+<h2 id="a-brief-intro-to-shell-alias">A Brief Intro to Shell Alias</h2>
+<p>Basically shell alias is a key shortcut for the command that you want to use. Here&rsquo;s an example: <br>
+If you want to make a new directory, let&rsquo;s say the name of the directory is &ldquo;anu&rdquo;, then if the directory already exist, you want the command doesn&rsquo;t give an error message as a feedback. So here&rsquo;s the command: <code>mkdir -p anu</code>. Everytime you want to make a new directory without an error message if the directory already exist, you need to type <code>mkdir -p &lt;directory-name&gt;</code> and further more if there&rsquo;s a typo while you type it, uh that&rsquo;s such a pain.</p>
+<p>So, how would you make that simpler? well by using shell alias of course, and in this post i&rsquo;m gonna use Z shell or zsh so the syntax might be different from bash and fish shell. Please keep that in mind.</p>
+<h2 id="type-of-zsh-aliases">Type of Zsh Aliases</h2>
+<p>Before we start to how to make a shell aliases or in particular zsh aliases, we need to type the type of aliases that zsh has.</p>
+<p>There&rsquo;re four type of zsh aliases:</p>
+<ul>
+<li>Simple aliases</li>
+<li>Suffix aliases</li>
+<li>Function aliases</li>
+<li>Global aliases</li>
+</ul>
+<h3 id="simple-aliases">Simple Aliases</h3>
+<p>Like the name suggest, it&rsquo;s just a simple stuff (or you could say the default?). Here&rsquo;s an example of simple alias: <br>
+<code>alias md='mkdir -p'</code> <br>
+From above example, if you want to make a new directory without error message if the directory already exist then you only need to type <code>md</code> rather than <code>mkdir -p</code>. So, it&rsquo;s basically telling the terminal that <code>md</code> equivalent to command <code>mkdir -p</code> and execute <code>mkdir -p</code> command immediately.</p>
+<h3 id="suffix-aliases">Suffix Aliases</h3>
+<p>Suffix alias is for opening a specific extension in a specific program, it defined using <code>-s</code> flag. Here&rsquo;s an example of suffix alias: <br>
+<code>alias -s py=vim</code> <br>
+From above example, it&rsquo;s basically telling the terminal to open every extension <code>.py</code> in vim. So if you have a python file, let&rsquo;s say <code>anu.py</code>, then you just need to type <code>anu.py</code> and it&rsquo;s gonna translate to <code>vim anu.py</code>, opening <code>anu.py</code> file in vim.</p>
+<p>Personally i don&rsquo;t really use this alias because i like to type <code>vim</code> and even if you&rsquo;re too lazy to type <code>vim</code> you could use simple alias instead, like <code>alias v='vim'</code>.</p>
+<h3 id="function-aliases">Function Aliases</h3>
+<p>Function alias is when you want an input in your command. For example, you want to open a python file and then preview the output using <code>less</code> (you use try it yourself, i won&rsquo;t explain it). Here&rsquo;s the function alias for that scenario: <br></p>
+<pre tabindex="0"><code>function anu(){
+  python $@ | less} #the @ symbol is basically saying to take everything after the command as input.
+</code></pre><p>So everytime you run a python script with <code>anu</code> then it&rsquo;s output gonna be displayed in <code>less</code>. Let&rsquo;s say you want to open <code>itu.py</code>, then you use <code>anu itu.py</code> and you&rsquo;re gonna see the output inside of <code>less</code> rather than on terminal.</p>
+<p>Here&rsquo;s another example: <br></p>
+<pre tabindex="0"><code>function nganu(){
+  python -c $1} #the 1 number is saying to take the first argument as an input, you could add another input by using $2, $3, and so on.
+</code></pre><p>If you type <code>nganu 'import numpy as np'</code> in your terminal then you&rsquo;re gonna execute <code>python -c 'import numpy as np'</code>. So it&rsquo;s basically take the first argument which is <code>'import numpy as np'</code> as an input (please keep in mind that using <code>''</code> considered as one argument).</p>
+<h3 id="global-aliases">Global Aliases</h3>
+<p>Global alias is the command that you could place anywhere in the sequences. For example, you want to <code>grep</code> a specific file in your directory and you probably gonna type <code>ls | grep filename</code> (honestly i don&rsquo;t care what you type, you do you), if you type <code>ls | grep filename</code> every time you want to search for something than it&rsquo;s gonna become a hassle.</p>
+<p>So, what should you do? well, you could give a global alias to <code>grep</code> like this: <code>alias -g G='| grep'</code>. After that you could place <code>G</code> in the middle of your command, like this: <code>ls G filename | less</code> (it&rsquo;s gonna direct the grep result to <code>less</code>) or in the back of your command, like this: <code>ls G filename</code> (not using <code>less</code>). The <code>G</code> alias is only for <code>| grep</code> command so you still need to type the pattern to search or in this case a filename.</p>
+<h2 id="tips-to-make-some-aliases">Tips To make some Aliases</h2>
+<p>First, before you make aliases, please check if the command already exist or not using <code>which</code> command. For example: i want to name my alias <code>ls</code>, before i make alias <code>ls</code>, i&rsquo;m need to type <code>which ls</code> to show me if <code>ls</code> already assigned to other program or command. If after you type <code>which &lt;alias-you-want&gt;</code> and there&rsquo;s an error like <code>&lt;alias-you-want&gt; not found</code> then you&rsquo;re ready to go.</p>
+<p>Second, don&rsquo;t make to much specific simple aliases. For example, you want to make alias to install packages from your package manager, let&rsquo;s say debian package manager (apt), you need to type <code>sudo apt install &lt;package-name&gt;</code>, and you want to make it simple by using alias like <code>alias sai='sudo apt install'</code>. So everytime you want to install something you just need to type <code>sai &lt;package-name&gt;</code>, simple right? well, honestly it&rsquo;s not really a good practice because over time you&rsquo;re gonna forget what the command behind those alias. If you&rsquo;re really forgot what the command then there&rsquo;s <code>which</code> command as a livesaver, but do you really want that? Imagine you&rsquo;re using another machine without your aliases, then you forgot a simple command because you&rsquo;re using to much alias, isn&rsquo;t that kind of sad?</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Shell alias is like a double edge sword, use it carefully and don&rsquo;t be dependent on it. If possible, only make aliases if you&rsquo;re using it a lot and already know the basic or maybe make aliases that represent the executed command.</p>
+<h3 id="bonus-useful-alias">Bonus Useful Alias</h3>
+<pre tabindex="0"><code>function sd(){cd &#34;$(du ~ | awk &#39;{print $2}&#39; | fzf)&#34;}
+</code></pre><blockquote>
+<p>That&rsquo;s my first attempt using <code>fzf</code>, it basically change directory using <code>fzf</code> output as an input.</p>
+</blockquote>
+<pre tabindex="0"><code>function cs(){find ~ -type f | fzf | xargs -o -r vim}
+</code></pre><blockquote>
+<p>That&rsquo;s basically find every files in home directory using <code>find</code> and <code>fzf</code> and then open the file in vim directly (the parameter <code>-o</code> for not broke my terminal after the command (for some reason) and the <code>-r</code> for if there&rsquo;s no input then it&rsquo;s gonna back to terminal instead opening vim. For more detail please check on <code>man</code> page).</p>
+</blockquote>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://thorsten-hans.com/5-types-of-zsh-aliases" target="_blank" rel="noreferrer noopener">Types of zsh aliases</a>
+.</li>
+<li><a href="https://www.youtube.com/channel/UC2eYFnH61tmytImy1mTYvhA" target="_blank" rel="noreferrer noopener">Luke smith youtube channel</a>
+.</li>
+<li><a href="https://www.youtube.com/channel/UCVls1GmFKf6WlTraIb_IaJg" target="_blank" rel="noreferrer noopener">Distrotube youtube channel</a>
+.</li>
+</ul>
+
+  </div>
+  <footer>
+  <p>
+  &copy; 2020-present <a style="text-decoration:none" href="https://bruhtus.github.io/resume" target="_blank" rel="noreferrer noopener">Robertus Chris</a>
+  <span>&middot;</span>
+  <a style="text-decoration:none" href="https://bruhtus.github.io/index.xml" target="_blank" rel="noreferrer noopener">RSS Feed</a>
+  <span>&middot;</span>
+  Based on <a style="text-decoration:none" href="https://github.com/koirand/pulp/" target="_blank" rel="noreferrer noopener">pulp</a> and <a style="text-decoration:none" href="https://git.io/hugopapermod" target="_blank" rel="noreferrer noopener">papermod</a> theme
+  </p>
+</footer>
+<button onclick="topFunction()" id="myBtn" title="Go to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d0d0d0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+<script>
+
+var mybutton = document.getElementById("myBtn");
+
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script><script src="https://bruhtus.github.io/js/custom.js"></script>
+
+
+
+  </body>
+</html>
