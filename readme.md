@@ -12,6 +12,13 @@ We can clone this repo using this command:
 git clone --recurse-submodules git@github.com:bruhtus/bruhtus.github.io.git
 ```
 
+## Start Hugo Server
+
+We can start hugo server with this command:
+```sh
+hugo server -D
+```
+
 ## References
 
 - [Hugo github pages hosting and deployment tutorial](https://gohugo.io/hosting-and-deployment/hosting-on-github/#build-hugo-with-github-action).
