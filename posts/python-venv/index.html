@@ -25,7 +25,7 @@ Managing Python Virtual Environment
 <meta itemprop=description content="Have you ever want python virtual environment that decoupled from the project directory like conda but not actually conda (dejavu)? That&rsquo;s what this post is about, a simple way to manage a python virtual environment similar to how conda manage virtual environment without python version management.
  A Brief Intro to Python Virtual Environment To makes thing simpler, python virtual environment is a self-contained directory tree that contains a python installation for a particular version of python plus a number of additional packages."><meta itemprop=datePublished content="2021-03-02T05:36:43+07:00">
 <meta itemprop=dateModified content="2021-03-02T05:36:43+07:00">
-<meta itemprop=wordCount content="1361">
+<meta itemprop=wordCount content="1330">
 <meta itemprop=keywords content="Python,"><meta name=twitter:card content="summary">
 <meta name=twitter:image content="https://bruhtus.github.io//img/">
 <meta name=twitter:title content="Managing Python Virtual Environment">
@@ -79,31 +79,31 @@ Robertus Chris
 <p>With virtual environment you can minimize the conflicting requirements for each python script you made. For example, application A can have its own virtual environment with python package at version 1.0 installed and application B can have its own virtual environment with python package at version 2.0. If applicatin B need to upgrade the python package to version 3.0 then this will not affect application A&rsquo;s environment with python package at version 1.0.</p>
 <h2 id=lets-get-started>Let&rsquo;s Get Started</h2>
 <p>In this post we&rsquo;re only going to use the default python <code>venv</code> to create a virtual environment, the command is something like this:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>python -m venv &lt;directory-name&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>python -m venv &lt;directory-name&gt;
 </code></pre></div><p>In case you&rsquo;re wondering, &ldquo;if we only gonna use the default python command, then what&rsquo;s so special about it?&rdquo;. Let me tell you this, what special about the default python <code>venv</code> command is that we can specify the path of the directory and we can enhance that with a shell script. Please keep in mind that this is a minimalist approach to manage python virtual environment without installing other tools except python and git (we&rsquo;ll get to that later).</p>
 <h3 id=create-python-virtual-environment>Create Python Virtual Environment</h3>
 <p>Here&rsquo;s how we make a simple shell script to manage our python environment. First thing first, you should decide where you want all your virtual environment located. If you use miniconda, usually it&rsquo;s in <code>miniconda3/envs/</code> directory or something along those path, i forgot. I personally want to place my python virtual environment in <code>.cache/python-venv</code> directory because i rarely check my <code>.cache</code> directory and the virtual environment not gonna disturb other shell scripts i have.</p>
 <p>After that, we decide whether we give the name to virtual environment ourself or just use git repo root name. Like i told you before, we can use git repo to decide the name of our virtual environment. To make things simpler, what i mean git repo root is the directory where you use command <code>git init</code> to initialize git repo.</p>
 <p>For example, if you use <code>git init</code> command in <code>nganu</code> directory then you can have your virtual environment named <code>nganu</code> without you enter any name, but if you didn&rsquo;t want to use your git repo root name then you can also insert the name you want, similar to <code>conda create -n &lt;name-env></code>. With that brief intro, here&rsquo;s the code:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868"> 1</span><span style=color:#cd2828;font-weight:700>#!/bin/sh
-</span><span style="margin-right:.4em;padding:0 .4em;color:#686868"> 2</span><span style=color:#cd2828;font-weight:700></span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 3</span><span style=color:#40ffff>gitroot</span>=<span style=color:#ed9d13>&#34;</span><span style=color:#6ab825;font-weight:700>$(</span>git rev-parse --show-toplevel 2&gt; /dev/null<span style=color:#6ab825;font-weight:700>)</span><span style=color:#ed9d13>&#34;</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 4</span><span style=color:#40ffff>trim</span>=<span style=color:#ed9d13>&#34;</span><span style=color:#ed9d13>${</span><span style=color:#40ffff>gitroot</span>%<span style=color:#ed9d13>&#34;</span><span style=color:#ed9d13>${</span><span style=color:#40ffff>gitroot</span>##*[!/]<span style=color:#ed9d13>}</span><span style=color:#ed9d13>&#34;</span><span style=color:#ed9d13>}</span><span style=color:#ed9d13>&#34;</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 5</span><span style=color:#40ffff>projectdir</span>=<span style=color:#ed9d13>&#34;</span><span style=color:#ed9d13>${</span><span style=color:#40ffff>trim</span>##*/<span style=color:#ed9d13>}</span><span style=color:#ed9d13>&#34;</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 6</span><span style=color:#40ffff>venvdir</span>=<span style=color:#40ffff>$HOME</span>/.cache/python-venv
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 7</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 8</span>mkdir -pv <span style=color:#40ffff>$venvdir</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 9</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">10</span><span style=color:#6ab825;font-weight:700>if</span> [ <span style=color:#ed9d13>&#34;</span><span style=color:#40ffff>$1</span><span style=color:#ed9d13>&#34;</span> != <span style=color:#ed9d13>&#34;&#34;</span> ]; <span style=color:#6ab825;font-weight:700>then</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">11</span>	python -m venv <span style=color:#40ffff>$venvdir</span>/<span style=color:#40ffff>$1</span> 2&gt; /dev/null &amp;&amp; <span style=color:#24909d>echo</span> <span style=color:#ed9d13>&#34;Created </span><span style=color:#40ffff>$1</span><span style=color:#ed9d13> python venv&#34;</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">12</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">13</span><span style=color:#6ab825;font-weight:700>elif</span> [ <span style=color:#ed9d13>&#34;</span><span style=color:#40ffff>$projectdir</span><span style=color:#ed9d13>&#34;</span> != <span style=color:#ed9d13>&#34;&#34;</span> ]; <span style=color:#6ab825;font-weight:700>then</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">14</span>	python -m venv <span style=color:#40ffff>$venvdir</span>/<span style=color:#40ffff>$projectdir</span> 2&gt; /dev/null &amp;&amp; <span style=color:#24909d>echo</span> <span style=color:#ed9d13>&#34;Created </span><span style=color:#40ffff>$projectdir</span><span style=color:#ed9d13> python venv&#34;</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">15</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">16</span><span style=color:#6ab825;font-weight:700>else</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">17</span>	<span style=color:#24909d>echo</span> <span style=color:#ed9d13>&#34;Not git repo, please insert a name for virtual env (for example: pce nganu)&#34;</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">18</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">19</span><span style=color:#6ab825;font-weight:700>fi</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#cd2828;font-weight:700>#!/bin/sh
+</span><span style=color:#cd2828;font-weight:700></span>
+<span style=color:#40ffff>gitroot</span>=<span style=color:#ed9d13>&#34;</span><span style=color:#6ab825;font-weight:700>$(</span>git rev-parse --show-toplevel 2&gt; /dev/null<span style=color:#6ab825;font-weight:700>)</span><span style=color:#ed9d13>&#34;</span>
+<span style=color:#40ffff>trim</span>=<span style=color:#ed9d13>&#34;</span><span style=color:#ed9d13>${</span><span style=color:#40ffff>gitroot</span>%<span style=color:#ed9d13>&#34;</span><span style=color:#ed9d13>${</span><span style=color:#40ffff>gitroot</span>##*[!/]<span style=color:#ed9d13>}</span><span style=color:#ed9d13>&#34;</span><span style=color:#ed9d13>}</span><span style=color:#ed9d13>&#34;</span>
+<span style=color:#40ffff>projectdir</span>=<span style=color:#ed9d13>&#34;</span><span style=color:#ed9d13>${</span><span style=color:#40ffff>trim</span>##*/<span style=color:#ed9d13>}</span><span style=color:#ed9d13>&#34;</span>
+<span style=color:#40ffff>venvdir</span>=<span style=color:#40ffff>$HOME</span>/.cache/python-venv
+
+mkdir -pv <span style=color:#40ffff>$venvdir</span>
+
+<span style=color:#6ab825;font-weight:700>if</span> [ <span style=color:#ed9d13>&#34;</span><span style=color:#40ffff>$1</span><span style=color:#ed9d13>&#34;</span> != <span style=color:#ed9d13>&#34;&#34;</span> ]; <span style=color:#6ab825;font-weight:700>then</span>
+	python -m venv <span style=color:#40ffff>$venvdir</span>/<span style=color:#40ffff>$1</span> 2&gt; /dev/null &amp;&amp; <span style=color:#24909d>echo</span> <span style=color:#ed9d13>&#34;Created </span><span style=color:#40ffff>$1</span><span style=color:#ed9d13> python venv&#34;</span>
+
+<span style=color:#6ab825;font-weight:700>elif</span> [ <span style=color:#ed9d13>&#34;</span><span style=color:#40ffff>$projectdir</span><span style=color:#ed9d13>&#34;</span> != <span style=color:#ed9d13>&#34;&#34;</span> ]; <span style=color:#6ab825;font-weight:700>then</span>
+	python -m venv <span style=color:#40ffff>$venvdir</span>/<span style=color:#40ffff>$projectdir</span> 2&gt; /dev/null &amp;&amp; <span style=color:#24909d>echo</span> <span style=color:#ed9d13>&#34;Created </span><span style=color:#40ffff>$projectdir</span><span style=color:#ed9d13> python venv&#34;</span>
+
+<span style=color:#6ab825;font-weight:700>else</span>
+	<span style=color:#24909d>echo</span> <span style=color:#ed9d13>&#34;Not git repo, please insert a name for virtual env (for example: pce nganu)&#34;</span>
+
+<span style=color:#6ab825;font-weight:700>fi</span>
 </code></pre></div><p>We can get git repo root path using the command <code>git rev-parse --show-toplevel</code> but the problem is, those command give the full path to git repo but what i want is only the name of the git repo root so we need to trim the full path and only give the directory name we want. That&rsquo;s what <code>trim</code> and <code>projectdir</code> in those code did. So the name of the git repo dir is in <code>projectdir</code> variable.</p>
 <p>After that, <code>venvdir</code> is for the path you want to save all your virtual environment and the command <code>mkdir -pv $venvdir</code> is to make sure if the directory doesn&rsquo;t exist then it&rsquo;s gonna create the directory.</p>
 <p>The <code>"$1" != ""</code> to make sure if no argument is given then don&rsquo;t create any virtual environment and skip to next statement, but if there&rsquo;s an argument then make the virtual environment with the argument as the name.</p>
@@ -112,50 +112,50 @@ Robertus Chris
 <ol>
 <li>Without any argument, if it&rsquo;s git repo then it&rsquo;s create virtual env with git repo root name and if it&rsquo;s not git repo then it&rsquo;s not gonna create any virtual env.</li>
 </ol>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>pce
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>pce
 </code></pre></div><ol start=2>
 <li>With an argument, it&rsquo;s gonna create virtual env with the argument as virtual env name.</li>
 </ol>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>pce nganu <span style=color:#999;font-style:italic>#create nganu virtual env</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>pce nganu <span style=color:#999;font-style:italic>#create nganu virtual env</span>
 </code></pre></div><h3 id=remove-python-virtual-environment>Remove Python Virtual Environment</h3>
 <p>After creating virtual environment, we can also delete virtual environment using a shell script. The concept is similar to create virtual environment, the difference is if there&rsquo;s no virtual environment with the same name as user input or git repo root, then the script not gonna delete anything. With that in mind, here&rsquo;s the code:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868"> 1</span><span style=color:#cd2828;font-weight:700>#!/bin/sh
-</span><span style="margin-right:.4em;padding:0 .4em;color:#686868"> 2</span><span style=color:#cd2828;font-weight:700></span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 3</span><span style=color:#40ffff>gitroot</span>=<span style=color:#ed9d13>&#34;</span><span style=color:#6ab825;font-weight:700>$(</span>git rev-parse --show-toplevel 2&gt; /dev/null<span style=color:#6ab825;font-weight:700>)</span><span style=color:#ed9d13>&#34;</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 4</span><span style=color:#40ffff>trim</span>=<span style=color:#ed9d13>&#34;</span><span style=color:#ed9d13>${</span><span style=color:#40ffff>gitroot</span>%<span style=color:#ed9d13>&#34;</span><span style=color:#ed9d13>${</span><span style=color:#40ffff>gitroot</span>##*[!/]<span style=color:#ed9d13>}</span><span style=color:#ed9d13>&#34;</span><span style=color:#ed9d13>}</span><span style=color:#ed9d13>&#34;</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 5</span><span style=color:#40ffff>projectdir</span>=<span style=color:#ed9d13>&#34;</span><span style=color:#ed9d13>${</span><span style=color:#40ffff>trim</span>##*/<span style=color:#ed9d13>}</span><span style=color:#ed9d13>&#34;</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 6</span><span style=color:#40ffff>venvdir</span>=<span style=color:#40ffff>$HOME</span>/.cache/python-venv
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 7</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 8</span><span style=color:#6ab825;font-weight:700>if</span> [ <span style=color:#ed9d13>&#34;</span><span style=color:#40ffff>$1</span><span style=color:#ed9d13>&#34;</span> != <span style=color:#ed9d13>&#34;&#34;</span> ]; <span style=color:#6ab825;font-weight:700>then</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 9</span>	rm -r <span style=color:#40ffff>$venvdir</span>/<span style=color:#40ffff>$1</span> 2&gt; /dev/null || <span style=color:#ed9d13>\
-</span><span style="margin-right:.4em;padding:0 .4em;color:#686868">10</span><span style=color:#ed9d13></span>	<span style=color:#24909d>echo</span> <span style=color:#ed9d13>&#34;No python virtual environment match, nothing deleted&#34;</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">11</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">12</span><span style=color:#6ab825;font-weight:700>elif</span> [ <span style=color:#ed9d13>&#34;</span><span style=color:#40ffff>$projectdir</span><span style=color:#ed9d13>&#34;</span> != <span style=color:#ed9d13>&#34;&#34;</span> ]; <span style=color:#6ab825;font-weight:700>then</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">13</span>	rm -r <span style=color:#40ffff>$venvdir</span>/<span style=color:#40ffff>$projectdir</span> 2&gt; /dev/null || <span style=color:#ed9d13>\
-</span><span style="margin-right:.4em;padding:0 .4em;color:#686868">14</span><span style=color:#ed9d13></span>	<span style=color:#24909d>echo</span> <span style=color:#ed9d13>&#34;No python virtual environment match, nothing deleted&#34;</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">15</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">16</span><span style=color:#6ab825;font-weight:700>else</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">17</span>	<span style=color:#24909d>echo</span> <span style=color:#ed9d13>&#34;No python virtual environment match, nothing deleted&#34;</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">18</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">19</span><span style=color:#6ab825;font-weight:700>fi</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#cd2828;font-weight:700>#!/bin/sh
+</span><span style=color:#cd2828;font-weight:700></span>
+<span style=color:#40ffff>gitroot</span>=<span style=color:#ed9d13>&#34;</span><span style=color:#6ab825;font-weight:700>$(</span>git rev-parse --show-toplevel 2&gt; /dev/null<span style=color:#6ab825;font-weight:700>)</span><span style=color:#ed9d13>&#34;</span>
+<span style=color:#40ffff>trim</span>=<span style=color:#ed9d13>&#34;</span><span style=color:#ed9d13>${</span><span style=color:#40ffff>gitroot</span>%<span style=color:#ed9d13>&#34;</span><span style=color:#ed9d13>${</span><span style=color:#40ffff>gitroot</span>##*[!/]<span style=color:#ed9d13>}</span><span style=color:#ed9d13>&#34;</span><span style=color:#ed9d13>}</span><span style=color:#ed9d13>&#34;</span>
+<span style=color:#40ffff>projectdir</span>=<span style=color:#ed9d13>&#34;</span><span style=color:#ed9d13>${</span><span style=color:#40ffff>trim</span>##*/<span style=color:#ed9d13>}</span><span style=color:#ed9d13>&#34;</span>
+<span style=color:#40ffff>venvdir</span>=<span style=color:#40ffff>$HOME</span>/.cache/python-venv
+
+<span style=color:#6ab825;font-weight:700>if</span> [ <span style=color:#ed9d13>&#34;</span><span style=color:#40ffff>$1</span><span style=color:#ed9d13>&#34;</span> != <span style=color:#ed9d13>&#34;&#34;</span> ]; <span style=color:#6ab825;font-weight:700>then</span>
+	rm -r <span style=color:#40ffff>$venvdir</span>/<span style=color:#40ffff>$1</span> 2&gt; /dev/null || <span style=color:#ed9d13>\
+</span><span style=color:#ed9d13></span>	<span style=color:#24909d>echo</span> <span style=color:#ed9d13>&#34;No python virtual environment match, nothing deleted&#34;</span>
+
+<span style=color:#6ab825;font-weight:700>elif</span> [ <span style=color:#ed9d13>&#34;</span><span style=color:#40ffff>$projectdir</span><span style=color:#ed9d13>&#34;</span> != <span style=color:#ed9d13>&#34;&#34;</span> ]; <span style=color:#6ab825;font-weight:700>then</span>
+	rm -r <span style=color:#40ffff>$venvdir</span>/<span style=color:#40ffff>$projectdir</span> 2&gt; /dev/null || <span style=color:#ed9d13>\
+</span><span style=color:#ed9d13></span>	<span style=color:#24909d>echo</span> <span style=color:#ed9d13>&#34;No python virtual environment match, nothing deleted&#34;</span>
+
+<span style=color:#6ab825;font-weight:700>else</span>
+	<span style=color:#24909d>echo</span> <span style=color:#ed9d13>&#34;No python virtual environment match, nothing deleted&#34;</span>
+
+<span style=color:#6ab825;font-weight:700>fi</span>
 </code></pre></div><h3 id=activate-and-deactivate-python-virtual-environment>Activate and Deactivate Python Virtual Environment</h3>
 <p>For activating the virtual environment, i use shell function and then <code>source</code> that function with your shell config, like <code>.bashrc</code> or <code>.zshrc</code> or something else.</p>
 <p>I did that because i can&rsquo;t really <code>source</code> inside a shell script (it&rsquo;s just gonna create a subprocess and didn&rsquo;t effect the current shell, so you can&rsquo;t activate the virtual environment).</p>
 <p>The concept is similar to create and remove script above, if the virtual environment name not found then give message &ldquo;Python virtual environment not found, create new one&rdquo;, the difference is that we&rsquo;re sourcing the virtual environment to activate it. With that in mind, here&rsquo;s the code:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868"> 1</span><span style=color:#6ab825;font-weight:700>function</span> pae(){
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 2</span>	<span style=color:#24909d>local</span> <span style=color:#40ffff>gitroot</span>=<span style=color:#ed9d13>&#34;</span><span style=color:#6ab825;font-weight:700>$(</span>git rev-parse --show-toplevel 2&gt; /dev/null<span style=color:#6ab825;font-weight:700>)</span><span style=color:#ed9d13>&#34;</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 3</span>	<span style=color:#24909d>local</span> <span style=color:#40ffff>trim</span>=<span style=color:#ed9d13>&#34;</span><span style=color:#ed9d13>${</span><span style=color:#40ffff>gitroot</span>%<span style=color:#ed9d13>&#34;</span><span style=color:#ed9d13>${</span><span style=color:#40ffff>gitroot</span>##*[!/]<span style=color:#ed9d13>}</span><span style=color:#ed9d13>&#34;</span><span style=color:#ed9d13>}</span><span style=color:#ed9d13>&#34;</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 4</span>	<span style=color:#24909d>local</span> <span style=color:#40ffff>projectdir</span>=<span style=color:#ed9d13>&#34;</span><span style=color:#ed9d13>${</span><span style=color:#40ffff>trim</span>##*/<span style=color:#ed9d13>}</span><span style=color:#ed9d13>&#34;</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 5</span>	<span style=color:#24909d>local</span> <span style=color:#40ffff>venvdir</span>=<span style=color:#40ffff>$HOME</span>/.cache/python-venv
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 6</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 7</span>	<span style=color:#6ab825;font-weight:700>if</span> [ <span style=color:#ed9d13>&#34;</span><span style=color:#40ffff>$1</span><span style=color:#ed9d13>&#34;</span> != <span style=color:#ed9d13>&#34;&#34;</span> ]; <span style=color:#6ab825;font-weight:700>then</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 8</span>		. <span style=color:#40ffff>$venvdir</span>/<span style=color:#40ffff>$1</span>/bin/activate 2&gt; /dev/null || <span style=color:#24909d>echo</span> <span style=color:#ed9d13>&#34;Python virtual environment not found, create new one&#34;</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 9</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">10</span>	<span style=color:#6ab825;font-weight:700>else</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">11</span>		. <span style=color:#40ffff>$venvdir</span>/<span style=color:#40ffff>$projectdir</span>/bin/activate 2&gt; /dev/null || <span style=color:#24909d>echo</span> <span style=color:#ed9d13>&#34;Python virtual environment not found, create new one&#34;</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">12</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">13</span>	<span style=color:#6ab825;font-weight:700>fi</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">14</span>}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#6ab825;font-weight:700>function</span> pae(){
+	<span style=color:#24909d>local</span> <span style=color:#40ffff>gitroot</span>=<span style=color:#ed9d13>&#34;</span><span style=color:#6ab825;font-weight:700>$(</span>git rev-parse --show-toplevel 2&gt; /dev/null<span style=color:#6ab825;font-weight:700>)</span><span style=color:#ed9d13>&#34;</span>
+	<span style=color:#24909d>local</span> <span style=color:#40ffff>trim</span>=<span style=color:#ed9d13>&#34;</span><span style=color:#ed9d13>${</span><span style=color:#40ffff>gitroot</span>%<span style=color:#ed9d13>&#34;</span><span style=color:#ed9d13>${</span><span style=color:#40ffff>gitroot</span>##*[!/]<span style=color:#ed9d13>}</span><span style=color:#ed9d13>&#34;</span><span style=color:#ed9d13>}</span><span style=color:#ed9d13>&#34;</span>
+	<span style=color:#24909d>local</span> <span style=color:#40ffff>projectdir</span>=<span style=color:#ed9d13>&#34;</span><span style=color:#ed9d13>${</span><span style=color:#40ffff>trim</span>##*/<span style=color:#ed9d13>}</span><span style=color:#ed9d13>&#34;</span>
+	<span style=color:#24909d>local</span> <span style=color:#40ffff>venvdir</span>=<span style=color:#40ffff>$HOME</span>/.cache/python-venv
+
+	<span style=color:#6ab825;font-weight:700>if</span> [ <span style=color:#ed9d13>&#34;</span><span style=color:#40ffff>$1</span><span style=color:#ed9d13>&#34;</span> != <span style=color:#ed9d13>&#34;&#34;</span> ]; <span style=color:#6ab825;font-weight:700>then</span>
+		. <span style=color:#40ffff>$venvdir</span>/<span style=color:#40ffff>$1</span>/bin/activate 2&gt; /dev/null || <span style=color:#24909d>echo</span> <span style=color:#ed9d13>&#34;Python virtual environment not found, create new one&#34;</span>
+
+	<span style=color:#6ab825;font-weight:700>else</span>
+		. <span style=color:#40ffff>$venvdir</span>/<span style=color:#40ffff>$projectdir</span>/bin/activate 2&gt; /dev/null || <span style=color:#24909d>echo</span> <span style=color:#ed9d13>&#34;Python virtual environment not found, create new one&#34;</span>
+
+	<span style=color:#6ab825;font-weight:700>fi</span>
+}
 </code></pre></div><p>To deactivate the virtual environment, you just need to use <code>deactivate</code> command. And to list all the virtual environment you made, you can use <code>ls</code> command. For example, <code>ls ~/.cache/python-venv</code> (or the path you choose to hold all your virtual environment).</p>
 <h2 id=the-conclusion>The Conclusion</h2>
 <p>What i mean &ldquo;simple&rdquo; earlier is not &ldquo;easier to setup&rdquo;, what i mean is you only need the tools that you probably already have and make a workflow with only that tools to be similar to how conda handles virtual environment.</p>

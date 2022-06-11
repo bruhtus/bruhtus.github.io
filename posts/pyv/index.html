@@ -95,22 +95,22 @@ Robertus Chris
 <h3 id=create-virtual-environment>Create Virtual Environment</h3>
 <p>Pyv create python virtual environment using python default command <code>python -m venv</code> to <code>$PYV_DIR/{given-name}</code>. The <code>given-name</code> can be from git repo name or user input.</p>
 <p>If the user give pyv command an argument then pyv gonna create python virtual environment with that argument name. For example:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>pce something-big
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>pce something-big
 </code></pre></div><p>With the command above, pyv gonna create python virtual environment with the name <code>something-big</code>. <code>pce</code> is pyv command to to create python virtual environment (why would i made something with long command?).</p>
 <p>Pyv also can create python virtual environment with git repo name. If you give no argument and just enter <code>pce</code> in a working git repo then pyv gonna create python virtual environment using the git repo name.</p>
 <p>&ldquo;How does pyv do that?&rdquo; you might ask, well, pyv use the command <code>git rev-parse --show-toplevel</code> to get the git root directory name (with a lot of trimming of course). For those who don&rsquo;t know what git root directory, to make simple, git root directory is the directory where you first use <code>git init</code> command or the directory that have <code>.git</code> directory.</p>
 <p>Please do remember tho, you can only use <code>pce</code> without any argument in git working directory and not in git bare directory. What i mean by git working directory is the normal git repo that has <code>.git</code> directory in it.</p>
 <p>Here&rsquo;s an example of <code>pce</code> without an argument (in case you&rsquo;re still confused):</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>pce
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>pce
 </code></pre></div><p>Yup, only that. Simple right?</p>
 <h3 id=remove-virtual-environment>Remove Virtual Environment</h3>
 <p>After creating virtual environment, how do you delete the virtual environment?</p>
 <p>You can remove the virtual environment using <code>pre</code> command with or without argument similar to creating virtual environment.</p>
 <p>For example, we already create <code>something-big</code> python virtual environment. And now we want to remove those virtual environment. All we need to do is something like this:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>pre something-big
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>pre something-big
 </code></pre></div><p>Those command gonna invoke the <code>rm</code> command to remove <code>something-big</code> virtual environment directory in <code>$PYV_DIR</code>. So the <code>pre</code> command depends on how you setup your <code>rm</code> command in your shell.</p>
 <p>If you create virtual environment using the git repo name, and you want to remove those environment, you can use <code>pre</code> without an argument inside those git repo directory (assumming you haven&rsquo;t changed the directory name). How to use the command is the same as when you create the virtual environment, just type</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>pre
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>pre
 </code></pre></div><p>and you&rsquo;re done.</p>
 <h3 id=activate-virtual-environment>Activate Virtual Environment</h3>
 <p>Ok, now you know how to create and remove the virtual environment using pyv. Now, how do you activate those virtual environment?</p>
@@ -122,9 +122,9 @@ Robertus Chris
 </blockquote>
 <p>So, the pyv command to activate the virtual environment is <code>pae</code>. Similar to previous command, you can use <code>pae</code> with or without an argument. <code>pae</code> command basically to <code>source</code> activate file in virtual environment directory that located in <code>$PYV_DIR</code>.</p>
 <p>Like previous command, let&rsquo;s say we have <code>something-big</code> virtual env and we want to activate those command. All we need to do is</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>pae something-big
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>pae something-big
 </code></pre></div><p>or if you create a virtual environment using git repo name (assuming you didn&rsquo;t change the git repo directory name), then you can just use</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>pae
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>pae
 </code></pre></div><p>without any argument.</p>
 <h3 id=deactivate-virtual-environment>Deactivate Virtual Environment</h3>
 <p>After you know how to create, remove, and activate virtual environment with pyv. Now it&rsquo;s time for you to know how to deactivate virtual environment.</p>

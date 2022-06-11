@@ -117,30 +117,30 @@ and make bootable usb drive. After that check if your machine using legacy BIOS 
 <p>After booting into live environment, there&rsquo;re a few things you need to do. Below is the things you need to do inside live environment.</p>
 <h4 id=set-keyboard-layout>Set Keyboard Layout</h4>
 <p>The default keyboard layout is US so if you want to use US keyboard layout then you can skip this step. You can check available layouts using this command</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>ls /usr/share/kbd/keymaps/**/*.map.gz
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>ls /usr/share/kbd/keymaps/**/*.map.gz
 </code></pre></div><p>and to modify the layout you can use <code>loadkeys</code>. For example, to set a german keyboard layout you can do</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>loadkeys de-latin1
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>loadkeys de-latin1
 </code></pre></div><h4 id=verify-the-boot-mode>Verify The Boot Mode</h4>
 <p>If you already know which one your machine use (legacy BIOS or UEFI), then boot into the right boot mode. You can verify the boot mode by using the same command</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>ls /sys/firmware/efi/efivars
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>ls /sys/firmware/efi/efivars
 </code></pre></div><h4 id=connect-to-the-internet>Connect To The Internet</h4>
 <p>At the time of writing this guide, the installation ISO using <code>IWD</code> (Internet Wireless Daemon) to connect to wifi. You can check if you have internet connection or not by doing this</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>ping google.com <span style=color:#999;font-style:italic>#or any website you like such as pornhub.com</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>ping google.com <span style=color:#999;font-style:italic>#or any website you like such as pornhub.com</span>
 </code></pre></div><p>If there&rsquo;s no internet connection, you can do:</p>
 <ul>
 <li>If you&rsquo;re using ethernet, plug in the cable.</li>
 <li>If you&rsquo;re using wifi, you can use <code>iwctl</code> (IWD command).</li>
 </ul>
 <p>Here&rsquo;s the basic command after you use <code>iwctl</code> (don&rsquo;t forget to press enter to execute the command):</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>device list <span style=color:#999;font-style:italic>#to check the device name</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">2</span>station &lt;device-name&gt; scan <span style=color:#999;font-style:italic>#to scan the wifi</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">3</span>station &lt;device-name&gt; get-networks <span style=color:#999;font-style:italic>#to check the available networks</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">4</span>station &lt;device-name&gt; connect &lt;wifi-name&gt; <span style=color:#999;font-style:italic>#and then enter the password if there&#39;s any</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">5</span><span style=color:#24909d>exit</span> <span style=color:#999;font-style:italic>#exit iwctl</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>device list <span style=color:#999;font-style:italic>#to check the device name</span>
+station &lt;device-name&gt; scan <span style=color:#999;font-style:italic>#to scan the wifi</span>
+station &lt;device-name&gt; get-networks <span style=color:#999;font-style:italic>#to check the available networks</span>
+station &lt;device-name&gt; connect &lt;wifi-name&gt; <span style=color:#999;font-style:italic>#and then enter the password if there&#39;s any</span>
+<span style=color:#24909d>exit</span> <span style=color:#999;font-style:italic>#exit iwctl</span>
 </code></pre></div><p>After that check again using the <code>ping</code> command.</p>
 <h4 id=update-the-system-clock>Update The System Clock</h4>
 <p>After there&rsquo;s an internet connection, you can update the system clock by using</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>timedatectcl set-ntp <span style=color:#24909d>true</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>timedatectcl set-ntp <span style=color:#24909d>true</span>
 </code></pre></div><p>to check the service status, use <code>timedatectl status</code></p>
 <h4 id=partition-the-disks>Partition The Disks</h4>
 <blockquote>
@@ -158,30 +158,30 @@ and make bootable usb drive. After that check if your machine using legacy BIOS 
 <p>After you&rsquo;re sure about your disk partitions, then write the changes and then quit.</p>
 <h4 id=format-the-partitions>Format The Partitions</h4>
 <p>The next step is format the disk partition. For bootloader partition, format it to <code>FAT32</code> by using this command</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>mkfs.fat -F32 /dev/&lt;efi-system-partition&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>mkfs.fat -F32 /dev/&lt;efi-system-partition&gt;
 </code></pre></div><p>For root directory, format it to <code>ext4</code> by using this command</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>mkfs.ext4 /dev/&lt;root-partition&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>mkfs.ext4 /dev/&lt;root-partition&gt;
 </code></pre></div><p>For example:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>mkfs.fat -F32 /dev/sda1
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">2</span>mkfs.ext4 /dev/sda2
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>mkfs.fat -F32 /dev/sda1
+mkfs.ext4 /dev/sda2
 </code></pre></div><h4 id=mount-the-filesystems>Mount The Filesystems</h4>
 <blockquote>
 <p>More info please refer to <a href=https://wiki.archlinux.org/index.php/EFI_system_partition#Mount_the_partition target=_blank rel="noreferrer noopener">EFI System Partition Arch Wiki</a>
 .
 The next step is mount the partition that we&rsquo;ve made. First, mount root partition to <code>/mnt</code> using this command</p>
 </blockquote>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>mount /dev/&lt;root-partition&gt; /mnt
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>mount /dev/&lt;root-partition&gt; /mnt
 </code></pre></div><p>after that create two directories, <code>/mnt/boot</code> and <code>/mnt/boot/efi</code> (basically create efi directory inside boot directory which both of them doesn&rsquo;t exist so you need to create one by one). You can create both directories using this command</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>mkdir -p /mnt/boot
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">2</span>mkdir -p /mnt/boot/efi
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>mkdir -p /mnt/boot
+mkdir -p /mnt/boot/efi
 </code></pre></div><p>after that mount your bootloader to <code>/mnt/boot/efi</code> using this command</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>mount /dev/&lt;efi-system-partition&gt; /mnt/boot/efi
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>mount /dev/&lt;efi-system-partition&gt; /mnt/boot/efi
 </code></pre></div><p>For example:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>mount /dev/sda2 /mnt
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">2</span>mount /dev/sda1 /mnt/boot/efi
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>mount /dev/sda2 /mnt
+mount /dev/sda1 /mnt/boot/efi
 </code></pre></div><h4 id=install-essential-packages>Install Essential Packages</h4>
 <p>You can install essential package by using this command</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>pacstrap /mnt base base-devel linux linux-firmware vim
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>pacstrap /mnt base base-devel linux linux-firmware vim
 </code></pre></div><ul>
 <li><code>/mnt</code> is where you mount your root partition.</li>
 <li><code>base</code> is base packages.</li>
@@ -195,100 +195,100 @@ The next step is mount the partition that we&rsquo;ve made. First, mount root pa
 <p>Fstab is for telling the kernel what to load in the booting process.</p>
 </blockquote>
 <p>To generate fstab use this command</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
 </code></pre></div><p><code>-U</code> means using unique ID instead of human readable ID such as <code>sda</code>. You can check the content of fstab by opening <code>/mnt/etc/fstab</code> file using your text editor (in my case is vim, so i use <code>vim /mnt/etc/fstab</code>).</p>
 <h4 id=change-root-into-new-system>Change Root Into New System</h4>
 <p>To take a look inside our new system, we can change root to our new system by using this command</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>arch-chroot /mnt
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>arch-chroot /mnt
 </code></pre></div><h3 id=configure-new-system>Configure New System</h3>
 <p>After setup our new system in live environment, now we need to configure our system inside the system (not in live environment anymore) after change root into our new system. There&rsquo;re a few things you need to configure, below is the things you need configure inside new system.</p>
 <h4 id=set-the-time-zone>Set The Time Zone</h4>
 <p>To set the time zone, we can use this command</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
 </code></pre></div><p>For example:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>ln -sf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>ln -sf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 </code></pre></div><p>You can check the region or the city by doing this</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>ls /usr/share/zoneinfo/Region
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>ls /usr/share/zoneinfo/Region
 </code></pre></div><p>and</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>ls /usr/share/zoneinfo/Region/City
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>ls /usr/share/zoneinfo/Region/City
 </code></pre></div><p>or just double <code>&lt;tab></code> while typing <code>ln -sf /usr/share/zoneinfo/</code></p>
 <p>After that, generate the clock using <code>hwclock</code> with this command</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>hwclock --systohc
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>hwclock --systohc
 </code></pre></div><h4 id=select-your-os-language>Select Your OS Language</h4>
 <p>First, you need to edit <code>etc/locale.gen</code> using your favorite text editor (which is not nano for me) and uncomment the language you want.</p>
 <p>For example, you want to use US English as your OS language then what you need to uncomment is <code>en_US.UTF-8 UTF-8</code> and <code>en_US ISO-8859-1</code>.</p>
 <p>After that, use this command to generate locales</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>locale-gen
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>locale-gen
 </code></pre></div><p>and then create the <code>locale.conf</code> file. For example:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>vim /etc/locale.conf <span style=color:#999;font-style:italic>#you can replace vim with your favorite text editor</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>vim /etc/locale.conf <span style=color:#999;font-style:italic>#you can replace vim with your favorite text editor</span>
 </code></pre></div><p>the content of <code>locale.conf</code> is</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span><span style=color:#40ffff>LANG</span>=en_US.UTF-8 <span style=color:#999;font-style:italic>#if you choose US English</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#40ffff>LANG</span>=en_US.UTF-8 <span style=color:#999;font-style:italic>#if you choose US English</span>
 </code></pre></div><p>If you set the keyboard layout (at the beginning of installation), then you make the changes persistent in <code>vconsole.conf</code>. For example:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>vim /etc/vconsole.conf
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>vim /etc/vconsole.conf
 </code></pre></div><p>with the content</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span><span style=color:#40ffff>KEYMAP</span>=de-latin1
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#40ffff>KEYMAP</span>=de-latin1
 </code></pre></div><h4 id=network-configuration>Network Configuration</h4>
 <p>For the network configuration, create the <code>hostname</code> file with the name you want (it&rsquo;s not the user name, it&rsquo;s more like your machine name). For example:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>vim /etc/hostname
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>vim /etc/hostname
 </code></pre></div><p>with the content</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>bruhtus
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>bruhtus
 </code></pre></div><p>After that, add this content to <code>/etc/hosts</code></p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>127.0.0.1	localhost
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">2</span>::1			localhost
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">3</span>127.0.1.1	&lt;yourhostname&gt;.localdomain	&lt;yourhostname&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>127.0.0.1	localhost
+::1			localhost
+127.0.1.1	&lt;yourhostname&gt;.localdomain	&lt;yourhostname&gt;
 </code></pre></div><p>For example: <br>
 The previous step i define my hostname as bruhtus, so what i need to do is add this content to <code>/etc/hosts</code></p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>127.0.0.1	localhost
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">2</span>::1			localhost
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">3</span>127.0.1.1	bruhtus.localdomain	bruhtus
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>127.0.0.1	localhost
+::1			localhost
+127.0.1.1	bruhtus.localdomain	bruhtus
 </code></pre></div><blockquote>
 <p>If the system has a permanent IP address, it should be used instead of 127.0.1.1.</p>
 </blockquote>
 <p>After that, install network manager using this command <code>pacman -S networkmanager wpa_supplicant</code> and then activate on startup using <code>systemctl enable NetworkManager</code> and <code>systemctl enable wpa_supplicant</code>.</p>
 <h4 id=set-the-root-password>Set The Root Password</h4>
 <p>To set the root (or admin) password, use this command</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>passwd
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>passwd
 </code></pre></div><p>and then enter your password.</p>
 <h4 id=add-new-user>Add New User</h4>
 <blockquote>
 <p>The default user is only root (or admin).</p>
 </blockquote>
 <p>To create new user, use this command</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>useradd -m &lt;username&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>useradd -m &lt;username&gt;
 </code></pre></div><p>after that create the password for that username by using this command</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>passwd &lt;username&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>passwd &lt;username&gt;
 </code></pre></div><p>and then enter your password.</p>
 <p>For example:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>useradd -m bruhtus <span style=color:#999;font-style:italic>#i like my hostname and my username to be the same</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">2</span>passwd bruhtus
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>useradd -m bruhtus <span style=color:#999;font-style:italic>#i like my hostname and my username to be the same</span>
+passwd bruhtus
 </code></pre></div><p>and then enter the password.</p>
 <h4 id=add-new-user-to-group>Add New User To Group</h4>
 <blockquote>
 <p>It&rsquo;s so that the new user can have root access using sude</p>
 </blockquote>
 <p>To add new user to group, we can use this command</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>usermod -aG wheel,audio,video,optical,storage &lt;username&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>usermod -aG wheel,audio,video,optical,storage &lt;username&gt;
 </code></pre></div><h4 id=edit-sudoers-file>Edit Sudoers File</h4>
 <blockquote>
 <p>Add the wheel group to have root access with sudo</p>
 </blockquote>
 <p>Use <code>visudo</code> and look for <code>wheel</code> and then uncomment those line.</p>
 <p>The line would be like this</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>%wheel <span style=color:#40ffff>ALL</span>=(ALL) ALL
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>%wheel <span style=color:#40ffff>ALL</span>=(ALL) ALL
 </code></pre></div><p>By default, visudo using <code>vi</code> to edit the file. If you didn&rsquo;t want to use vi then you can do</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span><span style=color:#40ffff>EDITOR</span>=vim visudo
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#40ffff>EDITOR</span>=vim visudo
 </code></pre></div><h4 id=install-bootloader>Install Bootloader</h4>
 <blockquote>
 <p>In my case, i use grub as the bootloader. So, i&rsquo;m just gonna cover grub installation in this section.</p>
 </blockquote>
 <p>First, install the bootloader and efibootmgr using this command</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>pacman -S grub efibootmgr
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>pacman -S grub efibootmgr
 </code></pre></div><p>After that, use this command to install grub on system partition</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>grub-install /dev/&lt;disk-partition&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>grub-install /dev/&lt;disk-partition&gt;
 </code></pre></div><p>For example:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>grub-install /dev/sda <span style=color:#999;font-style:italic>#without any number at the end</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>grub-install /dev/sda <span style=color:#999;font-style:italic>#without any number at the end</span>
 </code></pre></div><p>If there&rsquo;s no error, then generate grub config using this command</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>grub-mkconfig -o /boot/grub/grub.cfg
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>grub-mkconfig -o /boot/grub/grub.cfg
 </code></pre></div><blockquote>
 <p>If there&rsquo;s an error, please check <a href=https://wiki.archlinux.org/index.php/GRUB#Installation_2 target=_blank rel="noreferrer noopener">here</a>
 or use search engine. I can&rsquo;t cover every single error.</p>
@@ -301,7 +301,7 @@ or use search engine. I can&rsquo;t cover every single error.</p>
 <p>After reboot, login to your user you just created (in my case, it&rsquo;s <code>bruhtus</code>). After that check the internet connection by using <code>ping</code> command (for example: <code>ping google.com</code>). If there&rsquo;s an error then connect to your network using <code>nmtui</code> command. After that check the connection using <code>ping</code> command again. If there&rsquo;s still an error, please check arch wiki or use your search engine.</p>
 <h3 id=install-and-configure-graphical-environment>Install And Configure Graphical Environment</h3>
 <p>Install a few package using this command</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>sudo pacman -S xorg xorg-init alacritty lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings i3-gaps
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>sudo pacman -S xorg xorg-init alacritty lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings i3-gaps
 </code></pre></div><ul>
 <li><code>xorg</code> and <code>xorg-init</code> is for graphical interface.</li>
 <li><code>alacritty</code> is the terminal emulator i choose (you can replace that with your favorite terminal emulator).</li>
@@ -312,7 +312,7 @@ or use search engine. I can&rsquo;t cover every single error.</p>
 <p>Please keep in mind that i use standalone window manager so i need to install xorg and xorg-init manually, but if you choose desktop environment then i think you don&rsquo;t need to install those two.</p>
 </blockquote>
 <p>After everything installed, copy the <code>xinitrc</code> using this command</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>cp /etc/X11/xinit/xinitrc ~/.xinitrc
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>cp /etc/X11/xinit/xinitrc ~/.xinitrc
 </code></pre></div><p>What that command do is copy <code>xinitrc</code> to your home directory. What <code>.xinitrc</code> do is start the window manager or desktop environment you choose (we&rsquo;ll get to that later in this post).</p>
 <p>The next step is to edit <code>.xinitrc</code>, you can do the following step:</p>
 <ul>
@@ -324,7 +324,7 @@ or use search engine. I can&rsquo;t cover every single error.</p>
 </blockquote>
 <p>Please keep in mind that i use i3 window manager so i use <code>exec i3</code>. To makes thing simpler, <code>exec</code> is where you start your window manager or desktop environment so the usual syntax would be like this <code>exec &lt;window-manager></code>.</p>
 <p>After that, enable login manager by using this command:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>sudo sysmtemctl <span style=color:#24909d>enable</span> lightdm
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>sudo sysmtemctl <span style=color:#24909d>enable</span> lightdm
 </code></pre></div><p>The last step is to check if there&rsquo;s an error or not by using this command <code>startx</code> to start xorg. If everything fine (you can access your window manager or desktop environment) then reboot.</p>
 <blockquote>
 <p>For intel user, if there&rsquo;s an error while using <code>startx</code>, you can try installing <code>xf86-video-intel</code> first and see if that fix the error or not. If that doesn&rsquo;t fix your error then you know what to do.</p>

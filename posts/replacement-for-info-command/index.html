@@ -16,24 +16,24 @@ Replacement For Info Command
 <link rel=stylesheet href=https://bruhtus.github.io/css/custom.css>
 <meta property="og:title" content="Replacement For Info Command">
 <meta property="og:description" content="A Brief Intro Sometime ago, someone posted a tweet about a replacement for rm -rf $HOME/directory that is mv $HOME/directory /dev/null. When i took a look of it, using the ls -l /dev/null command, i found something like this:
-1crw-rw-rw- 1 root root 1, 3 Jun 11 04:21 /dev/null Now, what is c in the crw below
-1crw-rw-rw- 1 root root 1, 3 Jun 11 04:21 /dev/null After going around on internet, i found an answer in stackexchange1.">
+crw-rw-rw- 1 root root 1, 3 Jun 11 04:21 /dev/null Now, what is c in the crw below
+crw-rw-rw- 1 root root 1, 3 Jun 11 04:21 /dev/null After going around on internet, i found an answer in stackexchange1.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bruhtus.github.io/posts/replacement-for-info-command/"><meta property="article:section" content="posts">
 <meta property="article:published_time" content="2022-06-11T06:38:52+07:00">
 <meta property="article:modified_time" content="2022-06-11T06:38:52+07:00">
 <meta itemprop=name content="Replacement For Info Command">
 <meta itemprop=description content="A Brief Intro Sometime ago, someone posted a tweet about a replacement for rm -rf $HOME/directory that is mv $HOME/directory /dev/null. When i took a look of it, using the ls -l /dev/null command, i found something like this:
-1crw-rw-rw- 1 root root 1, 3 Jun 11 04:21 /dev/null Now, what is c in the crw below
-1crw-rw-rw- 1 root root 1, 3 Jun 11 04:21 /dev/null After going around on internet, i found an answer in stackexchange1."><meta itemprop=datePublished content="2022-06-11T06:38:52+07:00">
+crw-rw-rw- 1 root root 1, 3 Jun 11 04:21 /dev/null Now, what is c in the crw below
+crw-rw-rw- 1 root root 1, 3 Jun 11 04:21 /dev/null After going around on internet, i found an answer in stackexchange1."><meta itemprop=datePublished content="2022-06-11T06:38:52+07:00">
 <meta itemprop=dateModified content="2022-06-11T06:38:52+07:00">
 <meta itemprop=wordCount content="323">
 <meta itemprop=keywords content="Notes,Linux,"><meta name=twitter:card content="summary">
 <meta name=twitter:image content="https://bruhtus.github.io//img/">
 <meta name=twitter:title content="Replacement For Info Command">
 <meta name=twitter:description content="A Brief Intro Sometime ago, someone posted a tweet about a replacement for rm -rf $HOME/directory that is mv $HOME/directory /dev/null. When i took a look of it, using the ls -l /dev/null command, i found something like this:
-1crw-rw-rw- 1 root root 1, 3 Jun 11 04:21 /dev/null Now, what is c in the crw below
-1crw-rw-rw- 1 root root 1, 3 Jun 11 04:21 /dev/null After going around on internet, i found an answer in stackexchange1."><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+crw-rw-rw- 1 root root 1, 3 Jun 11 04:21 /dev/null Now, what is c in the crw below
+crw-rw-rw- 1 root root 1, 3 Jun 11 04:21 /dev/null After going around on internet, i found an answer in stackexchange1."><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
 </head>
 <body>
@@ -73,9 +73,9 @@ Robertus Chris
 <p>Sometime ago, someone posted a tweet about a replacement for
 <code>rm -rf $HOME/directory</code> that is <code>mv $HOME/directory /dev/null</code>. When i took
 a look of it, using the <code>ls -l /dev/null</code> command, i found something like this:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>crw-rw-rw- <span style=color:#3677a9>1</span> root root 1, <span style=color:#3677a9>3</span> Jun <span style=color:#3677a9>11</span> 04:21 /dev/null
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>crw-rw-rw- <span style=color:#3677a9>1</span> root root 1, <span style=color:#3677a9>3</span> Jun <span style=color:#3677a9>11</span> 04:21 /dev/null
 </code></pre></div><p>Now, what is <code>c</code> in the <code>crw</code> below</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>crw-rw-rw- <span style=color:#3677a9>1</span> root root 1, <span style=color:#3677a9>3</span> Jun <span style=color:#3677a9>11</span> 04:21 /dev/null
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>crw-rw-rw- <span style=color:#3677a9>1</span> root root 1, <span style=color:#3677a9>3</span> Jun <span style=color:#3677a9>11</span> 04:21 /dev/null
 </code></pre></div><p>After going around on internet, i found an answer in stackexchange<sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup>. Which
 explain that <code>c</code> stands for <code>character special file</code>. Please keep in mind that
 everything in unix-like system is a file, even a directory (or some people

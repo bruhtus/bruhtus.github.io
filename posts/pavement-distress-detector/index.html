@@ -23,7 +23,7 @@ Pavement Distress Detector Using Single Shot Detector (SSD)
 <meta itemprop=name content="Pavement Distress Detector Using Single Shot Detector (SSD)">
 <meta itemprop=description content="Detect pavement distress using single shot detector (SSD) model."><meta itemprop=datePublished content="2020-10-11T00:00:00+00:00">
 <meta itemprop=dateModified content="2020-10-11T00:00:00+00:00">
-<meta itemprop=wordCount content="2989">
+<meta itemprop=wordCount content="2905">
 <meta itemprop=keywords content="Python,"><meta name=twitter:card content="summary">
 <meta name=twitter:image content="https://bruhtus.github.io//img/">
 <meta name=twitter:title content="Pavement Distress Detector Using Single Shot Detector (SSD)">
@@ -40,7 +40,7 @@ Pavement Distress Detector Using Single Shot Detector (SSD)
 <p class=date>
 October 11, 2020
 <span>&#183;</span>
-15 mins
+14 mins
 <span>&#183;</span>
 Robertus Chris
 </p>
@@ -173,75 +173,75 @@ Who want to watch a video with 3 fps?? If you&rsquo;re that kind of person then,
 <h3 id=basic-configuration>Basic Configuration</h3>
 <p>To make things easier, copy the format dataset you want. For example, in this project i want to use COCO dataset format. Then, i copied the <code>coco.py</code> in the path <code>ssd/data/datasets/</code> and rename it to <code>my_dataset.py</code>. After that, edit the class names for your classification class. In this project, the class i&rsquo;m gonna use is alligator crack, longitudinal crack, transverse crack, and pothole. Also, don&rsquo;t forget to change the class <code>COCODataset</code> to <code>MyDataset</code>.</p>
 <p>The next step is to add those configuration to <code>__init__.py</code> in ssd/data/datasets/. For example:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-python data-lang=python><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span><span style=color:#6ab825;font-weight:700>from</span> <span style=color:#447fcf;text-decoration:underline>.my_dataset</span> <span style=color:#6ab825;font-weight:700>import</span> MyDataset
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">2</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">3</span>_DATASETS = {
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">4</span>    <span style=color:#ed9d13>&#39;VOCDataset&#39;</span>: VOCDataset,
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">5</span>    <span style=color:#ed9d13>&#39;COCODataset&#39;</span>: COCODataset,
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">6</span>    <span style=color:#ed9d13>&#39;MyDataset&#39;</span>: MyDataset,
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">7</span>}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-python data-lang=python><span style=color:#6ab825;font-weight:700>from</span> <span style=color:#447fcf;text-decoration:underline>.my_dataset</span> <span style=color:#6ab825;font-weight:700>import</span> MyDataset
+
+_DATASETS = {
+    <span style=color:#ed9d13>&#39;VOCDataset&#39;</span>: VOCDataset,
+    <span style=color:#ed9d13>&#39;COCODataset&#39;</span>: COCODataset,
+    <span style=color:#ed9d13>&#39;MyDataset&#39;</span>: MyDataset,
+}
 </code></pre></div><p>Another next step is to add the path of your datasets and anotations to the <code>path_catlog.py</code> in <code>ssd/config/</code>. For example:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-python data-lang=python><span style="margin-right:.4em;padding:0 .4em;color:#686868"> 1</span><span style=color:#6ab825;font-weight:700>import</span> <span style=color:#447fcf;text-decoration:underline>os</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 2</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 3</span><span style=color:#6ab825;font-weight:700>class</span> <span style=color:#447fcf;text-decoration:underline>DatasetCatalog</span>:
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 4</span>    DATA_DIR = <span style=color:#ed9d13>&#39;datasets&#39;</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 5</span>    DATASETS = {
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 6</span>        <span style=color:#ed9d13>&#39;my_custom_train_dataset&#39;</span>: {
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 7</span>            <span style=color:#ed9d13>&#34;data_dir&#34;</span>: <span style=color:#ed9d13>&#34;train&#34;</span>,
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 8</span>            <span style=color:#ed9d13>&#34;ann_file&#34;</span>: <span style=color:#ed9d13>&#34;annotations/train.json&#34;</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 9</span>        },
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">10</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">11</span>        <span style=color:#ed9d13>&#39;my_custom_validation_dataset&#39;</span>: {
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">12</span>            <span style=color:#ed9d13>&#34;data_dir&#34;</span>: <span style=color:#ed9d13>&#34;validation&#34;</span>,
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">13</span>            <span style=color:#ed9d13>&#34;ann_file&#34;</span>: <span style=color:#ed9d13>&#34;annotations/validation.json&#34;</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">14</span>        },
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">15</span>    }
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">16</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">17</span>    <span style=color:orange>@staticmethod</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">18</span>    <span style=color:#6ab825;font-weight:700>def</span> <span style=color:#447fcf>get</span>(name):
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">19</span>        <span style=color:#6ab825;font-weight:700>if</span> <span style=color:#ed9d13>&#34;my_custom_train_dataset&#34;</span> <span style=color:#6ab825;font-weight:700>in</span> name:
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">20</span>            my_custom_train_dataset = DatasetCatalog.DATA_DIR
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">21</span>            attrs = DatasetCatalog.DATASETS[name]
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">22</span>            args = <span style=color:#24909d>dict</span>(
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">23</span>                    data_dir = os.path.join(my_custom_train_dataset, attrs[<span style=color:#ed9d13>&#39;data_dir&#39;</span>]),
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">24</span>                    ann_file = os.path.join(my_custom_train_dataset, attrs[<span style=color:#ed9d13>&#39;ann_file&#39;</span>]),
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">25</span>            )
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">26</span>            <span style=color:#6ab825;font-weight:700>return</span> <span style=color:#24909d>dict</span>(factory=<span style=color:#ed9d13>&#34;MyDataset&#34;</span>, args=args)
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">27</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">28</span>         <span style=color:#6ab825;font-weight:700>elif</span> <span style=color:#ed9d13>&#34;my_custom_test_dataset&#34;</span> <span style=color:#6ab825;font-weight:700>in</span> name:
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">29</span>            my_custom_train_dataset = DatasetCatalog.DATA_DIR
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">30</span>            attrs = DatasetCatalog.DATASETS[name]
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">31</span>            args = <span style=color:#24909d>dict</span>(
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">32</span>                    data_dir = os.path.join(my_custom_train_dataset, attrs[<span style=color:#ed9d13>&#39;data_dir&#39;</span>]),
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">33</span>                    ann_file = os.path.join(my_custom_train_dataset, attrs[<span style=color:#ed9d13>&#39;ann_file&#39;</span>]),
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">34</span>            )
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">35</span>            <span style=color:#6ab825;font-weight:700>return</span> <span style=color:#24909d>dict</span>(factory=<span style=color:#ed9d13>&#34;MyDataset&#34;</span>, args=args)
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-python data-lang=python><span style=color:#6ab825;font-weight:700>import</span> <span style=color:#447fcf;text-decoration:underline>os</span>
+
+<span style=color:#6ab825;font-weight:700>class</span> <span style=color:#447fcf;text-decoration:underline>DatasetCatalog</span>:
+    DATA_DIR = <span style=color:#ed9d13>&#39;datasets&#39;</span>
+    DATASETS = {
+        <span style=color:#ed9d13>&#39;my_custom_train_dataset&#39;</span>: {
+            <span style=color:#ed9d13>&#34;data_dir&#34;</span>: <span style=color:#ed9d13>&#34;train&#34;</span>,
+            <span style=color:#ed9d13>&#34;ann_file&#34;</span>: <span style=color:#ed9d13>&#34;annotations/train.json&#34;</span>
+        },
+
+        <span style=color:#ed9d13>&#39;my_custom_validation_dataset&#39;</span>: {
+            <span style=color:#ed9d13>&#34;data_dir&#34;</span>: <span style=color:#ed9d13>&#34;validation&#34;</span>,
+            <span style=color:#ed9d13>&#34;ann_file&#34;</span>: <span style=color:#ed9d13>&#34;annotations/validation.json&#34;</span>
+        },
+    }
+
+    <span style=color:orange>@staticmethod</span>
+    <span style=color:#6ab825;font-weight:700>def</span> <span style=color:#447fcf>get</span>(name):
+        <span style=color:#6ab825;font-weight:700>if</span> <span style=color:#ed9d13>&#34;my_custom_train_dataset&#34;</span> <span style=color:#6ab825;font-weight:700>in</span> name:
+            my_custom_train_dataset = DatasetCatalog.DATA_DIR
+            attrs = DatasetCatalog.DATASETS[name]
+            args = <span style=color:#24909d>dict</span>(
+                    data_dir = os.path.join(my_custom_train_dataset, attrs[<span style=color:#ed9d13>&#39;data_dir&#39;</span>]),
+                    ann_file = os.path.join(my_custom_train_dataset, attrs[<span style=color:#ed9d13>&#39;ann_file&#39;</span>]),
+            )
+            <span style=color:#6ab825;font-weight:700>return</span> <span style=color:#24909d>dict</span>(factory=<span style=color:#ed9d13>&#34;MyDataset&#34;</span>, args=args)
+
+         <span style=color:#6ab825;font-weight:700>elif</span> <span style=color:#ed9d13>&#34;my_custom_test_dataset&#34;</span> <span style=color:#6ab825;font-weight:700>in</span> name:
+            my_custom_train_dataset = DatasetCatalog.DATA_DIR
+            attrs = DatasetCatalog.DATASETS[name]
+            args = <span style=color:#24909d>dict</span>(
+                    data_dir = os.path.join(my_custom_train_dataset, attrs[<span style=color:#ed9d13>&#39;data_dir&#39;</span>]),
+                    ann_file = os.path.join(my_custom_train_dataset, attrs[<span style=color:#ed9d13>&#39;ann_file&#39;</span>]),
+            )
+            <span style=color:#6ab825;font-weight:700>return</span> <span style=color:#24909d>dict</span>(factory=<span style=color:#ed9d13>&#34;MyDataset&#34;</span>, args=args)
 </code></pre></div><p>And finally, for the <code>*.yaml</code> file for configuration i copied <code>vgg_ssd512_coco_trainval35k.yaml</code> in <code>configs</code> folder and rename it to <code>config.yaml</code>. What i changed from that file was the train and test (or more like validation) like in <code>path_catlog.py</code>, the batch size, and num_classes. I changed batch size because my laptop gpu only capable of 4 batch size. Here&rsquo;s an example:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-python data-lang=python><span style="margin-right:.4em;padding:0 .4em;color:#686868"> 1</span>Model:
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 2</span>    num_classes: <span style=color:#3677a9>5</span> <span style=color:#999;font-style:italic>#the __background__ counted</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 3</span>    ...
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 4</span>    DATASETS:
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 5</span>        TRAIN: (<span style=color:#ed9d13>&#34;my_custom_train_dataset&#34;</span>, )
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 6</span>        TEST: (<span style=color:#ed9d13>&#34;my_custom_test_dataset&#34;</span>, )
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 7</span>    SOLVER:
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 8</span>        ...
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 9</span>        BATCH_SIZE: <span style=color:#3677a9>4</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">10</span>        ...
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">11</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">12</span>    OUTPUT_DIR: <span style=color:#ed9d13>&#39;outputs/ssd_custom_coco_format&#39;</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-python data-lang=python>Model:
+    num_classes: <span style=color:#3677a9>5</span> <span style=color:#999;font-style:italic>#the __background__ counted</span>
+    ...
+    DATASETS:
+        TRAIN: (<span style=color:#ed9d13>&#34;my_custom_train_dataset&#34;</span>, )
+        TEST: (<span style=color:#ed9d13>&#34;my_custom_test_dataset&#34;</span>, )
+    SOLVER:
+        ...
+        BATCH_SIZE: <span style=color:#3677a9>4</span>
+        ...
+
+    OUTPUT_DIR: <span style=color:#ed9d13>&#39;outputs/ssd_custom_coco_format&#39;</span>
 </code></pre></div><p>You don&rsquo;t need to create folder <code>ssd_custom_coco_format</code>, when the training begin the folder gonna created automatically (if the folder didn&rsquo;t exist).</p>
 <h3 id=validation-configuration>Validation Configuration</h3>
 <p>First of all, copy <code>coco</code> folder in <code>ssd/data/datasets/evaluation/</code> and rename it to <code>my_dataset</code>. Rename the <code>def coco_evaluation</code> to <code>def my_dataset_evaluation</code> in file <code>__init__.py</code>. After that, add folder <code>my_dataset</code> to file <code>__init__.py</code> in <code>ssd/data/datasets/evaluation/</code>. For example:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-python data-lang=python><span style="margin-right:.4em;padding:0 .4em;color:#686868"> 1</span><span style=color:#6ab825;font-weight:700>from</span> <span style=color:#447fcf;text-decoration:underline>ssd.data.datasets</span> <span style=color:#6ab825;font-weight:700>import</span> VOCDataset, COCODataset, MyDataset
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 2</span>...
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 3</span><span style=color:#6ab825;font-weight:700>from</span> <span style=color:#447fcf;text-decoration:underline>.my_dataset</span> <span style=color:#6ab825;font-weight:700>import</span> my_dataset_evaluation
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 4</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 5</span><span style=color:#6ab825;font-weight:700>def</span> <span style=color:#447fcf>evaluate</span>(dataset, predictions, output_dir, **kwargs):
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 6</span>    ...
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 7</span>    <span style=color:#6ab825;font-weight:700>elif</span> <span style=color:#24909d>isinstance</span>(dataset, MyDataset);
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 8</span>        <span style=color:#6ab825;font-weight:700>return</span> my_dataset_evaluation(**args)
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 9</span>    <span style=color:#6ab825;font-weight:700>else</span>:
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">10</span>        <span style=color:#6ab825;font-weight:700>raise</span> NotImplementError
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-python data-lang=python><span style=color:#6ab825;font-weight:700>from</span> <span style=color:#447fcf;text-decoration:underline>ssd.data.datasets</span> <span style=color:#6ab825;font-weight:700>import</span> VOCDataset, COCODataset, MyDataset
+...
+<span style=color:#6ab825;font-weight:700>from</span> <span style=color:#447fcf;text-decoration:underline>.my_dataset</span> <span style=color:#6ab825;font-weight:700>import</span> my_dataset_evaluation
+
+<span style=color:#6ab825;font-weight:700>def</span> <span style=color:#447fcf>evaluate</span>(dataset, predictions, output_dir, **kwargs):
+    ...
+    <span style=color:#6ab825;font-weight:700>elif</span> <span style=color:#24909d>isinstance</span>(dataset, MyDataset);
+        <span style=color:#6ab825;font-weight:700>return</span> my_dataset_evaluation(**args)
+    <span style=color:#6ab825;font-weight:700>else</span>:
+        <span style=color:#6ab825;font-weight:700>raise</span> NotImplementError
 </code></pre></div><h2 id=the-interface>The Interface</h2>
 <p>For the interface, i&rsquo;m using python library <code>streamlit</code>. Streamlit is more like web interface rather than common graphical user interface (GUI). Here&rsquo;s how the interface looks like:</p>
 <p><img src=streamlit-interface.png alt="The interface"></p>
@@ -251,42 +251,42 @@ Who want to watch a video with 3 fps?? If you&rsquo;re that kind of person then,
 <p>Before training the model, we need to do some preparation. There&rsquo;re two steps in this process, frame extraction and labeling. Without further ado, let&rsquo;s get started.</p>
 <h3 id=frame-extraction>Frame Extraction</h3>
 <p>In this process, i used python library <code>opencv</code> to extract some frame. Here&rsquo;s the script:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-python data-lang=python><span style="margin-right:.4em;padding:0 .4em;color:#686868"> 1</span><span style=color:#6ab825;font-weight:700>import</span> <span style=color:#447fcf;text-decoration:underline>cv2</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 2</span><span style=color:#6ab825;font-weight:700>import</span> <span style=color:#447fcf;text-decoration:underline>time</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 3</span><span style=color:#6ab825;font-weight:700>from</span> <span style=color:#447fcf;text-decoration:underline>fire</span> <span style=color:#6ab825;font-weight:700>import</span> Fire
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 4</span><span style=color:#6ab825;font-weight:700>from</span> <span style=color:#447fcf;text-decoration:underline>tqdm</span> <span style=color:#6ab825;font-weight:700>import</span> tqdm
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 5</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 6</span><span style=color:#6ab825;font-weight:700>def</span> <span style=color:#447fcf>main</span>(video_file, path_save, speed): <span style=color:#999;font-style:italic># the lower the speed the fastest the frame_rates, speed = 0 (pause)</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 7</span>    vidcap = cv2.VideoCapture(video_file)
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 8</span>    current_frame = <span style=color:#3677a9>0</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 9</span>    speed_frame = speed
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">10</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">11</span>    <span style=color:#6ab825;font-weight:700>while</span> (vidcap.isOpened()):
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">12</span>        success, frame = vidcap.read() <span style=color:#999;font-style:italic># success = retrival value for frame</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">13</span>        length = <span style=color:#24909d>int</span>(vidcap.get(cv2.CAP_PROP_FRAME_COUNT))
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">14</span>        <span style=color:#24909d>print</span>(<span style=color:#ed9d13>f</span><span style=color:#ed9d13>&#39;Current Frame: </span><span style=color:#ed9d13>{</span>current_frame<span style=color:#ed9d13>}</span><span style=color:#ed9d13>/</span><span style=color:#ed9d13>{</span>length<span style=color:#ed9d13>}</span><span style=color:#ed9d13>&#39;</span>)
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">15</span>        current_frame += <span style=color:#3677a9>1</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">16</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">17</span>        <span style=color:#6ab825;font-weight:700>if</span> success == <span style=color:#6ab825;font-weight:700>True</span>:
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">18</span>            cv2.imshow(<span style=color:#ed9d13>&#39;Video&#39;</span>, frame)
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">19</span>            <span style=color:#6ab825;font-weight:700>if</span> cv2.waitKey(speed) &amp; <span style=color:#3677a9>0xFF</span> == <span style=color:#24909d>ord</span>(<span style=color:#ed9d13>&#39;s&#39;</span>): <span style=color:#999;font-style:italic># press s to save the frame</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">20</span>                cv2.imwrite(<span style=color:#ed9d13>f</span><span style=color:#ed9d13>&#34;</span><span style=color:#ed9d13>{</span>path_save<span style=color:#ed9d13>}</span><span style=color:#ed9d13>/frame_</span><span style=color:#ed9d13>{</span>current_frame<span style=color:#ed9d13>}</span><span style=color:#ed9d13>.jpg&#34;</span>, frame)
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">21</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">22</span>            <span style=color:#6ab825;font-weight:700>elif</span> cv2.waitKey(speed) &amp; <span style=color:#3677a9>0xFF</span> == <span style=color:#24909d>ord</span>(<span style=color:#ed9d13>&#39;q&#39;</span>): <span style=color:#999;font-style:italic># press q to quit</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">23</span>                <span style=color:#6ab825;font-weight:700>break</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">24</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">25</span>            <span style=color:#6ab825;font-weight:700>elif</span> cv2.waitKey(speed) &amp; <span style=color:#3677a9>0xFF</span> == <span style=color:#24909d>ord</span>(<span style=color:#ed9d13>&#39;w&#39;</span>): <span style=color:#999;font-style:italic># play/pause</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">26</span>                <span style=color:#6ab825;font-weight:700>if</span> speed != <span style=color:#3677a9>0</span>:
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">27</span>                    speed = <span style=color:#3677a9>0</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">28</span>                <span style=color:#6ab825;font-weight:700>elif</span> speed == <span style=color:#3677a9>0</span>:
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">29</span>                    speed = speed_frame
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">30</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">31</span>        <span style=color:#6ab825;font-weight:700>else</span>:
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">32</span>            vidcap.release()
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">33</span>            cv2.destroyAllWindows()
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">34</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">35</span><span style=color:#6ab825;font-weight:700>if</span> __name__ == <span style=color:#ed9d13>&#39;__main__&#39;</span>:
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">36</span>    Fire(main)
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-python data-lang=python><span style=color:#6ab825;font-weight:700>import</span> <span style=color:#447fcf;text-decoration:underline>cv2</span>
+<span style=color:#6ab825;font-weight:700>import</span> <span style=color:#447fcf;text-decoration:underline>time</span>
+<span style=color:#6ab825;font-weight:700>from</span> <span style=color:#447fcf;text-decoration:underline>fire</span> <span style=color:#6ab825;font-weight:700>import</span> Fire
+<span style=color:#6ab825;font-weight:700>from</span> <span style=color:#447fcf;text-decoration:underline>tqdm</span> <span style=color:#6ab825;font-weight:700>import</span> tqdm
+
+<span style=color:#6ab825;font-weight:700>def</span> <span style=color:#447fcf>main</span>(video_file, path_save, speed): <span style=color:#999;font-style:italic># the lower the speed the fastest the frame_rates, speed = 0 (pause)</span>
+    vidcap = cv2.VideoCapture(video_file)
+    current_frame = <span style=color:#3677a9>0</span>
+    speed_frame = speed
+
+    <span style=color:#6ab825;font-weight:700>while</span> (vidcap.isOpened()):
+        success, frame = vidcap.read() <span style=color:#999;font-style:italic># success = retrival value for frame</span>
+        length = <span style=color:#24909d>int</span>(vidcap.get(cv2.CAP_PROP_FRAME_COUNT))
+        <span style=color:#24909d>print</span>(<span style=color:#ed9d13>f</span><span style=color:#ed9d13>&#39;Current Frame: </span><span style=color:#ed9d13>{</span>current_frame<span style=color:#ed9d13>}</span><span style=color:#ed9d13>/</span><span style=color:#ed9d13>{</span>length<span style=color:#ed9d13>}</span><span style=color:#ed9d13>&#39;</span>)
+        current_frame += <span style=color:#3677a9>1</span>
+
+        <span style=color:#6ab825;font-weight:700>if</span> success == <span style=color:#6ab825;font-weight:700>True</span>:
+            cv2.imshow(<span style=color:#ed9d13>&#39;Video&#39;</span>, frame)
+            <span style=color:#6ab825;font-weight:700>if</span> cv2.waitKey(speed) &amp; <span style=color:#3677a9>0xFF</span> == <span style=color:#24909d>ord</span>(<span style=color:#ed9d13>&#39;s&#39;</span>): <span style=color:#999;font-style:italic># press s to save the frame</span>
+                cv2.imwrite(<span style=color:#ed9d13>f</span><span style=color:#ed9d13>&#34;</span><span style=color:#ed9d13>{</span>path_save<span style=color:#ed9d13>}</span><span style=color:#ed9d13>/frame_</span><span style=color:#ed9d13>{</span>current_frame<span style=color:#ed9d13>}</span><span style=color:#ed9d13>.jpg&#34;</span>, frame)
+
+            <span style=color:#6ab825;font-weight:700>elif</span> cv2.waitKey(speed) &amp; <span style=color:#3677a9>0xFF</span> == <span style=color:#24909d>ord</span>(<span style=color:#ed9d13>&#39;q&#39;</span>): <span style=color:#999;font-style:italic># press q to quit</span>
+                <span style=color:#6ab825;font-weight:700>break</span>
+
+            <span style=color:#6ab825;font-weight:700>elif</span> cv2.waitKey(speed) &amp; <span style=color:#3677a9>0xFF</span> == <span style=color:#24909d>ord</span>(<span style=color:#ed9d13>&#39;w&#39;</span>): <span style=color:#999;font-style:italic># play/pause</span>
+                <span style=color:#6ab825;font-weight:700>if</span> speed != <span style=color:#3677a9>0</span>:
+                    speed = <span style=color:#3677a9>0</span>
+                <span style=color:#6ab825;font-weight:700>elif</span> speed == <span style=color:#3677a9>0</span>:
+                    speed = speed_frame
+
+        <span style=color:#6ab825;font-weight:700>else</span>:
+            vidcap.release()
+            cv2.destroyAllWindows()
+
+<span style=color:#6ab825;font-weight:700>if</span> __name__ == <span style=color:#ed9d13>&#39;__main__&#39;</span>:
+    Fire(main)
 </code></pre></div><p>Every time we press <code>s</code>, it&rsquo;s gonna take the current frame at that time. For the speed, i usually go for 25 but if you want slower you could change it to 10 or lower (as long as it&rsquo;s not 0, please).</p>
 <p>After the extraction process, i have 652 images/frames for training process. The 652 images/frames have this proportion (There&rsquo;re a few object in one frame):</p>
 <table>
@@ -323,7 +323,7 @@ and to change labelme format to coco dataset format <a href=https://github.com/T
 <p>For the training process i use google colaboratory (how to use google colaboratory is beyond this post, sorry) but you could also use other services such as <a href="https://www.paperspace.com/?utm_expid=.XZhCPCNrQCuE1jH9t8bIgg.0&utm_referrer=" target=_blank rel="noreferrer noopener">paperspace</a>
 . Here&rsquo;s an example of command line if you use you local machine or cloud services: <br>
 Local: <br></p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>python train.py --config-file configs/config.yaml
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell>python train.py --config-file configs/config.yaml
 </code></pre></div><p>Cloud: <br></p>
 <pre tabindex=0><code>!python train.py --config-file configs/config.yaml
 </code></pre><p>Basically there&rsquo;s no difference so i think it&rsquo;s not that difficult, good luck.</p>

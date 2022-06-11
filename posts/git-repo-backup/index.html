@@ -100,19 +100,19 @@ and it seems like github in the process of restoring access to all developer in 
 <p>You might ask &ldquo;if you didn&rsquo;t download all your file then how you called that a backup?&rdquo;. Ok so here&rsquo;s the thing, by cloning a git bare you backup all your commit history and if you decide to upload your git repository to another git services or even your own server, you just need to push those git bare backup and git gonna create all your file with all the commit history on the new git repository. So basically you have your git repository backup without taking too much space on your local storage.</p>
 <p>So, how can you backup using git bare clone? git have a backup mechanism but it&rsquo;s not obvious, git has a <code>--mirror</code> flag that you can use to backup or push a git bare repository.</p>
 <p>First, you need to clone a git bare from git repository by doing</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>git clone --bare &lt;git-repo-url.git&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell>git clone --bare &lt;git-repo-url.git&gt;
 </code></pre></div><p>or</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>git clone --mirror &lt;git-repo-url.git&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell>git clone --mirror &lt;git-repo-url.git&gt;
 </code></pre></div><blockquote>
 <p>Both of the commands are basically the same, you can push using <code>--mirror</code> flag or add git remote repository and then push using the usual command. How to push with git bare repository is later in this post.</p>
 </blockquote>
 <p>Here&rsquo;s an example, if i want to clone my <code>instasaver</code> git bare then the command i need is</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>git clone --bare https://github.com/bruhtus/instasaver.git
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell>git clone --bare https://github.com/bruhtus/instasaver.git
 </code></pre></div><p>or</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>git clone --mirror https://github.com/bruhtus/instasaver.git
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell>git clone --mirror https://github.com/bruhtus/instasaver.git
 </code></pre></div><p>and then it&rsquo;s gonna make <code>instasaver.git</code> directory where it stores all the commit history and branch.</p>
 <p>If your git repository contains Git Large File Storage (LFS) objects then you need to download those git LFS objects too. First, you clone git bare with one of the command above (<code>--mirror</code> flag or <code>--bare</code> flag) and then download git LFS object with this command</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>git lfs fetch --all
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell>git lfs fetch --all
 </code></pre></div><blockquote>
 <p>Don&rsquo;t forget to change directory (<code>cd</code>) into your git bare directory before applying those command.</p>
 </blockquote>
@@ -121,37 +121,37 @@ and it seems like github in the process of restoring access to all developer in 
 <h4 id=add-git-remote-repository>Add Git Remote Repository</h4>
 <p>With <code>git remote add</code> you can add another platform so that you can also push into that platform.</p>
 <p>For example, your main git repository service is github so you usually do</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>git remote add origin &lt;github-repo-url.git&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell>git remote add origin &lt;github-repo-url.git&gt;
 </code></pre></div><p>in your local git repository. That command is basically assign <code>origin</code> as your github repository, so if you want to push into your github repository you need to do</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>git push origin &lt;branch&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell>git push origin &lt;branch&gt;
 </code></pre></div><p>if you didn&rsquo;t like <code>origin</code> as your github repository alias, you can change it to whatever you want, you can change it into <code>github</code> or even <code>anu</code> but you also need to change your <code>git push</code> command like this</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>git push github &lt;branch&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell>git push github &lt;branch&gt;
 </code></pre></div><p>or</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>git push anu &lt;branch&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell>git push anu &lt;branch&gt;
 </code></pre></div><p>So if you want to add another platform and you have your full git working directory (not git bare version), you just need too assign another git repository service url.</p>
 <p>For example, i want to add instasaver to gitlab. I just need to do</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>git remote add gitlab https://gitlab.com/bruhtus/instasaver.git
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell>git remote add gitlab https://gitlab.com/bruhtus/instasaver.git
 </code></pre></div><p>and then if i want to push the changes to master branch, i just need to do</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>git push gitlab master
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell>git push gitlab master
 </code></pre></div><p>other git workflow such as <code>git add</code> and <code>git commit</code> is the same.</p>
 <blockquote>
 <p>Don&rsquo;t forget to change directory (<code>cd</code>) into your local git repo directory.</p>
 </blockquote>
 <h4 id=push-git-bare>Push Git Bare</h4>
 <p>If you alreaady backup your git bare repository on your local machine, then all you gotta do is change directory (<code>cd</code>) into your <code>git-bare-repo.git</code> directory and then do</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>git push --mirror &lt;new-git-repo-url.git&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell>git push --mirror &lt;new-git-repo-url.git&gt;
 </code></pre></div><p>or you could also do</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>git remote add &lt;platform&gt; &lt;new-git-repo-url.git&gt;
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">2</span>git push &lt;platform&gt; &lt;branch&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell>git remote add &lt;platform&gt; &lt;new-git-repo-url.git&gt;
+git push &lt;platform&gt; &lt;branch&gt;
 </code></pre></div><blockquote>
 <p>You can change <code>&lt;platform></code> name to whatever you want such as <code>anu</code> or <code>nganu</code>, you do you.</p>
 </blockquote>
 <p>The difference between both command is that you can get all the branch if you use <code>git push --mirror</code> meanwhile you only get main branch if you use the usual <code>git push</code> command (without <code>--mirror</code> flag). So if you want to backup all the branch then you should probably use <code>git push --mirror</code>.</p>
 <p>The disadvantage of using git bare is that you cannot use git workflow such as <code>git add</code> or <code>git commit</code>, you can only use <code>git push</code> command. If you want to update your git bare repository, you can do</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>git remote update
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell>git remote update
 </code></pre></div><p>inside your git bare directory.</p>
 <p>If you have Git Large File Storage (LFS) objects, you need to push git LFS object separately using this command</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>git lfs push --all &lt;new-git-repo-url.git&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell>git lfs push --all &lt;new-git-repo-url.git&gt;
 </code></pre></div><p>after you download all git LFS objects using <code>git lfs fetch --all</code> command.</p>
 <h2 id=the-conclusion>The Conclusion</h2>
 <blockquote>

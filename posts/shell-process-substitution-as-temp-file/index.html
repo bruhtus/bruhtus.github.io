@@ -1,0 +1,182 @@
+<!doctype html><html>
+<head>
+<title>
+Shell Process Substitution as Temp File
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=author content="Robertus Chris">
+<link rel="shortcut icon" type=image/x-icon href=https://bruhtus.github.io/img/favicon.ico>
+<link rel=stylesheet href=https://bruhtus.github.io/style.min.4f970aa135421035a71bdc9bbd750aa2cfbe0ddb080ab1ec5db4173f45494cad.css integrity="sha256-T5cKoTVCEDWnG9ybvXUKos++DdsICrHsXbQXP0VJTK0=">
+<link disabled rel=stylesheet href=https://bruhtus.github.io/style-dark.min.0a647fb6c07e04b77b54fa0515d0a683d39ecdb251dba960fe1f966f7ff36fc2.css media="(prefers-color-scheme: dark)" integrity="sha256-CmR/tsB+BLd7VPoFFdCmg9OezbJR26lg/h+Wb3/zb8I=">
+<link rel=stylesheet href=https://use.fontawesome.com/releases/v5.8.1/css/all.css integrity=sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf crossorigin=anonymous>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@300&family=EB+Garamond&family=PT+Sans&family=Sura&family=Zilla+Slab&family=Inconsolata&family=Libre+Baskerville&display=swap" rel=stylesheet>
+<link rel=stylesheet href=https://bruhtus.github.io/css/custom.css>
+<meta property="og:title" content="Shell Process Substitution as Temp File">
+<meta property="og:description" content="A Brief Intro This is all started when i&rsquo;m trying to make a shell alias using fzf and git add -p command. And i was surprised that the interactive selection from git add -p immediately terminated before i can even press any key. Let&rsquo;s get started, shall we?
+First Attempt My first attempt to make that shell alias was something like this:
+alias gap='git status -s | awk &#34;{print \$2}&#34; | fzf | xargs -r git add -p' Let me briefly explain one by one the command that i use in my shell alias:">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bruhtus.github.io/posts/shell-process-substitution-as-temp-file/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2022-06-11T09:28:09+07:00">
+<meta property="article:modified_time" content="2022-06-11T09:28:09+07:00">
+<meta itemprop=name content="Shell Process Substitution as Temp File">
+<meta itemprop=description content="A Brief Intro This is all started when i&rsquo;m trying to make a shell alias using fzf and git add -p command. And i was surprised that the interactive selection from git add -p immediately terminated before i can even press any key. Let&rsquo;s get started, shall we?
+First Attempt My first attempt to make that shell alias was something like this:
+alias gap='git status -s | awk &#34;{print \$2}&#34; | fzf | xargs -r git add -p' Let me briefly explain one by one the command that i use in my shell alias:"><meta itemprop=datePublished content="2022-06-11T09:28:09+07:00">
+<meta itemprop=dateModified content="2022-06-11T09:28:09+07:00">
+<meta itemprop=wordCount content="574">
+<meta itemprop=keywords content="Notes,Linux,"><meta name=twitter:card content="summary">
+<meta name=twitter:image content="https://bruhtus.github.io//img/">
+<meta name=twitter:title content="Shell Process Substitution as Temp File">
+<meta name=twitter:description content="A Brief Intro This is all started when i&rsquo;m trying to make a shell alias using fzf and git add -p command. And i was surprised that the interactive selection from git add -p immediately terminated before i can even press any key. Let&rsquo;s get started, shall we?
+First Attempt My first attempt to make that shell alias was something like this:
+alias gap='git status -s | awk &#34;{print \$2}&#34; | fzf | xargs -r git add -p' Let me briefly explain one by one the command that i use in my shell alias:"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
+</head>
+<body>
+<h1>Shell Process Substitution as Temp File</h1>
+<header>
+<div class=cd>
+<h2><a style=text-decoration:none class=cd href=https://bruhtus.github.io//posts>cd ..</a> | <a style=text-decoration:none class=cd href=https://bruhtus.github.io/>cd</a></h2>
+</div>
+</header>
+<p class=date>
+June 11, 2022
+<span>&#183;</span>
+3 mins
+<span>&#183;</span>
+Robertus Chris
+</p>
+<div id=tags>
+<ul>
+<li><a style=text-decoration:none href=https://bruhtus.github.io/tags/notes/>Notes</a></li>
+<li><a style=text-decoration:none href=https://bruhtus.github.io/tags/linux/>Linux</a></li>
+</ul>
+</div>
+<div class=toc>
+<details>
+<summary>
+<div class=details>Table of Contents</div>
+</summary>
+<blockquote><ul><li>
+<a style=text-decoration:none href=#a-brief-intro aria-label="A Brief Intro">A Brief Intro</a></li><li>
+<a style=text-decoration:none href=#first-attempt aria-label="First Attempt">First Attempt</a></li><li>
+<a style=text-decoration:none href=#second-attempt aria-label="Second Attempt">Second Attempt</a></li><li>
+<a style=text-decoration:none href=#conclusion aria-label=Conclusion>Conclusion</a></li><li>
+<a style=text-decoration:none href=#extra-note aria-label="Extra Note">Extra Note</a></li></ul>
+</blockquote>
+</details>
+</div>
+<div id=contentBody>
+<h2 id=a-brief-intro>A Brief Intro</h2>
+<p>This is all started when i&rsquo;m trying to make a shell alias using <code>fzf</code> and
+<code>git add -p</code> command. And i was surprised that the interactive selection from
+<code>git add -p</code> immediately terminated before i can even press any key. Let&rsquo;s get
+started, shall we?</p>
+<h2 id=first-attempt>First Attempt</h2>
+<p>My first attempt to make that shell alias was something like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#24909d>alias</span> <span style=color:#40ffff>gap</span>=<span style=color:#ed9d13>&#39;git status -s | awk &#34;{print \$2}&#34; | fzf | xargs -r git add -p&#39;</span>
+</code></pre></div><p>Let me briefly explain one by one the command that i use in my shell alias:</p>
+<ul>
+<li>
+<p><code>git status -s</code> -> The short format of git status, without unnecessary
+info (at least for me).</p>
+</li>
+<li>
+<p><code>awk "{print \$2}"</code> -> Only use the second column. The backslash is to
+prevent shell to expand <code>$2</code> into a second argument instead of a second column
+in <code>awk</code>.</p>
+</li>
+<li>
+<p><code>fzf</code> -> Fuzzy finder by Junegunn<sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup>.</p>
+</li>
+<li>
+<p><code>xargs -r</code> -> Do not run the command if there&rsquo;s no standard input.</p>
+</li>
+<li>
+<p><code>git add -p</code> -> To add a chunk of changes, only works if the file already
+tracked by git.</p>
+</li>
+</ul>
+<p>This alias is where the problem arise. After i select the file name using
+<code>fzf</code>, the interactive interface of <code>git add -p</code> only appear for a few seconds
+and then terminated.</p>
+<p>According to stackoverflow answer<sup id=fnref:2><a href=#fn:2 class=footnote-ref role=doc-noteref>2</a></sup>:</p>
+<blockquote>
+<p>Without further arguments xargs does not work with interactive (command
+line) applications.</p>
+<p>The reason for that is, by default <code>xargs</code> gets its input from <code>stdin</code> but
+interactive applications also expect input from <code>stdin</code>.</p>
+<p>To prevent the applications from grabbing input that is intended for
+<code>xargs</code>, xargs redirects stdin from <code>/dev/null</code> for the applications it
+runs.</p>
+<p>This leads to the application just receiving an EOF<sup id=fnref:3><a href=#fn:3 class=footnote-ref role=doc-noteref>3</a></sup>.</p>
+</blockquote>
+<p>With that in mind, we need to use <code>--arg-file=&lt;file></code> or <code>-a &lt;file></code> flag,
+which means that <code>xargs</code> will read from a <code>&lt;file></code> instead of <code>stdin</code> (
+standard input) so that the <code>stdin</code> remains unchanged. Alright, let&rsquo;s go to
+the second attempt.</p>
+<h2 id=second-attempt>Second Attempt</h2>
+<p>Following the stackoverflow answer<sup id=fnref:2><a href=#fn:2 class=footnote-ref role=doc-noteref>2</a></sup>, my second attempt was something like
+this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#24909d>alias</span> <span style=color:#40ffff>gap</span>=<span style=color:#ed9d13>&#39;xargs -a &lt;(git status -s | awk &#34;{print \$2}&#34; | fzf) git add -p&#39;</span>
+</code></pre></div><p>The expression <code>&lt;(git status -s | awk "{print \$2}" | fzf)</code> is what we called
+process substitution (or to be precise, shell process substitution).</p>
+<p>Instead of using a file, we use a command to act like a temporary file.</p>
+<p>Now, the problem is, in my experiment i can&rsquo;t use <code>fzf</code> with the shell process
+substitution because shell process substitution produces a special file that
+can only be opened and read, but not written or seeked<sup id=fnref:4><a href=#fn:4 class=footnote-ref role=doc-noteref>4</a></sup>.</p>
+<p>Commands that treat their arguments as pure streams will works with shell
+process substitution, but the commands that seek a file they are given (
+or write to a file) won&rsquo;t work<sup id=fnref:4><a href=#fn:4 class=footnote-ref role=doc-noteref>4</a></sup>.</p>
+<p>And that is why we can&rsquo;t use interactive command such as <code>fzf</code> with shell
+process substitution.</p>
+<h2 id=conclusion>Conclusion</h2>
+<p>With all the information from my experiment before, i decided to remove
+<code>fzf</code> from the alias, which result with this alias:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#24909d>alias</span> <span style=color:#40ffff>gap</span>=<span style=color:#ed9d13>&#39;xargs -a &lt;(git status -s | awk &#34;{print \$2}&#34;) git add -p&#39;</span>
+</code></pre></div><p>Is it fulfilling what i need? Not really, i might replace that with shell
+function instead of shell alias soon. But, i learn something new about shell
+process substitution.</p>
+<h2 id=extra-note>Extra Note</h2>
+<p>For more info about the <code>xargs</code> and <code>git</code> flags, check the manpage.
+For example: <code>man xargs</code> or <code>man git-add</code>.</p>
+<section class=footnotes role=doc-endnotes>
+<hr>
+<ol>
+<li id=fn:1 role=doc-endnote>
+<p><a href=https://github.com/junegunn/fzf target=_blank rel="noreferrer noopener">Fuzzy finder by Junegunn</a>
+.&#160;<a href=#fnref:1 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p>
+</li>
+<li id=fn:2 role=doc-endnote>
+<p><a href=https://stackoverflow.com/a/30050792 target=_blank rel="noreferrer noopener">Stackoverflow: <code>xargs</code> explanation</a>
+.&#160;<a href=#fnref:2 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p>
+</li>
+<li id=fn:3 role=doc-endnote>
+<p><a href=https://askubuntu.com/a/724995 target=_blank rel="noreferrer noopener">Triggering EOF explanation</a>
+.&#160;<a href=#fnref:3 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p>
+</li>
+<li id=fn:4 role=doc-endnote>
+<p><a href=https://unix.stackexchange.com/a/164109 target=_blank rel="noreferrer noopener">Process substitution result in special file</a>
+.&#160;<a href=#fnref:4 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+</div>
+<footer>
+<p>
+&copy; 2020-present <a style=text-decoration:none href=https://bruhtus.github.io/resume target=_blank rel="noreferrer noopener">Robertus Chris</a>
+<span>&#183;</span>
+<a style=text-decoration:none href=https://bruhtus.github.io/index.xml target=_blank rel="noreferrer noopener">RSS Feed</a>
+<span>&#183;</span>
+Based on <a style=text-decoration:none href=https://github.com/koirand/pulp/ target=_blank rel="noreferrer noopener">pulp</a> and <a style=text-decoration:none href=https://git.io/hugopapermod target=_blank rel="noreferrer noopener">papermod</a> theme
+</p>
+</footer>
+<button onclick=topFunction() id=myBtn title="Go to top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d0d0d0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+<script>var mybutton=document.getElementById("myBtn");window.onscroll=function(){scrollFunction()};function scrollFunction(){document.body.scrollTop>20||document.documentElement.scrollTop>20?mybutton.style.display="block":mybutton.style.display="none"}function topFunction(){document.body.scrollTop=0,document.documentElement.scrollTop=0}</script><script src=https://bruhtus.github.io/js/custom.js></script>
+</body>
+</html>

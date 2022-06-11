@@ -79,16 +79,16 @@ Robertus Chris
 <p><code>r</code> means that the file or directory has read permission (we can take a look at it), <code>w</code> means that the file or directory has write permission (we can edit the file), and lastly is <code>x</code> which means that the file or directory is executable (we can run the file). Usually if we make a folder then it&rsquo;s already have executable permission.</p>
 <h2 id=how-to-change-ownership>How To Change Ownership</h2>
 <p>Change ownership is quite simple, the format is like this</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>chown user:group &lt;file&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>chown user:group &lt;file&gt;
 </code></pre></div><p>if you want to change ownership from or to root (or admin) then you need to access root privilege. Take the example from the image above, if i want to change ownership of file <code>nganu</code> from root to bruhtus user, then what i need to do is</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>sudo chown bruhtus:bruhtus nganu
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>sudo chown bruhtus:bruhtus nganu
 </code></pre></div><p>Please keep in mind that the user is on column three and the group is on column four on <code>ls -l</code> result if you&rsquo;re unsure about the user and the group. <code>chown</code> command is not only for file but also for directory (or folder).</p>
 <p>If you want to change all the files within the directory (not only the directory itself), then you can do</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>chown -R user:group &lt;directory&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>chown -R user:group &lt;directory&gt;
 </code></pre></div><p>For example, let&rsquo;s assume that <code>nganu</code> is a directory with a file <code>anu</code> and owned by root like this</p>
 <p><img src=ownership-directory.png alt="ownership directory"></p>
 <p>If we want to change ownership of the <code>nganu</code> directory and <code>anu</code> file from root to bruhtus user, then what we need to do is</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>sudo chown -R bruhtus:bruhtus nganu
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>sudo chown -R bruhtus:bruhtus nganu
 </code></pre></div><p>Please keep in mind that we need <code>sudo</code> because the previous owner is root (or admin), if the previous owner isn&rsquo;t root then we don&rsquo;t need <code>sudo</code>.</p>
 <h2 id=how-to-change-permission>How To Change Permission</h2>
 <p>The permission section has 10 character like i explained above, here&rsquo;s the breakdown of those permission:</p>
@@ -119,21 +119,21 @@ Robertus Chris
 <p><img src=permission-example.png alt="permission example"></p>
 <p>file <code>anu</code> only has read and write permission for the owner, and only read permission for group and others (or everyone else), in this case it&rsquo;s worth <code>644</code>. Why is this important? because we can use that to change file or directory permission precisely.</p>
 <p>So if you want to change anyfile to have the same arrangement as file <code>anu</code> then you can do</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>chmod <span style=color:#3677a9>644</span> &lt;file&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>chmod <span style=color:#3677a9>644</span> &lt;file&gt;
 </code></pre></div><p>if we want to change those file to have execute permission on owner, group, and others then we can do this</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>chmod <span style=color:#3677a9>755</span> &lt;file&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>chmod <span style=color:#3677a9>755</span> &lt;file&gt;
 </code></pre></div><p>or if you want everyone to have the same permission you can use <code>+</code>, like this one (have execute permission on owner, group, and others)</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>chmod +x &lt;file&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>chmod +x &lt;file&gt;
 </code></pre></div><p>or you want to specify one of them (either owner/user, group, or others) you can do one of this</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>chmod u+x &lt;file&gt; <span style=color:#999;font-style:italic>#execute permission only for user/owner</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">2</span>chmod g+x &lt;file&gt; <span style=color:#999;font-style:italic>#execute permission only for group</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">3</span>chmod o+x &lt;file&gt; <span style=color:#999;font-style:italic>#execute permission only for others</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">4</span>chmod ug+x &lt;file&gt; <span style=color:#999;font-style:italic>#execute permission only for user/owner and group</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">5</span>chmod a+x &lt;file&gt; <span style=color:#999;font-style:italic>#similar to +x, give user/owner, group, and others execute permission</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>chmod u+x &lt;file&gt; <span style=color:#999;font-style:italic>#execute permission only for user/owner</span>
+chmod g+x &lt;file&gt; <span style=color:#999;font-style:italic>#execute permission only for group</span>
+chmod o+x &lt;file&gt; <span style=color:#999;font-style:italic>#execute permission only for others</span>
+chmod ug+x &lt;file&gt; <span style=color:#999;font-style:italic>#execute permission only for user/owner and group</span>
+chmod a+x &lt;file&gt; <span style=color:#999;font-style:italic>#similar to +x, give user/owner, group, and others execute permission</span>
 </code></pre></div><p>You can also change permission recursively like change ownership, by doing this</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>chmod -R u+x &lt;directory&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>chmod -R u+x &lt;directory&gt;
 </code></pre></div><p>or</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>chmod u+x -R &lt;directory&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>chmod u+x -R &lt;directory&gt;
 </code></pre></div><h2 id=the-conclusion>The Conclusion</h2>
 <p>That&rsquo;s all about changing ownership and permission on linux. Hopefully that&rsquo;s useful (probably not, optimistic).</p>
 <h2 id=references>References</h2>

@@ -25,7 +25,7 @@ Access Google Colab Through SSH and SSHFS
 <meta itemprop=description content="Have you ever want a terminal emulator in google colab instead of jupyter notebook? Well, here it is bois!
  Skip-able Part First thing first, i prefer to use vim/neovim instead of jupyter notebook and that&rsquo;s why i prefer to use terminal or terminal emulator to do things as much as possible. I know jupyter notebook has it&rsquo;s own vim emulation, but it&rsquo;s not as good as the OG vim/neovim."><meta itemprop=datePublished content="2021-06-22T09:32:28+07:00">
 <meta itemprop=dateModified content="2021-06-22T09:32:28+07:00">
-<meta itemprop=wordCount content="1232">
+<meta itemprop=wordCount content="1226">
 <meta itemprop=keywords content="Linux,"><meta name=twitter:card content="summary">
 <meta name=twitter:image content="https://bruhtus.github.io//img/">
 <meta name=twitter:title content="Access Google Colab Through SSH and SSHFS">
@@ -99,40 +99,40 @@ Robertus Chris
 <p>First thing first, you need to have ngrok account. If you doesn&rsquo;t have ngrok account, then you can register <a href=https://dashboard.ngrok.com/signup target=_blank rel="noreferrer noopener">here</a>
 .</p>
 <p>After that, you need to make a new google colab notebook. And then, paste the code below:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868"> 1</span><span style=color:#999;font-style:italic>#CODE</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 2</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 3</span><span style=color:#999;font-style:italic>#Generate root password</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 4</span>import random, string
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 5</span><span style=color:#40ffff>password</span> = <span style=color:#ed9d13>&#39;&#39;</span>.join(random.choice(string.ascii_letters + string.digits) <span style=color:#6ab825;font-weight:700>for</span> i in range(20))
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 6</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 7</span><span style=color:#999;font-style:italic>#Download ngrok</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 8</span>! wget -q -c -nc https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
-<span style="margin-right:.4em;padding:0 .4em;color:#686868"> 9</span>! unzip -qq -n ngrok-stable-linux-amd64.zip
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">10</span><span style=color:#999;font-style:italic>#Setup sshd</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">11</span>! apt-get install -qq -o=Dpkg::Use-Pty=<span style=color:#3677a9>0</span> openssh-server pwgen &gt; /dev/null
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">12</span><span style=color:#999;font-style:italic>#Set root password</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">13</span>! <span style=color:#24909d>echo</span> root:<span style=color:#40ffff>$password</span> | chpasswd
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">14</span>! mkdir -p /var/run/sshd
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">15</span>! <span style=color:#24909d>echo</span> <span style=color:#ed9d13>&#34;PermitRootLogin yes&#34;</span> &gt;&gt; /etc/ssh/sshd_config
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">16</span>! <span style=color:#24909d>echo</span> <span style=color:#ed9d13>&#34;PasswordAuthentication yes&#34;</span> &gt;&gt; /etc/ssh/sshd_config
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">17</span>! <span style=color:#24909d>echo</span> <span style=color:#ed9d13>&#34;LD_LIBRARY_PATH=/usr/lib64-nvidia&#34;</span> &gt;&gt; /root/.bashrc
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">18</span>! <span style=color:#24909d>echo</span> <span style=color:#ed9d13>&#34;export LD_LIBRARY_PATH&#34;</span> &gt;&gt; /root/.bashrc
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">19</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">20</span><span style=color:#999;font-style:italic>#Run sshd</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">21</span>get_ipython().system_raw(<span style=color:#ed9d13>&#39;/usr/sbin/sshd -D &amp;&#39;</span>)
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">22</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">23</span><span style=color:#999;font-style:italic>#Ask token</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">24</span>print(<span style=color:#ed9d13>&#34;Copy authtoken from https://dashboard.ngrok.com/auth&#34;</span>)
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">25</span>import getpass
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">26</span><span style=color:#40ffff>authtoken</span> = getpass.getpass()
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">27</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">28</span><span style=color:#999;font-style:italic>#Create tunnel</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">29</span>get_ipython().system_raw(<span style=color:#ed9d13>&#39;./ngrok authtoken $authtoken &amp;&amp; ./ngrok tcp 22 &amp;&#39;</span>)
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">30</span><span style=color:#999;font-style:italic>#Print root password</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">31</span>print(<span style=color:#ed9d13>&#34;Root password: {}&#34;</span>.format(password))
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">32</span><span style=color:#999;font-style:italic>#Get public address</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#686868">33</span>! curl -s http://localhost:4040/api/tunnels | python3 -c <span style=color:#ed9d13>\
-</span><span style="margin-right:.4em;padding:0 .4em;color:#686868">34</span><span style=color:#ed9d13></span>	<span style=color:#ed9d13>&#34;import sys, json; print(json.load(sys.stdin)[&#39;tunnels&#39;][0][&#39;public_url&#39;])&#34;</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#999;font-style:italic>#CODE</span>
+
+<span style=color:#999;font-style:italic>#Generate root password</span>
+import random, string
+<span style=color:#40ffff>password</span> = <span style=color:#ed9d13>&#39;&#39;</span>.join(random.choice(string.ascii_letters + string.digits) <span style=color:#6ab825;font-weight:700>for</span> i in range(20))
+
+<span style=color:#999;font-style:italic>#Download ngrok</span>
+! wget -q -c -nc https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+! unzip -qq -n ngrok-stable-linux-amd64.zip
+<span style=color:#999;font-style:italic>#Setup sshd</span>
+! apt-get install -qq -o=Dpkg::Use-Pty=<span style=color:#3677a9>0</span> openssh-server pwgen &gt; /dev/null
+<span style=color:#999;font-style:italic>#Set root password</span>
+! <span style=color:#24909d>echo</span> root:<span style=color:#40ffff>$password</span> | chpasswd
+! mkdir -p /var/run/sshd
+! <span style=color:#24909d>echo</span> <span style=color:#ed9d13>&#34;PermitRootLogin yes&#34;</span> &gt;&gt; /etc/ssh/sshd_config
+! <span style=color:#24909d>echo</span> <span style=color:#ed9d13>&#34;PasswordAuthentication yes&#34;</span> &gt;&gt; /etc/ssh/sshd_config
+! <span style=color:#24909d>echo</span> <span style=color:#ed9d13>&#34;LD_LIBRARY_PATH=/usr/lib64-nvidia&#34;</span> &gt;&gt; /root/.bashrc
+! <span style=color:#24909d>echo</span> <span style=color:#ed9d13>&#34;export LD_LIBRARY_PATH&#34;</span> &gt;&gt; /root/.bashrc
+
+<span style=color:#999;font-style:italic>#Run sshd</span>
+get_ipython().system_raw(<span style=color:#ed9d13>&#39;/usr/sbin/sshd -D &amp;&#39;</span>)
+
+<span style=color:#999;font-style:italic>#Ask token</span>
+print(<span style=color:#ed9d13>&#34;Copy authtoken from https://dashboard.ngrok.com/auth&#34;</span>)
+import getpass
+<span style=color:#40ffff>authtoken</span> = getpass.getpass()
+
+<span style=color:#999;font-style:italic>#Create tunnel</span>
+get_ipython().system_raw(<span style=color:#ed9d13>&#39;./ngrok authtoken $authtoken &amp;&amp; ./ngrok tcp 22 &amp;&#39;</span>)
+<span style=color:#999;font-style:italic>#Print root password</span>
+print(<span style=color:#ed9d13>&#34;Root password: {}&#34;</span>.format(password))
+<span style=color:#999;font-style:italic>#Get public address</span>
+! curl -s http://localhost:4040/api/tunnels | python3 -c <span style=color:#ed9d13>\
+</span><span style=color:#ed9d13></span>	<span style=color:#ed9d13>&#34;import sys, json; print(json.load(sys.stdin)[&#39;tunnels&#39;][0][&#39;public_url&#39;])&#34;</span>
 </code></pre></div><p>What that code does is basically create a connection from google colab back-end with ngrok so that we can access the google colab back-end using SSH and SSHFS. You can check the <a href=https://gist.github.com/yashkumaratri/204755a85977586cebbb58dc971496da#file-google-colab-ssh target=_blank rel="noreferrer noopener">github gist</a>
 for more detail.</p>
 <p>After that, you can decide whether to mount your google drive to google colab to or not. If you decide to mount your google drive to google colab, then later on you can mount your google drive using SSHFS.</p>
@@ -140,12 +140,12 @@ for more detail.</p>
 . If there&rsquo;s an error after you input ngrok authtoken, you can just re-run the code.</p>
 <p>After that, you can see the Root password and something similar to <code>tcp://n.tcp.ngrok.io:xxxxx</code> (which <code>n</code> and <code>x</code> represent any number from 0-9)</p>
 <p>Next, you can access the google colab using SSH with the following command:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>ssh -p xxxxx root@n.tcp.ngrok.io
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>ssh -p xxxxx root@n.tcp.ngrok.io
 </code></pre></div><p>If there&rsquo;s a question &ldquo;Are you sure you want to continue connecting?&rdquo;, answer yes. That was to save the SSH address so that you can connect to it again in the future. But, if you use google google colab then you need to make new SSH address because each SSH session restart when google colab restart. That is one of the downside for this method.</p>
 <h2 id=access-google-drive-in-google-colab>Access Google Drive in Google Colab</h2>
 <p>If you mount google drive before you activate google colab, then you can access google drive too. You can access google drive in google colab using SSHFS.</p>
 <p>If you can already access google colab back-end using SSH, then all you need too do is to run this command:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>sshfs -p xxxxx root@n.tcp.ngrok.io:/content/drive/MyDrive /mnt/colab
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>sshfs -p xxxxx root@n.tcp.ngrok.io:/content/drive/MyDrive /mnt/colab
 </code></pre></div><p>The command is almost the same as SSH command from before, the difference is that you need to specify which directory you want to mount on the google colab (in above example is google drive which has path <code>/content/drive/MyDrive</code>) and which directory you want to mount it on the local system (in above example is on <code>/mnt/colab</code>).</p>
 <p>You can choose to mount google drive on any other directory you want, even on your home directory. I usually mount it on <code>/mnt</code> because it&rsquo;s already a habit of mine to mount an external drive to either <code>/mnt</code> or <code>/run/media</code>. And also, make sure the directory you want to mount your drive into is already exist. I already create <code>colab</code> directory beforehand, so i can mount the google drive into <code>/mnt/colab</code>.</p>
 <h2 id=upside-and-downside>Upside and Downside</h2>
