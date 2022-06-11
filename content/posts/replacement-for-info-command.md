@@ -49,7 +49,8 @@ need to read the manpage about `pinfo` to configure it.
 
 Other than trying to configure `pinfo`, i might need to figure out what is the
 info documents is all about. This might be a new kind of documentation other
-than manpage that i can use (if the developer support it).
+than manpage that i can use (if the developer support it). Also, figure out
+about the character special file type.
 
 [^1]: [Stackexchange: The meaning of `c` in `crw-rw-rw-`](https://unix.stackexchange.com/a/568573)
 [^2]: [Stackexchange: Replacement for `info` command](https://unix.stackexchange.com/a/568573)
