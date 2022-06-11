@@ -20,10 +20,16 @@ Now, what is `c` in the `crw` below
 crw-rw-rw- 1 root root 1, 3 Jun 11 04:21 /dev/null
 ```
 
-After going around on internet, i found an answer in stackexchange[^1].
+After going around on internet, i found an answer in stackexchange[^1]. Which
+explain that `c` stands for `character special file`. Please keep in mind that
+everything in unix-like system is a file, even a directory (or some people
+called it folder) is a file with type `directory`.
 
-In the stackexchange, someone mentioned about `info ls`. That's what pique my
-interest.
+> The file we usually use has a type of `regular file`.
+
+In the stackexchange, someone mentioned about `info ls` to show the file type
+with their respective character symbol. That's what pique my interest, the
+`info` command.
 
 ## Replacement For `info` Command
 
