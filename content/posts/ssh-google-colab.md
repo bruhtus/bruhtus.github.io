@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Access Google Colab Through SSH and SSHFS"
 date: 2021-06-22T09:32:28+07:00
-tags: [Linux, No one asked]
+tags: [Linux]
 ShowToc: true
 ---
 

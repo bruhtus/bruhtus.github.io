@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Guide to Make Your Own Vim/Neovim Statusline"
 date: 2021-08-20T08:31:29+07:00
-tags: [No one asked, Vim]
+tags: [Vim]
 ShowToc: true
 ---
 

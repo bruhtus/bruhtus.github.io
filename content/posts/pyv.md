@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Pyv: Minimalist Python Venv Management Tool"
 date: 2021-04-16T11:43:18+07:00
-tags: [No one asked, Shell, Python]
+tags: [Shell, Python]
 ShowToc: true
 ---
 
