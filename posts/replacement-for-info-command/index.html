@@ -27,7 +27,7 @@ Replacement For Info Command
 1crw-rw-rw- 1 root root 1, 3 Jun 11 04:21 /dev/null Now, what is c in the crw below
 1crw-rw-rw- 1 root root 1, 3 Jun 11 04:21 /dev/null After going around on internet, i found an answer in stackexchange1."><meta itemprop=datePublished content="2022-06-11T06:38:52+07:00">
 <meta itemprop=dateModified content="2022-06-11T06:38:52+07:00">
-<meta itemprop=wordCount content="254">
+<meta itemprop=wordCount content="314">
 <meta itemprop=keywords content="Notes,Linux,"><meta name=twitter:card content="summary">
 <meta name=twitter:image content="https://bruhtus.github.io//img/">
 <meta name=twitter:title content="Replacement For Info Command">
@@ -76,9 +76,16 @@ a look of it, using the <code>ls -l /dev/null</code> command, i found something 
 <div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>crw-rw-rw- <span style=color:#3677a9>1</span> root root 1, <span style=color:#3677a9>3</span> Jun <span style=color:#3677a9>11</span> 04:21 /dev/null
 </code></pre></div><p>Now, what is <code>c</code> in the <code>crw</code> below</p>
 <div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style="margin-right:.4em;padding:0 .4em;color:#686868">1</span>crw-rw-rw- <span style=color:#3677a9>1</span> root root 1, <span style=color:#3677a9>3</span> Jun <span style=color:#3677a9>11</span> 04:21 /dev/null
-</code></pre></div><p>After going around on internet, i found an answer in stackexchange<sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup>.</p>
-<p>In the stackexchange, someone mentioned about <code>info ls</code>. That&rsquo;s what pique my
-interest.</p>
+</code></pre></div><p>After going around on internet, i found an answer in stackexchange<sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup>. Which
+explain that <code>c</code> stands for <code>character special file</code>. Please keep in mind that
+everything in unix-like system is a file, even a directory (or some people
+called it folder) is a file with type <code>directory</code>.</p>
+<blockquote>
+<p>The file we usually use has a type of <code>regular file</code>.</p>
+</blockquote>
+<p>In the stackexchange, someone mentioned about <code>info ls</code> to show the file type
+with their respective character symbol. That&rsquo;s what pique my interest, the
+<code>info</code> command.</p>
 <h2 id=replacement-for-info-command>Replacement For <code>info</code> Command</h2>
 <p>When i use the command <code>info ls</code>, i noticed that i can&rsquo;t use <code>j</code> and <code>k</code> for
 navigation, which is disgusting.</p>
