@@ -27,7 +27,7 @@ alias gap='git status -s | awk &#34;{print \$2}&#34; | fzf | xargs -r git add -p
 First Attempt My first attempt to make that shell alias was something like this:
 alias gap='git status -s | awk &#34;{print \$2}&#34; | fzf | xargs -r git add -p' Let me briefly explain one by one the command that i use in my shell alias:"><meta itemprop=datePublished content="2022-06-11T09:28:09+07:00">
 <meta itemprop=dateModified content="2022-06-11T09:28:09+07:00">
-<meta itemprop=wordCount content="573">
+<meta itemprop=wordCount content="596">
 <meta itemprop=keywords content="Notes,Linux,"><meta name=twitter:card content="summary">
 <meta name=twitter:image content="https://bruhtus.github.io//img/">
 <meta name=twitter:title content="Shell Process Substitution as Temp File">
@@ -144,6 +144,9 @@ process substitution.</p>
 <h2 id=extra-note>Extra Note</h2>
 <p>For more info about the <code>xargs</code> and <code>git</code> flags, check the manpage.
 For example: <code>man xargs</code> or <code>man git-add</code>.</p>
+<p>If we use <code>echo</code> with shell process substitution like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#24909d>echo</span> &lt;(git status -s)
+</code></pre></div><p>That will show us where the temporary file created.</p>
 <section class=footnotes role=doc-endnotes>
 <hr>
 <ol>
