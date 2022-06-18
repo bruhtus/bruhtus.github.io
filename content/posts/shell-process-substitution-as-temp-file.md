@@ -98,6 +98,13 @@ process substitution.
 For more info about the `xargs` and `git` flags, check the manpage.
 For example: `man xargs` or `man git-add`.
 
+If we use `echo` with shell process substitution like this:
+```sh
+echo <(git status -s)
+```
+
+That will show us where the temporary file created.
+
 [^1]: [Fuzzy finder by Junegunn](https://github.com/junegunn/fzf).
 [^2]: [Stackoverflow: `xargs` explanation](https://stackoverflow.com/a/30050792).
 [^3]: [Triggering EOF explanation](https://askubuntu.com/a/724995).
