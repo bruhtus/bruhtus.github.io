@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Awk Print Row Instead of Column"
 date: 2022-06-18T08:53:01+07:00
-tags:
+tags: [Notes, Linux, Shell]
 ShowToc: true
 ---
 
