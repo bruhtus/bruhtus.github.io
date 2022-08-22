@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Shell Process Substitution as Temp File"
 date: 2022-06-11T09:28:09+07:00
-tags: [Notes, Linux]
+tags: [Notes, Linux, Shell]
 ShowToc: true
 ---
 
