@@ -1,0 +1,221 @@
+<!doctype html><html>
+<head>
+<title>
+Remove Specific Line in Vim
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=author content="Robertus Chris">
+<link rel="shortcut icon" type=image/x-icon href=https://bruhtus.github.io/img/favicon.ico>
+<link rel=stylesheet href=https://bruhtus.github.io/style.min.4f970aa135421035a71bdc9bbd750aa2cfbe0ddb080ab1ec5db4173f45494cad.css integrity="sha256-T5cKoTVCEDWnG9ybvXUKos++DdsICrHsXbQXP0VJTK0=">
+<link disabled rel=stylesheet href=https://bruhtus.github.io/style-dark.min.0a647fb6c07e04b77b54fa0515d0a683d39ecdb251dba960fe1f966f7ff36fc2.css media="(prefers-color-scheme: dark)" integrity="sha256-CmR/tsB+BLd7VPoFFdCmg9OezbJR26lg/h+Wb3/zb8I=">
+<link rel=stylesheet href=https://use.fontawesome.com/releases/v5.8.1/css/all.css integrity=sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf crossorigin=anonymous>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@300&family=EB+Garamond&family=PT+Sans&family=Sura&family=Zilla+Slab&family=Inconsolata&family=Libre+Baskerville&display=swap" rel=stylesheet>
+<link rel=stylesheet href=https://bruhtus.github.io/css/custom.css>
+<meta property="og:title" content="Remove Specific Line in Vim">
+<meta property="og:description" content="A Brief Intro In this post, we will talk about how to remove specific line in vim. We will be using this javascript snippet code as an example:
+const app = require('./jest-example'); const math = require('./math'); describe('app operation', () => { const multiplyMock = jest.spyOn(math, 'multiply'); multiplyMock.mockReturnValue('itu'); test('call math.add()', () => { const add = jest.spyOn(math, 'add'); add.mockImplementation(() => 'anu'); console.log(app.doAdd(1, 2)); expect(app.doAdd(1, 2)).toBe('anu'); add.mockRestore(); console.log(app.doAdd(1, 2)); expect(app.doAdd(1, 2)).toBe(3); }); test('call math.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bruhtus.github.io/posts/remove-specific-line-in-vim/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2022-09-03T09:03:52+07:00">
+<meta property="article:modified_time" content="2022-09-03T09:03:52+07:00">
+<meta itemprop=name content="Remove Specific Line in Vim">
+<meta itemprop=description content="A Brief Intro In this post, we will talk about how to remove specific line in vim. We will be using this javascript snippet code as an example:
+const app = require('./jest-example'); const math = require('./math'); describe('app operation', () => { const multiplyMock = jest.spyOn(math, 'multiply'); multiplyMock.mockReturnValue('itu'); test('call math.add()', () => { const add = jest.spyOn(math, 'add'); add.mockImplementation(() => 'anu'); console.log(app.doAdd(1, 2)); expect(app.doAdd(1, 2)).toBe('anu'); add.mockRestore(); console.log(app.doAdd(1, 2)); expect(app.doAdd(1, 2)).toBe(3); }); test('call math."><meta itemprop=datePublished content="2022-09-03T09:03:52+07:00">
+<meta itemprop=dateModified content="2022-09-03T09:03:52+07:00">
+<meta itemprop=wordCount content="696">
+<meta itemprop=keywords content="Notes,Vim,"><meta name=twitter:card content="summary">
+<meta name=twitter:image content="https://bruhtus.github.io//img/">
+<meta name=twitter:title content="Remove Specific Line in Vim">
+<meta name=twitter:description content="A Brief Intro In this post, we will talk about how to remove specific line in vim. We will be using this javascript snippet code as an example:
+const app = require('./jest-example'); const math = require('./math'); describe('app operation', () => { const multiplyMock = jest.spyOn(math, 'multiply'); multiplyMock.mockReturnValue('itu'); test('call math.add()', () => { const add = jest.spyOn(math, 'add'); add.mockImplementation(() => 'anu'); console.log(app.doAdd(1, 2)); expect(app.doAdd(1, 2)).toBe('anu'); add.mockRestore(); console.log(app.doAdd(1, 2)); expect(app.doAdd(1, 2)).toBe(3); }); test('call math."><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
+</head>
+<body>
+<h1>Remove Specific Line in Vim</h1>
+<header>
+<div class=cd>
+<h2><a style=text-decoration:none class=cd href=https://bruhtus.github.io//posts>cd ..</a> || <a style=text-decoration:none class=cd href=https://bruhtus.github.io/>cd</a></h2>
+</div>
+</header>
+<p class=date>
+September 3, 2022
+<span>&#183;</span>
+4 mins
+<span>&#183;</span>
+Robertus Chris
+</p>
+<div id=tags>
+<ul>
+<li><a style=text-decoration:none href=https://bruhtus.github.io/tags/notes/>Notes</a></li>
+<li><a style=text-decoration:none href=https://bruhtus.github.io/tags/vim/>Vim</a></li>
+</ul>
+</div>
+<div class=toc>
+<details>
+<summary>
+<div class=details>Table of Contents</div>
+</summary>
+<blockquote><ul><li>
+<a style=text-decoration:none href=#a-brief-intro aria-label="A Brief Intro">A Brief Intro</a></li><li>
+<a style=text-decoration:none href=#global-command aria-label="Global Command">Global Command</a></li><li>
+<a style=text-decoration:none href=#substitute-command aria-label="Substitute Command">Substitute Command</a></li><li>
+<a style=text-decoration:none href=#conclusion aria-label=Conclusion>Conclusion</a></li></ul>
+</blockquote>
+</details>
+</div>
+<div id=contentBody>
+<h2 id=a-brief-intro>A Brief Intro</h2>
+<p>In this post, we will talk about how to remove specific line in vim. We will
+be using this javascript snippet code as an example:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-javascript data-lang=javascript><span style=color:#6ab825;font-weight:700>const</span> app = require(<span style=color:#ed9d13>&#39;./jest-example&#39;</span>);
+<span style=color:#6ab825;font-weight:700>const</span> math = require(<span style=color:#ed9d13>&#39;./math&#39;</span>);
+
+describe(<span style=color:#ed9d13>&#39;app operation&#39;</span>, () =&gt; {
+  <span style=color:#6ab825;font-weight:700>const</span> multiplyMock = jest.spyOn(math, <span style=color:#ed9d13>&#39;multiply&#39;</span>);
+  multiplyMock.mockReturnValue(<span style=color:#ed9d13>&#39;itu&#39;</span>);
+
+  test(<span style=color:#ed9d13>&#39;call math.add()&#39;</span>, () =&gt; {
+    <span style=color:#6ab825;font-weight:700>const</span> add = jest.spyOn(math, <span style=color:#ed9d13>&#39;add&#39;</span>);
+
+    add.mockImplementation(() =&gt; <span style=color:#ed9d13>&#39;anu&#39;</span>);
+    console.log(app.doAdd(<span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>));
+    expect(app.doAdd(<span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>)).toBe(<span style=color:#ed9d13>&#39;anu&#39;</span>);
+
+    add.mockRestore();
+    console.log(app.doAdd(<span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>));
+    expect(app.doAdd(<span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>)).toBe(<span style=color:#3677a9>3</span>);
+  });
+
+  test(<span style=color:#ed9d13>&#39;call math.subtract()&#39;</span>, () =&gt; {
+    <span style=color:#6ab825;font-weight:700>const</span> subtract = jest.spyOn(math, <span style=color:#ed9d13>&#39;subtract&#39;</span>);
+
+    subtract.mockImplementation(() =&gt; <span style=color:#ed9d13>&#39;nganu&#39;</span>);
+    console.log(app.doSubtract(<span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>));
+    expect(app.doSubtract(<span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>)).toBe(<span style=color:#ed9d13>&#39;nganu&#39;</span>);
+  });
+
+  test(<span style=color:#ed9d13>&#39;call math.subtract() again&#39;</span>, () =&gt; {
+    console.log(app.doSubtract(<span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>));
+  });
+
+  test(<span style=color:#ed9d13>&#39;call math.multiply()&#39;</span>, () =&gt; {
+    console.log(app.doMultiply(<span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>));
+  });
+});
+</code></pre></div><p>And the goal is to remove line that has <code>console.log()</code> in it. Let&rsquo;s get
+started!</p>
+<h2 id=global-command>Global Command</h2>
+<p>The first solution is that, we can use global command to delete the line that
+has <code>console.log()</code> like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-vim data-lang=vim>:g<span style=color:#ed9d13>/console.log/</span>d<span style=color:#a61717;background-color:#e3d2d2>
+</span></code></pre></div><p>Please keep in mind that the term <em>delete</em> in vim, means <em>cut</em>. So, rather
+than deleting the content, vim will put that into the unnamed register. For
+more info about unnamed register, we can check on <code>:help registers</code>.</p>
+<p>So, if we didn&rsquo;t want to clutter our unnamed register, we can use black hole
+register (yup, that&rsquo;s a thing) which actually <em>delete</em> rather than <em>cut</em> like
+this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-vim data-lang=vim>:g<span style=color:#ed9d13>/console.log/</span>d_<span style=color:#a61717;background-color:#e3d2d2>
+</span></code></pre></div><p>On a side note, we don&rsquo;t need to use <code>/</code> as the separator between command and
+pattern, we can use most characters except <code>\</code>, <code>"</code>, or <code>|</code>. If we use vim9
+script, we can use <code>#</code> as a separator either, so please keep that in mind. For
+more info, we can check on <code>:help pattern-delimiter</code>.</p>
+<p>In other words, we can write the previous global command, like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-vim data-lang=vim>:g;console.log;d_<span style=color:#a61717;background-color:#e3d2d2>
+</span></code></pre></div><p>The global command that we just gone through will delete all the <code>console.log</code>
+in current file. If we want to specify the area of <code>console.log</code> we want to
+delete, we can add range to global command.</p>
+<p>Let&rsquo;s take a look at the snippet we are using:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-javascript data-lang=javascript><span style=color:#6ab825;font-weight:700>const</span> app = require(<span style=color:#ed9d13>&#39;./jest-example&#39;</span>);
+<span style=color:#6ab825;font-weight:700>const</span> math = require(<span style=color:#ed9d13>&#39;./math&#39;</span>);
+
+describe(<span style=color:#ed9d13>&#39;app operation&#39;</span>, () =&gt; {
+  <span style=color:#6ab825;font-weight:700>const</span> multiplyMock = jest.spyOn(math, <span style=color:#ed9d13>&#39;multiply&#39;</span>);
+  multiplyMock.mockReturnValue(<span style=color:#ed9d13>&#39;itu&#39;</span>);
+
+  test(<span style=color:#ed9d13>&#39;call math.add()&#39;</span>, () =&gt; {
+    <span style=color:#6ab825;font-weight:700>const</span> add = jest.spyOn(math, <span style=color:#ed9d13>&#39;add&#39;</span>);
+
+    add.mockImplementation(() =&gt; <span style=color:#ed9d13>&#39;anu&#39;</span>);
+    console.log(app.doAdd(<span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>));
+    expect(app.doAdd(<span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>)).toBe(<span style=color:#ed9d13>&#39;anu&#39;</span>);
+
+    add.mockRestore();
+    console.log(app.doAdd(<span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>));
+    expect(app.doAdd(<span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>)).toBe(<span style=color:#3677a9>3</span>);
+  });
+
+  test(<span style=color:#ed9d13>&#39;call math.subtract()&#39;</span>, () =&gt; {
+    <span style=color:#6ab825;font-weight:700>const</span> subtract = jest.spyOn(math, <span style=color:#ed9d13>&#39;subtract&#39;</span>);
+
+    subtract.mockImplementation(() =&gt; <span style=color:#ed9d13>&#39;nganu&#39;</span>);
+    console.log(app.doSubtract(<span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>));
+    expect(app.doSubtract(<span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>)).toBe(<span style=color:#ed9d13>&#39;nganu&#39;</span>);
+  });
+
+  test(<span style=color:#ed9d13>&#39;call math.subtract() again&#39;</span>, () =&gt; {
+    console.log(app.doSubtract(<span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>));
+  });
+
+  test(<span style=color:#ed9d13>&#39;call math.multiply()&#39;</span>, () =&gt; {
+    console.log(app.doMultiply(<span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>));
+  });
+});
+</code></pre></div><p>And let&rsquo;s say that our cursor in the line
+<code>test('call math.subtract()', () => {</code> and we want to delete the <code>console.log</code>
+in <code>test('call math.add()', () => {</code> which is before the line we&rsquo;re currently
+in.</p>
+<p>With that in mind, we can do something like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-vim data-lang=vim>:?test?;<span style=color:#ed9d13>/});/</span>g;console.log;d_<span style=color:#a61717;background-color:#e3d2d2>
+</span></code></pre></div><p>Here&rsquo;s the breakdown of those command:</p>
+<ul>
+<li><code>?test?</code> will search word <code>test</code> on previous line.</li>
+<li><code>;</code> after <code>?test?</code> is a special offset which tell vim that we will use
+another search command. For more info, we can check <code>:help //;</code>.</li>
+<li><code>/});/</code> will search after the result of previous search.</li>
+<li><code>g;console.log;d_</code> is a global command to delete <code>console.log</code> in the scope
+of previous search.</li>
+</ul>
+<h2 id=substitute-command>Substitute Command</h2>
+<p>The downside of global command is that there&rsquo;s no confirm option, so we might
+delete something we don&rsquo;t want to. If we want a confirm option, we can use
+substitute command.</p>
+<p>If we want to delete all the <code>console.log</code> in current file, we can do it like
+this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-vim data-lang=vim>:%s;.*console.log.*\n;;c<span style=color:#a61717;background-color:#e3d2d2>
+</span></code></pre></div><p>Here&rsquo;s the breakdown of those command:</p>
+<ul>
+<li><code>%</code> symbol to tell vim that the range is the current file or all the line in
+the file.</li>
+<li><code>s</code> is the abbreviation of substitute command.</li>
+<li><code>.*console.log.*\n</code> is the pattern that select the line that has
+<code>console.log</code> in it, which include the newline character at the end.</li>
+<li><code>;;</code> is basically telling vim to replace it with nothing.</li>
+<li><code>c</code> is a confirm option.</li>
+</ul>
+<p>We can also combine substitute command with global command, like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-vim data-lang=vim>:g;console.log;s;.*\n;;c<span style=color:#a61717;background-color:#e3d2d2>
+</span></code></pre></div><h2 id=conclusion>Conclusion</h2>
+<p>There&rsquo;s a lot of possibility with global and substitute command and we won&rsquo;t
+be able to cover all of those in one blog post. So, i will leave it to you to
+explore those possibility.</p>
+<p>You might want to learn regular expression to enhance the global and
+substitute command experience.</p>
+<p>Alright, that&rsquo;s it for this post. Thank you for reading!</p>
+</div>
+<footer>
+<p>
+&copy; 2020-present <a style=text-decoration:none href=https://bruhtus.github.io/resume target=_blank rel="noreferrer noopener">Robertus Chris</a>
+<span>&#183;</span>
+<a style=text-decoration:none href=https://bruhtus.github.io/index.xml target=_blank rel="noreferrer noopener">RSS Feed</a>
+<span>&#183;</span>
+Based on <a style=text-decoration:none href=https://github.com/koirand/pulp/ target=_blank rel="noreferrer noopener">pulp</a> and <a style=text-decoration:none href=https://git.io/hugopapermod target=_blank rel="noreferrer noopener">papermod</a> theme
+</p>
+</footer>
+<button onclick=topFunction() id=myBtn title="Go to top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d0d0d0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+<script>var mybutton=document.getElementById("myBtn");window.onscroll=function(){scrollFunction()};function scrollFunction(){document.body.scrollTop>20||document.documentElement.scrollTop>20?mybutton.style.display="block":mybutton.style.display="none"}function topFunction(){document.body.scrollTop=0,document.documentElement.scrollTop=0}</script><script src=https://bruhtus.github.io/js/custom.js></script>
+</body>
+</html>
