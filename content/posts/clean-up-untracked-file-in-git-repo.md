@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Clean Up Untracked File in Git Repo"
 date: 2022-08-20T12:33:36+07:00
-tags: [Notes, Linux, Shell]
+tags: [Notes, Linux, Shell, Git]
 ShowToc: false
 ---
 
