@@ -1,6 +1,6 @@
 baseURL = "https://bruhtus.github.io/"
 languageCode = "en-us"
-title = "bruhtus >/dev/null"
+title = "/dev/null"
 theme = "pulp"
 canonifyurls = true
 hasCJKLanguage = true
