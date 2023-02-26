@@ -48,7 +48,7 @@ hasCJKLanguage = true
 [[menu.main]]
     indentifier = "posts"
     name = "Posts"
-    pre = "<i class='fa fa-mug-hot fa-lg'></i>"
+    pre = "<i class='fa fa-folder fa-lg'></i>"
     url = "/posts/"
     weight = 30
 
