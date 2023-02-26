@@ -96,7 +96,7 @@ synthesis60 version 2. I need to get the hex file from the mechanical keyboard
 designer (and fortunately he's within reach).
 
 > In case you also need the synthesis60 version 2 hex file, you can check it
-> [here](simple-guide-qmk-flashing-cli/dyz_synthesis60_atmega_vial.hex).
+> [here](https://github.com/bruhtus/bruhtus.github.io/blob/master/content/posts/simple-guide-qmk-flashing-cli/dyz_synthesis60_atmega_vial.hex).
 
 So, to use our own hex file rather than using the default that QMK supported,
 we can use this command:
