@@ -1,0 +1,139 @@
+<!doctype html><html>
+<head>
+<title>
+Docker Compose Down Without Yaml File
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=author content="Robertus Chris">
+<link rel="shortcut icon" type=image/x-icon href=https://bruhtus.github.io/img/favicon.ico>
+<link rel=stylesheet href=https://bruhtus.github.io/style.min.4f970aa135421035a71bdc9bbd750aa2cfbe0ddb080ab1ec5db4173f45494cad.css integrity="sha256-T5cKoTVCEDWnG9ybvXUKos++DdsICrHsXbQXP0VJTK0=">
+<link disabled rel=stylesheet href=https://bruhtus.github.io/style-dark.min.0a647fb6c07e04b77b54fa0515d0a683d39ecdb251dba960fe1f966f7ff36fc2.css media="(prefers-color-scheme: dark)" integrity="sha256-CmR/tsB+BLd7VPoFFdCmg9OezbJR26lg/h+Wb3/zb8I=">
+<link rel=stylesheet href=https://use.fontawesome.com/releases/v5.8.1/css/all.css integrity=sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf crossorigin=anonymous>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@300&family=EB+Garamond&family=PT+Sans&family=Sura&family=Zilla+Slab&family=Inconsolata&family=Libre+Baskerville&display=swap" rel=stylesheet>
+<link rel=stylesheet href=https://bruhtus.github.io/css/custom.css>
+<meta property="og:title" content="Docker Compose Down Without Yaml File">
+<meta property="og:description" content="A Brief Intro Have you ever feel that you have too much docker container from spin up a bunch of docker-compose.yaml file? And when you want to take down all those docker container from the docker-compose.yml, you already delete the file?
+If that&rsquo;s the case, then this post might be for you.
+Before we start, we will be using docker compose version 2.16.0 in this post. If you are using the older version of docker compose, then this method might not work.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bruhtus.github.io/posts/docker-compose-down-without-yaml-file/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2023-03-22T09:59:40+07:00">
+<meta property="article:modified_time" content="2023-03-22T09:59:40+07:00">
+<meta itemprop=name content="Docker Compose Down Without Yaml File">
+<meta itemprop=description content="A Brief Intro Have you ever feel that you have too much docker container from spin up a bunch of docker-compose.yaml file? And when you want to take down all those docker container from the docker-compose.yml, you already delete the file?
+If that&rsquo;s the case, then this post might be for you.
+Before we start, we will be using docker compose version 2.16.0 in this post. If you are using the older version of docker compose, then this method might not work."><meta itemprop=datePublished content="2023-03-22T09:59:40+07:00">
+<meta itemprop=dateModified content="2023-03-22T09:59:40+07:00">
+<meta itemprop=wordCount content="431">
+<meta itemprop=keywords content="Notes,Linux,"><meta name=twitter:card content="summary">
+<meta name=twitter:image content="https://bruhtus.github.io//img/">
+<meta name=twitter:title content="Docker Compose Down Without Yaml File">
+<meta name=twitter:description content="A Brief Intro Have you ever feel that you have too much docker container from spin up a bunch of docker-compose.yaml file? And when you want to take down all those docker container from the docker-compose.yml, you already delete the file?
+If that&rsquo;s the case, then this post might be for you.
+Before we start, we will be using docker compose version 2.16.0 in this post. If you are using the older version of docker compose, then this method might not work."><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
+</head>
+<body>
+<h1>Docker Compose Down Without Yaml File</h1>
+<header>
+<div class=cd>
+<h2><a style=text-decoration:none class=cd href=https://bruhtus.github.io/posts>cd ..</a> || <a style=text-decoration:none class=cd href=https://bruhtus.github.io/>cd</a></h2>
+</div>
+</header>
+<p class=date>
+March 22, 2023
+<span>&#183;</span>
+3 mins
+<span>&#183;</span>
+Robertus Chris
+</p>
+<div id=tags>
+<ul>
+<li><a style=text-decoration:none href=https://bruhtus.github.io/tags/notes/>Notes</a></li>
+<li><a style=text-decoration:none href=https://bruhtus.github.io/tags/linux/>Linux</a></li>
+</ul>
+</div>
+<div class=toc>
+<details>
+<summary>
+<div class=details>Table of Contents</div>
+</summary>
+<blockquote><ul><li>
+<a style=text-decoration:none href=#a-brief-intro aria-label="A Brief Intro">A Brief Intro</a></li><li>
+<a style=text-decoration:none href=#check-docker-compose-project-name aria-label="Check Docker Compose Project Name">Check Docker Compose Project Name</a></li><li>
+<a style=text-decoration:none href=#take-down-docker-compose-component aria-label="Take Down Docker Compose Component">Take Down Docker Compose Component</a></li><li>
+<a style=text-decoration:none href=#side-note aria-label="Side Note">Side Note</a></li></ul>
+</blockquote>
+</details>
+</div>
+<div id=contentBody>
+<h2 id=a-brief-intro>A Brief Intro</h2>
+<p>Have you ever feel that you have too much docker container from spin up a
+bunch of <code>docker-compose.yaml</code> file? And when you want to take down all those
+docker container from the <code>docker-compose.yml</code>, you already delete the file?</p>
+<p>If that&rsquo;s the case, then this post might be for you.</p>
+<p>Before we start, we will be using docker compose <strong>version 2.16.0</strong> in this post.
+If you are using the older version of docker compose, then this method might
+not work. Please keep that in mind.</p>
+<h2 id=check-docker-compose-project-name>Check Docker Compose Project Name</h2>
+<p>The first thing we need to do is to check the project name. We can do that
+with command:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>docker-compose ls
+</code></pre></div><p>or if we use docker compose v2, we can use this command instead:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>docker compose ls
+</code></pre></div><p>If the container already stopped, we can use flags <code>-a</code> or <code>--all</code> like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>docker-compose ls -a
+</code></pre></div><p>or this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>docker compose ls -a
+</code></pre></div><p>By default, docker compose will use the <code>docker-compose.yml</code> directory name as
+project name. We can specify the project name with flag <code>-p</code> or
+<code>--project-name</code> like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>docker-compose -p anu up -d
+</code></pre></div><p>or this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>docker compose -p anu up -d
+</code></pre></div><h2 id=take-down-docker-compose-component>Take Down Docker Compose Component</h2>
+<p>After we know the project name, we can take down all docker component when we
+spin up the docker container from <code>docker-compose.yml</code>. The component in here
+means volume, network, or anything that we define inside <code>docker-compose.yml</code>.</p>
+<p>To take down component from docker compose without the <code>docker-compose.yml</code>,
+we can use this command:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>docker-compose -p project-name down &lt;docker-compose-down-flags&gt;
+</code></pre></div><p>or this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>docker compose -p project-name down &lt;docker-compose-down-flags&gt;
+</code></pre></div><p>For example, let&rsquo;s say we want to take down docker component from project <code>anu</code> and also remove the volume from those project. We can do that with this command:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>docker-compose -p anu down -v
+</code></pre></div><p>or this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>docker compose -p anu down -v
+</code></pre></div><p>Alright, that&rsquo;s it!</p>
+<p>I am not sure since when the <code>ls</code> command appear in docker compose, so just
+to be safe i recommend using at least docker compose version 2.16.0.</p>
+<h2 id=side-note>Side Note</h2>
+<p>I&rsquo;ve tried this method with docker compose version 1.18.0, but failed. After i
+downloaded the docker compose binary version 2.16.0 from github, i can use
+this method.</p>
+<p>Still not sure what was wrong. When i use command <code>docker-compose --help</code>, the
+flag <code>-p</code> in there. But when i actually spin up a new docker instance with
+command:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>docker-compose -p project-name up -d service-name
+</code></pre></div><p>and then tried to take it down with command:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>docker-compose -p project-name down -v
+</code></pre></div><p>i got an error <code>docker-compose.yml not found</code> or along those lines.</p>
+<p>If someone know what&rsquo;s going on, please let me know!</p>
+</div>
+<footer>
+<p>
+&copy; 2020-present <a style=text-decoration:none href=https://bruhtus.github.io/resume target=_blank rel="noreferrer noopener">Robertus Chris</a>
+<span>&#183;</span>
+<a style=text-decoration:none href=https://bruhtus.github.io/index.xml target=_blank rel="noreferrer noopener">RSS Feed</a>
+<span>&#183;</span>
+Based on <a style=text-decoration:none href=https://github.com/koirand/pulp/ target=_blank rel="noreferrer noopener">pulp</a> and <a style=text-decoration:none href=https://git.io/hugopapermod target=_blank rel="noreferrer noopener">papermod</a> theme
+</p>
+</footer>
+<button onclick=topFunction() id=myBtn title="Go to top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d0d0d0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+<script>var mybutton=document.getElementById("myBtn");window.onscroll=function(){scrollFunction()};function scrollFunction(){document.body.scrollTop>20||document.documentElement.scrollTop>20?mybutton.style.display="block":mybutton.style.display="none"}function topFunction(){document.body.scrollTop=0,document.documentElement.scrollTop=0}</script><script src=https://bruhtus.github.io/js/custom.js></script>
+</body>
+</html>
