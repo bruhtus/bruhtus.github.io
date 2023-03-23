@@ -27,7 +27,7 @@ Before we start, we will be using docker compose version 2.16.0 in this post. If
 If that&rsquo;s the case, then this post might be for you.
 Before we start, we will be using docker compose version 2.16.0 in this post. If you are using the older version of docker compose, then this method might not work."><meta itemprop=datePublished content="2023-03-22T09:59:40+07:00">
 <meta itemprop=dateModified content="2023-03-22T09:59:40+07:00">
-<meta itemprop=wordCount content="431">
+<meta itemprop=wordCount content="453">
 <meta itemprop=keywords content="Notes,Linux,"><meta name=twitter:card content="summary">
 <meta name=twitter:image content="https://bruhtus.github.io//img/">
 <meta name=twitter:title content="Docker Compose Down Without Yaml File">
@@ -94,7 +94,9 @@ project name. We can specify the project name with flag <code>-p</code> or
 <div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>docker-compose -p anu up -d
 </code></pre></div><p>or this:</p>
 <div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>docker compose -p anu up -d
-</code></pre></div><h2 id=take-down-docker-compose-component>Take Down Docker Compose Component</h2>
+</code></pre></div><p><strong>Please keep in mind that we need to use the flags <code>-p</code> or <code>--project-name</code>
+before the command such as <code>up</code> or <code>down</code></strong>.</p>
+<h2 id=take-down-docker-compose-component>Take Down Docker Compose Component</h2>
 <p>After we know the project name, we can take down all docker component when we
 spin up the docker container from <code>docker-compose.yml</code>. The component in here
 means volume, network, or anything that we define inside <code>docker-compose.yml</code>.</p>
