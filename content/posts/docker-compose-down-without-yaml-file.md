@@ -53,6 +53,9 @@ or this:
 docker compose -p anu up -d
 ```
 
+**Please keep in mind that we need to use the flags `-p` or `--project-name`
+before the command such as `up` or `down`**.
+
 ## Take Down Docker Compose Component
 
 After we know the project name, we can take down all docker component when we
