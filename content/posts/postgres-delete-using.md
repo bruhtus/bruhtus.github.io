@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Postgresql's Clause USING on DELETE Statement"
 date: 2023-06-01T14:07:25+07:00
-tags:
+tags: [Notes]
 ShowToc: true
 ---
 
