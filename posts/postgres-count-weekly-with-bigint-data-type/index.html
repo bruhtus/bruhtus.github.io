@@ -1,0 +1,164 @@
+<!doctype html><html>
+<head>
+<title>
+Postgres Count Weekly With Bigint Data Type
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=author content="Robertus Chris">
+<link rel="shortcut icon" type=image/x-icon href=https://bruhtus.github.io/img/favicon.ico>
+<link rel=stylesheet href=https://bruhtus.github.io/style.min.4f970aa135421035a71bdc9bbd750aa2cfbe0ddb080ab1ec5db4173f45494cad.css integrity="sha256-T5cKoTVCEDWnG9ybvXUKos++DdsICrHsXbQXP0VJTK0=">
+<link disabled rel=stylesheet href=https://bruhtus.github.io/style-dark.min.0a647fb6c07e04b77b54fa0515d0a683d39ecdb251dba960fe1f966f7ff36fc2.css media="(prefers-color-scheme: dark)" integrity="sha256-CmR/tsB+BLd7VPoFFdCmg9OezbJR26lg/h+Wb3/zb8I=">
+<link rel=stylesheet href=https://use.fontawesome.com/releases/v5.8.1/css/all.css integrity=sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf crossorigin=anonymous>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@300&family=EB+Garamond&family=PT+Sans&family=Sura&family=Zilla+Slab&family=Inconsolata&family=Libre+Baskerville&display=swap" rel=stylesheet>
+<link rel=stylesheet href=https://bruhtus.github.io/css/custom.css>
+<meta property="og:title" content="Postgres Count Weekly With Bigint Data Type">
+<meta property="og:description" content="A Brief Intro Let&rsquo;s say we have a created_at column in our database with data type big integer that has a value with this equation:
+EXTRACT(EPOCHFROMNOW())*1000 Don&rsquo;t ask me why the value of created_at like that because i have no idea.
+ Now, the goals is to count every data per week.
+How? How to do that? Because we use a unix timestamp which look like this 1687746597339, we need to convert those into timestamp using postgresql to_timestamp() function like this:">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bruhtus.github.io/posts/postgres-count-weekly-with-bigint-data-type/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2023-06-26T10:58:13+07:00">
+<meta property="article:modified_time" content="2023-06-26T10:58:13+07:00">
+<meta itemprop=name content="Postgres Count Weekly With Bigint Data Type">
+<meta itemprop=description content="A Brief Intro Let&rsquo;s say we have a created_at column in our database with data type big integer that has a value with this equation:
+EXTRACT(EPOCHFROMNOW())*1000 Don&rsquo;t ask me why the value of created_at like that because i have no idea.
+ Now, the goals is to count every data per week.
+How? How to do that? Because we use a unix timestamp which look like this 1687746597339, we need to convert those into timestamp using postgresql to_timestamp() function like this:"><meta itemprop=datePublished content="2023-06-26T10:58:13+07:00">
+<meta itemprop=dateModified content="2023-06-26T10:58:13+07:00">
+<meta itemprop=wordCount content="300">
+<meta itemprop=keywords content="Notes,"><meta name=twitter:card content="summary">
+<meta name=twitter:image content="https://bruhtus.github.io//img/">
+<meta name=twitter:title content="Postgres Count Weekly With Bigint Data Type">
+<meta name=twitter:description content="A Brief Intro Let&rsquo;s say we have a created_at column in our database with data type big integer that has a value with this equation:
+EXTRACT(EPOCHFROMNOW())*1000 Don&rsquo;t ask me why the value of created_at like that because i have no idea.
+ Now, the goals is to count every data per week.
+How? How to do that? Because we use a unix timestamp which look like this 1687746597339, we need to convert those into timestamp using postgresql to_timestamp() function like this:"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
+</head>
+<body>
+<h1>Postgres Count Weekly With Bigint Data Type</h1>
+<header>
+<div class=cd>
+<h2><a style=text-decoration:none class=cd href=https://bruhtus.github.io/posts>cd ..</a> || <a style=text-decoration:none class=cd href=https://bruhtus.github.io/>cd</a></h2>
+</div>
+</header>
+<p class=date>
+June 26, 2023
+<span>&#183;</span>
+2 mins
+<span>&#183;</span>
+Robertus Chris
+</p>
+<div id=tags>
+<ul>
+<li><a style=text-decoration:none href=https://bruhtus.github.io/tags/notes/>Notes</a></li>
+</ul>
+</div>
+<div class=toc>
+<details>
+<summary>
+<div class=details>Table of Contents</div>
+</summary>
+<blockquote><ul><li>
+<a style=text-decoration:none href=#a-brief-intro aria-label="A Brief Intro">A Brief Intro</a></li><li>
+<a style=text-decoration:none href=#how aria-label=How?>How?</a></li><li>
+<a style=text-decoration:none href=#references aria-label=References>References</a></li></ul>
+</blockquote>
+</details>
+</div>
+<div id=contentBody>
+<h2 id=a-brief-intro>A Brief Intro</h2>
+<p>Let&rsquo;s say we have a <code>created_at</code> column in our database with data type big
+integer that has a value with this equation:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sql data-lang=sql><span style=color:#6ab825;font-weight:700>EXTRACT</span>(EPOCH<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>FROM</span><span style=color:#666> </span>NOW())<span style=color:#666> </span>*<span style=color:#666> </span><span style=color:#3677a9>1000</span><span style=color:#666>
+</span></code></pre></div><blockquote>
+<p>Don&rsquo;t ask me why the value of <code>created_at</code> like that because i have no idea.</p>
+</blockquote>
+<p>Now, the goals is to count every data per week.</p>
+<h2 id=how>How?</h2>
+<p>How to do that? Because we use a unix timestamp which look like this
+<code>1687746597339</code>, we need to convert those into timestamp using postgresql
+<code>to_timestamp()</code> function like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sql data-lang=sql>to_timestamp(created_at/<span style=color:#3677a9>1000</span>)<span style=color:#666>
+</span></code></pre></div><blockquote>
+<p>We divide by 1000 because we multiple it by 1000 when we insert the value.</p>
+</blockquote>
+<p>And then, we need to truncate into a specific date. We can use <code>date_trunc()</code>
+function to truncate the date.</p>
+<p>According to the documentation, this is the parameter for <code>date_trunc()</code>:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sql data-lang=sql>date_trunc(field,<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>source</span><span style=color:#666> </span>[,<span style=color:#666> </span>time_zone<span style=color:#666> </span>])<span style=color:#666>
+</span></code></pre></div><p>Valid values for <code>field</code> are:</p>
+<ul>
+<li>microseconds</li>
+<li>milliseconds</li>
+<li>second</li>
+<li>minute</li>
+<li>hour</li>
+<li>day</li>
+<li>week</li>
+<li>month</li>
+<li>quarter</li>
+<li>year</li>
+<li>decade</li>
+<li>century</li>
+<li>millennium</li>
+</ul>
+<p><code>source</code> is either timestamp or interval and return timestamp or interval
+depending on the source.</p>
+<p><code>time_zone</code> is an optional parameter to specify a different timezone. By
+default, truncation is done with the current timezone setting.</p>
+<p>If we combine <code>date_trunc()</code> and <code>to_timestamp()</code>, we will get something like
+this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sql data-lang=sql>date_trunc(<span style=color:#ed9d13>&#39;week&#39;</span>,<span style=color:#666> </span>to_timestamp(created_at/<span style=color:#3677a9>1000</span>))<span style=color:#666>
+</span></code></pre></div><p>If we make the entire query, it would be something like this (let&rsquo;s say the
+table name is <code>participants</code>):</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sql data-lang=sql><span style=color:#6ab825;font-weight:700>SELECT</span><span style=color:#666>
+</span><span style=color:#666></span>date_trunc(<span style=color:#ed9d13>&#39;week&#39;</span>,<span style=color:#666> </span>to_timestamp(created_at/<span style=color:#3677a9>1000</span>))<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>AS</span><span style=color:#666> </span>weekly,<span style=color:#666>
+</span><span style=color:#666></span><span style=color:#6ab825;font-weight:700>COUNT</span>(*)<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>AS</span><span style=color:#666> </span>total_participants<span style=color:#666>
+</span><span style=color:#666></span><span style=color:#6ab825;font-weight:700>GROUP</span><span style=color:#666> </span><span style=color:#6ab825;font-weight:700>BY</span><span style=color:#666> </span>weekly<span style=color:#666>
+</span><span style=color:#666></span><span style=color:#6ab825;font-weight:700>ORDER</span><span style=color:#666> </span><span style=color:#6ab825;font-weight:700>BY</span><span style=color:#666> </span>weekly<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>ASC</span>;<span style=color:#666>
+</span></code></pre></div><p>And the result would be something like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sql data-lang=sql><span style=color:#666>         </span>weekly<span style=color:#666>         </span>|<span style=color:#666> </span>total_participants<span style=color:#666>
+</span><span style=color:#666></span><span style=color:#999;font-style:italic>------------------------+--------------------------
+</span><span style=color:#999;font-style:italic></span><span style=color:#666> </span><span style=color:#3677a9>2023</span>-<span style=color:#3677a9>06</span>-<span style=color:#3677a9>19</span><span style=color:#666> </span><span style=color:#3677a9>00</span>:<span style=color:#3677a9>00</span>:<span style=color:#3677a9>00</span>+<span style=color:#3677a9>07</span><span style=color:#666> </span>|<span style=color:#666>                    </span><span style=color:#3677a9>69420</span><span style=color:#666>
+</span><span style=color:#666> </span><span style=color:#3677a9>2023</span>-<span style=color:#3677a9>06</span>-<span style=color:#3677a9>26</span><span style=color:#666> </span><span style=color:#3677a9>00</span>:<span style=color:#3677a9>00</span>:<span style=color:#3677a9>00</span>+<span style=color:#3677a9>07</span><span style=color:#666> </span>|<span style=color:#666>                       </span><span style=color:#3677a9>69</span><span style=color:#666>
+</span></code></pre></div><blockquote>
+<p><code>00:00:00+07</code> is because the timezone setting on my database is
+<code>asia/jakarta</code> which is basically UTC+7.
+If your timezone setting is different, the timestamp might be different.</p>
+<p>Still not sure why the <code>date_trunc()</code> with field <code>week</code> start at monday,
+and, at the time of writing this post, i haven&rsquo;t found a settings to change
+that.</p>
+</blockquote>
+<p>Alright, that&rsquo;s it. See you next time!</p>
+<h2 id=references>References</h2>
+<ul>
+<li><a href=https://www.postgresql.org/docs/current/functions-datetime.html target=_blank rel="noreferrer noopener">Postgresql Date/Time Functions and Operator
+Documentations</a>
+.</li>
+<li><a href=https://www.postgresqltutorial.com/postgresql-date-functions/postgresql-date_trunc/ target=_blank rel="noreferrer noopener">Postgresql tutorial date_trunc()
+function</a>
+.</li>
+<li><a href=https://stackoverflow.com/a/36024734 target=_blank rel="noreferrer noopener">Stackoverflow group by week in
+postgresql</a>
+.</li>
+</ul>
+</div>
+<footer>
+<p>
+&copy; 2020-present <a style=text-decoration:none href=https://bruhtus.github.io/resume target=_blank rel="noreferrer noopener">Robertus Chris</a>
+<span>&#183;</span>
+<a style=text-decoration:none href=https://bruhtus.github.io/index.xml target=_blank rel="noreferrer noopener">RSS Feed</a>
+<span>&#183;</span>
+Based on <a style=text-decoration:none href=https://github.com/koirand/pulp/ target=_blank rel="noreferrer noopener">pulp</a> and <a style=text-decoration:none href=https://github.com/adityatelange/hugo-PaperMod target=_blank rel="noreferrer noopener">papermod</a> theme
+</p>
+</footer>
+<button onclick=topFunction() id=myBtn title="Go to top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d0d0d0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+<script>var mybutton=document.getElementById("myBtn");window.onscroll=function(){scrollFunction()};function scrollFunction(){document.body.scrollTop>20||document.documentElement.scrollTop>20?mybutton.style.display="block":mybutton.style.display="none"}function topFunction(){document.body.scrollTop=0,document.documentElement.scrollTop=0}</script><script src=https://bruhtus.github.io/js/custom.js></script>
+</body>
+</html>
