@@ -1,6 +1,6 @@
 ---
 author: Robertus Diawan Chris
-title: "Postgres Count Weekly With Bigint Data Type"
+title: "Postgresql Count Weekly With Bigint Data Type"
 date: 2023-06-26T10:58:13+07:00
 tags: [Notes]
 ShowToc: true
