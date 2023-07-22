@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Postgresql Count Data on Different Condition in The Same Query"
 date: 2023-07-18T07:07:47+07:00
-tags: [Notes]
+tags: [Notes, Postgresql]
 ShowToc: true
 ---
 

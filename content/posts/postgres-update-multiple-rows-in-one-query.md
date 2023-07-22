@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Postgresql Update Multiple Rows with One Query"
 date: 2023-06-01T15:01:42+07:00
-tags: [Notes]
+tags: [Notes, Postgresql]
 ShowToc: true
 ---
 

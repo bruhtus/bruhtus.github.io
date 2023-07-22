@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Postgresql Get Current Database Size"
 date: 2023-07-18T07:07:04+07:00
-tags: [Notes]
+tags: [Notes, Postgresql]
 ShowToc: true
 ---
 
