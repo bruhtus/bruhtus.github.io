@@ -41,10 +41,29 @@ AND meat.year = new.year
 RETURNING *;
 ```
 
+You can change the `new` in `new(price, year)` with anything you like.
+
+Another example case:<br>
+Let's say we need to update the city's population on specific regencies.
+So we need to update data on population column in city table which has
+reference to regencies id. We can make the query like this:
+```sql
+UPDATE city
+SET population = new.population
+FROM
+regencies,
+(values
+    ('city 1', 69420),
+    ('city 2', 6969)
+) AS new(regency, population)
+WHERE regencies.id = city.regency_id
+AND regencies.regency ilike new.regency
+RETURNING regencies.regency, city.population;
+```
+
 > The `RETURNING` clause is optional, it's a way to check if we really changed the
 > right rows or not. The `ILIKE` clause is an expression for insensitive case.
 
-You can change the `new` in `new(price, year)` with anything you like.
 Alright, that's it. See you next time!
 
 ## References
