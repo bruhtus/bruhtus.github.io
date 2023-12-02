@@ -27,7 +27,7 @@ FROM statement Postgresql has FROM clause in UPDATE statement which let us use c
 Rather than doing 3 query with different WHERE statement, we can do that with one query. Without further ado, let&rsquo;s go straight to it!
 FROM statement Postgresql has FROM clause in UPDATE statement which let us use columns on other table, it use the same syntax as FROM clause in SELECT statement."><meta itemprop=datePublished content="2023-06-01T15:01:42+07:00">
 <meta itemprop=dateModified content="2023-06-01T15:01:42+07:00">
-<meta itemprop=wordCount content="226">
+<meta itemprop=wordCount content="268">
 <meta itemprop=keywords content="Notes,Postgresql,"><meta name=twitter:card content="summary">
 <meta name=twitter:image content="https://bruhtus.github.io//img/">
 <meta name=twitter:title content="Postgresql Update Multiple Rows with One Query">
@@ -95,12 +95,27 @@ Let&rsquo;s say we need to update the <code>price</code> rows on <code>area</cod
 </span><span style=color:#666></span><span style=color:#6ab825;font-weight:700>WHERE</span><span style=color:#666> </span>meat.area<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>ILIKE</span><span style=color:#666> </span><span style=color:#ed9d13>&#39;tokyo&#39;</span><span style=color:#666>
 </span><span style=color:#666></span><span style=color:#6ab825;font-weight:700>AND</span><span style=color:#666> </span>meat.<span style=color:#6ab825;font-weight:700>year</span><span style=color:#666> </span>=<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>new</span>.<span style=color:#6ab825;font-weight:700>year</span><span style=color:#666>
 </span><span style=color:#666></span>RETURNING<span style=color:#666> </span>*;<span style=color:#666>
+</span></code></pre></div><p>You can change the <code>new</code> in <code>new(price, year)</code> with anything you like.</p>
+<p>Another example case:<br>
+Let&rsquo;s say we need to update the city&rsquo;s population on specific regencies.
+So we need to update data on population column in city table which has
+reference to regencies id. We can make the query like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sql data-lang=sql><span style=color:#6ab825;font-weight:700>UPDATE</span><span style=color:#666> </span>city<span style=color:#666>
+</span><span style=color:#666></span><span style=color:#6ab825;font-weight:700>SET</span><span style=color:#666> </span>population<span style=color:#666> </span>=<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>new</span>.population<span style=color:#666>
+</span><span style=color:#666></span><span style=color:#6ab825;font-weight:700>FROM</span><span style=color:#666>
+</span><span style=color:#666></span>regencies,<span style=color:#666>
+</span><span style=color:#666></span>(<span style=color:#6ab825;font-weight:700>values</span><span style=color:#666>
+</span><span style=color:#666>    </span>(<span style=color:#ed9d13>&#39;city 1&#39;</span>,<span style=color:#666> </span><span style=color:#3677a9>69420</span>),<span style=color:#666>
+</span><span style=color:#666>    </span>(<span style=color:#ed9d13>&#39;city 2&#39;</span>,<span style=color:#666> </span><span style=color:#3677a9>6969</span>)<span style=color:#666>
+</span><span style=color:#666></span>)<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>AS</span><span style=color:#666> </span><span style=color:#6ab825;font-weight:700>new</span>(regency,<span style=color:#666> </span>population)<span style=color:#666>
+</span><span style=color:#666></span><span style=color:#6ab825;font-weight:700>WHERE</span><span style=color:#666> </span>regencies.id<span style=color:#666> </span>=<span style=color:#666> </span>city.regency_id<span style=color:#666>
+</span><span style=color:#666></span><span style=color:#6ab825;font-weight:700>AND</span><span style=color:#666> </span>regencies.regency<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>ilike</span><span style=color:#666> </span><span style=color:#6ab825;font-weight:700>new</span>.regency<span style=color:#666>
+</span><span style=color:#666></span>RETURNING<span style=color:#666> </span>regencies.regency,<span style=color:#666> </span>city.population;<span style=color:#666>
 </span></code></pre></div><blockquote>
 <p>The <code>RETURNING</code> clause is optional, it&rsquo;s a way to check if we really changed the
 right rows or not. The <code>ILIKE</code> clause is an expression for insensitive case.</p>
 </blockquote>
-<p>You can change the <code>new</code> in <code>new(price, year)</code> with anything you like.
-Alright, that&rsquo;s it. See you next time!</p>
+<p>Alright, that&rsquo;s it. See you next time!</p>
 <h2 id=references>References</h2>
 <ul>
 <li><a href=https://stackoverflow.com/a/18799497 target=_blank rel="noreferrer noopener">Stackoverflow example</a>
