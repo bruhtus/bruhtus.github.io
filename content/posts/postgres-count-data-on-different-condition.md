@@ -37,5 +37,5 @@ Alright, that's it for now. See you next time!
 
 - [Postgresql sql expressions
 documentation](https://www.postgresql.org/docs/current/sql-expressions.html).
-- [Stackoverflow count with different condition on the same
-query](https://www.postgresql.org/docs/current/sql-expressions.html).
+- [Stackexchange count with different condition on the same
+query](https://dba.stackexchange.com/a/112797).
