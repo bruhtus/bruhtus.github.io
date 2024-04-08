@@ -1,0 +1,177 @@
+<!doctype html><html>
+<head>
+<title>
+Manage Dotfiles With Git Working Repository
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=author content="Robertus Chris">
+<link rel="shortcut icon" type=image/x-icon href=https://bruhtus.github.io/img/favicon.ico>
+<link rel=stylesheet href=https://bruhtus.github.io/style.min.4f970aa135421035a71bdc9bbd750aa2cfbe0ddb080ab1ec5db4173f45494cad.css integrity="sha256-T5cKoTVCEDWnG9ybvXUKos++DdsICrHsXbQXP0VJTK0=">
+<link disabled rel=stylesheet href=https://bruhtus.github.io/style-dark.min.0a647fb6c07e04b77b54fa0515d0a683d39ecdb251dba960fe1f966f7ff36fc2.css media="(prefers-color-scheme: dark)" integrity="sha256-CmR/tsB+BLd7VPoFFdCmg9OezbJR26lg/h+Wb3/zb8I=">
+<link rel=stylesheet href=https://use.fontawesome.com/releases/v5.8.1/css/all.css integrity=sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf crossorigin=anonymous>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@300&family=EB+Garamond&family=PT+Sans&family=Sura&family=Zilla+Slab&family=Inconsolata&family=Libre+Baskerville&display=swap" rel=stylesheet>
+<link rel=stylesheet href=https://bruhtus.github.io/css/custom.css>
+<meta property="og:title" content="Manage Dotfiles With Git Working Repository">
+<meta property="og:description" content="A Brief Intro For those who read this article without knowing what dotfiles are, it&rsquo;s basically a configuration files. The purpose of backing up dotfiles is so that we don&rsquo;t need to reconfigure our tools on a new system.
+There are a lot of ways to backup and manage dotfiles, and one of them is using git.
+In this article we will explore how to backup and manage dotfiles using git, the full working git repository rather than the bare one which a lot of people using.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bruhtus.github.io/posts/manage-dotfiles-with-git/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2024-04-08T06:44:55+07:00">
+<meta property="article:modified_time" content="2024-04-08T06:44:55+07:00">
+<meta itemprop=name content="Manage Dotfiles With Git Working Repository">
+<meta itemprop=description content="A Brief Intro For those who read this article without knowing what dotfiles are, it&rsquo;s basically a configuration files. The purpose of backing up dotfiles is so that we don&rsquo;t need to reconfigure our tools on a new system.
+There are a lot of ways to backup and manage dotfiles, and one of them is using git.
+In this article we will explore how to backup and manage dotfiles using git, the full working git repository rather than the bare one which a lot of people using."><meta itemprop=datePublished content="2024-04-08T06:44:55+07:00">
+<meta itemprop=dateModified content="2024-04-08T06:44:55+07:00">
+<meta itemprop=wordCount content="1040">
+<meta itemprop=keywords content><meta name=twitter:card content="summary">
+<meta name=twitter:image content="https://bruhtus.github.io//img/">
+<meta name=twitter:title content="Manage Dotfiles With Git Working Repository">
+<meta name=twitter:description content="A Brief Intro For those who read this article without knowing what dotfiles are, it&rsquo;s basically a configuration files. The purpose of backing up dotfiles is so that we don&rsquo;t need to reconfigure our tools on a new system.
+There are a lot of ways to backup and manage dotfiles, and one of them is using git.
+In this article we will explore how to backup and manage dotfiles using git, the full working git repository rather than the bare one which a lot of people using."><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
+</head>
+<body>
+<h1>Manage Dotfiles With Git Working Repository</h1>
+<header>
+<div class=cd>
+<h2><a style=text-decoration:none class=cd href=https://bruhtus.github.io/posts>cd ..</a> || <a style=text-decoration:none class=cd href=https://bruhtus.github.io/>cd</a></h2>
+</div>
+</header>
+<p class=date>
+April 8, 2024
+<span>&#183;</span>
+5 mins
+<span>&#183;</span>
+Robertus Chris
+</p>
+<div id=contentBody>
+<h2 id=a-brief-intro>A Brief Intro</h2>
+<p>For those who read this article without knowing what dotfiles are, it&rsquo;s
+basically a configuration files. The purpose of backing up dotfiles is so that
+we don&rsquo;t need to reconfigure our tools on a new system.</p>
+<p>There are a lot of ways to backup and manage dotfiles, and one of them is
+using git.</p>
+<p>In this article we will explore how to backup and manage dotfiles using git,
+the full working git repository rather than the bare one which a lot of people
+using.</p>
+<h2 id=how>How?</h2>
+<p>What i like to do on my free time is browsing random stuff on internet without
+a goal, just mindlessly browsing some topic that i&rsquo;m interested in and see if
+i could find something interesting. Letting your mind wondering, some people
+said.</p>
+<p>While i&rsquo;m browsing on the internet about zsh, i found this <a href=https://github.com/romkatv/zsh4humans/issues/21#issuecomment-629806697 target=_blank rel="noreferrer noopener">github issue
+discussion about managing
+dotifles</a>
+.
+And when i read through those discussions, i wonder if i can use the full
+working git repository, which basically the default git repository, rather
+than the bare one. So let&rsquo;s try that, i guess.</p>
+<p>Back when i first trying to backup my dotfiles, i only know two method:</p>
+<ul>
+<li>Using git bare repository from <a href=https://www.atlassian.com/git/tutorials/dotfiles target=_blank rel="noreferrer noopener">atlassian
+article</a>
+.</li>
+<li>Using GNU stow which i forgot where i learn that from.</li>
+</ul>
+<p>The method i pick for my first dotfiles manager was git bare repository. The
+reason i go with git bare repository instead of GNU stow is that i don&rsquo;t
+really want to mindlessly spend my inodes by creating a bunch of symlinks. I
+have experience with running out of inodes, which basically means that you
+have some storage left but you cannot create a new file. I know that linux
+or maybe unix-like system these day has quite a large number of inodes, but
+that does not mean i need to be wasteful of inodes, right?</p>
+<p>What bugging me for quite a while when using git bare repository to manage my
+dotfiles is that, do i really need to use the bare version of git repository
+to manage my dotfiles? And just recently i found that the answer is no.</p>
+<p>So, how do we use the full git working directory, the default one instead of
+the bare one? It turns out that we can separate the git directory (the <code>.git</code>
+directory) and the working directory without using the bare repository!</p>
+<p>Please keep in mind that my experience with git at the time is less than 6
+months, maybe around 3 months. So it took me everything i got to just
+following the git bare dotfiles manager guide. Now, fast forward 2 years
+later, i made my own dotfiles manager using git. You can check them on my
+dotfiles repo
+<a href=https://github.com/bruhtus/dotfiles/blob/f5e3511c70a82e97aaa19331882fc73bf7292922/.config/zsh/sdfm target=_blank rel="noreferrer noopener">here</a>
+.</p>
+<p>The key point of using git working repository instead of bare repository is
+this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>git --git-dir=<span style=color:#ed9d13>&#34;...&#34;</span> --work-tree=<span style=color:#ed9d13>&#34;...&#34;</span> init
+</code></pre></div><p>What the command above do is initialize git repository with the specified git
+directory and working directory. If we didn&rsquo;t specified the working directory
+but specified the git directory, git will create the bare repository instead
+of working repository. The key part of this method is
+<code>--git-dir="..." --work-tree="..."</code>, so you might want to create an alias like
+this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#24909d>alias</span> <span style=color:#40ffff>config</span>=<span style=color:#ed9d13>&#39;git --git-dir=&#34;...&#34; --work-tree=&#34;...&#34;&#39;</span>
+</code></pre></div><p>Now you might be wondering, why should we use working repository instead of
+bare repository? It&rsquo;s because we will most likely change our dotfiles, which
+basically means we&rsquo;re still &ldquo;working&rdquo; on the dotfiles. So it make more sense
+to use working repository instead of bare repository because we&rsquo;re still
+changing something to repository. From what i know, git bare repository is
+good for sharing and backup files that we don&rsquo;t really change. For example,
+let&rsquo;s say you are afraid that github will suspend your account and you don&rsquo;t
+have any backup for your private repository, so you basically lost your
+private repository. With git bare repository, you can setup a system that only
+save the git objects of the repo (the one inside <code>.git</code> directory) and update
+it regularly by pulling from the remote repository. And because you only save
+the git objects instead of the actual files, your storage usage is lower than
+storing the actual files. As far as i know, that&rsquo;s the benefit of git bare
+repository. With that in mind, it&rsquo;s make more sense to use a working
+repository instead of bare repository in this case.</p>
+<p>There are 3 important step when we want to get the existing dotfiles on a new
+system:</p>
+<ul>
+<li>Initialize new git repo.</li>
+<li>Doing <code>git reset</code>, the default or <code>--mixed</code> one.</li>
+<li>Doing <code>git checkout</code>.</li>
+</ul>
+<p>We already talking about the initialize part for a bit before, which basically
+just the usual <code>git init</code>. Now let&rsquo;s talk about the <code>git reset</code> part.
+<code>git reset</code> or <code>git reset --mixed</code> is basically reset the index or staging
+area on current branch with specific commit. That means, if we don&rsquo;t have any
+commit on current branch, <code>git reset</code> or <code>git reset --mixed</code> will fill up our
+index or staging area with commit we specify. Now after we fill up our index
+or staging area with specific commit, we can generate all or specific files
+with <code>git checkout -- &lt;path></code>.</p>
+<p>Honestly the most interesting part is the <code>git checkout</code> part. With <code>git checkout</code>, we can do full dotfiles init or partial init. What i mean by
+partial init is that when we don&rsquo;t need all the files on the new system, let&rsquo;s
+say we only our vim config, we can just do <code>git checkout -- ~/.vim</code> and git
+will only generate the <code>.vim</code> directory with all of the files in it. The
+benefit of that, is we can put all our config in one git repository and still
+able to only generate the files we need rather than all the files in the git
+repository. To initialize all the files in our dotfiles repository, we can do
+<code>git checkout -- ~</code>.</p>
+<p>So, to sum up the 3 important command for this to work is:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>git --git-dir=<span style=color:#ed9d13>&#34;...&#34;</span> --work-tree=<span style=color:#ed9d13>&#34;...&#34;</span> init
+git --git-dir=<span style=color:#ed9d13>&#34;...&#34;</span> --work-tree=<span style=color:#ed9d13>&#34;...&#34;</span> reset
+git --git-dir=<span style=color:#ed9d13>&#34;...&#34;</span> --work-tree=<span style=color:#ed9d13>&#34;...&#34;</span> checkout -- &lt;path&gt;
+</code></pre></div><p>Alright, that&rsquo;s it for this article. I will let you explore the implementation
+and the possibilities of this method yourself. See you next time!</p>
+<h2 id=references>References</h2>
+<ul>
+<li><a href=https://github.com/romkatv/dotfiles-public/blob/9d4a44c928e3fbd5d61df9e19919ad5115b3b1bd/bin/bootstrap-dotfiles.sh target=_blank rel="noreferrer noopener">Romkatv&rsquo;s bootstrap dotfiles</a>
+</li>
+<li><a href=https://dotfiles.github.io/utilities/ target=_blank rel="noreferrer noopener">List of dotfiles manager</a>
+.</li>
+</ul>
+</div>
+<footer>
+<p>
+&copy; 2020-present <a style=text-decoration:none href=https://bruhtus.github.io/resume target=_blank rel="noreferrer noopener">Robertus Chris</a>
+<span>&#183;</span>
+<a style=text-decoration:none href=https://bruhtus.github.io/index.xml target=_blank rel="noreferrer noopener">RSS Feed</a>
+<span>&#183;</span>
+Based on <a style=text-decoration:none href=https://github.com/koirand/pulp/ target=_blank rel="noreferrer noopener">pulp</a> and <a style=text-decoration:none href=https://github.com/adityatelange/hugo-PaperMod target=_blank rel="noreferrer noopener">papermod</a> theme
+</p>
+</footer>
+<button onclick=topFunction() id=myBtn title="Go to top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d0d0d0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+<script>var mybutton=document.getElementById("myBtn");window.onscroll=function(){scrollFunction()};function scrollFunction(){document.body.scrollTop>20||document.documentElement.scrollTop>20?mybutton.style.display="block":mybutton.style.display="none"}function topFunction(){document.body.scrollTop=0,document.documentElement.scrollTop=0}</script><script src=https://bruhtus.github.io/js/custom.js></script>
+</body>
+</html>
