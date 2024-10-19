@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Reflecting on Intelligence"
 date: 2024-05-26T04:45:16+07:00
-tags:
+tags: [Notes]
 ShowToc: false
 ---
 
