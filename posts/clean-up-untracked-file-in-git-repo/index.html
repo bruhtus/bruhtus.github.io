@@ -29,7 +29,7 @@ If you do, then this post might be for you!
 Ok, first thing first, there is a git command clean which help us delete the untracked file. We can even use it with interactive interface. To invoke the interactive interface, we can use this command:
 git clean -i . What that command does is prompt us an interactive interface with all the untracked file in current directory."><meta itemprop=datePublished content="2022-08-20T12:33:36+07:00">
 <meta itemprop=dateModified content="2022-08-20T12:33:36+07:00">
-<meta itemprop=wordCount content="330">
+<meta itemprop=wordCount content="348">
 <meta itemprop=keywords content="Notes,Linux,Shell,Git,"><meta name=twitter:card content="summary">
 <meta name=twitter:image content="https://bruhtus.github.io//img/">
 <meta name=twitter:title content="Clean Up Untracked File in Git Repo">
@@ -98,6 +98,8 @@ also give flags <code>--multi</code> so that we can select multiple file with <c
 sure that we have some input from standard input (stdin), if there is no input
 from stdin, <code>xargs</code> will not execute the command. It is useful to prevent an
 error from a command that require an argument.</p>
+<p>Another alternative is to use <code>git clean -di</code> which will bring an interactive
+interface to delete untracked file.</p>
 <p>Alright, that&rsquo;s all. Have a nice day!</p>
 </div>
 <footer>
