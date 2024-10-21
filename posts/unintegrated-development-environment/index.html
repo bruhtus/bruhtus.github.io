@@ -1,0 +1,115 @@
+<!doctype html><html>
+<head>
+<title>
+Unintegrated Development Environment
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=author content="Robertus Chris">
+<link rel="shortcut icon" type=image/x-icon href=https://bruhtus.github.io/img/favicon.ico>
+<link rel=stylesheet href=https://bruhtus.github.io/style.min.4f970aa135421035a71bdc9bbd750aa2cfbe0ddb080ab1ec5db4173f45494cad.css integrity="sha256-T5cKoTVCEDWnG9ybvXUKos++DdsICrHsXbQXP0VJTK0=">
+<link disabled rel=stylesheet href=https://bruhtus.github.io/style-dark.min.0a647fb6c07e04b77b54fa0515d0a683d39ecdb251dba960fe1f966f7ff36fc2.css media="(prefers-color-scheme: dark)" integrity="sha256-CmR/tsB+BLd7VPoFFdCmg9OezbJR26lg/h+Wb3/zb8I=">
+<link rel=stylesheet href=https://use.fontawesome.com/releases/v5.8.1/css/all.css integrity=sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf crossorigin=anonymous>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@300&family=EB+Garamond&family=PT+Sans&family=Sura&family=Zilla+Slab&family=Inconsolata&family=Libre+Baskerville&display=swap" rel=stylesheet>
+<link rel=stylesheet href=https://bruhtus.github.io/css/custom.css>
+<meta property="og:title" content="Unintegrated Development Environment">
+<meta property="og:description" content="After watching video about acme in this article , which introduces the concept of Integrating Development Environment instead of Integrated Development Environment which usually abbreviated to IDE, i thought to myself &ldquo;why not having a development environment without integration at all?&rdquo;. This might sound crazy for some people, but this is my development environment at the time of writing this post.
+Just to be clear, this approach might not be suitable for some software development, such as game development.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bruhtus.github.io/posts/unintegrated-development-environment/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2024-10-20T12:20:19+07:00">
+<meta property="article:modified_time" content="2024-10-20T12:20:19+07:00">
+<meta itemprop=name content="Unintegrated Development Environment">
+<meta itemprop=description content="After watching video about acme in this article , which introduces the concept of Integrating Development Environment instead of Integrated Development Environment which usually abbreviated to IDE, i thought to myself &ldquo;why not having a development environment without integration at all?&rdquo;. This might sound crazy for some people, but this is my development environment at the time of writing this post.
+Just to be clear, this approach might not be suitable for some software development, such as game development."><meta itemprop=datePublished content="2024-10-20T12:20:19+07:00">
+<meta itemprop=dateModified content="2024-10-20T12:20:19+07:00">
+<meta itemprop=wordCount content="487">
+<meta itemprop=keywords content="Notes,"><meta name=twitter:card content="summary">
+<meta name=twitter:image content="https://bruhtus.github.io//img/">
+<meta name=twitter:title content="Unintegrated Development Environment">
+<meta name=twitter:description content="After watching video about acme in this article , which introduces the concept of Integrating Development Environment instead of Integrated Development Environment which usually abbreviated to IDE, i thought to myself &ldquo;why not having a development environment without integration at all?&rdquo;. This might sound crazy for some people, but this is my development environment at the time of writing this post.
+Just to be clear, this approach might not be suitable for some software development, such as game development."><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
+</head>
+<body>
+<h1>Unintegrated Development Environment</h1>
+<header>
+<div class=cd>
+<h2><a style=text-decoration:none class=cd href=https://bruhtus.github.io/posts>cd ..</a> || <a style=text-decoration:none class=cd href=https://bruhtus.github.io/>cd</a></h2>
+</div>
+</header>
+<p class=date>
+October 20, 2024
+<span>&#183;</span>
+3 mins
+<span>&#183;</span>
+Robertus Chris
+</p>
+<div id=tags>
+<ul>
+<li><a style=text-decoration:none href=https://bruhtus.github.io/tags/notes/>Notes</a></li>
+</ul>
+</div>
+<div id=contentBody>
+<p>After watching video about acme
+<a href=https://research.swtch.com/acme target=_blank rel="noreferrer noopener">in this article</a>
+, which introduces the
+concept of Integrating Development Environment instead of Integrated
+Development Environment which usually abbreviated to IDE, i thought to myself
+&ldquo;why not having a development environment without integration at all?&rdquo;. This
+might sound crazy for some people, but this is my development environment at
+the time of writing this post.</p>
+<p>Just to be clear, this approach might not be suitable for some software
+development, such as game development. The point is, this post is just for
+reference about someone else&rsquo;s development environment.</p>
+<p>In my time as a linux user, not even as a software developer, i realize that
+there&rsquo;s a cost of integration and one of them is <em>maintenance</em>. Here&rsquo;s a
+little bit of a back story when i found that out. Back then when i use
+elementary OS, which is ubuntu-based linux distro, i try to upgrade into
+the newer version, and guess what? I can&rsquo;t use the &ldquo;default&rdquo; image viewer.
+Because i can&rsquo;t use the &ldquo;default&rdquo; image viewer, i need another image viewer
+which lead me to install another image viewer. Now i have 2 image viewer on my
+system which i feel like redundant. So, as a new linux user, i try to
+uninstall the &ldquo;default&rdquo; image viewer, and guess what? It break the entire
+desktop environment. Isn&rsquo;t that nice? Like hell it is!</p>
+<p>That incident make me realized that when we tightly integrated our software
+with each other, when one software break or missing, our system might falling
+apart.</p>
+<p>Another example is the &ldquo;breaking changes&rdquo; culture of modern software
+development. In my observation, software development nowadays does not really
+care about improving user experience, it&rsquo;s more like making the changes for the
+sake of &ldquo;there&rsquo;s some new changes&rdquo;. Whether those new changes is useful to the
+user or not, that doesn&rsquo;t really matter.</p>
+<p>The point is, when something break because of an update in our integration
+system, it&rsquo;s kind of hard to find out the problem. Especially if we&rsquo;re using
+&ldquo;modern software&rdquo; which most likely introduce &ldquo;breaking changes&rdquo; on every
+release.</p>
+<p>My base development environment is <code>tmux</code>, and my text editor is <code>vim</code>. Other
+than that? I use <code>shell</code>. The majority of my workflow is using <code>shell</code>.
+I didn&rsquo;t integrate my text editor or <code>shell</code> with <code>tmux</code>. I could change my
+text editor or shell to something else, and it won&rsquo;t effect my <code>tmux</code>
+configuration. When i changed my <code>tmux</code> configuration or <code>tmux</code> introduce
+breaking changes, it won&rsquo;t effect my text editor or shell.</p>
+<p>Because my development environment is not integrated with each other, i have
+the flexibility of changing things. Which can be a good thing or a bad thing,
+depends on personal preferences.</p>
+<p>So, the point is that we need to approach integration with caution. Not
+everything need to be integrated with each other. We also need to realize that
+integration has a cost, and one of them is maintenance.</p>
+</div>
+<footer>
+<p>
+&copy; 2020-present <a style=text-decoration:none href=https://bruhtus.github.io/resume target=_blank rel="noreferrer noopener">Robertus Chris</a>
+<span>&#183;</span>
+<a style=text-decoration:none href=https://bruhtus.github.io/index.xml target=_blank rel="noreferrer noopener">RSS Feed</a>
+<span>&#183;</span>
+Based on <a style=text-decoration:none href=https://github.com/koirand/pulp/ target=_blank rel="noreferrer noopener">pulp</a> and <a style=text-decoration:none href=https://github.com/adityatelange/hugo-PaperMod target=_blank rel="noreferrer noopener">papermod</a> theme
+</p>
+</footer>
+<button onclick=topFunction() id=myBtn title="Go to top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d0d0d0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+<script>var mybutton=document.getElementById("myBtn");window.onscroll=function(){scrollFunction()};function scrollFunction(){document.body.scrollTop>20||document.documentElement.scrollTop>20?mybutton.style.display="block":mybutton.style.display="none"}function topFunction(){document.body.scrollTop=0,document.documentElement.scrollTop=0}</script><script src=https://bruhtus.github.io/js/custom.js></script>
+</body>
+</html>
