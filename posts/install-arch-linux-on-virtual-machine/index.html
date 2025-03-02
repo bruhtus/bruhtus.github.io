@@ -1,0 +1,193 @@
+<!doctype html><html>
+<head>
+<title>
+Install Arch Linux on Virtual Machine
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=author content="Robertus Chris">
+<link rel="shortcut icon" type=image/x-icon href=https://bruhtus.github.io/img/favicon.ico>
+<link rel=stylesheet href=https://bruhtus.github.io/style.min.4f970aa135421035a71bdc9bbd750aa2cfbe0ddb080ab1ec5db4173f45494cad.css integrity="sha256-T5cKoTVCEDWnG9ybvXUKos++DdsICrHsXbQXP0VJTK0=">
+<link disabled rel=stylesheet href=https://bruhtus.github.io/style-dark.min.0a647fb6c07e04b77b54fa0515d0a683d39ecdb251dba960fe1f966f7ff36fc2.css media="(prefers-color-scheme: dark)" integrity="sha256-CmR/tsB+BLd7VPoFFdCmg9OezbJR26lg/h+Wb3/zb8I=">
+<link rel=stylesheet href=https://use.fontawesome.com/releases/v5.8.1/css/all.css integrity=sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf crossorigin=anonymous>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@300&family=EB+Garamond&family=PT+Sans&family=Sura&family=Zilla+Slab&family=Inconsolata&family=Libre+Baskerville&display=swap" rel=stylesheet>
+<link rel=stylesheet href=https://bruhtus.github.io/css/custom.css>
+<meta property="og:title" content="Install Arch Linux on Virtual Machine">
+<meta property="og:description" content="A Brief Intro In this post, we&rsquo;ll install arch linux on virtual machine with QEMU and add a shared directory between host machine and virtual machine.
+Before we start, make sure to install QEMU on your system. If your system using arch linux too, we can install qemu-base and tigervnc package. tigervnc package for viewing the virtual machine from QEMU. We will be using SeaBIOS, which is legacy BIOS implementation and the default BIOS on QEMU (at the time of writing this post).">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bruhtus.github.io/posts/install-arch-linux-on-virtual-machine/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2025-03-02T05:48:13+07:00">
+<meta property="article:modified_time" content="2025-03-02T05:48:13+07:00">
+<meta itemprop=name content="Install Arch Linux on Virtual Machine">
+<meta itemprop=description content="A Brief Intro In this post, we&rsquo;ll install arch linux on virtual machine with QEMU and add a shared directory between host machine and virtual machine.
+Before we start, make sure to install QEMU on your system. If your system using arch linux too, we can install qemu-base and tigervnc package. tigervnc package for viewing the virtual machine from QEMU. We will be using SeaBIOS, which is legacy BIOS implementation and the default BIOS on QEMU (at the time of writing this post)."><meta itemprop=datePublished content="2025-03-02T05:48:13+07:00">
+<meta itemprop=dateModified content="2025-03-02T05:48:13+07:00">
+<meta itemprop=wordCount content="835">
+<meta itemprop=keywords content><meta name=twitter:card content="summary">
+<meta name=twitter:image content="https://bruhtus.github.io//img/">
+<meta name=twitter:title content="Install Arch Linux on Virtual Machine">
+<meta name=twitter:description content="A Brief Intro In this post, we&rsquo;ll install arch linux on virtual machine with QEMU and add a shared directory between host machine and virtual machine.
+Before we start, make sure to install QEMU on your system. If your system using arch linux too, we can install qemu-base and tigervnc package. tigervnc package for viewing the virtual machine from QEMU. We will be using SeaBIOS, which is legacy BIOS implementation and the default BIOS on QEMU (at the time of writing this post)."><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
+</head>
+<body>
+<h1>Install Arch Linux on Virtual Machine</h1>
+<header>
+<div class=cd>
+<h2><a style=text-decoration:none class=cd href=https://bruhtus.github.io/posts>cd ..</a> || <a style=text-decoration:none class=cd href=https://bruhtus.github.io/>cd</a></h2>
+</div>
+</header>
+<p class=date>
+March 2, 2025
+<span>&#183;</span>
+4 mins
+<span>&#183;</span>
+Robertus Chris
+</p>
+<div class=toc>
+<details>
+<summary>
+<div class=details>Table of Contents</div>
+</summary>
+<blockquote><ul><li>
+<a style=text-decoration:none href=#a-brief-intro aria-label="A Brief Intro">A Brief Intro</a></li><li>
+<a style=text-decoration:none href=#qemu-disk-image aria-label="QEMU Disk Image">QEMU Disk Image</a></li><li>
+<a style=text-decoration:none href=#installation aria-label=Installation>Installation</a></li><li>
+<a style=text-decoration:none href=#references aria-label=References>References</a></li></ul>
+</blockquote>
+</details>
+</div>
+<div id=contentBody>
+<h2 id=a-brief-intro>A Brief Intro</h2>
+<p>In this post, we&rsquo;ll install arch linux on virtual machine with QEMU and add a
+shared directory between host machine and virtual machine.</p>
+<p>Before we start, make sure to install QEMU on your system. If your system
+using arch linux too, we can install <code>qemu-base</code> and <code>tigervnc</code> package.
+<code>tigervnc</code> package for viewing the virtual machine from QEMU. We will be using
+SeaBIOS, which is legacy BIOS implementation and the default BIOS on QEMU (at
+the time of writing this post).</p>
+<p>This post assume that you use <code>ext4</code> filesystem format. If you use another
+file format, like <code>btrfs</code>, you might need to use different configuration.</p>
+<h2 id=qemu-disk-image>QEMU Disk Image</h2>
+<p>The first thing we need to do is to create a disk image. We can do that with
+this command:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>qemu-img create -f qcow2 &lt;image-path&gt; 15g
+</code></pre></div><ul>
+<li><code>qcow2</code> is the current QEMU image format, and one of the benefit of it is that
+it will increase the image size based on the virtual machine usage with the
+limit being the image size given when creating the image.</li>
+<li><code>&lt;image-path></code> is where we store the image. For example:
+<code>~/arch-linux-qemu</code>.</li>
+<li><code>15g</code> is the image size.</li>
+</ul>
+<h2 id=installation>Installation</h2>
+<p>The first thing we need to do is download the arch linux ISO on the <a href=https://archlinux.org/download/ target=_blank rel="noreferrer noopener">download
+page</a>
+.</p>
+<p>After that, we can use this command:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>qemu-system-x86_64 -enable-kvm -cdrom &lt;path-to-arch-linux-ISO&gt;.iso -boot
+<span style=color:#40ffff>order</span>=d -drive <span style=color:#40ffff>file</span>=&lt;image-path&gt; -m 2g
+</code></pre></div><ul>
+<li><code>-enable-kvm</code> is to enable full virtualization using KVM. Our machine might
+not support KVM, so make sure we have KVM support when using this flag. We can
+read the <a href=https://wiki.archlinux.org/title/KVM#Checking_support_for_KVM target=_blank rel="noreferrer noopener">arch
+wiki</a>
+for the
+instruction.</li>
+<li><code>-cdrom &lt;path-to-arch-linux-ISO>.iso</code> is to use the file as CD-ROM image.</li>
+<li><code>-boot order=d</code> is to specify that we want to boot from CD-ROM first.</li>
+<li><code>-drive file=&lt;image-path></code> is to specify the disk image to use as the drive
+on the system. Image path should be a full path like
+<code>$HOME/arch-linux-img</code></li>
+<li><code>-m 2g</code> is to specify the RAM to use in the virtual machine.</li>
+</ul>
+<p>Mostly we can follow the <a href=https://wiki.archlinux.org/title/Installation_guide target=_blank rel="noreferrer noopener">arch linux installation guide</a>
+, but be careful of the partition. Because we will use the default QEMU
+BIOS, which is a legacy BIOS, we need to partition the drive with legacy BIOS
+in mind. We can check on the partition example layout on <a href=https://wiki.archlinux.org/title/Partitioning#Example_layouts target=_blank rel="noreferrer noopener">arch
+wiki</a>
+. For this
+post, we&rsquo;ll use BIOS/GPT layout to not deviate too much from the UEFI/GPT
+layout.</p>
+<p>If after running the command above, the virtual machine is not automatically
+appear, we can use command:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>vncviewer :&lt;port&gt;
+</code></pre></div><p>Make sure to install <code>tigervnc</code> or something similar before running the
+command. We can get the port from the QEMU command above. For example:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>VNC server running on ::1:5900
+</code></pre></div><p><code>5900</code> is the port we want.</p>
+<p>After inside the virtual machine, you can follow the usual arch linux
+installation guide. The important part is the partition, so we&rsquo;ll skip into
+the partition part.</p>
+<p>Personally, i don&rsquo;t really need swap on my virtual machine so in this post
+we&rsquo;ll only make 2 partition:</p>
+<ul>
+<li>BIOS boot partition (1 MB) with partition type <code>BIOS boot</code>.</li>
+<li>root partition (the rest of storage) with partition type <code>linux root (x86-64)</code>.</li>
+</ul>
+<p>We can use <code>cfdisk /dev/&lt;drive></code> to partition our drive. To look what our
+drive name is, we can use <code>lsblk</code> command. For example:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>cfdisk /dev/sda
+</code></pre></div><p>After the partition, we need to format the root partition to <code>ext4</code> with this
+command:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>mkfs.ext4 /dev/&lt;root-partition&gt;
+</code></pre></div><p>for example:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>mkfs.ext4 /dev/sda2
+</code></pre></div><p>After that, we can mount the root partition with this command:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>mount /dev/&lt;root-partition&gt; /mnt
+</code></pre></div><p>for example:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>mount /dev/sda2 /mnt
+</code></pre></div><p>After that we can follow the rest of the arch linux installation guide until
+we need to install the bootloader.</p>
+<p>For this post, we&rsquo;ll use <code>grub2</code> as our bootloader. First, we need to install
+grub with this command (after running <code>arch-chroot</code>):</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>pacman -S grub
+</code></pre></div><p>After grub installed, we can use this command to install the bootloader:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>grub-install --target=i386-pc /dev/&lt;drive-name&gt;
+</code></pre></div><p>keep in mind that we need to provide the drive name, not the partition name.
+For example:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>grub-install --target=i386-pc /dev/sda
+</code></pre></div><p>After that, we need to generate the grub config with this command:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre></div><p>To run the virtual machine, we can use this command:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>qemu-system-x86_64 -enable-kvm -nic user,hostfwd=tcp::2222-:22 -m 2g -smp <span style=color:#40ffff>cores</span>=4,cpus=<span style=color:#3677a9>4</span> &lt;image-path&gt;
+</code></pre></div><p>If we want to add shared directory between virtual machine and host machine,
+we can use <code>-fsdev</code> and <code>-device</code> like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>qemu-system-x86_64 -enable-kvm -nic user,hostfwd=tcp::2222-:22 -fsdev local,id=fs1,path=&lt;host-shared-directory-path&gt;,security_model=none -device virtio-9p-pci,fsdev=fs1,mount_tag=&lt;mount_tag&gt; -m 2g -smp <span style=color:#40ffff>cores</span>=4,cpus=<span style=color:#3677a9>4</span> &lt;image-path&gt;
+</code></pre></div><p>and then add to <code>/etc/fstab</code> like this:</p>
+<pre tabindex=0><code>...
+&lt;mount_tag&gt; &lt;mounting-path-on-virtual-machine&gt; 9p uid=xxxx,gid=xxxx,trans=virtio 0 0
+</code></pre><p>Let&rsquo;s say we have <code>&lt;mount_tag></code> as <code>shared_directory</code> and we want to mount it
+on <code>/home/user/shared</code>. Also, to get the <code>uid</code> and <code>gid</code> we can use <code>id &lt;user></code>,
+for example <code>id bruhtus</code>. Let&rsquo;s assume the <code>uid</code> and <code>gid</code> of the user is
+<code>1000</code>. We can use the command like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>qemu-system-x86_64 -enable-kvm -nic user,hostfwd=tcp::2222-:22 -fsdev local,id=fs1,path=&lt;host-shared-directory-path&gt;,security_model=none -device virtio-9p-pci,fsdev=fs1,mount_tag=shared_directory -m 2g -smp <span style=color:#40ffff>cores</span>=4,cpus=<span style=color:#3677a9>4</span> &lt;image-path&gt;
+</code></pre></div><p>and in <code>/etc/fstab</code> like this:</p>
+<pre tabindex=0><code>shared_directory /home/user/shared 9p uid=1000,gid=1000,trans=virtio 0 0
+</code></pre><p>Alright, that&rsquo;s it. See you next time!</p>
+<h2 id=references>References</h2>
+<ul>
+<li><a href=https://flusp.ime.usp.br/kernel/use-qemu-to-play-with-linux/ target=_blank rel="noreferrer noopener">FLUSP Use QEMU To Play with Linux Kernel</a>
+</li>
+<li><a href=https://andrealmeid.com/post/2020-03-10-bootstrap-arch/ target=_blank rel="noreferrer noopener">Create an ArchLinux image for kernel
+testing</a>
+.</li>
+</ul>
+</div>
+<footer>
+<p>
+&copy; 2020-present <a style=text-decoration:none href=https://bruhtus.github.io/resume target=_blank rel="noreferrer noopener">Robertus Chris</a>
+<span>&#183;</span>
+<a style=text-decoration:none href=https://bruhtus.github.io/index.xml target=_blank rel="noreferrer noopener">RSS Feed</a>
+<span>&#183;</span>
+Based on <a style=text-decoration:none href=https://github.com/koirand/pulp/ target=_blank rel="noreferrer noopener">pulp</a> and <a style=text-decoration:none href=https://github.com/adityatelange/hugo-PaperMod target=_blank rel="noreferrer noopener">papermod</a> theme
+</p>
+</footer>
+<button onclick=topFunction() id=myBtn title="Go to top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d0d0d0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+<script>var mybutton=document.getElementById("myBtn");window.onscroll=function(){scrollFunction()};function scrollFunction(){document.body.scrollTop>20||document.documentElement.scrollTop>20?mybutton.style.display="block":mybutton.style.display="none"}function topFunction(){document.body.scrollTop=0,document.documentElement.scrollTop=0}</script><script src=https://bruhtus.github.io/js/custom.js></script>
+</body>
+</html>
