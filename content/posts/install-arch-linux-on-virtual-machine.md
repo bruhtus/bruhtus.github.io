@@ -79,8 +79,18 @@ VNC server running on ::1:5900
 `5900` is the port we want.
 
 After inside the virtual machine, you can follow the usual arch linux
-installation guide. The important part is the partition, so we'll skip into
-the partition part.
+installation guide. To be able to use host machine internet connection, we
+might want to install `dhcpcd` in the `pacstrap` step, like this:
+```sh
+pacstrap -K /mnt base linux linux-firmware dhcpcd
+```
+and enable it after `arch-chroot` like this:
+```sh
+systemctl enable dhcpcd
+```
+
+The important part is the drive partition, so we'll skip into the partition
+part.
 
 Personally, i don't really need swap on my virtual machine so in this post
 we'll only make 2 partition:
