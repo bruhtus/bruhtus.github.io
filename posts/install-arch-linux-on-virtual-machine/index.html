@@ -25,7 +25,7 @@ Before we start, make sure to install QEMU on your system. If your system using 
 <meta itemprop=description content="A Brief Intro In this post, we&rsquo;ll install arch linux on virtual machine with QEMU and add a shared directory between host machine and virtual machine.
 Before we start, make sure to install QEMU on your system. If your system using arch linux too, we can install qemu-base and tigervnc package. tigervnc package for viewing the virtual machine from QEMU. We will be using SeaBIOS, which is legacy BIOS implementation and the default BIOS on QEMU (at the time of writing this post)."><meta itemprop=datePublished content="2025-03-02T05:48:13+07:00">
 <meta itemprop=dateModified content="2025-03-02T05:48:13+07:00">
-<meta itemprop=wordCount content="835">
+<meta itemprop=wordCount content="874">
 <meta itemprop=keywords content><meta name=twitter:card content="summary">
 <meta name=twitter:image content="https://bruhtus.github.io//img/">
 <meta name=twitter:title content="Install Arch Linux on Virtual Machine">
@@ -43,7 +43,7 @@ Before we start, make sure to install QEMU on your system. If your system using 
 <p class=date>
 March 2, 2025
 <span>&#183;</span>
-4 mins
+5 mins
 <span>&#183;</span>
 Robertus Chris
 </p>
@@ -120,8 +120,13 @@ command. We can get the port from the QEMU command above. For example:</p>
 <div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>VNC server running on ::1:5900
 </code></pre></div><p><code>5900</code> is the port we want.</p>
 <p>After inside the virtual machine, you can follow the usual arch linux
-installation guide. The important part is the partition, so we&rsquo;ll skip into
-the partition part.</p>
+installation guide. To be able to use host machine internet connection, we
+might want to install <code>dhcpcd</code> in the <code>pacstrap</code> step, like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>pacstrap -K /mnt base linux linux-firmware dhcpcd
+</code></pre></div><p>and enable it after <code>arch-chroot</code> like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>systemctl <span style=color:#24909d>enable</span> dhcpcd
+</code></pre></div><p>The important part is the drive partition, so we&rsquo;ll skip into the partition
+part.</p>
 <p>Personally, i don&rsquo;t really need swap on my virtual machine so in this post
 we&rsquo;ll only make 2 partition:</p>
 <ul>
