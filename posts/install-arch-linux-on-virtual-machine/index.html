@@ -25,7 +25,7 @@ Before we start, make sure to install QEMU on your system. If your system using 
 <meta itemprop=description content="A Brief Intro In this post, we&rsquo;ll install arch linux on virtual machine with QEMU and add a shared directory between host machine and virtual machine.
 Before we start, make sure to install QEMU on your system. If your system using arch linux too, we can install qemu-base and tigervnc package. tigervnc package for viewing the virtual machine from QEMU. We will be using SeaBIOS, which is legacy BIOS implementation and the default BIOS on QEMU (at the time of writing this post)."><meta itemprop=datePublished content="2025-03-02T05:48:13+07:00">
 <meta itemprop=dateModified content="2025-03-02T05:48:13+07:00">
-<meta itemprop=wordCount content="898">
+<meta itemprop=wordCount content="1031">
 <meta itemprop=keywords content><meta name=twitter:card content="summary">
 <meta name=twitter:image content="https://bruhtus.github.io//img/">
 <meta name=twitter:title content="Install Arch Linux on Virtual Machine">
@@ -178,6 +178,20 @@ for example <code>id bruhtus</code>. Let&rsquo;s assume the <code>uid</code> and
 <p>If we want to use <code>shutdown</code> or <code>reboot</code> command from non-root user, we can
 install <code>polkit</code> package, like this:</p>
 <div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>pacman -S polkit
+</code></pre></div><p>We can also ssh into the virtual machine from host machine. First we need to
+install <code>openssh</code> on virtual machine and host machine, don&rsquo;t forget to start
+<code>sshd</code> service. And then, we create ssh key with this command:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>ssh-keygen -t rsa -f ~/.ssh/qemu
+</code></pre></div><p>(we can change the name <code>qemu</code> with something else).</p>
+<p>After that, we can use this command to copy the ssh key into the virtual
+machine:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>ssh-copy-id -i ~/.ssh/qemu.pub -p <span style=color:#3677a9>2222</span> <span style=color:#40ffff>$USER</span>@127.0.0.1
+</code></pre></div><p>please keep in mind that we need to have the same username on the host
+machine and virtual machine. If you use different username on your virtual
+machine, you can change <code>$USER</code> with the username on your virtual machine.</p>
+<p>To delete the hashed key of virtual machine from ssh <code>known_hosts</code> file, we
+can use this command:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>ssh-keygen -R <span style=color:#ed9d13>&#39;[127.0.0.1]:2222&#39;</span>
 </code></pre></div><h2 id=references>References</h2>
 <ul>
 <li><a href=https://flusp.ime.usp.br/kernel/use-qemu-to-play-with-linux/ target=_blank rel="noreferrer noopener">FLUSP Use QEMU To Play with Linux Kernel</a>
