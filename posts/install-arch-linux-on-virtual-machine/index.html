@@ -25,7 +25,7 @@ Before we start, make sure to install QEMU on your system. If your system using 
 <meta itemprop=description content="A Brief Intro In this post, we&rsquo;ll install arch linux on virtual machine with QEMU and add a shared directory between host machine and virtual machine.
 Before we start, make sure to install QEMU on your system. If your system using arch linux too, we can install qemu-base and tigervnc package. tigervnc package for viewing the virtual machine from QEMU. We will be using SeaBIOS, which is legacy BIOS implementation and the default BIOS on QEMU (at the time of writing this post)."><meta itemprop=datePublished content="2025-03-02T05:48:13+07:00">
 <meta itemprop=dateModified content="2025-03-02T05:48:13+07:00">
-<meta itemprop=wordCount content="874">
+<meta itemprop=wordCount content="898">
 <meta itemprop=keywords content><meta name=twitter:card content="summary">
 <meta name=twitter:image content="https://bruhtus.github.io//img/">
 <meta name=twitter:title content="Install Arch Linux on Virtual Machine">
@@ -56,6 +56,7 @@ Robertus Chris
 <a style=text-decoration:none href=#a-brief-intro aria-label="A Brief Intro">A Brief Intro</a></li><li>
 <a style=text-decoration:none href=#qemu-disk-image aria-label="QEMU Disk Image">QEMU Disk Image</a></li><li>
 <a style=text-decoration:none href=#installation aria-label=Installation>Installation</a></li><li>
+<a style=text-decoration:none href=#side-note aria-label="Side Note">Side Note</a></li><li>
 <a style=text-decoration:none href=#references aria-label=References>References</a></li></ul>
 </blockquote>
 </details>
@@ -173,7 +174,11 @@ for example <code>id bruhtus</code>. Let&rsquo;s assume the <code>uid</code> and
 </code></pre></div><p>and in <code>/etc/fstab</code> like this:</p>
 <pre tabindex=0><code>shared_directory /home/user/shared 9p uid=1000,gid=1000,trans=virtio 0 0
 </code></pre><p>Alright, that&rsquo;s it. See you next time!</p>
-<h2 id=references>References</h2>
+<h2 id=side-note>Side Note</h2>
+<p>If we want to use <code>shutdown</code> or <code>reboot</code> command from non-root user, we can
+install <code>polkit</code> package, like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>pacman -S polkit
+</code></pre></div><h2 id=references>References</h2>
 <ul>
 <li><a href=https://flusp.ime.usp.br/kernel/use-qemu-to-play-with-linux/ target=_blank rel="noreferrer noopener">FLUSP Use QEMU To Play with Linux Kernel</a>
 </li>
