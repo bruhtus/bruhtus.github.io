@@ -184,6 +184,29 @@ install `polkit` package, like this:
 pacman -S polkit
 ```
 
+We can also ssh into the virtual machine from host machine. First we need to
+install `openssh` on virtual machine and host machine, don't forget to start
+`sshd` service. And then, we create ssh key with this command:
+```sh
+ssh-keygen -t rsa -f ~/.ssh/qemu
+```
+(we can change the name `qemu` with something else).
+
+After that, we can use this command to copy the ssh key into the virtual
+machine:
+```sh
+ssh-copy-id -i ~/.ssh/qemu.pub -p 2222 $USER@127.0.0.1
+```
+please keep in mind that we need to have the same username on the host
+machine and virtual machine. If you use different username on your virtual
+machine, you can change `$USER` with the username on your virtual machine.
+
+To delete the hashed key of virtual machine from ssh `known_hosts` file, we
+can use this command:
+```sh
+ssh-keygen -R '[127.0.0.1]:2222'
+```
+
 ## References
 
 - [FLUSP Use QEMU To Play with Linux Kernel](https://flusp.ime.usp.br/kernel/use-qemu-to-play-with-linux/)
