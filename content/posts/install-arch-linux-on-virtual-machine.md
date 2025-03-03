@@ -176,6 +176,14 @@ shared_directory /home/user/shared 9p uid=1000,gid=1000,trans=virtio 0 0
 
 Alright, that's it. See you next time!
 
+## Side Note
+
+If we want to use `shutdown` or `reboot` command from non-root user, we can
+install `polkit` package, like this:
+```sh
+pacman -S polkit
+```
+
 ## References
 
 - [FLUSP Use QEMU To Play with Linux Kernel](https://flusp.ime.usp.br/kernel/use-qemu-to-play-with-linux/)
