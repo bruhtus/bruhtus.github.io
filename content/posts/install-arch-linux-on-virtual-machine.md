@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Install Arch Linux on Virtual Machine"
 date: 2025-03-02T05:48:13+07:00
-tags:
+tags: [Linux]
 ShowToc: true
 ---
 
