@@ -25,7 +25,7 @@ Before we start, make sure to install QEMU on your system. If your system using 
 <meta itemprop=description content="A Brief Intro In this post, we&rsquo;ll install arch linux on virtual machine with QEMU and add a shared directory between host machine and virtual machine.
 Before we start, make sure to install QEMU on your system. If your system using arch linux too, we can install qemu-base and tigervnc package. tigervnc package for viewing the virtual machine from QEMU. We will be using SeaBIOS, which is legacy BIOS implementation and the default BIOS on QEMU (at the time of writing this post)."><meta itemprop=datePublished content="2025-03-02T05:48:13+07:00">
 <meta itemprop=dateModified content="2025-03-02T05:48:13+07:00">
-<meta itemprop=wordCount content="1031">
+<meta itemprop=wordCount content="1123">
 <meta itemprop=keywords content="Linux,"><meta name=twitter:card content="summary">
 <meta name=twitter:image content="https://bruhtus.github.io//img/">
 <meta name=twitter:title content="Install Arch Linux on Virtual Machine">
@@ -43,7 +43,7 @@ Before we start, make sure to install QEMU on your system. If your system using 
 <p class=date>
 March 2, 2025
 <span>&#183;</span>
-5 mins
+6 mins
 <span>&#183;</span>
 Robertus Chris
 </p>
@@ -77,10 +77,16 @@ SeaBIOS, which is legacy BIOS implementation and the default BIOS on QEMU (at
 the time of writing this post).</p>
 <p>This post assume that you use <code>ext4</code> filesystem format. If you use another
 file format, like <code>btrfs</code>, you might need to use different configuration.</p>
-<h2 id=qemu-disk-image>QEMU Disk Image</h2>
+<p>We&rsquo;re going to work with 2 systems on 1 machine, so we need to know which
+command need to run on which machine. For that purpose, we&rsquo;re going to use
+this indicator to differentiate:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#999;font-style:italic># @host   # for real machine system</span>
+<span style=color:#999;font-style:italic># @guest  # for virtual machine system</span>
+</code></pre></div><h2 id=qemu-disk-image>QEMU Disk Image</h2>
 <p>The first thing we need to do is to create a disk image. We can do that with
 this command:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>qemu-img create -f qcow2 &lt;image-path&gt; 15g
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#999;font-style:italic># @host</span>
+qemu-img create -f qcow2 &lt;image-path&gt; 15g
 </code></pre></div><ul>
 <li><code>qcow2</code> is the current QEMU image format, and one of the benefit of it is that
 it will increase the image size based on the virtual machine usage with the
@@ -94,7 +100,8 @@ limit being the image size given when creating the image.</li>
 page</a>
 .</p>
 <p>After that, we can use this command:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>qemu-system-x86_64 -enable-kvm -cdrom &lt;path-to-arch-linux-ISO&gt;.iso -boot
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#999;font-style:italic># @host</span>
+qemu-system-x86_64 -enable-kvm -cdrom &lt;path-to-arch-linux-ISO&gt;.iso -boot
 <span style=color:#40ffff>order</span>=d -drive <span style=color:#40ffff>file</span>=&lt;image-path&gt; -m 2g
 </code></pre></div><ul>
 <li><code>-enable-kvm</code> is to enable full virtualization using KVM. Our machine might
@@ -120,17 +127,21 @@ post, we&rsquo;ll use BIOS/GPT layout to not deviate too much from the UEFI/GPT
 layout.</p>
 <p>If after running the command above, the virtual machine is not automatically
 appear, we can use command:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>vncviewer :&lt;port&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#999;font-style:italic># @host</span>
+vncviewer :&lt;port&gt;
 </code></pre></div><p>Make sure to install <code>tigervnc</code> or something similar before running the
 command. We can get the port from the QEMU command above. For example:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>VNC server running on ::1:5900
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#999;font-style:italic># @host</span>
+VNC server running on ::1:5900
 </code></pre></div><p><code>5900</code> is the port we want.</p>
 <p>After inside the virtual machine, you can follow the usual arch linux
 installation guide. To be able to use host machine internet connection, we
 might want to install <code>dhcpcd</code> in the <code>pacstrap</code> step, like this:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>pacstrap -K /mnt base linux linux-firmware dhcpcd
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#999;font-style:italic># @host</span>
+pacstrap -K /mnt base linux linux-firmware dhcpcd
 </code></pre></div><p>and enable it after <code>arch-chroot</code> like this:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>systemctl <span style=color:#24909d>enable</span> dhcpcd
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#999;font-style:italic># @guest</span>
+systemctl <span style=color:#24909d>enable</span> dhcpcd
 </code></pre></div><p>The important part is the drive partition, so we&rsquo;ll skip into the partition
 part.</p>
 <p>Personally, i don&rsquo;t really need swap on my virtual machine so in this post
@@ -141,33 +152,44 @@ we&rsquo;ll only make 2 partition:</p>
 </ul>
 <p>We can use <code>cfdisk /dev/&lt;drive></code> to partition our drive. To look what our
 drive name is, we can use <code>lsblk</code> command. For example:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>cfdisk /dev/sda
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#999;font-style:italic># @guest</span>
+cfdisk /dev/sda
 </code></pre></div><p>After the partition, we need to format the root partition to <code>ext4</code> with this
 command:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>mkfs.ext4 /dev/&lt;root-partition&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#999;font-style:italic># @guest</span>
+mkfs.ext4 /dev/&lt;root-partition&gt;
 </code></pre></div><p>for example:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>mkfs.ext4 /dev/sda2
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#999;font-style:italic># @guest</span>
+mkfs.ext4 /dev/sda2
 </code></pre></div><p>After that, we can mount the root partition with this command:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>mount /dev/&lt;root-partition&gt; /mnt
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#999;font-style:italic># @guest</span>
+mount /dev/&lt;root-partition&gt; /mnt
 </code></pre></div><p>for example:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>mount /dev/sda2 /mnt
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#999;font-style:italic># @guest</span>
+mount /dev/sda2 /mnt
 </code></pre></div><p>After that we can follow the rest of the arch linux installation guide until
 we need to install the bootloader.</p>
 <p>For this post, we&rsquo;ll use <code>grub2</code> as our bootloader. First, we need to install
 grub with this command (after running <code>arch-chroot</code>):</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>pacman -S grub
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#999;font-style:italic># @guest</span>
+pacman -S grub
 </code></pre></div><p>After grub installed, we can use this command to install the bootloader:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>grub-install --target=i386-pc /dev/&lt;drive-name&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#999;font-style:italic># @guest</span>
+grub-install --target=i386-pc /dev/&lt;drive-name&gt;
 </code></pre></div><p>keep in mind that we need to provide the drive name, not the partition name.
 For example:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>grub-install --target=i386-pc /dev/sda
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#999;font-style:italic># @guest</span>
+grub-install --target=i386-pc /dev/sda
 </code></pre></div><p>After that, we need to generate the grub config with this command:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>grub-mkconfig -o /boot/grub/grub.cfg
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#999;font-style:italic># @guest</span>
+grub-mkconfig -o /boot/grub/grub.cfg
 </code></pre></div><p>To run the virtual machine, we can use this command:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>qemu-system-x86_64 -enable-kvm -nic user,hostfwd=tcp::2222-:22 -m 2g -smp <span style=color:#40ffff>cores</span>=4,cpus=<span style=color:#3677a9>4</span> &lt;image-path&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#999;font-style:italic># @host</span>
+qemu-system-x86_64 -enable-kvm -nic user,hostfwd=tcp::2222-:22 -m 2g -smp <span style=color:#40ffff>cores</span>=4,cpus=<span style=color:#3677a9>4</span> &lt;image-path&gt;
 </code></pre></div><p>If we want to add shared directory between virtual machine and host machine,
 we can use <code>-fsdev</code> and <code>-device</code> like this:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>qemu-system-x86_64 -enable-kvm -nic user,hostfwd=tcp::2222-:22 -fsdev local,id=fs1,path=&lt;host-shared-directory-path&gt;,security_model=none -device virtio-9p-pci,fsdev=fs1,mount_tag=&lt;mount_tag&gt; -m 2g -smp <span style=color:#40ffff>cores</span>=4,cpus=<span style=color:#3677a9>4</span> &lt;image-path&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#999;font-style:italic># @host</span>
+qemu-system-x86_64 -enable-kvm -nic user,hostfwd=tcp::2222-:22 -fsdev local,id=fs1,path=&lt;host-shared-directory-path&gt;,security_model=none -device virtio-9p-pci,fsdev=fs1,mount_tag=&lt;mount_tag&gt; -m 2g -smp <span style=color:#40ffff>cores</span>=4,cpus=<span style=color:#3677a9>4</span> &lt;image-path&gt;
 </code></pre></div><p>and then add to <code>/etc/fstab</code> like this:</p>
 <pre tabindex=0><code>...
 &lt;mount_tag&gt; &lt;mounting-path-on-virtual-machine&gt; 9p uid=xxxx,gid=xxxx,trans=virtio 0 0
@@ -175,28 +197,33 @@ we can use <code>-fsdev</code> and <code>-device</code> like this:</p>
 on <code>/home/user/shared</code>. Also, to get the <code>uid</code> and <code>gid</code> we can use <code>id &lt;user></code>,
 for example <code>id bruhtus</code>. Let&rsquo;s assume the <code>uid</code> and <code>gid</code> of the user is
 <code>1000</code>. We can use the command like this:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>qemu-system-x86_64 -enable-kvm -nic user,hostfwd=tcp::2222-:22 -fsdev local,id=fs1,path=&lt;host-shared-directory-path&gt;,security_model=none -device virtio-9p-pci,fsdev=fs1,mount_tag=shared_directory -m 2g -smp <span style=color:#40ffff>cores</span>=4,cpus=<span style=color:#3677a9>4</span> &lt;image-path&gt;
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#999;font-style:italic># @host</span>
+qemu-system-x86_64 -enable-kvm -nic user,hostfwd=tcp::2222-:22 -fsdev local,id=fs1,path=&lt;host-shared-directory-path&gt;,security_model=none -device virtio-9p-pci,fsdev=fs1,mount_tag=shared_directory -m 2g -smp <span style=color:#40ffff>cores</span>=4,cpus=<span style=color:#3677a9>4</span> &lt;image-path&gt;
 </code></pre></div><p>and in <code>/etc/fstab</code> like this:</p>
 <pre tabindex=0><code>shared_directory /home/user/shared 9p uid=1000,gid=1000,trans=virtio 0 0
 </code></pre><p>Alright, that&rsquo;s it. See you next time!</p>
 <h2 id=side-note>Side Note</h2>
 <p>If we want to use <code>shutdown</code> or <code>reboot</code> command from non-root user, we can
 install <code>polkit</code> package, like this:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>pacman -S polkit
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#999;font-style:italic># @guest</span>
+pacman -S polkit
 </code></pre></div><p>We can also ssh into the virtual machine from host machine. First we need to
 install <code>openssh</code> on virtual machine and host machine, don&rsquo;t forget to start
 <code>sshd</code> service. And then, we create ssh key with this command:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>ssh-keygen -t rsa -f ~/.ssh/qemu
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#999;font-style:italic># @host</span>
+ssh-keygen -t rsa -f ~/.ssh/qemu
 </code></pre></div><p>(we can change the name <code>qemu</code> with something else).</p>
 <p>After that, we can use this command to copy the ssh key into the virtual
 machine:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>ssh-copy-id -i ~/.ssh/qemu.pub -p <span style=color:#3677a9>2222</span> <span style=color:#40ffff>$USER</span>@127.0.0.1
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#999;font-style:italic># @host</span>
+ssh-copy-id -i ~/.ssh/qemu.pub -p <span style=color:#3677a9>2222</span> <span style=color:#40ffff>$USER</span>@127.0.0.1
 </code></pre></div><p>please keep in mind that we need to have the same username on the host
 machine and virtual machine. If you use different username on your virtual
 machine, you can change <code>$USER</code> with the username on your virtual machine.</p>
 <p>To delete the hashed key of virtual machine from ssh <code>known_hosts</code> file, we
 can use this command:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>ssh-keygen -R <span style=color:#ed9d13>&#39;[127.0.0.1]:2222&#39;</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#999;font-style:italic># @host</span>
+ssh-keygen -R <span style=color:#ed9d13>&#39;[127.0.0.1]:2222&#39;</span>
 </code></pre></div><h2 id=references>References</h2>
 <ul>
 <li><a href=https://flusp.ime.usp.br/kernel/use-qemu-to-play-with-linux/ target=_blank rel="noreferrer noopener">FLUSP Use QEMU To Play with Linux Kernel</a>
