@@ -20,11 +20,20 @@ the time of writing this post).
 This post assume that you use `ext4` filesystem format. If you use another
 file format, like `btrfs`, you might need to use different configuration.
 
+We're going to work with 2 systems on 1 machine, so we need to know which
+command need to run on which machine. For that purpose, we're going to use
+this indicator to differentiate:
+```sh
+# @host   # for real machine system
+# @guest  # for virtual machine system
+```
+
 ## QEMU Disk Image
 
 The first thing we need to do is to create a disk image. We can do that with
 this command:
 ```sh
+# @host
 qemu-img create -f qcow2 <image-path> 15g
 ```
 
@@ -42,6 +51,7 @@ page](https://archlinux.org/download/).
 
 After that, we can use this command:
 ```sh
+# @host
 qemu-system-x86_64 -enable-kvm -cdrom <path-to-arch-linux-ISO>.iso -boot
 order=d -drive file=<image-path> -m 2g
 ```
@@ -68,12 +78,14 @@ layout.
 If after running the command above, the virtual machine is not automatically
 appear, we can use command:
 ```sh
+# @host
 vncviewer :<port>
 ```
 
 Make sure to install `tigervnc` or something similar before running the
 command. We can get the port from the QEMU command above. For example:
 ```sh
+# @host
 VNC server running on ::1:5900
 ```
 `5900` is the port we want.
@@ -82,10 +94,12 @@ After inside the virtual machine, you can follow the usual arch linux
 installation guide. To be able to use host machine internet connection, we
 might want to install `dhcpcd` in the `pacstrap` step, like this:
 ```sh
+# @guest
 pacstrap -K /mnt base linux linux-firmware dhcpcd
 ```
 and enable it after `arch-chroot` like this:
 ```sh
+# @guest
 systemctl enable dhcpcd
 ```
 
@@ -100,25 +114,30 @@ we'll only make 2 partition:
 We can use `cfdisk /dev/<drive>` to partition our drive. To look what our
 drive name is, we can use `lsblk` command. For example:
 ```sh
+# @guest
 cfdisk /dev/sda
 ```
 
 After the partition, we need to format the root partition to `ext4` with this
 command:
 ```sh
+# @guest
 mkfs.ext4 /dev/<root-partition>
 ```
 for example:
 ```sh
+# @guest
 mkfs.ext4 /dev/sda2
 ```
 
 After that, we can mount the root partition with this command:
 ```sh
+# @guest
 mount /dev/<root-partition> /mnt
 ```
 for example:
 ```sh
+# @guest
 mount /dev/sda2 /mnt
 ```
 
@@ -128,32 +147,38 @@ we need to install the bootloader.
 For this post, we'll use `grub2` as our bootloader. First, we need to install
 grub with this command (after running `arch-chroot`):
 ```sh
+# @guest
 pacman -S grub
 ```
 
 After grub installed, we can use this command to install the bootloader:
 ```sh
+# @guest
 grub-install --target=i386-pc /dev/<drive-name>
 ```
 keep in mind that we need to provide the drive name, not the partition name.
 For example:
 ```sh
+# @guest
 grub-install --target=i386-pc /dev/sda
 ```
 
 After that, we need to generate the grub config with this command:
 ```sh
+# @guest
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 To run the virtual machine, we can use this command:
 ```sh
+# @host
 qemu-system-x86_64 -enable-kvm -nic user,hostfwd=tcp::2222-:22 -m 2g -smp cores=4,cpus=4 <image-path>
 ```
 
 If we want to add shared directory between virtual machine and host machine,
 we can use `-fsdev` and `-device` like this:
 ```sh
+# @host
 qemu-system-x86_64 -enable-kvm -nic user,hostfwd=tcp::2222-:22 -fsdev local,id=fs1,path=<host-shared-directory-path>,security_model=none -device virtio-9p-pci,fsdev=fs1,mount_tag=<mount_tag> -m 2g -smp cores=4,cpus=4 <image-path>
 ```
 and then add to `/etc/fstab` like this:
@@ -167,6 +192,7 @@ on `/home/user/shared`. Also, to get the `uid` and `gid` we can use `id <user>`,
 for example `id bruhtus`. Let's assume the `uid` and `gid` of the user is
 `1000`. We can use the command like this:
 ```sh
+# @host
 qemu-system-x86_64 -enable-kvm -nic user,hostfwd=tcp::2222-:22 -fsdev local,id=fs1,path=<host-shared-directory-path>,security_model=none -device virtio-9p-pci,fsdev=fs1,mount_tag=shared_directory -m 2g -smp cores=4,cpus=4 <image-path>
 ```
 and in `/etc/fstab` like this:
@@ -181,6 +207,7 @@ Alright, that's it. See you next time!
 If we want to use `shutdown` or `reboot` command from non-root user, we can
 install `polkit` package, like this:
 ```sh
+# @guest
 pacman -S polkit
 ```
 
@@ -188,6 +215,7 @@ We can also ssh into the virtual machine from host machine. First we need to
 install `openssh` on virtual machine and host machine, don't forget to start
 `sshd` service. And then, we create ssh key with this command:
 ```sh
+# @host
 ssh-keygen -t rsa -f ~/.ssh/qemu
 ```
 (we can change the name `qemu` with something else).
@@ -195,6 +223,7 @@ ssh-keygen -t rsa -f ~/.ssh/qemu
 After that, we can use this command to copy the ssh key into the virtual
 machine:
 ```sh
+# @host
 ssh-copy-id -i ~/.ssh/qemu.pub -p 2222 $USER@127.0.0.1
 ```
 please keep in mind that we need to have the same username on the host
@@ -204,6 +233,7 @@ machine, you can change `$USER` with the username on your virtual machine.
 To delete the hashed key of virtual machine from ssh `known_hosts` file, we
 can use this command:
 ```sh
+# @host
 ssh-keygen -R '[127.0.0.1]:2222'
 ```
 
