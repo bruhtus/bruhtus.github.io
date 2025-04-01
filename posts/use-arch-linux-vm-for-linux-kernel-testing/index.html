@@ -27,7 +27,7 @@ There are 2 scenarios that we will discuss on this post:
 There are 2 scenarios that we will discuss on this post:
  Using arch linux VM with arch linux as host system. Using arch linux VM with different linux distro as host system."><meta itemprop=datePublished content="2025-03-30T11:14:44+07:00">
 <meta itemprop=dateModified content="2025-03-30T11:14:44+07:00">
-<meta itemprop=wordCount content="1619">
+<meta itemprop=wordCount content="1620">
 <meta itemprop=keywords content="Linux,"><meta name=twitter:card content="summary">
 <meta name=twitter:image content="https://bruhtus.github.io//img/">
 <meta name=twitter:title content="Use Arch Linux VM for Linux Kernel Testing">
@@ -68,7 +68,7 @@ Robertus Chris
 </li><li>
 <a style=text-decoration:none href=#another-linux-distro-as-host-system aria-label="Another Linux Distro as Host System">Another Linux Distro as Host System</a><ul>
 <li>
-<a style=text-decoration:none href=#use-custom-kernel-on-qemu-vm aria-label="Use Custom Kernel on QEMU VM">Use Custom Kernel on QEMU VM</a></li></ul>
+<a style=text-decoration:none href=#use-custom-linux-kernel-on-qemu-vm-1 aria-label="Use Custom Linux Kernel on QEMU VM">Use Custom Linux Kernel on QEMU VM</a></li></ul>
 </li><li>
 <a style=text-decoration:none href=#references aria-label=References>References</a></li></ul>
 </blockquote>
@@ -229,12 +229,12 @@ docs</a>
 <p>To exit the virtual machine in <code>nographic</code> mode, we can use <code>ctrl-a x</code>.</p>
 <h2 id=another-linux-distro-as-host-system>Another Linux Distro as Host System</h2>
 <p>If we use another linux distro, we need to install arch linux in virtual
-machine from scratch. You can take a look at <a href=content/posts/install-arch-linux-on-virtual-machine.md>my previous
+machine from scratch. You can take a look at <a href=./install-arch-linux-on-virtual-machine.md>my previous
 post</a>
 for how to
 install arch linux using QEMU. Please keep in mind that you need to install
 <code>qemu</code> and <code>vncviewer</code> package on your host system.</p>
-<h3 id=use-custom-kernel-on-qemu-vm>Use Custom Kernel on QEMU VM</h3>
+<h3 id=use-custom-linux-kernel-on-qemu-vm-1>Use Custom Linux Kernel on QEMU VM</h3>
 <p>After installing arch linux in virtual machine, we need to compile the linux
 kernel based on the kernel config in the virtual machine.</p>
 <p>We can run the virtual machine with shared directory with this command:</p>
