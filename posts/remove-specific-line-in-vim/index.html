@@ -26,11 +26,7 @@ const app = require('./jest-example'); const math = require('./math'); describe(
 const app = require('./jest-example'); const math = require('./math'); describe('app operation', () => { const multiplyMock = jest.spyOn(math, 'multiply'); multiplyMock.mockReturnValue('itu'); test('call math.add()', () => { const add = jest.spyOn(math, 'add'); add.mockImplementation(() => 'anu'); console.log(app.doAdd(1, 2)); expect(app.doAdd(1, 2)).toBe('anu'); add.mockRestore(); console.log(app.doAdd(1, 2)); expect(app.doAdd(1, 2)).toBe(3); }); test('call math."><meta itemprop=datePublished content="2022-09-03T09:03:52+07:00">
 <meta itemprop=dateModified content="2022-09-03T09:03:52+07:00">
 <meta itemprop=wordCount content="696">
-<meta itemprop=keywords content="Notes,Vim,"><meta name=twitter:card content="summary">
-<meta name=twitter:image content="https://bruhtus.github.io//img/">
-<meta name=twitter:title content="Remove Specific Line in Vim">
-<meta name=twitter:description content="A Brief Intro In this post, we will talk about how to remove specific line in vim. We will be using this javascript snippet code as an example:
-const app = require('./jest-example'); const math = require('./math'); describe('app operation', () => { const multiplyMock = jest.spyOn(math, 'multiply'); multiplyMock.mockReturnValue('itu'); test('call math.add()', () => { const add = jest.spyOn(math, 'add'); add.mockImplementation(() => 'anu'); console.log(app.doAdd(1, 2)); expect(app.doAdd(1, 2)).toBe('anu'); add.mockRestore(); console.log(app.doAdd(1, 2)); expect(app.doAdd(1, 2)).toBe(3); }); test('call math."><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<meta itemprop=keywords content="Notes,Vim,"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
 </head>
 <body>
