@@ -86,8 +86,8 @@ from postgresql.</p>
 <p>The first thing we need to do is make a <code>query</code> file with the sql query above
 and <code>copy()</code> like this:</p>
 <div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sql data-lang=sql><span style=color:#6ab825;font-weight:700>copy</span>(<span style=color:#666>
-</span><span style=color:#666>    </span><span style=color:#6ab825;font-weight:700>SELECT</span><span style=color:#666> </span><span style=color:#6ab825;font-weight:700>count</span>(*)<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>as</span><span style=color:#666> </span>user_count<span style=color:#666>
-</span><span style=color:#666>    </span><span style=color:#6ab825;font-weight:700>FROM</span><span style=color:#666> </span>users;<span style=color:#666>
+</span><span style=color:#666>  </span><span style=color:#6ab825;font-weight:700>SELECT</span><span style=color:#666> </span><span style=color:#6ab825;font-weight:700>count</span>(*)<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>as</span><span style=color:#666> </span>user_count<span style=color:#666>
+</span><span style=color:#666>  </span><span style=color:#6ab825;font-weight:700>FROM</span><span style=color:#666> </span>users;<span style=color:#666>
 </span><span style=color:#666></span>)<span style=color:#666>
 </span><span style=color:#666></span><span style=color:#6ab825;font-weight:700>TO</span><span style=color:#666> </span><span style=color:#6ab825;font-weight:700>stdout</span><span style=color:#666> </span><span style=color:#6ab825;font-weight:700>WITH</span><span style=color:#666> </span>csv<span style=color:#666> </span>header<span style=color:#666>
 </span></code></pre></div><p>For simplicity, we will put those sql query in a file called <code>query</code>. After
