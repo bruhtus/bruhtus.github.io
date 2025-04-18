@@ -26,8 +26,7 @@ With that in mind, we can use `FILTER` clause in our query like this:
 ```sql
 SELECT
 count(*) AS registered_participants,
-count(*) FILTER (WHERE participants.status = 'attended') AS
-attended_participants
+count(*) FILTER (WHERE participants.status = 'attended') AS attended_participants
 FROM participants;
 ```
 

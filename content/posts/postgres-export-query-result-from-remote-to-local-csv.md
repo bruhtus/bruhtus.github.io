@@ -39,8 +39,8 @@ The first thing we need to do is make a `query` file with the sql query above
 and `copy()` like this:
 ```sql
 copy(
-SELECT count(*) as user_count
-FROM users;
+  SELECT count(*) as user_count
+  FROM users;
 )
 TO stdout WITH csv header
 ```
