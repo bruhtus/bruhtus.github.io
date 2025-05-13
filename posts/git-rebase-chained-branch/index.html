@@ -23,7 +23,7 @@ Git Rebase Chained Branch
 <meta itemprop=name content="Git Rebase Chained Branch">
 <meta itemprop=description content="Let&rsquo;s say we try to develop a feature B, but those feature need feature A which haven&rsquo;t merged already. So, to prevent the diff changes getting larger, we create new branch to develop feature B. And then, in the middle of development of feature B, the branch that contains feature A got merged into main branch and all the commit from feature A got squashed into one commit. And when we try to rebase the feature B branch with main branch, we got a conflict from a commit which previously in feature A branch."><meta itemprop=datePublished content="2025-04-18T06:31:02+07:00">
 <meta itemprop=dateModified content="2025-04-18T06:31:02+07:00">
-<meta itemprop=wordCount content="340">
+<meta itemprop=wordCount content="812">
 <meta itemprop=keywords content="Git,"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
 </head>
@@ -37,7 +37,7 @@ Git Rebase Chained Branch
 <p class=date>
 April 18, 2025
 <span>&#183;</span>
-2 mins
+4 mins
 <span>&#183;</span>
 Robertus Chris
 </p>
@@ -100,8 +100,87 @@ git rebase main
 feature-A branch and flag <code>--onto</code> is to change the parent commit from
 feature-A branch to main branch and apply the commit that exist in feature-B
 branch but not in feature-A branch &ldquo;onto&rdquo; main branch commit.</p>
-<p>Alright, that&rsquo;s it. See you next time!</p>
-<h2 id=references>References</h2>
+<p>Now, let&rsquo;s say we have more than one branch that depends on feature A branch.
+Do we need to do <code>git rebase --fork-point --onto ...</code> multiple time? Well,
+fortunately there&rsquo;s a flag <code>--update-refs</code> that will automatically do that for
+us.</p>
+<p>To make the situation clear, let&rsquo;s take a look at this:</p>
+<pre tabindex=0><code>Before:
+A---B (main branch)
+     \
+      C---D (feature-A branch)
+           \
+            E---F (feature-B branch)
+                 \
+                  G---H (feature-C branch)
+                       \
+                        I---J (feature-D branch)
+
+After:
+A---B---K (main branch, with K commit as squashed C and D commit)
+         \
+          E---F (feature-B branch)
+               \
+                G---H (feature-C branch)
+                     \
+                      I---J (feature-D branch)
+</code></pre><p>To use <code>--update-refs</code>, we need to rebase the top of the chained branch, which
+in the case above is <code>feature-D</code> branch. With that in mind, we can use this
+command:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>git rebase --update-refs --onto main feature-A feature-D
+</code></pre></div><p><code>--onto main feature-A feature-D</code> means rebase the range of commits in
+<code>feature-A</code> branch until <code>feature-D</code> branch on top of commits from <code>main</code>
+branch. We use <code>feature-A</code> because it&rsquo;s the base branch for our
+chained branch and <code>feature-D</code> because it&rsquo;s the top of the chained branch.</p>
+<blockquote>
+<p>We don&rsquo;t need to use <code>--fork-point</code> to guess which common commit in all
+those branch because <code>--update-refs</code> already do that for us.</p>
+</blockquote>
+<p>Now, what should we do if we merge <code>feature-B</code> branch? The situation would be
+like this:</p>
+<pre tabindex=0><code>Before:
+A---B---K (main branch, with K commit as squashed C and D commit)
+         \
+          E---F (feature-B branch)
+               \
+                G---H (feature-C branch)
+                     \
+                      I---J (feature-D branch)
+
+After:
+A---B---K---L (main branch, with L commit as squashed E and F commit)
+             \
+              G---H (feature-C branch)
+                   \
+                    I---J (feature-D branch)
+</code></pre><p>We can use the same command as above but, instead of using <code>feature-A</code>, we use
+<code>feature-B</code> instead, like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>git rebase --update-refs --onto main feature-B feature-D
+</code></pre></div><p>Next scenario, let&rsquo;s say we create new branch <code>feature-E</code> from <code>feature-D</code>
+branch and add new commit in it. And then, we got some feedback for <code>feature-C</code>
+branch so we need to add new commit. The situation would be like this:</p>
+<pre tabindex=0><code>Before:
+A---B---K---L (main branch, with L commit as squashed E and F commit)
+             \
+              G---H---O (feature-C branch)
+                   \
+                    I---J (feature-D branch)
+                         \
+                          M---N (feature-E branch)
+</code></pre><p>With the situation above, we can checkout into <code>feature-E</code> branch or the top
+of the chained branch and use <code>--update-refs</code> like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>git rebase --update-refs feature-C
+</code></pre></div><p>Alright, that&rsquo;s it. See you next time!</p>
+<h2 id=side-note>Side Note</h2>
+<p>We can push all those branch as an atomic operation, which means, if one of
+the branch failed to push into a remote branch, the others branch won&rsquo;t update
+the remote branch too. To do that, we can use flag <code>--atomic</code> in git push like
+this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>git push --atomic origin feature-C feature-D feature-E
+</code></pre></div><p>Please keep in mind that if you&rsquo;re rebasing the git branch you want to push,
+you might need flag <code>--force-with-lease</code> in git push, like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>git push --force-with-lease --atomic origin feature-C feature-D feature-E
+</code></pre></div><h2 id=references>References</h2>
 <ul>
 <li><a href=https://stackoverflow.com/a/29916361 target=_blank rel="noreferrer noopener">Stackoverflow git rebase &ndash;onto answer</a>
 .</li>
@@ -110,6 +189,9 @@ overview</a>
 .</li>
 <li><a href=https://stackoverflow.com/a/77800408 target=_blank rel="noreferrer noopener">Stackoverflow git rebase &ndash;fork-point answer</a>
 .</li>
+<li><a href=https://andrewlock.net/working-with-stacked-branches-in-git-is-easier-with-update-refs/ target=_blank rel="noreferrer noopener">Git rebase &ndash;update-refs blog
+post</a>
+</li>
 </ul>
 </div>
 <footer>
