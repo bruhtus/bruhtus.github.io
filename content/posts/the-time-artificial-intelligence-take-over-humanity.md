@@ -52,11 +52,11 @@ people back in the day make glass bottle manually.
 Clearly teaching a machine or a system to do some task can be beneficial for
 human. You could say those machine or system that human teach, is more like an
 assistant instead of a replacement. We, as a human, still need to supervise those
-machine or system, and to be able to do that, we can't really stop our
-learning process so that we can stop the machine or system when they misbehave
-and potentially endanger human life.
+machine or system, and to be able to do that, we can't stop our learning process
+so that we can stop the machine or system when they misbehave and potentially
+endanger human life.
 
 So, in this post i want to remind people that if they are scared AI will
 doomed humanity, then they should keep learning and prevent that from
-happening themselves. Do you really think that human intelligence will be lost
-to artificial intelligence? We will see.
+happening themselves. Do you think that human intelligence will lose to
+artificial intelligence? We will see.
