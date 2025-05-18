@@ -54,5 +54,5 @@ endanger human life.
 
 So, in this post i want to remind people that if they are scared AI will
 doomed humanity, then they should keep learning and prevent that from
-happening themselves. Do you think that human intelligence will lose to
-artificial intelligence? We will see.
+happening themselves. Do you think that human intelligence will be lower than
+artificial intelligence in the future? We will see.
