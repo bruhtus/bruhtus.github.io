@@ -3,19 +3,15 @@ author: Robertus Diawan Chris
 title: "The Time Artificial Intelligence Take Over Humanity"
 date: 2024-02-19T11:29:55+07:00
 tags: [Notes]
-ShowToc: true
+ShowToc: false
 ---
-
-## A Brief Intro
 
 One evening i read an article about [if bill gates could ask a time traveller,
 he'd want to know whether AI eventually doomed or helped
 humanity](https://finance.yahoo.com/news/bill-gates-could-ask-time-152241140.html).
 
 Those question is quite interesting, no one really know if artificial
-intelligence (AI) will helped or doomed humanity and here's my take.
-
-## Main Point
+intelligence (AI) will helped or doomed humanity. So, let's talk about it.
 
 Rather than explaining about the history of AI that only a few people cares,
 let's talk about what make people scared about AI.
