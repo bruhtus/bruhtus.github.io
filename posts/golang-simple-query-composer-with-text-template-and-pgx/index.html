@@ -23,7 +23,7 @@ Golang Simple Query Composer With Text Template and Pgx
 <meta itemprop=name content="Golang Simple Query Composer With Text Template and Pgx">
 <meta itemprop=description content="For backend development at work, we just transitioned from Node.js to golang recently. We use pgx as our PostgreSQL driver. I&rsquo;m not quite sure why we choose pgx as our PostgreSQL driver and not using ORM like gorm, so we won&rsquo;t talk about that here. My principal is to adapt to the tech stack that the project use rather than forcing what i&rsquo;m familiar with, so i don&rsquo;t really mind."><meta itemprop=datePublished content="2025-06-22T04:10:37+07:00">
 <meta itemprop=dateModified content="2025-06-22T04:10:37+07:00">
-<meta itemprop=wordCount content="703">
+<meta itemprop=wordCount content="730">
 <meta itemprop=keywords content="Golang,"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
 </head>
@@ -168,7 +168,9 @@ query := queryBuilder.<span style=color:#447fcf>String</span>()
 </span><span style=color:#999;font-style:italic></span>rows, err := db.<span style=color:#447fcf>Query</span>(ctx, query, filterArgs)
 <span style=color:#6ab825;font-weight:700>defer</span> rows.<span style=color:#447fcf>Close</span>()
 ...
-</code></pre></div><p>My concern with the <code>text/template</code> approach is that i don&rsquo;t know the failure
+</code></pre></div><p>With the approach above, we can add some placeholder for SQL query <code>where</code>
+clause, or <code>order by</code> clause, or other things that is optional to the feature.</p>
+<p>My concern with the <code>text/template</code> approach is that i don&rsquo;t know the failure
 condition for <code>template.Must()</code>, so that might become a consideration when
 deciding to use this approach or not. It&rsquo;s similar to when <code>google/uuid</code>
 package panic when using <code>uuid.New()</code>, you can check it out on <a href=https://github.com/google/uuid/issues/97 target=_blank rel="noreferrer noopener">this
