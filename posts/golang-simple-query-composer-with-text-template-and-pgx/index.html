@@ -23,7 +23,7 @@ Golang Simple Query Composer With Text Template and Pgx
 <meta itemprop=name content="Golang Simple Query Composer With Text Template and Pgx">
 <meta itemprop=description content="For backend development at work, we just transitioned from Node.js to golang recently. We use pgx as our PostgreSQL driver. I&rsquo;m not quite sure why we choose pgx as our PostgreSQL driver and not using ORM like gorm, so we won&rsquo;t talk about that here. My principal is to adapt to the tech stack that the project use rather than forcing what i&rsquo;m familiar with, so i don&rsquo;t really mind."><meta itemprop=datePublished content="2025-06-22T04:10:37+07:00">
 <meta itemprop=dateModified content="2025-06-22T04:10:37+07:00">
-<meta itemprop=wordCount content="730">
+<meta itemprop=wordCount content="734">
 <meta itemprop=keywords content="Golang,"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
 </head>
@@ -73,7 +73,7 @@ updated_at
 we can do something like this:</p>
 <div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sql data-lang=sql><span style=color:#6ab825;font-weight:700>select</span><span style=color:#666>
 </span><span style=color:#666></span>articles.author,<span style=color:#666>
-</span><span style=color:#666></span><span style=color:#6ab825;font-weight:700>count</span>(*)<span style=color:#666>
+</span><span style=color:#666></span><span style=color:#6ab825;font-weight:700>count</span>(*)<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>as</span><span style=color:#666> </span>total<span style=color:#666>
 </span><span style=color:#666></span><span style=color:#6ab825;font-weight:700>from</span><span style=color:#666> </span>articles<span style=color:#666>
 </span><span style=color:#666></span><span style=color:#6ab825;font-weight:700>group</span><span style=color:#666> </span><span style=color:#6ab825;font-weight:700>by</span><span style=color:#666> </span>articles.author;<span style=color:#666>
 </span></code></pre></div><p>If that&rsquo;s all we need, then we can just write those SQL query as is in one
@@ -81,7 +81,7 @@ string. Now the problem is, when we want to show only specific author. The
 raw SQL query would be something like this:</p>
 <div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sql data-lang=sql><span style=color:#6ab825;font-weight:700>select</span><span style=color:#666>
 </span><span style=color:#666></span>articles.author,<span style=color:#666>
-</span><span style=color:#666></span><span style=color:#6ab825;font-weight:700>count</span>(*)<span style=color:#666>
+</span><span style=color:#666></span><span style=color:#6ab825;font-weight:700>count</span>(*)<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>as</span><span style=color:#666> </span>total<span style=color:#666>
 </span><span style=color:#666></span><span style=color:#6ab825;font-weight:700>from</span><span style=color:#666> </span>articles<span style=color:#666>
 </span><span style=color:#666></span><span style=color:#6ab825;font-weight:700>where</span><span style=color:#666> </span>articles.author<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>ilike</span><span style=color:#666> </span><span style=color:#ed9d13>&#39;%robertus%&#39;</span><span style=color:#666>
 </span><span style=color:#666></span><span style=color:#6ab825;font-weight:700>group</span><span style=color:#666> </span><span style=color:#6ab825;font-weight:700>by</span><span style=color:#666> </span>articles.author;<span style=color:#666>
@@ -93,7 +93,7 @@ this:</p>
 query := <span style=color:#ed9d13>`
 </span><span style=color:#ed9d13>select
 </span><span style=color:#ed9d13>articles.author,
-</span><span style=color:#ed9d13>count(*)
+</span><span style=color:#ed9d13>count(*) as total
 </span><span style=color:#ed9d13>from articles
 </span><span style=color:#ed9d13>`</span>
 
@@ -133,7 +133,7 @@ placeholder inside the base query string.</p>
 </span><span style=color:#999;font-style:italic></span>baseQuery := <span style=color:#ed9d13>`
 </span><span style=color:#ed9d13>select
 </span><span style=color:#ed9d13>articles.author,
-</span><span style=color:#ed9d13>count(*)
+</span><span style=color:#ed9d13>count(*) as total
 </span><span style=color:#ed9d13>from articles
 </span><span style=color:#ed9d13></span><span style=color:#cd2828;font-weight:700>{{</span><span style=color:#6ab825;font-weight:700>if</span><span style=color:#666> </span><span style=color:#bbb>.Where</span><span style=color:#cd2828;font-weight:700>}}{{</span><span style=color:#bbb>.Where</span><span style=color:#cd2828;font-weight:700>}}{{</span><span style=color:#6ab825;font-weight:700>end</span><span style=color:#666> </span><span style=color:#cd2828;font-weight:700>-}}</span><span style=color:#ed9d13>
 </span><span style=color:#ed9d13>group by articles.author
