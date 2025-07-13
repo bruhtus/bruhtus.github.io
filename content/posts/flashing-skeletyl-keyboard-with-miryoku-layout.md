@@ -123,6 +123,14 @@ a look at miryoku discussion or issue on github.
 
 All right, that's it. See you next time!
 
+## Side Note
+
+Currently the right side of miryoku qwerty layout using `hjkl'` instead of
+`hjkl;`, so you might be surprised the first time using miryoku qwerty layout.
+There's a plan to customize that, but as of writing this post, it's still work
+in progress. You can check this discussion to see the progress:<br>
+https://github.com/manna-harbour/miryoku/discussions/85
+
 ## References
 
 - [Miryoku reference
