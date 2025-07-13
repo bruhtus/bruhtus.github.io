@@ -27,7 +27,7 @@ https://github.com/qmk/qmk_firmware/blob/master/docs/newbs_getting_started.md To
 By the time of writing this post, there&rsquo;s a breaking change in QMK that remove user keymaps, including miryoku. And miryoku QMK haven&rsquo;t porting it&rsquo;s config in the new QMK userspace. So this section might become obsolete in the future. For reference: https://github.com/manna-harbour/miryoku/discussions/287 First thing we need to do is to setup QMK. We can check the QMK documentation below:
 https://github.com/qmk/qmk_firmware/blob/master/docs/newbs_getting_started.md To check if QMK already installed on linux, we can use this command:"><meta itemprop=datePublished content="2025-07-13T07:55:26+07:00">
 <meta itemprop=dateModified content="2025-07-13T07:55:26+07:00">
-<meta itemprop=wordCount content="624">
+<meta itemprop=wordCount content="678">
 <meta itemprop=keywords content="Notes,Linux,"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
 </head>
@@ -41,7 +41,7 @@ https://github.com/qmk/qmk_firmware/blob/master/docs/newbs_getting_started.md To
 <p class=date>
 July 13, 2025
 <span>&#183;</span>
-3 mins
+4 mins
 <span>&#183;</span>
 Robertus Chris
 </p>
@@ -59,6 +59,7 @@ Robertus Chris
 <blockquote><ul><li>
 <a style=text-decoration:none href=#setup-miryoku-in-qmk aria-label="Setup Miryoku in QMK">Setup Miryoku in QMK</a></li><li>
 <a style=text-decoration:none href=#flashing-skeletyl-keyboard aria-label="Flashing Skeletyl Keyboard">Flashing Skeletyl Keyboard</a></li><li>
+<a style=text-decoration:none href=#side-note aria-label="Side Note">Side Note</a></li><li>
 <a style=text-decoration:none href=#references aria-label=References>References</a></li></ul>
 </blockquote>
 </details>
@@ -152,6 +153,13 @@ firmware that has miryoku layout in it:</p>
 after the flashing process finish. If there&rsquo;s an error, you might want to take
 a look at miryoku discussion or issue on github.</p>
 <p>All right, that&rsquo;s it. See you next time!</p>
+<h2 id=side-note>Side Note</h2>
+<p>Currently the right side of miryoku qwerty layout using <code>hjkl'</code> instead of
+<code>hjkl;</code>, so you might be surprised the first time using miryoku qwerty layout.
+There&rsquo;s a plan to customize that, but as of writing this post, it&rsquo;s still work
+in progress. You can check this discussion to see the progress:<br>
+<a href=https://github.com/manna-harbour/miryoku/discussions/85 target=_blank rel="noreferrer noopener">https://github.com/manna-harbour/miryoku/discussions/85</a>
+</p>
 <h2 id=references>References</h2>
 <ul>
 <li><a href=https://github.com/manna-harbour/miryoku/tree/master/docs/reference target=_blank rel="noreferrer noopener">Miryoku reference
