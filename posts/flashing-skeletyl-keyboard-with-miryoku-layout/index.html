@@ -27,7 +27,7 @@ https://github.com/qmk/qmk_firmware/blob/master/docs/newbs_getting_started.md To
 By the time of writing this post, there&rsquo;s a breaking change in QMK that remove user keymaps, including miryoku. And miryoku QMK haven&rsquo;t porting it&rsquo;s config in the new QMK userspace. So this section might become obsolete in the future. For reference: https://github.com/manna-harbour/miryoku/discussions/287 First thing we need to do is to setup QMK. We can check the QMK documentation below:
 https://github.com/qmk/qmk_firmware/blob/master/docs/newbs_getting_started.md To check if QMK already installed on linux, we can use this command:"><meta itemprop=datePublished content="2025-07-13T07:55:26+07:00">
 <meta itemprop=dateModified content="2025-07-13T07:55:26+07:00">
-<meta itemprop=wordCount content="678">
+<meta itemprop=wordCount content="735">
 <meta itemprop=keywords content="Notes,Linux,"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
 </head>
@@ -113,13 +113,17 @@ We also need to copy <code>users/manna-harbour_miryoku/</code> from <code>miryok
 <div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>make git-submodule
 </code></pre></div><p>Next, we need to make sure that we can compile the <code>miryoku</code> layout by running
 this command:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>qmk compile -c -kb bastardkb/skeletyl/v2/splinky_3 -km manna-harbour_miryoku -e <span style=color:#40ffff>MIRYOKU_ALPHAS</span>=QWERTY
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>qmk compile -c -kb bastardkb/skeletyl/v2/splinky_3 -km manna-harbour_miryoku -e <span style=color:#40ffff>MIRYOKU_ALPHAS</span>=QWERTY -e <span style=color:#40ffff>MIRYOKU_LAYERS</span>=FLIP -e <span style=color:#40ffff>MIRYOKU_NAV</span>=INVERTEDT
 </code></pre></div><blockquote>
-<p>I prefer to use qwerty layout, so i add flag -e MIRYOKU_ALPHAS=QWERTY. Also
+<p>I prefer to use qwerty layout, so i add flag <code>-e MIRYOKU_ALPHAS=QWERTY</code>. Also
 my unit using <code>rp2040</code>, that&rsquo;s why i&rsquo;m using <code>splinky_3</code>. I&rsquo;m not sure the
 difference between <code>splinky_2</code> and <code>splinky_3</code>, and the reason i&rsquo;m using
 <code>splinky_3</code> instead of <code>splinky_2</code> is because i think <code>splinky_3</code> is the
-latest version of <code>splinky</code> variant.</p>
+latest version of <code>splinky</code> variant. I prefer to use space on the right
+side, hence why i put flag <code>-e MIRYOKU_LAYERS=FLIP</code> to flip the base layer
+thumb keys and sub layers between right and left hands. I also prefer using
+arrow key in inverted T model, like <code>asdw</code> in fps game, hence why i put flag
+<code>-e MIRYOKU_NAV=INVERTEDT</code>.</p>
 </blockquote>
 <p>If there&rsquo;s no error, we can go into the next section. If there&rsquo;s some error,
 we might need to adjust a few things. Check this discussion and see if this
