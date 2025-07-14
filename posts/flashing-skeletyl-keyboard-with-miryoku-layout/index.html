@@ -27,7 +27,7 @@ https://github.com/qmk/qmk_firmware/blob/master/docs/newbs_getting_started.md To
 By the time of writing this post, there&rsquo;s a breaking change in QMK that remove user keymaps, including miryoku. And miryoku QMK haven&rsquo;t porting it&rsquo;s config in the new QMK userspace. So this section might become obsolete in the future. For reference: https://github.com/manna-harbour/miryoku/discussions/287 First thing we need to do is to setup QMK. We can check the QMK documentation below:
 https://github.com/qmk/qmk_firmware/blob/master/docs/newbs_getting_started.md To check if QMK already installed on linux, we can use this command:"><meta itemprop=datePublished content="2025-07-13T07:55:26+07:00">
 <meta itemprop=dateModified content="2025-07-13T07:55:26+07:00">
-<meta itemprop=wordCount content="735">
+<meta itemprop=wordCount content="739">
 <meta itemprop=keywords content="Notes,Linux,"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
 </head>
@@ -152,7 +152,7 @@ micro controller partition:</p>
 <div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>sudo mount /dev/sda1 /mnt
 </code></pre></div><p>After that, we can run this command to flash our micro controller with
 firmware that has miryoku layout in it:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>qmk flash -c -kb bastardkb/skeletyl/v2/splinky_3 -km manna-harbour_miryoku -e <span style=color:#40ffff>MIRYOKU_ALPHAS</span>=QWERTY
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>qmk flash -c -kb bastardkb/skeletyl/v2/splinky_3 -km manna-harbour_miryoku -e <span style=color:#40ffff>MIRYOKU_ALPHAS</span>=QWERTY -e <span style=color:#40ffff>MIRYOKU_LAYERS</span>=FLIP -e <span style=color:#40ffff>MIRYOKU_NAV</span>=INVERTEDT
 </code></pre></div><p>If there&rsquo;s no error, we can use our skeletyl keyboard with miryoku layout
 after the flashing process finish. If there&rsquo;s an error, you might want to take
 a look at miryoku discussion or issue on github.</p>
