@@ -77,14 +77,18 @@ make git-submodule
 Next, we need to make sure that we can compile the `miryoku` layout by running
 this command:
 ```sh
-qmk compile -c -kb bastardkb/skeletyl/v2/splinky_3 -km manna-harbour_miryoku -e MIRYOKU_ALPHAS=QWERTY
+qmk compile -c -kb bastardkb/skeletyl/v2/splinky_3 -km manna-harbour_miryoku -e MIRYOKU_ALPHAS=QWERTY -e MIRYOKU_LAYERS=FLIP -e MIRYOKU_NAV=INVERTEDT
 ```
 
-> I prefer to use qwerty layout, so i add flag -e MIRYOKU_ALPHAS=QWERTY. Also
+> I prefer to use qwerty layout, so i add flag `-e MIRYOKU_ALPHAS=QWERTY`. Also
 > my unit using `rp2040`, that's why i'm using `splinky_3`. I'm not sure the
 > difference between `splinky_2` and `splinky_3`, and the reason i'm using
 > `splinky_3` instead of `splinky_2` is because i think `splinky_3` is the
-> latest version of `splinky` variant.
+> latest version of `splinky` variant. I prefer to use space on the right
+> side, hence why i put flag `-e MIRYOKU_LAYERS=FLIP` to flip the base layer
+> thumb keys and sub layers between right and left hands. I also prefer using
+> arrow key in inverted T model, like `asdw` in fps game, hence why i put flag
+> `-e MIRYOKU_NAV=INVERTEDT`.
 
 If there's no error, we can go into the next section. If there's some error,
 we might need to adjust a few things. Check this discussion and see if this
@@ -114,7 +118,7 @@ sudo mount /dev/sda1 /mnt
 After that, we can run this command to flash our micro controller with
 firmware that has miryoku layout in it:
 ```sh
-qmk flash -c -kb bastardkb/skeletyl/v2/splinky_3 -km manna-harbour_miryoku -e MIRYOKU_ALPHAS=QWERTY
+qmk flash -c -kb bastardkb/skeletyl/v2/splinky_3 -km manna-harbour_miryoku -e MIRYOKU_ALPHAS=QWERTY -e MIRYOKU_LAYERS=FLIP -e MIRYOKU_NAV=INVERTEDT
 ```
 
 If there's no error, we can use our skeletyl keyboard with miryoku layout
