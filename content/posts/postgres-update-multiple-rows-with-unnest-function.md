@@ -39,6 +39,18 @@ WHERE m.id = c.id
 RETURNING m.*
 ```
 
+The equivalent raw sql would be like this:
+```sql
+UPDATE meat as m
+SET price = c.price
+FROM unnest(
+    array['...', '...']::uuid[],
+    array[69, 42]::int[]
+) as c(id, price)
+WHERE m.id = c.id
+RETURNING m.*
+```
+
 Please keep in mind that we need to specify the array type in postgres like
 `uuid[]` and `int[]` because apparently `pgx` using array in string format
 like `unnest('{1, 2, 3}')` so postgres get confused and throw an error
