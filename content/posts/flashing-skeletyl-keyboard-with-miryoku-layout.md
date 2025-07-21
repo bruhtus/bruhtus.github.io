@@ -103,8 +103,8 @@ skeletyl keyboard, we can use the `update` button at the bottom of the
 keyboard. For more info, we can check this guide:<br>
 https://docs.bastardkb.com/fw/flashing.html
 
-> We only need to flash our main board, which in my case is the right side of
-> the keyboard.
+> Because we using new firmware, we can flash both side with the same
+> firmware.
 
 After our keyboard enter bootloader mode, we need to mount our micro
 controller to our linux system. We can use `lsblk` to find out our micro
@@ -124,6 +124,13 @@ qmk flash -c -kb bastardkb/skeletyl/v2/splinky_3 -km manna-harbour_miryoku -e MI
 If there's no error, we can use our skeletyl keyboard with miryoku layout
 after the flashing process finish. If there's an error, you might want to take
 a look at miryoku discussion or issue on github.
+
+If the skeletyl keyboard is not usable after booting up the computer, we can
+add `#define USB_VBUS_PIN GP19` in file
+`keyboards/bastardkb/skeletyl/v2/splinky_3/config.h`. Defining `USB_VBUS_PIN`
+will allow us to tell the controller whether it's master or slave right away,
+resulting in immediate boot for both sides. After defining `USB_VBUS_PIN`, we
+can flashing both side of the keyboard again using the command above.
 
 All right, that's it. See you next time!
 
@@ -145,3 +152,5 @@ guide](https://github.com/manna-harbour/miryoku_qmk/tree/miryoku/users/manna-har
 discussion](https://github.com/manna-harbour/miryoku/discussions/287)
 - [Skeletyl flashing firmware
 guide](https://docs.bastardkb.com/fw/flashing.html)
+- [Skeletyl USB VBUS PIN for splinky
+controllers](https://github.com/Bastardkb/bastardkb-qmk/issues/33)
