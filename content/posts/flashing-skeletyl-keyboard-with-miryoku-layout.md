@@ -152,5 +152,7 @@ guide](https://github.com/manna-harbour/miryoku_qmk/tree/miryoku/users/manna-har
 discussion](https://github.com/manna-harbour/miryoku/discussions/287)
 - [Skeletyl flashing firmware
 guide](https://docs.bastardkb.com/fw/flashing.html)
+- [Github issue QMK rp2040 not usable from
+boot](https://github.com/qmk/qmk_firmware/issues/18511)
 - [Skeletyl USB VBUS PIN for splinky
 controllers](https://github.com/Bastardkb/bastardkb-qmk/issues/33)
