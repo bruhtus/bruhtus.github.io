@@ -132,9 +132,13 @@ if len(composedFilter) > 0 {
         )
 }
 
-queryTmpl := template.Must(template.New("baseQuery").Parse(baseQuery))
+queryTmpl, err := template.New("baseQuery").Parse(baseQuery)
 
-if err != queryTmpl.Execute(queryBuilder, conditionalTmpl); err != nil {
+if err != nil {
+        ...
+}
+
+if err := queryTmpl.Execute(queryBuilder, conditionalTmpl); err != nil {
         ...
 }
 
@@ -150,8 +154,8 @@ With the approach above, we can add some placeholder for SQL query `where`
 clause, or `order by` clause, or other things that is optional to the feature.
 
 My concern with the `text/template` approach is that i don't know the failure
-condition for `template.Must()`, so that might become a consideration when
-deciding to use this approach or not. It's similar to when `google/uuid`
+condition for `template.New().Parse()`, so that might become a consideration
+when deciding to use this approach or not. It's similar to when `google/uuid`
 package panic when using `uuid.New()`, you can check it out on [this
 issue about the context](https://github.com/google/uuid/issues/97).
 
