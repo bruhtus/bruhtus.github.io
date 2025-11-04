@@ -1,0 +1,165 @@
+<!doctype html><html>
+<head>
+<title>
+Difference Between i++ and ++i in C
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=author content="Robertus Chris">
+<link rel="shortcut icon" type=image/x-icon href=https://bruhtus.github.io/img/favicon.ico>
+<link rel=stylesheet href=https://bruhtus.github.io/style.min.4f970aa135421035a71bdc9bbd750aa2cfbe0ddb080ab1ec5db4173f45494cad.css integrity="sha256-T5cKoTVCEDWnG9ybvXUKos++DdsICrHsXbQXP0VJTK0=">
+<link disabled rel=stylesheet href=https://bruhtus.github.io/style-dark.min.0a647fb6c07e04b77b54fa0515d0a683d39ecdb251dba960fe1f966f7ff36fc2.css media="(prefers-color-scheme: dark)" integrity="sha256-CmR/tsB+BLd7VPoFFdCmg9OezbJR26lg/h+Wb3/zb8I=">
+<link rel=stylesheet href=https://use.fontawesome.com/releases/v5.8.1/css/all.css integrity=sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf crossorigin=anonymous>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@300&family=EB+Garamond&family=PT+Sans&family=Sura&family=Zilla+Slab&family=Inconsolata&family=Libre+Baskerville&display=swap" rel=stylesheet>
+<link rel=stylesheet href=https://bruhtus.github.io/css/custom.css>
+<meta property="og:title" content="Difference Between i++ and ++i in C">
+<meta property="og:description" content="A Brief Explanation Let&rsquo;s say we have int i = 0;, and imagine there&rsquo;s a temporary object (rvalue?) to store the result of i + 1 for the ++ operator. The temporary object will be deleted after we evaluate the current line.
+This is what probably happen if we use i++ without assigned the result to another variable:
+// i++; tmp = i; i = i + 1; This is what probably happen if we use ++i without assigned the result to another variable:">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bruhtus.github.io/posts/difference-between-i++-and-++i-in-c/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2025-11-04T15:05:31+07:00">
+<meta property="article:modified_time" content="2025-11-04T15:05:31+07:00">
+<meta itemprop=name content="Difference Between i++ and ++i in C">
+<meta itemprop=description content="A Brief Explanation Let&rsquo;s say we have int i = 0;, and imagine there&rsquo;s a temporary object (rvalue?) to store the result of i + 1 for the ++ operator. The temporary object will be deleted after we evaluate the current line.
+This is what probably happen if we use i++ without assigned the result to another variable:
+// i++; tmp = i; i = i + 1; This is what probably happen if we use ++i without assigned the result to another variable:"><meta itemprop=datePublished content="2025-11-04T15:05:31+07:00">
+<meta itemprop=dateModified content="2025-11-04T15:05:31+07:00">
+<meta itemprop=wordCount content="405">
+<meta itemprop=keywords content="Notes,C,"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
+</head>
+<body>
+<h1>Difference Between i++ and ++i in C</h1>
+<header>
+<div class=cd>
+<h2><a style=text-decoration:none class=cd href=https://bruhtus.github.io/posts>cd ..</a> || <a style=text-decoration:none class=cd href=https://bruhtus.github.io/>cd</a></h2>
+</div>
+</header>
+<p class=date>
+November 4, 2025
+<span>&#183;</span>
+2 mins
+<span>&#183;</span>
+Robertus Chris
+</p>
+<div id=tags>
+<ul>
+<li><a style=text-decoration:none href=https://bruhtus.github.io/tags/notes/>Notes</a></li>
+<li><a style=text-decoration:none href=https://bruhtus.github.io/tags/c/>C</a></li>
+</ul>
+</div>
+<div class=toc>
+<details>
+<summary>
+<div class=details>Table of Contents</div>
+</summary>
+<blockquote><ul><li>
+<a style=text-decoration:none href=#a-brief-explanation aria-label="A Brief Explanation">A Brief Explanation</a></li><li>
+<a style=text-decoration:none href=#i-or-i-in-for-loop aria-label="i++ or ++i in For Loop">i++ or ++i in For Loop</a></li><li>
+<a style=text-decoration:none href=#side-note aria-label="Side Note">Side Note</a></li><li>
+<a style=text-decoration:none href=#references aria-label=References>References</a></li></ul>
+</blockquote>
+</details>
+</div>
+<div id=contentBody>
+<h2 id=a-brief-explanation>A Brief Explanation</h2>
+<p>Let&rsquo;s say we have <code>int i = 0;</code>, and imagine there&rsquo;s a <strong>temporary object</strong> (rvalue?) to
+store the result of i + 1 for the ++ operator. The temporary object will be
+deleted after we evaluate the current line.</p>
+<p>This is what probably happen if we use i++ without assigned the result
+to another variable:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-c data-lang=c><span style=color:#999;font-style:italic>// i++;
+</span><span style=color:#999;font-style:italic></span>tmp = i;
+i = i + <span style=color:#3677a9>1</span>;
+</code></pre></div><p>This is what probably happen if we use ++i without assigned the result
+to another variable:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-c data-lang=c><span style=color:#999;font-style:italic>// ++i;
+</span><span style=color:#999;font-style:italic></span>i = i + <span style=color:#3677a9>1</span>;
+tmp = i;
+</code></pre></div><p>This is what probably happen if we use i++ when assigned the result
+to variable j:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-c data-lang=c><span style=color:#999;font-style:italic>// int j = i++;
+</span><span style=color:#999;font-style:italic></span>tmp = i;
+j = tmp;
+i = i + <span style=color:#3677a9>1</span>;
+</code></pre></div><p>This is what probably happen if we use ++i when assigned the result
+to variable j:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-c data-lang=c><span style=color:#999;font-style:italic>// int j = ++i;
+</span><span style=color:#999;font-style:italic></span>i = i + <span style=color:#3677a9>1</span>;
+tmp = i;
+j = tmp;
+</code></pre></div><p>The only difference between <code>i++</code> and <code>++i</code> is when we use the value of the
+operation in the same statement, like <code>int j = ++i</code>.</p>
+<p>P.S:<br>
+At the time of writing this post, i am still learning about C,
+so this illustration might be wrong. Please let
+me know if there are a better illustration about this.</p>
+<h2 id=i-or-i-in-for-loop>i++ or ++i in For Loop</h2>
+<p>When using either i++ or ++i in for-loop like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-c data-lang=c><span style=color:#6ab825;font-weight:700>int</span> i;
+
+<span style=color:#6ab825;font-weight:700>for</span> (i = <span style=color:#3677a9>0</span>; i &lt; <span style=color:#3677a9>5</span>; i++)
+    printf(<span style=color:#ed9d13>&#34;%d</span><span style=color:#ed9d13>\n</span><span style=color:#ed9d13>&#34;</span>, i);
+
+<span style=color:#6ab825;font-weight:700>for</span> (i = <span style=color:#3677a9>0</span>; i &lt; <span style=color:#3677a9>5</span>; i++)
+    printf(<span style=color:#ed9d13>&#34;%d</span><span style=color:#ed9d13>\n</span><span style=color:#ed9d13>&#34;</span>, i);
+</code></pre></div><p>Both of them will operate <em>identically</em> because the increment of i and the print
+statement is in <strong>different line</strong>. It&rsquo;s like we are using <code>i++</code> or <code>++i</code>
+without any assignment like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-c data-lang=c><span style=color:#6ab825;font-weight:700>int</span> i = <span style=color:#3677a9>0</span>;
+i++;
+++i;
+printf(<span style=color:#ed9d13>&#34;%d</span><span style=color:#ed9d13>\n</span><span style=color:#ed9d13>&#34;</span>, i);
+</code></pre></div><h2 id=side-note>Side Note</h2>
+<p>Please keep in mind that operation <code>i++</code> and <code>++i</code> is also prone to <strong>integer
+overflow</strong>.</p>
+<p>Here an overflow example:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-c data-lang=c><span style=color:#cd2828;font-weight:700>#include</span> <span style=color:#cd2828;font-weight:700>&lt;stdio.h&gt;</span><span style=color:#cd2828;font-weight:700>
+</span><span style=color:#cd2828;font-weight:700>#include</span> <span style=color:#cd2828;font-weight:700>&lt;limits.h&gt;</span><span style=color:#cd2828;font-weight:700>
+</span><span style=color:#cd2828;font-weight:700></span>
+<span style=color:#6ab825;font-weight:700>int</span> <span style=color:#447fcf>main</span>(<span style=color:#6ab825;font-weight:700>void</span>)
+{
+    <span style=color:#6ab825;font-weight:700>unsigned</span> <span style=color:#6ab825;font-weight:700>int</span> i = UINT_MAX;
+    printf(<span style=color:#ed9d13>&#34;before increment i: %d</span><span style=color:#ed9d13>\n</span><span style=color:#ed9d13>&#34;</span>, i);
+
+    i++;
+    printf(<span style=color:#ed9d13>&#34;after increment i: %d</span><span style=color:#ed9d13>\n</span><span style=color:#ed9d13>&#34;</span>, i);
+
+    <span style=color:#6ab825;font-weight:700>return</span> <span style=color:#3677a9>0</span>;
+}
+</code></pre></div><p>In the example above, as we store the maximum value of unsigned integer in <code>i</code>
+and when we increase the value of <code>i</code>, the result would be 0 because the value
+is more than the maximum value of unsigned integer, so it result in <em>overflow</em>.</p>
+<h2 id=references>References</h2>
+<ul>
+<li><a href=https://stackoverflow.com/a/24858 target=_blank rel="noreferrer noopener">Stackoverflow about difference between i++ and
+++i</a>
+.</li>
+<li><a href=https://herbsutter.com/2013/05/13/gotw-2-solution-temporary-objects/ target=_blank rel="noreferrer noopener">About temporary
+object</a>
+.</li>
+<li><a href=https://splone.com/blog/2015/3/11/integer-overflow-prevention-in-c/ target=_blank rel="noreferrer noopener">About integer
+overflow</a>
+.</li>
+<li><a href=https://www.gnu.org/software/c-intro-and-ref/manual/html_node/Unsigned-Overflow.html target=_blank rel="noreferrer noopener">Unsigned integers
+overflow</a>
+.</li>
+</ul>
+</div>
+<footer>
+<p>
+&copy; 2020-present <a style=text-decoration:none href=https://github.com/bruhtus/resume target=_blank rel="noreferrer noopener">Robertus Chris</a>
+<span>&#183;</span>
+<a style=text-decoration:none href=https://bruhtus.github.io/index.xml target=_blank rel="noreferrer noopener">RSS Feed</a>
+<span>&#183;</span>
+Based on <a style=text-decoration:none href=https://github.com/koirand/pulp/ target=_blank rel="noreferrer noopener">pulp</a> and <a style=text-decoration:none href=https://github.com/adityatelange/hugo-PaperMod target=_blank rel="noreferrer noopener">papermod</a> theme
+</p>
+</footer>
+<button onclick=topFunction() id=myBtn title="Go to top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d0d0d0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+<script>var mybutton=document.getElementById("myBtn");window.onscroll=function(){scrollFunction()};function scrollFunction(){document.body.scrollTop>20||document.documentElement.scrollTop>20?mybutton.style.display="block":mybutton.style.display="none"}function topFunction(){document.body.scrollTop=0,document.documentElement.scrollTop=0}</script><script src=https://bruhtus.github.io/js/custom.js></script>
+</body>
+</html>
