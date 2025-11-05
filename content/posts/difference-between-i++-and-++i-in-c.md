@@ -8,9 +8,20 @@ ShowToc: true
 
 ## A Brief Explanation
 
-Let's say we have `int i = 0;`, and imagine there's a **temporary object** (rvalue?) to
-store the result of i + 1 for the ++ operator. The temporary object will be
-deleted after we evaluate the current line.
+Let's say we have `int i = 0;`, and imagine there's a **temporary object**
+(rvalue?) to store the result of i + 1 for the ++ operator.
+
+> Object is an area of memory that is used by our program, and temporary object
+> in here means that the object has a *temporary duration* and will be deleted
+> when the containing full expression ends.
+>
+> Full expression here means:
+> - The complete expression that forms an expression statement (with terminating
+> semicolon (;) at the end).
+> - One of the controlling expression `if`, `switch`, `while`, `for`, or
+> `do-while` statement.
+> - The expression of an initializer (like `int i = 0;`).
+> - `return` statement.
 
 This is what probably happen if we use i++ without assigned the result
 to another variable:
@@ -113,3 +124,7 @@ object](https://herbsutter.com/2013/05/13/gotw-2-solution-temporary-objects/).
 overflow](https://splone.com/blog/2015/3/11/integer-overflow-prevention-in-c/).
 - [Unsigned integers
 overflow](https://www.gnu.org/software/c-intro-and-ref/manual/html_node/Unsigned-Overflow.html).
+- [Cppreference object
+lifetime](https://en.cppreference.com/w/c/language/lifetime.html).
+- [Cppreference
+statements](https://en.cppreference.com/w/c/language/statements.html).
