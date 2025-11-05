@@ -13,8 +13,8 @@ common one is about house and house address, but i want to share the analogy
 that help me understand about pointer.
 
 Imagine there's a company called `RAM` and those company business is renting
-out a warehouse. And then we, as the customer, want to rent one of their
-warehouse.
+out warehouses. And then we, as the customer, want to rent one of their
+warehouses.
 
 When we rent the warehouse, we got the following item:
 - The warehouse key.
