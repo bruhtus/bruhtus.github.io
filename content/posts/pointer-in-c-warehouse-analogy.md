@@ -20,7 +20,7 @@ When we rent the warehouse, we got the following item:
 - The warehouse key.
 - The keychain with warehouse information on the key.
 
-Now, before we go further, think of the "warehouse" as data storage (a.k.a
+Before we go further, think of the "warehouse" as data storage (a.k.a
 memory), the "warehouse key" as the `pointer` in C, and the "keychain" as
 the `address` that we save in those pointer. We can think of the "keychain" as
 the value of the "key".
