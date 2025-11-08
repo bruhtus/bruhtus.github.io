@@ -1,6 +1,6 @@
 ---
 author: Robertus Diawan Chris
-title: "Postgres Update Multiple Rows With Unnest Function"
+title: "Postgresql Update Multiple Rows With Unnest Function"
 date: 2025-07-15T12:56:22+07:00
 tags: [Notes, Postgresql]
 ShowToc: true
