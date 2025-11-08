@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Become the Unofficial Leader"
 date: 2025-10-28T11:51:58+07:00
-tags: [Notes]
+tags: [Reflections]
 ShowToc: false
 ---
 

@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Configure Vim as Intro to Software Design"
 date: 2025-05-31T04:24:41+07:00
-tags: [Vim]
+tags: [Reflections]
 ShowToc: false
 ---
 

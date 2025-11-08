@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "The Time Artificial Intelligence Take Over Humanity"
 date: 2024-02-19T11:29:55+07:00
-tags: [Notes]
+tags: [Reflections]
 ShowToc: false
 ---
 

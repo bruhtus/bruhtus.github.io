@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Unintegrated Development Environment"
 date: 2024-10-20T12:20:19+07:00
-tags: [Notes]
+tags: [Reflections]
 ShowToc: false
 ---
 
