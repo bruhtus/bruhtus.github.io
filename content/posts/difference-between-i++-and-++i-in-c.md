@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Difference Between i++ and ++i in C"
 date: 2025-11-04T15:05:31+07:00
-tags: [Notes, C]
+tags: [C]
 ShowToc: true
 ---
 

@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Remove Specific Line in Vim"
 date: 2022-09-03T09:03:52+07:00
-tags: [Notes, Vim]
+tags: [Vim]
 ShowToc: true
 ---
 

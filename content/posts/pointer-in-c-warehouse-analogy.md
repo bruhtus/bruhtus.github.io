@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Pointer in C: Warehouse Analogy"
 date: 2025-11-05T12:46:52+07:00
-tags: [Notes, C]
+tags: [C]
 ShowToc: false
 ---
 
