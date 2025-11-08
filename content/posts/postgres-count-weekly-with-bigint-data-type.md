@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Postgresql Count Weekly With Bigint Data Type"
 date: 2023-06-26T10:58:13+07:00
-tags: [Notes, Postgresql]
+tags: [Postgresql]
 ShowToc: true
 ---
 

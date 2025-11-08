@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Postgresql Export Query Result From Remote to Local in CSV file"
 date: 2023-07-25T04:22:04+07:00
-tags: [Notes, Postgresql]
+tags: [Postgresql]
 ShowToc: true
 ---
 

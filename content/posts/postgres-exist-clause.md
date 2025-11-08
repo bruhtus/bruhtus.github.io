@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Postgresql Exist Clause"
 date: 2023-07-20T07:12:44+07:00
-tags: [Notes, Postgresql]
+tags: [Postgresql]
 ShowToc: true
 ---
 
