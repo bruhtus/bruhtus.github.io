@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Git Rebase Chained Branch"
 date: 2025-04-18T06:31:02+07:00
-tags: [Git]
+tags: [Notes, Git]
 ShowToc: false
 ---
 

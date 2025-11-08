@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Use Arch Linux VM for Linux Kernel Testing"
 date: 2025-03-30T11:14:44+07:00
-tags: [Linux]
+tags: [Notes, Linux]
 ShowToc: true
 ---
 
