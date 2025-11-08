@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Psql Copy Functionality"
 date: 2025-07-16T13:06:58+07:00
-tags: [Notes, Postgresql]
+tags: [Postgresql]
 ShowToc: true
 ---
 
