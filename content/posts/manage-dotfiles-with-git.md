@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Manage Dotfiles With Git Working Repository"
 date: 2024-04-08T06:44:55+07:00
-tags: [Notes, Linux, Git]
+tags: [Linux, Git]
 ShowToc: false
 ---
 
