@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Systemd Reset Failed Status"
 date: 2023-07-18T03:01:00+07:00
-tags: [Notes]
+tags: [Linux]
 ShowToc: true
 ---
 
