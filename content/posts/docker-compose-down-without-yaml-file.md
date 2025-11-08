@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Docker Compose Down Without Yaml File"
 date: 2023-03-22T09:59:40+07:00
-tags: [Notes, Linux]
+tags: [Docker]
 ShowToc: true
 ---
 
