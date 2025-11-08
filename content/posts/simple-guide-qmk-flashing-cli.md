@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Simple Guide Flashing Mechanical Keyboard with QMK CLI"
 date: 2023-02-26T05:07:03+07:00
-tags: [Notes, Linux]
+tags: [Keyboard]
 ShowToc: true
 ---
 

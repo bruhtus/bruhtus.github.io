@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Flashing Skeletyl Keyboard With Miryoku Layout"
 date: 2025-07-13T07:55:26+07:00
-tags: [Notes, Linux]
+tags: [Keyboard]
 ShowToc: true
 ---
 
