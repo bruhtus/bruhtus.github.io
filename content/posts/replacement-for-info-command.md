@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Replacement For Info Command"
 date: 2022-06-11T06:38:52+07:00
-tags: [Notes, Linux, Shell]
+tags: [Shell]
 ShowToc: true
 ---
 

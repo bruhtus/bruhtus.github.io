@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Zsh Aliases: Be Lazy!"
 date: 2020-12-13T09:40:36+07:00
-tags: [Linux, Shell]
+tags: [Shell]
 ShowToc: true
 ---
 

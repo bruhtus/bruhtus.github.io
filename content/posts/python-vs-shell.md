@@ -2,7 +2,7 @@
 author: Robertus Diawan Chris
 title: "Python Script vs. Shell Script: Command Line Use Case"
 date: 2021-01-14T06:00:07+07:00
-tags: [Linux, Python, Shell]
+tags: [Python, Shell]
 ShowToc: true
 ---
 
