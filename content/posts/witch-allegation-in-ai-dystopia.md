@@ -26,7 +26,7 @@ stuff but the thing is that, some of those people who use AI did not admit
 that they use AI. They want other people to think that it is their own
 creation without putting a lot of effort. Because of these people, i have seen
 some kind of "witch allegation" going on, like "there's no way you did this,
-you are using AI right?!!" and if you notice, that is kind of similar to
+you are using AI, right?!!" and if you notice, that is kind of similar to
 "you are a witch, aren't you?!!".
 
 If people keep being dishonest about their usage of AI, this "witch
@@ -38,6 +38,6 @@ P.S:<br>
 If you think that i wrote this post using AI, congratulation, you have just
 prove my point. Just to be clear, i did not use AI to write this post or any
 of my blog post, unless i explicitly said otherwise. I realize that my writing
-skill is still bad and english is not my primary language, so that is why i
-keep writing blog post, as a writing exercise. I want to __learn__ how to
-write down my thoughts and that's why this blog post exists.
+skill is still bad, so that is why i keep writing blog post, as a writing
+exercise. I want to __learn__ how to write down my thoughts and that's why
+this blog post exists.
