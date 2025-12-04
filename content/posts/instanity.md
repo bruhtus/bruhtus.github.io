@@ -8,9 +8,8 @@ ShowToc: false
 
 At the time of writing this post, there's some sort of AI hype going around,
 and some of the testimonies is that AI make people "learn faster" or
-"doing stuff faster". With that in mind, i've been wondering, why did people
-want to be "faster" or do things "instantly"? When writing this blog post,
-i still have no idea why, but i know that this mentality can be bad.
+"doing stuff faster". With that in mind, let's talk about how this mentality
+can be bad.
 
 First off, some people want to "learn faster", and i'm like _and then what_?
 What would these people do after learning as fast as they can? Scrolling
