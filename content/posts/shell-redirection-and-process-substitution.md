@@ -11,7 +11,7 @@ ShowToc: true
 Recently i watch "Bread on Penguins" video about [shell process
 substitution](https://youtu.be/2A4bs40scSo) on youtube. I already know about
 shell process substitution and write the blog post about [shell process
-substitution as temp file](../shell-process-substitution-as-temp-file.md), but
+substitution as temp file](../shell-process-substitution-as-temp-file), but
 what is interesting from the video is the combination of shell process
 substitution and shell redirection that i didn't think about previously.
 
