@@ -1,0 +1,292 @@
+<!doctype html><html>
+<head>
+<title>
+Lvalue in C
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=author content="Robertus Chris">
+<link rel="shortcut icon" type=image/x-icon href=https://bruhtus.github.io/img/favicon.ico>
+<link rel=stylesheet href=https://bruhtus.github.io/style.min.4f970aa135421035a71bdc9bbd750aa2cfbe0ddb080ab1ec5db4173f45494cad.css integrity="sha256-T5cKoTVCEDWnG9ybvXUKos++DdsICrHsXbQXP0VJTK0=">
+<link disabled rel=stylesheet href=https://bruhtus.github.io/style-dark.min.0a647fb6c07e04b77b54fa0515d0a683d39ecdb251dba960fe1f966f7ff36fc2.css media="(prefers-color-scheme: dark)" integrity="sha256-CmR/tsB+BLd7VPoFFdCmg9OezbJR26lg/h+Wb3/zb8I=">
+<link rel=stylesheet href=https://use.fontawesome.com/releases/v5.8.1/css/all.css integrity=sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf crossorigin=anonymous>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@300&family=EB+Garamond&family=PT+Sans&family=Sura&family=Zilla+Slab&family=Inconsolata&family=Libre+Baskerville&display=swap" rel=stylesheet>
+<link rel=stylesheet href=https://bruhtus.github.io/css/custom.css>
+<meta property="og:title" content="Lvalue in C">
+<meta property="og:description" content="A Brief Into I am always confused when trying to understand what is considered an lvalue in C programming language, so let me try to explain that to make me have a better understanding of lvalue in C.
+What is Lvalue? From C committee draft definition :
+ An lvalue is an expression (with an object type other than void) that potentially designates an object; if an lvalue does not designate an object when it is evaluated, the behavior is undefined.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bruhtus.github.io/posts/lvalue-in-c/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2025-12-23T06:00:46+07:00">
+<meta property="article:modified_time" content="2025-12-23T06:00:46+07:00">
+<meta itemprop=name content="Lvalue in C">
+<meta itemprop=description content="A Brief Into I am always confused when trying to understand what is considered an lvalue in C programming language, so let me try to explain that to make me have a better understanding of lvalue in C.
+What is Lvalue? From C committee draft definition :
+ An lvalue is an expression (with an object type other than void) that potentially designates an object; if an lvalue does not designate an object when it is evaluated, the behavior is undefined."><meta itemprop=datePublished content="2025-12-23T06:00:46+07:00">
+<meta itemprop=dateModified content="2025-12-23T06:00:46+07:00">
+<meta itemprop=wordCount content="1183">
+<meta itemprop=keywords content="C,"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
+</head>
+<body>
+<h1>Lvalue in C</h1>
+<header>
+<div class=cd>
+<h2><a style=text-decoration:none class=cd href=https://bruhtus.github.io/posts>cd ..</a> || <a style=text-decoration:none class=cd href=https://bruhtus.github.io/>cd</a></h2>
+</div>
+</header>
+<p class=date>
+December 23, 2025
+<span>&#183;</span>
+6 mins
+<span>&#183;</span>
+Robertus Chris
+</p>
+<div id=tags>
+<ul>
+<li><a style=text-decoration:none href=https://bruhtus.github.io/tags/c/>C</a></li>
+</ul>
+</div>
+<div class=toc>
+<details>
+<summary>
+<div class=details>Table of Contents</div>
+</summary>
+<blockquote><ul><li>
+<a style=text-decoration:none href=#a-brief-into aria-label="A Brief Into">A Brief Into</a></li><li>
+<a style=text-decoration:none href=#what-is-lvalue aria-label="What is Lvalue?">What is Lvalue?</a></li><li>
+<a style=text-decoration:none href=#pointer-dereference-is-lvalue aria-label="Pointer Dereference is Lvalue">Pointer Dereference is Lvalue</a></li><li>
+<a style=text-decoration:none href=#variable-is-lvalue aria-label="Variable is Lvalue">Variable is Lvalue</a></li><li>
+<a style=text-decoration:none href=#non-modifiable-lvalue aria-label="Non-modifiable Lvalue">Non-modifiable Lvalue</a><ul>
+<li>
+<a style=text-decoration:none href=#array-type aria-label="Array Type">Array Type</a></li><li>
+<a style=text-decoration:none href=#incomplete-type aria-label="Incomplete Type">Incomplete Type</a></li><li>
+<a style=text-decoration:none href=#constant-type aria-label="Constant Type">Constant Type</a></li><li>
+<a style=text-decoration:none href=#constant-type-in-struct-or-union aria-label="Constant Type in Struct or Union">Constant Type in Struct or Union</a></li></ul>
+</li><li>
+<a style=text-decoration:none href=#bonus-brief-intro-to-rvalue aria-label="Bonus: brief intro to rvalue">Bonus: brief intro to rvalue</a></li><li>
+<a style=text-decoration:none href=#references aria-label=References>References</a></li></ul>
+</blockquote>
+</details>
+</div>
+<div id=contentBody>
+<h2 id=a-brief-into>A Brief Into</h2>
+<p>I am always confused when trying to understand what is considered an lvalue
+in C programming language, so let me try to explain that to make me have a
+better understanding of lvalue in C.</p>
+<h2 id=what-is-lvalue>What is Lvalue?</h2>
+<p>From <a href=https://port70.net/~nsz/c/c11/n1570.html#6.3.2.1p1 target=_blank rel="noreferrer noopener">C committee draft
+definition</a>
+:</p>
+<blockquote>
+<p>An lvalue is an expression (with an object type other than
+void) that potentially designates an object; if an lvalue
+does not designate an object when it is evaluated, the
+behavior is undefined.</p>
+</blockquote>
+<p>And from <a href=https://port70.net/~nsz/c/c11/n1570.html#note64 target=_blank rel="noreferrer noopener">C committee draft the origin of lvalue term</a>
+:</p>
+<blockquote>
+<p>The name &ldquo;lvalue&rdquo; comes originally from the assignment
+expression E1 = E2, in which the left operand E1 is required
+to be a (modifiable) lvalue. It is perhaps better considered
+as representing an object &ldquo;locator value&rdquo;.</p>
+</blockquote>
+<p>Here&rsquo;s another explanation about <code>lvalue</code> from GNU C intro:</p>
+<blockquote>
+<p>An expression that identifies a memory space that holds a
+value is called an lvalue, because it is a location that can
+hold a value.</p>
+</blockquote>
+<p>With that in mind, <code>lvalue</code> is <strong>an expression that refers to the region of
+storage that can hold a value</strong>. Those storage can be memory or something
+else.</p>
+<blockquote>
+<p>The region of storage that can hold a value is called <strong>object</strong>.</p>
+</blockquote>
+<p>I think calling <code>lvalue</code> as <code>locator value</code> make it easier to
+understand than the usual terminology <code>left value</code>, because <code>lvalue</code> might
+not be on the left side of the statement.</p>
+<h2 id=pointer-dereference-is-lvalue>Pointer Dereference is Lvalue</h2>
+<p>Here&rsquo;s an example of <code>lvalue</code> can be on the left side or right side:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-c data-lang=c><span style=color:#6ab825;font-weight:700>int</span> num = <span style=color:#3677a9>68</span>;
+<span style=color:#6ab825;font-weight:700>int</span> *ptr = &amp;num;
+
+<span style=color:#999;font-style:italic>/*
+</span><span style=color:#999;font-style:italic> * *ptr is an lvalue that&#39;s on the left and right of statement.
+</span><span style=color:#999;font-style:italic> * The *ptr on the right undergo conversion from _lvalue to rvalue_.
+</span><span style=color:#999;font-style:italic> */</span>
+*ptr = *ptr + <span style=color:#3677a9>1</span>;
+</code></pre></div><p>The expression <code>*ptr</code> from example above is an <code>lvalue</code> because it <em>refers to</em>
+the memory space that can hold a value. Keep in mind that <code>ptr</code> is a variable
+that <em>stored memory address</em> as its value, that means <code>ptr</code> stored the address
+of another <em>region of storage</em>. And dereferencing <code>ptr</code> or <code>*ptr</code> means that
+we are using those <em>region of storage</em> stored in <code>ptr</code>.</p>
+<p>Let&rsquo;s say we have memory space in address <code>001</code> and <code>002</code>, the <code>num</code> variable
+in previous example using the memory space at address <code>001</code> and the <code>ptr</code>
+variable using the memory space at address <code>002</code> which stored <code>001</code> inside it.
+Here&rsquo;s a simple representation:</p>
+<ul>
+<li><code>num</code> <em>used memory space at</em> <code>001</code> <em>and stored value</em> <code>68</code> <em>inside of memory</em>.</li>
+<li><code>ptr</code> <em>used memory space at</em> <code>002</code> <em>and stored value</em> <code>001</code> <em>inside of memory</em>.</li>
+</ul>
+<h2 id=variable-is-lvalue>Variable is Lvalue</h2>
+<p>When we define a variable like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-c data-lang=c><span style=color:#6ab825;font-weight:700>int</span> num = <span style=color:#3677a9>69</span>;
+</code></pre></div><p><code>num</code> is an <code>lvalue</code> because <code>num</code> <em>refers to</em> the memory space that hold
+value <code>69</code>.</p>
+<h2 id=non-modifiable-lvalue>Non-modifiable Lvalue</h2>
+<p>Apparently <code>lvalue</code> is not always modifiable, there&rsquo;s some <em>region of storage</em>
+we can not modify.</p>
+<p>From <a href=https://port70.net/~nsz/c/c11/n1570.html#6.3.2.1p1 target=_blank rel="noreferrer noopener">C committee draft about
+lvalue</a>
+:</p>
+<blockquote>
+<p>A modifiable lvalue is an lvalue that does not have array type, does not
+have an incomplete type, does not have a const-qualified type, and if it is a
+structure or union, does not have any member (including, recursively, any
+member or element of all contained aggregates or unions) with a
+const-qualified type.</p>
+</blockquote>
+<p>Basically we can not modify <code>lvalue</code> if it has:</p>
+<ul>
+<li>Array type.</li>
+<li>Incomplete type.</li>
+<li>Constant type.</li>
+<li>A structure or unions with one of its members as constant type.</li>
+</ul>
+<p>Other than that, i assume we can modify the <code>lvalue</code> (?). I&rsquo;m still not sure
+yet, at least by the time of writing this post. But the point is that,
+we can change the value in <code>lvalue</code> depending on <code>lvalue</code> modifiable or not.
+If the <code>lvalue</code> modifiable, we can change the value, if not, then we can&rsquo;t
+change the value.</p>
+<p>Anyway, let&rsquo;s check the constraint one by one.</p>
+<h3 id=array-type>Array Type</h3>
+<p>When we declare array like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-c data-lang=c><span style=color:#6ab825;font-weight:700>int</span> array[<span style=color:#3677a9>2</span>];
+</code></pre></div><p>From what i understand, <code>array</code> is an <code>lvalue</code> because it <em>refers to</em> the
+memory space that can hold a value but, <em>by the C standard</em>, we can&rsquo;t modify
+those <code>lvalue</code> with array type like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-c data-lang=c><span style=color:#6ab825;font-weight:700>int</span> array[<span style=color:#3677a9>2</span>];
+array = <span style=color:#3677a9>69</span>; <span style=color:#999;font-style:italic>// This is invalid!
+</span></code></pre></div><p>I still have no idea why that&rsquo;s the case, but if you are curious, you can read
+<a href=https://www.nokia.com/bell-labs/about/dennis-m-ritchie/chist.html target=_blank rel="noreferrer noopener">the development of the C language</a>
+.</p>
+<h3 id=incomplete-type>Incomplete Type</h3>
+<p>Incomplete type in here means that the type lacks size information, for
+example:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-c data-lang=c><span style=color:#6ab825;font-weight:700>struct</span> anu;
+</code></pre></div><p><code>anu</code> is incomplete type because there <em>is not enough information</em> for the
+compiler to determine <em>how much storage</em> to set aside for <code>struct anu</code> type.</p>
+<p>Here&rsquo;s another example of incomplete type:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-c data-lang=c><span style=color:#6ab825;font-weight:700>int</span> itu[];
+<span style=color:#6ab825;font-weight:700>union</span> ini;
+</code></pre></div><p>We cannot use the incomplete type like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-c data-lang=c><span style=color:#6ab825;font-weight:700>struct</span> anu nganu;
+</code></pre></div><p><em>unless</em> we complete the type.</p>
+<p>But, we can create a pointer to incomplete type like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-c data-lang=c><span style=color:#6ab825;font-weight:700>struct</span> anu *nganu;
+</code></pre></div><p><em>without</em> completing the definition of <code>struct anu</code>. That is because a pointer
+just storing the memory address and we only need to know the <em>pointer size</em>,
+we don&rsquo;t need to know the type size.</p>
+<h3 id=constant-type>Constant Type</h3>
+<p>Well, as far as i understand, constant in C is read-only, which means that we
+can&rsquo;t really change that.</p>
+<h3 id=constant-type-in-struct-or-union>Constant Type in Struct or Union</h3>
+<p>I&rsquo;m still not sure about this one, but i kind of found an example. Here&rsquo;s an
+example that will throw an error because of constant type in struct
+(using <code>gcc</code>):</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-c data-lang=c><span style=color:#6ab825;font-weight:700>struct</span> something {
+    <span style=color:#6ab825;font-weight:700>const</span> <span style=color:#6ab825;font-weight:700>int</span> size;
+};
+
+<span style=color:#6ab825;font-weight:700>int</span> <span style=color:#447fcf>main</span>(<span style=color:#6ab825;font-weight:700>void</span>)
+{
+    <span style=color:#6ab825;font-weight:700>struct</span> something very_big;
+    very_big.size = <span style=color:#3677a9>69</span>;
+
+    <span style=color:#6ab825;font-weight:700>return</span> <span style=color:#3677a9>0</span>;
+}
+</code></pre></div><p>For some reason, the example above, which separate the declaration and
+assignment, trigger an error <code>assignment of read-only member 'size'</code>, but if
+we use the initialization like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-c data-lang=c><span style=color:#6ab825;font-weight:700>struct</span> something {
+    <span style=color:#6ab825;font-weight:700>const</span> <span style=color:#6ab825;font-weight:700>int</span> size;
+};
+
+<span style=color:#6ab825;font-weight:700>int</span> <span style=color:#447fcf>main</span>(<span style=color:#6ab825;font-weight:700>void</span>)
+{
+    <span style=color:#6ab825;font-weight:700>struct</span> something very_big = {.size = <span style=color:#3677a9>69</span>};
+
+    <span style=color:#6ab825;font-weight:700>return</span> <span style=color:#3677a9>0</span>;
+}
+</code></pre></div><p>The example above didn&rsquo;t give any error. So maybe the non-modifiable is during
+the assignment (?). Well, i&rsquo;m still not sure.</p>
+<h2 id=bonus-brief-intro-to-rvalue>Bonus: brief intro to rvalue</h2>
+<p>This post is mainly exploring about lvalue because lvalue make me confused the
+most. Especially the dereference pointer statement, when i see some reference
+write about &ldquo;*ptr is lvalue&rdquo;, i&rsquo;m like &ldquo;but why can i put it on the right
+side like <code>*ptr = *ptr + 1;</code>?&rdquo;. That is the primary reason i&rsquo;m creating this
+post.</p>
+<p>But other people usually also talking about <code>rvalue</code>. Here&rsquo;s a footnotes from
+<a href=https://port70.net/~nsz/c/c11/n1570.html#note64 target=_blank rel="noreferrer noopener">C committee draft</a>
+:</p>
+<blockquote>
+<p>What is sometimes called &ldquo;rvalue&rdquo; is in this International Standard
+described as the &ldquo;value of an expression&rdquo;</p>
+</blockquote>
+<p>And that&rsquo;s what i think about <code>rvalue</code> at the time of writing this post,
+<em>a value of an expression</em>. At the moment, i don&rsquo;t really want to dive deep
+into what is considered an <code>rvalue</code>. One step at a time.</p>
+<p>That&rsquo;s it from me, see you next time!</p>
+<h2 id=references>References</h2>
+<ul>
+<li><a href=https://www.nokia.com/bell-labs/about/dennis-m-ritchie/chist.html target=_blank rel="noreferrer noopener">The Development of the C
+Language</a>
+</li>
+<li><a href=https://stackoverflow.com/a/57664139 target=_blank rel="noreferrer noopener">Stackoverflow answer about lvalue in
+C</a>
+.</li>
+<li><a href=https://www.gnu.org/software/c-intro-and-ref/manual/html_node/Lvalues.html target=_blank rel="noreferrer noopener">GNU C intro definition about lvalue in
+C</a>
+.</li>
+<li><a href=https://port70.net/~nsz/c/c11/n1570.html#note64 target=_blank rel="noreferrer noopener">C committee draft about lvalue
+term origin</a>
+.</li>
+<li><a href=https://port70.net/~nsz/c/c11/n1570.html#3.15p1 target=_blank rel="noreferrer noopener">C committee draft about
+object</a>
+.</li>
+<li><a href=https://port70.net/~nsz/c/c11/n1570.html#6.3.2.1p1 target=_blank rel="noreferrer noopener">C committee draft lvalue
+definition</a>
+.</li>
+<li><a href=https://stackoverflow.com/a/45683469 target=_blank rel="noreferrer noopener">Stackoverflow answer why array type is a non-modifiable
+lvalue</a>
+.</li>
+<li><a href=https://stackoverflow.com/a/17691191 target=_blank rel="noreferrer noopener">Stackoverflow answer array type object is not
+modifiable</a>
+.</li>
+<li><a href=https://eli.thegreenplace.net/2011/12/15/understanding-lvalues-and-rvalues-in-c-and-c/ target=_blank rel="noreferrer noopener">Eli&rsquo;s post about lvalue and rvalue in C and
+C++</a>
+.</li>
+<li><a href=https://en.cppreference.com/w/c/language/value_category.html target=_blank rel="noreferrer noopener">cppreference about value
+categories</a>
+.</li>
+</ul>
+</div>
+<footer>
+<p>
+&copy; 2020-present <a style=text-decoration:none href=https://github.com/bruhtus/resume target=_blank rel="noreferrer noopener">Robertus Chris</a>
+<span>&#183;</span>
+<a style=text-decoration:none href=https://bruhtus.github.io/index.xml target=_blank rel="noreferrer noopener">RSS Feed</a>
+<span>&#183;</span>
+Based on <a style=text-decoration:none href=https://github.com/koirand/pulp/ target=_blank rel="noreferrer noopener">pulp</a> and <a style=text-decoration:none href=https://github.com/adityatelange/hugo-PaperMod target=_blank rel="noreferrer noopener">papermod</a> theme
+</p>
+</footer>
+<button onclick=topFunction() id=myBtn title="Go to top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d0d0d0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+<script>var mybutton=document.getElementById("myBtn");window.onscroll=function(){scrollFunction()};function scrollFunction(){document.body.scrollTop>20||document.documentElement.scrollTop>20?mybutton.style.display="block":mybutton.style.display="none"}function topFunction(){document.body.scrollTop=0,document.documentElement.scrollTop=0}</script><script src=https://bruhtus.github.io/js/custom.js></script>
+</body>
+</html>
