@@ -27,7 +27,7 @@ Pointer to Array in C: Compression File Analogy
 &arr vs &arr[0] In case you didn&rsquo;t know, we can get the address of an array using the address-of operator like &array. Here&rsquo;s an example:
 #include <stdio.h> int main(void) { int arr[2]; printf(&#34;&arr: %p\n&#34;, &arr); // Address to _whole array_."><meta itemprop=datePublished content="2025-12-24T08:43:20+07:00">
 <meta itemprop=dateModified content="2025-12-24T08:43:20+07:00">
-<meta itemprop=wordCount content="1138">
+<meta itemprop=wordCount content="1136">
 <meta itemprop=keywords content="C,"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
 </head>
@@ -137,7 +137,7 @@ is <em>unallocated memory</em> and result in <em>undefined behavior</em>. We can
 what is in there.</p>
 <blockquote>
 <p>Keep in mind that <code>arr[1]</code> is equivalent to <code>*(arr + 1)</code>, which means that
-we are dereferencing <em>1 offset</em> from the index 0 <code>arr</code> memory address.
+we are dereferencing <em>1 offset</em> from the <code>arr</code> memory address.
 <em>1 offset</em> in here depends on <em>how many bytes</em> the variable type stored in
 memory.</p>
 </blockquote>
