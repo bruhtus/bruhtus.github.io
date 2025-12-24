@@ -1,0 +1,237 @@
+<!doctype html><html>
+<head>
+<title>
+Pointer to Array in C: Compression File Analogy
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=author content="Robertus Chris">
+<link rel="shortcut icon" type=image/x-icon href=https://bruhtus.github.io/img/favicon.ico>
+<link rel=stylesheet href=https://bruhtus.github.io/style.min.4f970aa135421035a71bdc9bbd750aa2cfbe0ddb080ab1ec5db4173f45494cad.css integrity="sha256-T5cKoTVCEDWnG9ybvXUKos++DdsICrHsXbQXP0VJTK0=">
+<link disabled rel=stylesheet href=https://bruhtus.github.io/style-dark.min.0a647fb6c07e04b77b54fa0515d0a683d39ecdb251dba960fe1f966f7ff36fc2.css media="(prefers-color-scheme: dark)" integrity="sha256-CmR/tsB+BLd7VPoFFdCmg9OezbJR26lg/h+Wb3/zb8I=">
+<link rel=stylesheet href=https://use.fontawesome.com/releases/v5.8.1/css/all.css integrity=sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf crossorigin=anonymous>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@300&family=EB+Garamond&family=PT+Sans&family=Sura&family=Zilla+Slab&family=Inconsolata&family=Libre+Baskerville&display=swap" rel=stylesheet>
+<link rel=stylesheet href=https://bruhtus.github.io/css/custom.css>
+<meta property="og:title" content="Pointer to Array in C: Compression File Analogy">
+<meta property="og:description" content="DISCLAIMER Keep in mind that this is only an analogy to help newcomer understand pointer to array in C programming language. This does not mean there&rsquo;s any sort of compression when we use pointer to array.
+&arr vs &arr[0] This is the analogy that help me understand what is pointer to array in C programming language, which can be confusing for new people that try learning C programming language for the first time.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bruhtus.github.io/posts/pointer-to-array-in-c/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2025-12-24T08:43:20+07:00">
+<meta property="article:modified_time" content="2025-12-24T08:43:20+07:00">
+<meta itemprop=name content="Pointer to Array in C: Compression File Analogy">
+<meta itemprop=description content="DISCLAIMER Keep in mind that this is only an analogy to help newcomer understand pointer to array in C programming language. This does not mean there&rsquo;s any sort of compression when we use pointer to array.
+&arr vs &arr[0] This is the analogy that help me understand what is pointer to array in C programming language, which can be confusing for new people that try learning C programming language for the first time."><meta itemprop=datePublished content="2025-12-24T08:43:20+07:00">
+<meta itemprop=dateModified content="2025-12-24T08:43:20+07:00">
+<meta itemprop=wordCount content="1172">
+<meta itemprop=keywords content="C,"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
+</head>
+<body>
+<h1>Pointer to Array in C: Compression File Analogy</h1>
+<header>
+<div class=cd>
+<h2><a style=text-decoration:none class=cd href=https://bruhtus.github.io/posts>cd ..</a> || <a style=text-decoration:none class=cd href=https://bruhtus.github.io/>cd</a></h2>
+</div>
+</header>
+<p class=date>
+December 24, 2025
+<span>&#183;</span>
+6 mins
+<span>&#183;</span>
+Robertus Chris
+</p>
+<div id=tags>
+<ul>
+<li><a style=text-decoration:none href=https://bruhtus.github.io/tags/c/>C</a></li>
+</ul>
+</div>
+<div class=toc>
+<details>
+<summary>
+<div class=details>Table of Contents</div>
+</summary>
+<blockquote><ul><li>
+<a style=text-decoration:none href=#disclaimer aria-label=DISCLAIMER>DISCLAIMER</a></li><li>
+<a style=text-decoration:none href=#arr-vs-arr0 aria-label="&amp;amp;arr vs &amp;amp;arr[0]">&arr vs &arr[0]</a></li><li>
+<a style=text-decoration:none href=#pointer-to-array aria-label="Pointer to Array">Pointer to Array</a></li><li>
+<a style=text-decoration:none href=#compression-file-analogy aria-label="Compression File Analogy">Compression File Analogy</a></li><li>
+<a style=text-decoration:none href=#bonus-accessing-character-of-string-literal aria-label="Bonus: accessing character of string literal">Bonus: accessing character of string literal</a></li><li>
+<a style=text-decoration:none href=#references aria-label=References>References</a></li></ul>
+</blockquote>
+</details>
+</div>
+<div id=contentBody>
+<h2 id=disclaimer>DISCLAIMER</h2>
+<p>Keep in mind that this is only an analogy to help newcomer understand
+pointer to array in C programming language. <strong>This does not mean there&rsquo;s any
+sort of compression when we use pointer to array</strong>.</p>
+<h2 id=arr-vs-arr0>&arr vs &arr[0]</h2>
+<p>This is the analogy that help me understand what is <em>pointer to array</em> in C
+programming language, which can be confusing for new people that try learning
+C programming language for the first time.</p>
+<p>In case you didn&rsquo;t know, we can get the address of an array using the
+address-of operator like <code>&array</code>. Here&rsquo;s an example:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-c data-lang=c><span style=color:#cd2828;font-weight:700>#include</span> <span style=color:#cd2828;font-weight:700>&lt;stdio.h&gt;</span><span style=color:#cd2828;font-weight:700>
+</span><span style=color:#cd2828;font-weight:700></span>
+<span style=color:#6ab825;font-weight:700>int</span> <span style=color:#447fcf>main</span>(<span style=color:#6ab825;font-weight:700>void</span>)
+{
+    <span style=color:#6ab825;font-weight:700>int</span> arr[<span style=color:#3677a9>2</span>];
+    printf(<span style=color:#ed9d13>&#34;&amp;arr: %p</span><span style=color:#ed9d13>\n</span><span style=color:#ed9d13>&#34;</span>, &amp;arr); <span style=color:#999;font-style:italic>// Address to _whole array_.
+</span><span style=color:#999;font-style:italic></span>    printf(<span style=color:#ed9d13>&#34;&amp;arr[0]: %p</span><span style=color:#ed9d13>\n</span><span style=color:#ed9d13>&#34;</span>, &amp;arr[<span style=color:#3677a9>0</span>]); <span style=color:#999;font-style:italic>// Address to _element of array_.
+</span><span style=color:#999;font-style:italic></span>
+    <span style=color:#6ab825;font-weight:700>return</span> <span style=color:#3677a9>0</span>;
+}
+</code></pre></div><p>From the example above, you might be thinking, &ldquo;isn&rsquo;t <code>&arr</code> and <code>&arr[0]</code>
+print out the same value, what is the difference?&rdquo;. The difference is not in
+the value itself, but in the <em>implication</em>.</p>
+<p><code>&arr</code> and <code>&arr[0]</code> (or we can just use <code>arr</code>, because array name
+<em>represent</em> the index 0 memory address) has the same value, which is the
+memory address at index 0 because the <em>beginning</em> of the array is also at
+the index 0 of the array. The difference is at the <em>end</em>.</p>
+<p>When we use <code>&arr</code>, the <em>end</em> of that expression is the <em>end on the last
+element of array</em>. Let&rsquo;s say we store integer value in 4 bytes and each memory
+address correspond to 1 byte. The whole array memory address can be
+represented like this (the empty line used to give clarity, the actual memory
+scheme is <em>contiguous</em>):</p>
+<pre tabindex=0><code>001 &lt;- the beginning of index 0 __and__ the beginning of array
+002
+003
+004 &lt;- the end of index 0
+
+005 &lt;- the beginning of index 1
+006
+007
+008 &lt;- the end of index 1 __and__ the end of array
+</code></pre><p>With the representation above, the expression <code>&arr</code> means that we got the
+<em>beginning of array</em> until the <em>end of array</em>. Meanwhile, the expression
+<code>&arr[0]</code> means that we got the <em>beginning of index 0</em> until the <em>end of index
+0</em>.</p>
+<h2 id=pointer-to-array>Pointer to Array</h2>
+<p>With that out of the way, let&rsquo;s get into pointer to array. We can declare
+pointer to array like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-c data-lang=c><span style=color:#6ab825;font-weight:700>char</span> (*arr)[<span style=color:#3677a9>4</span>];
+</code></pre></div><p>What the above declaration means is that &ldquo;a pointer to an array of 4 char&rdquo;.
+And then, you might be thinking, &ldquo;how do we give value to those <code>arr</code>
+variable?&rdquo;. One of them is like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-c data-lang=c><span style=color:#6ab825;font-weight:700>char</span> anu[<span style=color:#3677a9>4</span>] = {<span style=color:#ed9d13>&#39;a&#39;</span>, <span style=color:#ed9d13>&#39;b&#39;</span>, <span style=color:#ed9d13>&#39;c&#39;</span>, <span style=color:#ed9d13>&#39;\0&#39;</span>};
+<span style=color:#6ab825;font-weight:700>char</span> (*arr)[<span style=color:#3677a9>4</span>] = &amp;anu; <span style=color:#999;font-style:italic>// Assigning memory address of anu array.
+</span></code></pre></div><p>Another one is like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-c data-lang=c><span style=color:#6ab825;font-weight:700>char</span> (*arr)[<span style=color:#3677a9>4</span>] = &amp;<span style=color:#ed9d13>&#34;abc&#34;</span>; <span style=color:#999;font-style:italic>// Assigning memory address of string literal.
+</span></code></pre></div><p>Or we can split those initialization with declaration and assignment like
+this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-c data-lang=c><span style=color:#6ab825;font-weight:700>char</span> (*arr)[<span style=color:#3677a9>4</span>]; <span style=color:#999;font-style:italic>// Declaration of arr variable.
+</span><span style=color:#999;font-style:italic></span>arr = &amp;<span style=color:#ed9d13>&#34;abc&#34;</span>; <span style=color:#999;font-style:italic>// Assignment of arr variable.
+</span></code></pre></div><p>Let&rsquo;s talk about the first example. In the first example, we are using memory
+address of <code>anu</code> array of 4 characters for the value of <code>arr</code>, which is
+&ldquo;a pointer to the array of 4 characters&rdquo;.</p>
+<p>Now the question is that, how do we get the character <code>b</code> from <code>arr</code> variable?
+You might be thinking, &ldquo;can&rsquo;t we just use indexing like <code>arr[1]</code>?&rdquo; Remember
+that we got the <em>whole array</em> inside <code>arr</code> variable and <em>square bracket</em> or
+<em>array subscript</em> is another form of dereference. So when we are trying to
+deference the <code>arr</code> variable like <code>*arr</code> or <code>arr[0]</code>, we got the <em>whole array</em>
+instead of <em>element of array</em>. And when we do <code>arr[1]</code> for <code>char (*arr)[4];</code>,
+we are actually trying to access the next memory <em>after the whole array</em> which
+is <em>unallocated memory</em> and result in <em>undefined behavior</em>. We can&rsquo;t be sure
+what is in there.</p>
+<blockquote>
+<p>Keep in mind that <code>arr[1]</code> is equivalent to <code>*(arr + 1)</code>, which means that
+we are dereferencing <em>1 offset</em> from the index 0 <code>arr</code> memory address.
+<em>1 offset</em> in here depends on <em>how many bytes</em> the variable type stored in
+memory.</p>
+</blockquote>
+<p>As for the second and third example, we need to know that string literal have
+a lifetime of <em>static storage duration</em>, which means that string literal will
+exist the <em>entire execution</em> of the program.</p>
+<p>With that in mind, the expression <code>&"abc"</code> means that we got the memory
+address of the <em>entire</em> string literal, which in a way is an array of
+characters with <em>different storage type</em> than <code>char []</code>. If i understand
+correctly, <code>char []</code> has <em>automatic storage duration</em>, so it will be
+<em>deallocated</em> at some point during the execution, usually when the function
+returns or the declaration goes out of scope.</p>
+<p>The expression <code>char (*arr)[4] = &"abc";</code> means that we are passing the
+memory address of the <em>entire</em> string literal to <code>arr</code> variable.</p>
+<p>So, how do we access the character in <code>char (*arr)[4]</code>? Well, we need to
+dereferencing the <code>arr</code> twice. The first dereference, like <code>*arr</code> or <code>arr[0]</code>,
+is to get the <em>entire array</em> and the second dereference, like <code>(*arr)[1]</code> or
+<code>*((*arr) + 1)</code> or <code>arr[0][1]</code>, is to get the <em>element of array</em>.</p>
+<blockquote>
+<p>Why do we use bracket around <code>arr</code> variable like <code>(*arr)[1]</code>? Because square
+bracket or array subscript have a <em>higher priority</em> than the dereference
+operator. If we write the expression like <code>*arr[1]</code>, that expression is
+equal to <code>*(arr[1])</code>. We are parsing the square bracket or array subscript
+first and then parsing the dereference operator. By adding bracket, we can
+overwrite the default <em>priority</em>. This is called <em>precedence</em>.</p>
+<p>The <em>precedence</em> only control how expression are <em>parsed</em> and which
+operators are <em>grouped</em> which operands. Precedence <em>do not control</em> the
+order of evaluation. To control the order of evaluation, we need to use
+<em>sequence point</em>.</p>
+</blockquote>
+<h2 id=compression-file-analogy>Compression File Analogy</h2>
+<p>If you are new to C programming language, like i&rsquo;m at the time of writing this
+blog post, you might get confused by the concept of &ldquo;pointer to array&rdquo;. If you
+are confused, this analogy might help you to understand what is going on.</p>
+<p>Imagine we have a ZIP file, which is one of the compression file format.
+Inside those ZIP file, we have directory called <code>001</code>. Inside those directory,
+we have a file called <code>001</code> and <code>005</code> (see the representation of whole array
+at the beginning of the post).</p>
+<p>Here&rsquo;s the simple representation:</p>
+<ul>
+<li>The <em>file</em> <code>001</code> and <code>005</code> represent the array&rsquo;s elements.</li>
+<li>The <em>directory</em> <code>001</code> represent the array itself.</li>
+<li>The <em>ZIP file</em> represent the pointer to the array.</li>
+</ul>
+<p>Here&rsquo;s the simple illustration:</p>
+<pre tabindex=0><code>pointer.zip
+  |_ 001/
+        |_ 001
+        |_ 005
+</code></pre><p>So, if we want to get the element inside the array <code>001/</code>, we need to extract
+the <code>pointer.zip</code> first and then accessing the element inside the array
+<code>001/</code>.</p>
+<h2 id=bonus-accessing-character-of-string-literal>Bonus: accessing character of string literal</h2>
+<p>Here&rsquo;s another interesting thing about string literal that you might want to
+try:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-c data-lang=c><span style=color:#cd2828;font-weight:700>#include</span> <span style=color:#cd2828;font-weight:700>&lt;stdio.h&gt;</span><span style=color:#cd2828;font-weight:700>
+</span><span style=color:#cd2828;font-weight:700></span>
+<span style=color:#6ab825;font-weight:700>int</span> <span style=color:#447fcf>main</span>(<span style=color:#6ab825;font-weight:700>void</span>)
+{
+    printf(<span style=color:#ed9d13>&#34;%c</span><span style=color:#ed9d13>\n</span><span style=color:#ed9d13>&#34;</span>, <span style=color:#ed9d13>&#34;abc&#34;</span>[<span style=color:#3677a9>0</span>]);
+
+    <span style=color:#6ab825;font-weight:700>return</span> <span style=color:#3677a9>0</span>;
+}
+</code></pre></div><p>What is the output? Now, try to analyze what&rsquo;s going on :)</p>
+<p>Alright, that&rsquo;s it. See you next time!</p>
+<h2 id=references>References</h2>
+<ul>
+<li><a href=https://stackoverflow.com/a/67691327 target=_blank rel="noreferrer noopener">Stackoverflow answer about precedence and
+associativity</a>
+.</li>
+<li><a href=https://stackoverflow.com/questions/9970295/life-time-of-a-string-literal-in-c#comment12737771_9970305 target=_blank rel="noreferrer noopener">Example memory address of string
+literal</a>
+.</li>
+<li><a href=https://www.log2base2.com/C/pointer/pointer-to-an-array.html target=_blank rel="noreferrer noopener">log2base2 explanation about pointer to
+array</a>
+.</li>
+<li><a href=https://stackoverflow.com/a/1083507 target=_blank rel="noreferrer noopener">Stackoverflow answer about dereferencing pointer to array</a>
+.</li>
+<li><a href=https://c-faq.com/aryptr/pass2dary.html target=_blank rel="noreferrer noopener">C-faq about 2-dimensional array</a>
+.</li>
+</ul>
+</div>
+<footer>
+<p>
+&copy; 2020-present <a style=text-decoration:none href=https://github.com/bruhtus/resume target=_blank rel="noreferrer noopener">Robertus Chris</a>
+<span>&#183;</span>
+<a style=text-decoration:none href=https://bruhtus.github.io/index.xml target=_blank rel="noreferrer noopener">RSS Feed</a>
+<span>&#183;</span>
+Based on <a style=text-decoration:none href=https://github.com/koirand/pulp/ target=_blank rel="noreferrer noopener">pulp</a> and <a style=text-decoration:none href=https://github.com/adityatelange/hugo-PaperMod target=_blank rel="noreferrer noopener">papermod</a> theme
+</p>
+</footer>
+<button onclick=topFunction() id=myBtn title="Go to top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d0d0d0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+<script>var mybutton=document.getElementById("myBtn");window.onscroll=function(){scrollFunction()};function scrollFunction(){document.body.scrollTop>20||document.documentElement.scrollTop>20?mybutton.style.display="block":mybutton.style.display="none"}function topFunction(){document.body.scrollTop=0,document.documentElement.scrollTop=0}</script><script src=https://bruhtus.github.io/js/custom.js></script>
+</body>
+</html>
