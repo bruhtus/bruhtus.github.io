@@ -14,10 +14,6 @@ sort of compression when we use pointer to array__.
 
 ## &arr vs &arr[0]
 
-This is the analogy that help me understand what is _pointer to array_ in C
-programming language, which can be confusing for new people that try learning
-C programming language for the first time.
-
 In case you didn't know, we can get the address of an array using the
 address-of operator like `&array`. Here's an example:
 ```c
