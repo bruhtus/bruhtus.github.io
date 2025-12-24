@@ -134,7 +134,7 @@ is to get the _entire array_ and the second dereference, like `(*arr)[1]` or
 > overwrite the default _priority_. This is called _precedence_.
 >
 > The _precedence_ only control how expression are _parsed_ and which
-> operators are _grouped_ which operands. Precedence _do not control_ the
+> operators are _grouped with_ which operands. Precedence _do not control_ the
 > order of evaluation. To control the order of evaluation, we need to use
 > _sequence point_.
 
