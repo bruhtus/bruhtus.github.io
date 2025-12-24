@@ -16,16 +16,18 @@ Pointer to Array in C: Compression File Analogy
 <link rel=stylesheet href=https://bruhtus.github.io/css/custom.css>
 <meta property="og:title" content="Pointer to Array in C: Compression File Analogy">
 <meta property="og:description" content="DISCLAIMER Keep in mind that this is only an analogy to help newcomer understand pointer to array in C programming language. This does not mean there&rsquo;s any sort of compression when we use pointer to array.
-&arr vs &arr[0] This is the analogy that help me understand what is pointer to array in C programming language, which can be confusing for new people that try learning C programming language for the first time.">
+&arr vs &arr[0] In case you didn&rsquo;t know, we can get the address of an array using the address-of operator like &array. Here&rsquo;s an example:
+#include <stdio.h> int main(void) { int arr[2]; printf(&#34;&arr: %p\n&#34;, &arr); // Address to _whole array_.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bruhtus.github.io/posts/pointer-to-array-in-c/"><meta property="article:section" content="posts">
 <meta property="article:published_time" content="2025-12-24T08:43:20+07:00">
 <meta property="article:modified_time" content="2025-12-24T08:43:20+07:00">
 <meta itemprop=name content="Pointer to Array in C: Compression File Analogy">
 <meta itemprop=description content="DISCLAIMER Keep in mind that this is only an analogy to help newcomer understand pointer to array in C programming language. This does not mean there&rsquo;s any sort of compression when we use pointer to array.
-&arr vs &arr[0] This is the analogy that help me understand what is pointer to array in C programming language, which can be confusing for new people that try learning C programming language for the first time."><meta itemprop=datePublished content="2025-12-24T08:43:20+07:00">
+&arr vs &arr[0] In case you didn&rsquo;t know, we can get the address of an array using the address-of operator like &array. Here&rsquo;s an example:
+#include <stdio.h> int main(void) { int arr[2]; printf(&#34;&arr: %p\n&#34;, &arr); // Address to _whole array_."><meta itemprop=datePublished content="2025-12-24T08:43:20+07:00">
 <meta itemprop=dateModified content="2025-12-24T08:43:20+07:00">
-<meta itemprop=wordCount content="1172">
+<meta itemprop=wordCount content="1138">
 <meta itemprop=keywords content="C,"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
 </head>
@@ -69,9 +71,6 @@ Robertus Chris
 pointer to array in C programming language. <strong>This does not mean there&rsquo;s any
 sort of compression when we use pointer to array</strong>.</p>
 <h2 id=arr-vs-arr0>&arr vs &arr[0]</h2>
-<p>This is the analogy that help me understand what is <em>pointer to array</em> in C
-programming language, which can be confusing for new people that try learning
-C programming language for the first time.</p>
 <p>In case you didn&rsquo;t know, we can get the address of an array using the
 address-of operator like <code>&array</code>. Here&rsquo;s an example:</p>
 <div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-c data-lang=c><span style=color:#cd2828;font-weight:700>#include</span> <span style=color:#cd2828;font-weight:700>&lt;stdio.h&gt;</span><span style=color:#cd2828;font-weight:700>
