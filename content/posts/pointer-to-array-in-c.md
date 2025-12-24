@@ -93,7 +93,7 @@ address of `anu` array of 4 characters for the value of `arr`, which is
 "a pointer to the array of 4 characters".
 
 Now the question is that, how do we get the character `b` from `arr` variable?
-You might be thinking, "can't we just use indexing like `arr[1]`?" Remember
+You might be thinking, "can't we just use indexing like `arr[1]`?". Remember
 that we got the _whole array_ inside `arr` variable and _square bracket_ or
 _array subscript_ is another form of dereference. So when we are trying to
 deference the `arr` variable like `*arr` or `arr[0]`, we got the _whole array_
