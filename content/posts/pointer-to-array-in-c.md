@@ -103,7 +103,7 @@ is _unallocated memory_ and result in _undefined behavior_. We can't be sure
 what is in there.
 
 > Keep in mind that `arr[1]` is equivalent to `*(arr + 1)`, which means that
-> we are dereferencing _1 offset_ from the index 0 `arr` memory address.
+> we are dereferencing _1 offset_ from the `arr` memory address.
 > _1 offset_ in here depends on _how many bytes_ the variable type stored in
 > memory.
 
