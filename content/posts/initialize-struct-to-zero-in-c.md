@@ -3,10 +3,10 @@ author: Robertus Diawan Chris
 title: "Initialize Struct to Zero in C"
 date: 2026-03-23T08:39:47+07:00
 tags: [C]
-ShowToc: true
+ShowToc: false
 ---
 
-__DISCLAIMER__:<cr>
+__DISCLAIMER__:<br>
 Keep in mind that at the time of writing this blog post, i am still learning
 about C programming language and lack experience to validate the information
 from the low-level perspective. This blog post act like my public notes, which
