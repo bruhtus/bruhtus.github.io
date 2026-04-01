@@ -135,9 +135,8 @@ problem with `strlcpy()` is that, it's not in C standard library, so we might
 not be able to use that. Other than that, it act like `strncpy()` but with
 _guarantee_ of null terminated string.
 
-You can check the GNU C library implementation of `strlcpy()` here:
-https://sourceware.org/git/?p=glibc.git;a=blob;f=string/strlcpy.c;h=10de5eb1e964c539c79b0de3449b09e4b16c9c43;hb=HEAD
-
+You can check the GNU C library implementation of `strlcpy()` [here](
+https://sourceware.org/git/?p=glibc.git;a=blob;f=string/strlcpy.c;h=10de5eb1e964c539c79b0de3449b09e4b16c9c43;hb=HEAD).
 From the GNU C library implementation of `strlcpy()`, it looks like we can use
 another function to copy the string.
 
