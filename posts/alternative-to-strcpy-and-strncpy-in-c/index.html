@@ -165,10 +165,9 @@ happen at that point.</p>
 problem with <code>strlcpy()</code> is that, it&rsquo;s not in C standard library, so we might
 not be able to use that. Other than that, it act like <code>strncpy()</code> but with
 <em>guarantee</em> of null terminated string.</p>
-<p>You can check the GNU C library implementation of <code>strlcpy()</code> here:
-<a href="https://sourceware.org/git/?p=glibc.git;a=blob;f=string/strlcpy.c;h=10de5eb1e964c539c79b0de3449b09e4b16c9c43;hb=HEAD" target=_blank rel="noreferrer noopener">https://sourceware.org/git/?p=glibc.git;a=blob;f=string/strlcpy.c;h=10de5eb1e964c539c79b0de3449b09e4b16c9c43;hb=HEAD</a>
-</p>
-<p>From the GNU C library implementation of <code>strlcpy()</code>, it looks like we can use
+<p>You can check the GNU C library implementation of <code>strlcpy()</code> <a href="https://sourceware.org/git/?p=glibc.git;a=blob;f=string/strlcpy.c;h=10de5eb1e964c539c79b0de3449b09e4b16c9c43;hb=HEAD" target=_blank rel="noreferrer noopener">here</a>
+.
+From the GNU C library implementation of <code>strlcpy()</code>, it looks like we can use
 another function to copy the string.</p>
 <h2 id=alternative-2-memcpy-or-memmove>Alternative 2: memcpy() or memmove()</h2>
 <p>After reading <a href=https://nullprogram.com/blog/2021/07/30/ target=_blank rel="noreferrer noopener">this article</a>
