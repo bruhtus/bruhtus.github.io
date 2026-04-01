@@ -61,7 +61,7 @@ characters until null terminator, `strcpy()` will _silently_ overwrite the
 data on the next memory location, which is `anu` array in this case.
 
 We can think of the initial memory layout like this
-(`_` a.k.a underscore in here means empty):
+(`_` a.k.a underscore in here means unknown):
 ```
 _,      _,      a,      b,      c,      \0
 ini[0], ini[1], anu[0], anu[1], itu[0], itu[1]
@@ -128,7 +128,7 @@ I have no idea why that happen, and those result might be different on another
 machine, that's why it's called _undefined behavior_ because anything can
 happen at that point.
 
-## Alternative 1 - strlcpy()
+## Alternative 1: strlcpy()
 
 Instead of using `strcpy()` or `strncpy()`, we can use `strlcpy()`. The
 problem with `strlcpy()` is that, it's not in C standard library, so we might
@@ -141,7 +141,7 @@ https://sourceware.org/git/?p=glibc.git;a=blob;f=string/strlcpy.c;h=10de5eb1e964
 From the GNU C library implementation of `strlcpy()`, it looks like we can use
 another function to copy the string.
 
-## Alternative 2 - memcpy() or memmove()
+## Alternative 2: memcpy() or memmove()
 
 After reading [this article](https://nullprogram.com/blog/2021/07/30/), titled
 "strcpy: a niche function you don't need", and reading Daniel Stenberg
