@@ -13,7 +13,7 @@ video is this:
 > We live in a society that glorifies exhaustion at work.
 
 And that make me thinking, that's not the end of it. If you ever talk to a
-friend and said "i have a lot of tasks at work" and then explain those all
+friend and said "i have a lot of tasks at work" and then explain all
 those tasks, your friend be like "you got off better, i need to do more work
 than that" like they are proud of it. When my friend did that, i am like
 "why does this sounds like we are competing to have the worst experience at
