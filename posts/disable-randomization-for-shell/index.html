@@ -1,7 +1,7 @@
 <!doctype html><html>
 <head>
 <title>
-Disable Randomization for Shell
+Disable Memory Address Randomization for Shell
 </title>
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge">
@@ -14,7 +14,7 @@ Disable Randomization for Shell
 <link rel=preconnect href=https://fonts.gstatic.com>
 <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@300&family=EB+Garamond&family=PT+Sans&family=Sura&family=Zilla+Slab&family=Inconsolata&family=Libre+Baskerville&display=swap" rel=stylesheet>
 <link rel=stylesheet href=https://bruhtus.github.io/css/custom.css>
-<meta property="og:title" content="Disable Randomization for Shell">
+<meta property="og:title" content="Disable Memory Address Randomization for Shell">
 <meta property="og:description" content="At the time of writing this blog post, i recently learn about virtual memory. So i am curious, how can we trigger the same memory address on different process?
 After reading this gcc wiki , it looks like we can use setarch to do that.
 First thing first, we need to create a simple program to print the memory address. For this example, i am going to use C programming language, like this:">
@@ -22,7 +22,7 @@ First thing first, we need to create a simple program to print the memory addres
 <meta property="og:url" content="https://bruhtus.github.io/posts/disable-randomization-for-shell/"><meta property="article:section" content="posts">
 <meta property="article:published_time" content="2026-04-10T09:09:30+07:00">
 <meta property="article:modified_time" content="2026-04-10T09:09:30+07:00">
-<meta itemprop=name content="Disable Randomization for Shell">
+<meta itemprop=name content="Disable Memory Address Randomization for Shell">
 <meta itemprop=description content="At the time of writing this blog post, i recently learn about virtual memory. So i am curious, how can we trigger the same memory address on different process?
 After reading this gcc wiki , it looks like we can use setarch to do that.
 First thing first, we need to create a simple program to print the memory address. For this example, i am going to use C programming language, like this:"><meta itemprop=datePublished content="2026-04-10T09:09:30+07:00">
@@ -32,7 +32,7 @@ First thing first, we need to create a simple program to print the memory addres
 <script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
 </head>
 <body>
-<h1>Disable Randomization for Shell</h1>
+<h1>Disable Memory Address Randomization for Shell</h1>
 <header>
 <div class=cd>
 <h2><a style=text-decoration:none class=cd href=https://bruhtus.github.io/posts>cd ..</a> || <a style=text-decoration:none class=cd href=https://bruhtus.github.io/>cd</a></h2>
