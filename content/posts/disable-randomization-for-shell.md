@@ -1,6 +1,6 @@
 ---
 author: Robertus Diawan Chris
-title: "Disable Randomization for Shell"
+title: "Disable Memory Address Randomization for Shell"
 date: 2026-04-10T09:09:30+07:00
 tags: [Shell]
 ShowToc: false
