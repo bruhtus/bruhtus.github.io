@@ -1,0 +1,311 @@
+<!doctype html><html>
+<head>
+<title>
+Linux Kernel Mentorship Journey
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=author content="Robertus Chris">
+<link rel="shortcut icon" type=image/x-icon href=https://bruhtus.github.io/img/favicon.ico>
+<link rel=stylesheet href=https://bruhtus.github.io/style.min.4f970aa135421035a71bdc9bbd750aa2cfbe0ddb080ab1ec5db4173f45494cad.css integrity="sha256-T5cKoTVCEDWnG9ybvXUKos++DdsICrHsXbQXP0VJTK0=">
+<link disabled rel=stylesheet href=https://bruhtus.github.io/style-dark.min.0a647fb6c07e04b77b54fa0515d0a683d39ecdb251dba960fe1f966f7ff36fc2.css media="(prefers-color-scheme: dark)" integrity="sha256-CmR/tsB+BLd7VPoFFdCmg9OezbJR26lg/h+Wb3/zb8I=">
+<link rel=stylesheet href=https://use.fontawesome.com/releases/v5.8.1/css/all.css integrity=sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf crossorigin=anonymous>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@300&family=EB+Garamond&family=PT+Sans&family=Sura&family=Zilla+Slab&family=Inconsolata&family=Libre+Baskerville&display=swap" rel=stylesheet>
+<link rel=stylesheet href=https://bruhtus.github.io/css/custom.css>
+<meta property="og:title" content="Linux Kernel Mentorship Journey">
+<meta property="og:description" content="A Brief Intro Before starting the Linux Kernel Mentorship Program from Linux Foundation , I used to work as a web developer. With how chaotic web development has become , I decided to take a career break. I have been interested in the low-level programming, so I use my time during this career break to learn more about low-level programming.
+With that in mind, this blog post&rsquo;s perspective is from someone who is completely new to kernel development and also new to C programming language.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bruhtus.github.io/posts/lkmp-journey/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2026-08-03T05:30:10+07:00">
+<meta property="article:modified_time" content="2026-08-03T05:30:10+07:00">
+<meta itemprop=name content="Linux Kernel Mentorship Journey">
+<meta itemprop=description content="A Brief Intro Before starting the Linux Kernel Mentorship Program from Linux Foundation , I used to work as a web developer. With how chaotic web development has become , I decided to take a career break. I have been interested in the low-level programming, so I use my time during this career break to learn more about low-level programming.
+With that in mind, this blog post&rsquo;s perspective is from someone who is completely new to kernel development and also new to C programming language."><meta itemprop=datePublished content="2026-08-03T05:30:10+07:00">
+<meta itemprop=dateModified content="2026-08-03T05:30:10+07:00">
+<meta itemprop=wordCount content="2042">
+<meta itemprop=keywords content="Linux,"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
+</head>
+<body>
+<h1>Linux Kernel Mentorship Journey</h1>
+<header>
+<div class=cd>
+<h2><a style=text-decoration:none class=cd href=https://bruhtus.github.io/posts>cd ..</a> || <a style=text-decoration:none class=cd href=https://bruhtus.github.io/>cd</a></h2>
+</div>
+</header>
+<p class=date>
+August 3, 2026
+<span>&#183;</span>
+10 mins
+<span>&#183;</span>
+Robertus Chris
+</p>
+<div id=tags>
+<ul>
+<li><a style=text-decoration:none href=https://bruhtus.github.io/tags/linux/>Linux</a></li>
+</ul>
+</div>
+<div class=toc>
+<details>
+<summary>
+<div class=details>Table of Contents</div>
+</summary>
+<blockquote><ul><li>
+<a style=text-decoration:none href=#a-brief-intro aria-label="A Brief Intro">A Brief Intro</a></li><li>
+<a style=text-decoration:none href=#prerequisite-tasks aria-label="Prerequisite Tasks">Prerequisite Tasks</a></li><li>
+<a style=text-decoration:none href=#first-month aria-label="First Month">First Month</a></li><li>
+<a style=text-decoration:none href=#lesson-from-first-patch aria-label="Lesson from First Patch">Lesson from First Patch</a></li><li>
+<a style=text-decoration:none href=#the-next-lessons aria-label="The Next Lessons">The Next Lessons</a></li><li>
+<a style=text-decoration:none href=#patchwork aria-label=Patchwork>Patchwork</a></li><li>
+<a style=text-decoration:none href=#summary aria-label=Summary>Summary</a></li></ul>
+</blockquote>
+</details>
+</div>
+<div id=contentBody>
+<h2 id=a-brief-intro>A Brief Intro</h2>
+<p>Before starting the <a href=https://wiki.linuxfoundation.org/lkmp target=_blank rel="noreferrer noopener">Linux Kernel Mentorship Program
+from Linux Foundation</a>
+, I used to work
+as a web developer. With <a href=https://www.baldurbjarnason.com/2024/the-deskilling-of-web-dev-is-harming-us-all/ target=_blank rel="noreferrer noopener">how chaotic web development has
+become</a>
+,
+I decided to take a career break. I have been interested in the low-level
+programming, so I use my time during this career break to learn more about
+low-level programming.</p>
+<p>With that in mind, this blog post&rsquo;s perspective is from someone who is
+completely new to kernel development and also new to C programming language.
+Like many web developer out there, I didn&rsquo;t use C programming language at
+work so I am not really familiar with C programming language. But before the
+mentorship begin, I made a <em>barely working</em> <a href=https://github.com/bruhtus/sclisp target=_blank rel="noreferrer noopener">lisp
+interpreter</a>
+to make myself familiar with C
+programming language and <a href=https://www.kernel.org/doc/html/v4.10/process/coding-style.html target=_blank rel="noreferrer noopener">linux kernel coding
+style</a>
+(using <code>if</code> without curly bracket is a new experience for me).</p>
+<p>The mentorship session that I joined in was <a href=https://mentorship.lfx.linuxfoundation.org/project/53378ec5-48d7-4c49-a01f-8cbd3948db3d target=_blank rel="noreferrer noopener">Linux kernel Spring Unpaid
+2026</a>
+.</p>
+<h2 id=prerequisite-tasks>Prerequisite Tasks</h2>
+<p>There are some prerequisite tasks before we got accepted into the mentorship
+program. And now you might be wondering, &ldquo;how did you manage to get accepted
+even though you are a newbie?&rdquo;. Well, in case you haven&rsquo;t noticed, kernel is
+also a software and if you have developed software before, you can use some of
+your previous software development experience in kernel development too. There
+are some differences when developing a kernel and web application for sure,
+like the testing mechanism. For example, I can&rsquo;t use the testing framework for
+web application to test the kernel so I need to figure out how to test the
+kernel. But the basic stuff like &ldquo;what should we consider when testing a
+software?&rdquo; is the same. I am not sure if this is true, but I feel like the
+prerequisite tasks for this mentorship testing our intuition as software
+developer rather than specific to kernel development, and that&rsquo;s why I can
+pass the prerequisite tasks.</p>
+<p>I can&rsquo;t disclose the prerequisite tasks, but I suggest you to take a look at
+Linux Foundation&rsquo;s
+<a href=https://training.linuxfoundation.org/training/a-beginners-guide-to-linux-kernel-development-lfd103/ target=_blank rel="noreferrer noopener">A Beginner’s Guide to Linux Kernel Development
+course</a>
+.
+That course is helpful to complete the prerequisite tasks and during the
+mentorship in general, especially the part to send the patch. I mean, even
+after you are doing all of those testing and stuff, and then you found out
+that your patch can not be applied by the maintainer, that would be sad,
+right? So make sure that your patch can be applied to the linux kernel git tree.</p>
+<p>Other than the Linux Foundation&rsquo;s course, you might also want to take a look
+at the <a href=https://docs.kernel.org/dev-tools/testing-overview.html target=_blank rel="noreferrer noopener">linux kernel testing
+guide</a>
+to get an
+overview of how linux kernel testing is done.</p>
+<h2 id=first-month>First Month</h2>
+<p>After we got accepted into the mentorship program, we have a weekly meeting
+with the mentors. During those weekly meeting, we can ask the mentors about
+the linux kernel development process, like how to handle <code>Reviewed-by</code> tag for
+example.</p>
+<p>The most shocking thing about this mentorship is that, we only have one task
+for the entire mentorship program and that is having a minimum of 5 patches
+accepted into the linux kernel. There&rsquo;s no weekly assignments or something
+like that. As long as you have 5 or more patches accepted during this
+mentorship program and finish your final report, you can graduate this
+mentorship program.</p>
+<p>Now, here comes the big problem. As someone who is completely new to kernel
+development, I have no idea what I should do. I don&rsquo;t even know which
+subsystem I want to work on. In fact, by the time of writing this blog post, I
+just learned the concept of virtual memory from book called <a href=https://pages.cs.wisc.edu/~remzi/OSTEP/ target=_blank rel="noreferrer noopener">Operating System:
+Three Easy Pieces</a>
+. Yeah, I am that
+new to this operating system stuff, and the lack of task assignments make this
+mentorship even more challenging.</p>
+<p>So, what did I do? On the first month, instead of looking at the linux kernel
+code, I take a look at the linux kernel mailing list, especially
+<a href=https://lore.kernel.org/linux-kernel-mentees/ target=_blank rel="noreferrer noopener">linux-kernel-mentees mailing
+list</a>
+. I want to learn from the
+previous mentees' patches, what kind of mistake they made and what kind of
+patch that would be accepted. I am also looking around for resources about
+contributing to linux kernel as a newcomer. At first, I found a blog post
+about <a href=https://hackerbikepacker.com/syzbot target=_blank rel="noreferrer noopener">fixing bug found by syzbot</a>
+, but
+at that time I can&rsquo;t even interpret the stack trace from the crash report
+(I don&rsquo;t even know about cpu register until recently, don&rsquo;t judge me) and
+that&rsquo;s why I decided that syzbot&rsquo;s report is not for me <em>yet</em>. So I keep
+looking until I found Gustavo&rsquo;s blog post about <a href=https://embeddedor.com/blog/2024/09/28/one-simple-and-rewarding-way-to-contribute-to-the-linux-kernel-fix-coverity-issues/ target=_blank rel="noreferrer noopener">fixing coverity
+issues</a>
+,
+and that&rsquo;s how I made my first contribution.</p>
+<h2 id=lesson-from-first-patch>Lesson from First Patch</h2>
+<p>Before submitting any patches, I suggest you to take a look at submitting
+patches documentation on <code>Documentation/process/submitting-patches.rst</code> in the
+linux kernel git tree.</p>
+<p>This is the lesson I got from sending my first patch:</p>
+<ul>
+<li>There is a specific pattern for the commit subject (the one that appear when
+we do <code>git log --oneline</code>). For example:</li>
+</ul>
+<pre tabindex=0><code>staging: rtl8723bs: remove unused offset in phase 2 _BlockWrite()
+</code></pre><blockquote>
+<p>Notice the <code>staging</code> and <code>rtl8723bs</code> from the example above? The <code>staging</code>
+there represent the subsystem, and the <code>rtl8723bs</code> represent the device
+driver. This pattern varies for each subsystems, so you need to check that
+first before committing the changes.</p>
+</blockquote>
+<ul>
+<li>When we mention a specific commit, we don&rsquo;t need to use the full length of
+those commit hash. We only need 12 characters of the commit hash (this might
+change as the commit in linux kernel git tree increase). After those commit
+hash, we need to include oneline summary (or commit subject). For example:</li>
+</ul>
+<pre tabindex=0><code>c1314fe4d28f (&quot;staging: rtl8723bs: remove all RT_TRACE logs in hal/ and os_dep/&quot;)
+</code></pre><ul>
+<li>
+<p>When dealing with private url (like the url that need an account to view the
+content), we need to put the information from those private url instead of the
+url itself. For example, because coverity scan need an account to access the
+information, instead of putting the coverity scan&rsquo;s report url, we can put the
+information from those coverity scan&rsquo;s report like &ldquo;This is reported by
+Coverity Scan as Unused Value&rdquo;. The &ldquo;unused value&rdquo; is the information from the
+coverity scan&rsquo;s report.</p>
+</li>
+<li>
+<p>Don&rsquo;t forget about the <code>Signed-off-by:</code> tag too, and use your legal name
+with it. For example:</p>
+</li>
+</ul>
+<pre tabindex=0><code>Signed-off-by: Robertus Diawan Chris &lt;robertusdchris@gmail.com&gt;
+</code></pre><p>This is the first patch that I sent and accepted:<br>
+<a href=https://lore.kernel.org/linux-kernel-mentees/20260420044651.164450-1-robertusdchris@gmail.com/t/#u target=_blank rel="noreferrer noopener">https://lore.kernel.org/linux-kernel-mentees/20260420044651.164450-1-robertusdchris@gmail.com/t/#u</a>
+</p>
+<p>From that first patch, I also learned that when someone replied with
+<code>Reviewed-by:</code> tag <em>without</em> any feedback, we don&rsquo;t need to do anything and just
+wait for the maintainer to respond.</p>
+<h2 id=the-next-lessons>The Next Lessons</h2>
+<p>As I sent multiple patches (some of them getting a response, some of them lost
+in the void), I will only pick the patch where I learned the most from.</p>
+<p>Let&rsquo;s take a look at this patch:<br>
+<a href=https://lore.kernel.org/linux-kernel-mentees/20260513091031.145826-1-robertusdchris@gmail.com/t/#u target=_blank rel="noreferrer noopener">https://lore.kernel.org/linux-kernel-mentees/20260513091031.145826-1-robertusdchris@gmail.com/t/#u</a>
+</p>
+<p>In that patch, I give extra information after the triple dash (<code>---</code>) that I
+don&rsquo;t have the device and not sure how to test this changes. If we didn&rsquo;t put
+that information, the maintainer will assumed that we already test the
+changes. Where we put the testing information depends on the maintainer&rsquo;s
+preferences. Some maintainer prefer to put the testing information in the
+commit message but other maintainers prefer to put the testing information
+after the triple dash (<code>---</code>), so we need to adjust the patch to each
+maintainer&rsquo;s preferences.</p>
+<p>Anything after the triple dash (<code>---</code>) will be ignored when we apply the patch,
+so we can treat that as a way to communicate with the maintainer outside the
+commit message, like asking for confirmation or something like that.</p>
+<p>The ideal scenario would be to test the changes in a real device, but
+sometimes not having the device might not be a blocker (unless explicitly said
+so, like in <code>drivers/staging/fbtft/README</code>). The point is to be open whether
+we can test the changes or not, and let the maintainer decide whether they
+want to accept our patch or not.</p>
+<p>Other than that, I also add the <code>Fixes:</code> tag. We can put the <code>Fixes:</code> tag when
+we fix some problem, and in this case the <em>undefined behavior</em> which means
+anything can happen at that point. The content of the <code>Fixes:</code> tag is the
+commit which introduces the problem. In this case, the <em>undefined behavior</em>
+problem appear since commit <code>d6e290837e50</code>.</p>
+<p>From that patch, I got a feedback from Amirreza Zarrabi (the maintainer) and
+after I address those feedback, I can add <code>Reviewed-by:</code> tag in my patch. In
+this case, I changed my patch to follow the feedback and put the
+<code>Reviewed-by:</code> tag on the next version of the patch (which is version 2).</p>
+<p>Here&rsquo;s another important lesson, when sending the next version of our patch,
+we need to send that patch as the <strong>new email</strong>, not as a reply to the
+previous version. And inside those <em>new email</em>, we need to put what changed
+from the previous patch. One of the reason doing this is reducing confusion.
+As the patch revision grow, if we put the new patch as the reply to the
+previous patch, at some point someone is gonna be replying to the wrong
+version. Keep in mind that the maintainers getting <em>hundreds</em> or even
+<em>thousands</em> of email per day, so if we send the new version of the patch as
+the reply, our new version of the patch might be buried in the maintainer&rsquo;s
+email list. And some tools that the maintainer used, like
+<a href=https://b4.docs.kernel.org/en/latest/index.html target=_blank rel="noreferrer noopener">b4</a>
+, might break if we put
+next version of the patch as the reply.</p>
+<p>Make sure to at least wait a few days before sending the new version of the
+patch. There&rsquo;s no specific time when we should send the new version of the
+patch, but my rule of thumb is to wait for at least a day before sending the
+new version of the patch. It depends on how active the discussion is, if
+there&rsquo;s an active discussion, we might need to wait for a week or more.</p>
+<p>Here&rsquo;s the next version of the previous patch:<br>
+<a href=https://lore.kernel.org/linux-kernel-mentees/20260519020528.133623-1-robertusdchris@gmail.com/t/#u target=_blank rel="noreferrer noopener">https://lore.kernel.org/linux-kernel-mentees/20260519020528.133623-1-robertusdchris@gmail.com/t/#u</a>
+</p>
+<p>Here&rsquo;s another person&rsquo;s patch with more revision&rsquo;s version as an example:<br>
+<a href=https://lore.kernel.org/all/20260609-enable-ice-clock-scaling-v11-0-1cebc8b3275b@oss.qualcomm.com/ target=_blank rel="noreferrer noopener">https://lore.kernel.org/all/20260609-enable-ice-clock-scaling-v11-0-1cebc8b3275b@oss.qualcomm.com/</a>
+</p>
+<h2 id=patchwork>Patchwork</h2>
+<p>Another lesson that I learned is that some maintainers using
+<a href=https://patchwork.kernel.org/ target=_blank rel="noreferrer noopener">patchwork</a>
+to organize the patches they want
+to handle. So if the subsystem that you worked on have the patchwork setup,
+like <a href=https://patchwork.kernel.org/project/linux-kbuild/list/ target=_blank rel="noreferrer noopener">linux kernel
+build</a>
+, you can check
+if your patch in there or not. If your patch is not in the patchwork, it&rsquo;s
+likely either the maintainer is not interested in your patch or your
+submission trigger the patchwork&rsquo;s filter setup by the maintainer (and the
+maintainer missed your patch).</p>
+<p>Checking the patchwork might resolved some of the anxiety from the newcomer,
+as most of the newcomer expect instant reply from the maintainer, which might
+not be the case. The maintainer usually respond to the high priority patches
+first and respond to the low priority one after the high priority patches has
+been resolved. So, be patient.</p>
+<p>Keep in mind that some of the subsystems did not use the patchwork, so you
+might not be able to check whether the maintainer is interested in your patch
+or not.</p>
+<h2 id=summary>Summary</h2>
+<p>What I get from this mentorship is mostly about the process of submitting
+patches rather than the technical aspect of the kernel development, and that&rsquo;s
+what I expected. Submitting patches for the linux kernel can be confusing, so
+this mentorship helped me understand those process better.</p>
+<p>Keep in mind that what matters the most when submitting the patch is
+<em>expressing our intention</em>. Assume that the maintainer can not read our mind,
+so add any information that might help the maintainer decide whether to accept
+our patch or not.</p>
+<p>At the time of writing this blog post, I am learning about
+<a href=https://docs.kernel.org/admin-guide/kdump/kdump.html target=_blank rel="noreferrer noopener">kdump</a>
+by using one of
+the solved syzbot&rsquo;s report as the test case. The issue has been solved, so
+what I do is tracking how do we get to the solution using <code>kdump</code>.</p>
+<p>I made a simple shell script to create a debian image with <code>kdump</code> setup to
+reproduce the syzbot&rsquo;s report. So everytime the kernel panic, we can copy
+the dump files into our machine and analyze that using <a href=https://crash-utility.github.io/ target=_blank rel="noreferrer noopener">crash
+utility</a>
+. The script is in here:<br>
+<a href=https://gist.github.com/bruhtus/00c2e8567f52e1160b9f1bc111a2959c target=_blank rel="noreferrer noopener">https://gist.github.com/bruhtus/00c2e8567f52e1160b9f1bc111a2959c</a>
+</p>
+</div>
+<footer>
+<p>
+&copy; 2020-present <a style=text-decoration:none href=https://github.com/bruhtus/resume target=_blank rel="noreferrer noopener">Robertus Chris</a>
+<span>&#183;</span>
+<a style=text-decoration:none href=https://bruhtus.github.io/index.xml target=_blank rel="noreferrer noopener">RSS Feed</a>
+<span>&#183;</span>
+Based on <a style=text-decoration:none href=https://github.com/koirand/pulp/ target=_blank rel="noreferrer noopener">pulp</a> and <a style=text-decoration:none href=https://github.com/adityatelange/hugo-PaperMod target=_blank rel="noreferrer noopener">papermod</a> theme
+</p>
+</footer>
+<button onclick=topFunction() id=myBtn title="Go to top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d0d0d0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+<script>var mybutton=document.getElementById("myBtn");window.onscroll=function(){scrollFunction()};function scrollFunction(){document.body.scrollTop>20||document.documentElement.scrollTop>20?mybutton.style.display="block":mybutton.style.display="none"}function topFunction(){document.body.scrollTop=0,document.documentElement.scrollTop=0}</script><script src=https://bruhtus.github.io/js/custom.js></script>
+</body>
+</html>
