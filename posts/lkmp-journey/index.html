@@ -25,7 +25,7 @@ With that in mind, this blog post&rsquo;s perspective is from someone who is com
 <meta itemprop=description content="A Brief Intro Before starting the Linux Kernel Mentorship Program from Linux Foundation , I used to work as a web developer. With how chaotic web development has become , I decided to take a career break. I have been interested in the low-level programming, so I use my time during this career break to learn more about low-level programming.
 With that in mind, this blog post&rsquo;s perspective is from someone who is completely new to kernel development and also new to C programming language."><meta itemprop=datePublished content="2026-08-03T05:30:10+07:00">
 <meta itemprop=dateModified content="2026-08-03T05:30:10+07:00">
-<meta itemprop=wordCount content="2042">
+<meta itemprop=wordCount content="2159">
 <meta itemprop=keywords content="Linux,"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
 </head>
@@ -39,7 +39,7 @@ With that in mind, this blog post&rsquo;s perspective is from someone who is com
 <p class=date>
 August 3, 2026
 <span>&#183;</span>
-10 mins
+11 mins
 <span>&#183;</span>
 Robertus Chris
 </p>
@@ -247,7 +247,17 @@ patch. There&rsquo;s no specific time when we should send the new version of the
 patch, but my rule of thumb is to wait for at least a day before sending the
 new version of the patch. It depends on how active the discussion is, if
 there&rsquo;s an active discussion, we might need to wait for a week or more.</p>
-<p>Here&rsquo;s the next version of the previous patch:<br>
+<p>Providing the base commit that we use to make the patch can help maintainer
+decide whether the patch can be applied or not, and the base commit can also
+be useful for the automated CI that run the test for the changes in the patch.
+Make sure that the base commit is in an official maintainer or mainline tree
+(linus torvalds' git tree). For example, I usually provide the base commit on
+the latest version of linux kernel (whether the rc version or release version)
+from mainline tree. If you use <code>git format-patch</code>, you can provide the base
+commit using <code>--base</code> flag like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#999;font-style:italic># Provide commit on tag v7.2-rc7 as base commit.</span>
+git format-patch --base=<span style=color:#ed9d13>&#39;v7.2-rc7&#39;</span> ...
+</code></pre></div><p>Here&rsquo;s the next version of the previous patch:<br>
 <a href=https://lore.kernel.org/linux-kernel-mentees/20260519020528.133623-1-robertusdchris@gmail.com/t/#u target=_blank rel="noreferrer noopener">https://lore.kernel.org/linux-kernel-mentees/20260519020528.133623-1-robertusdchris@gmail.com/t/#u</a>
 </p>
 <p>Here&rsquo;s another person&rsquo;s patch with more revision&rsquo;s version as an example:<br>
