@@ -201,6 +201,19 @@ patch, but my rule of thumb is to wait for at least a day before sending the
 new version of the patch. It depends on how active the discussion is, if
 there's an active discussion, we might need to wait for a week or more.
 
+Providing the base commit that we use to make the patch can help maintainer
+decide whether the patch can be applied or not, and the base commit can also
+be useful for the automated CI that run the test for the changes in the patch.
+Make sure that the base commit is in an official maintainer or mainline tree
+(linus torvalds' git tree). For example, I usually provide the base commit on
+the latest version of linux kernel (whether the rc version or release version)
+from mainline tree. If you use `git format-patch`, you can provide the base
+commit using `--base` flag like this:
+```sh
+# Provide commit on tag v7.2-rc7 as base commit.
+git format-patch --base='v7.2-rc7' ...
+```
+
 Here's the next version of the previous patch:<br>
 https://lore.kernel.org/linux-kernel-mentees/20260519020528.133623-1-robertusdchris@gmail.com/t/#u
 
