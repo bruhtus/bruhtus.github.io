@@ -71,7 +71,7 @@ The most shocking thing about this mentorship is that, we only have one task
 for the entire mentorship program and that is having a minimum of 5 patches
 accepted into the linux kernel. There's no weekly assignments or something
 like that. As long as you have 5 or more patches accepted during this
-mentorship program and finish your final report, you can graduate this
+mentorship program and finish your final report, you can graduate from this
 mentorship program.
 
 Now, here comes the big problem. As someone who is completely new to kernel
