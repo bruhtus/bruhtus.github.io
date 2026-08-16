@@ -259,13 +259,34 @@ _expressing our intention_. Assume that the maintainer can not read our mind,
 so add any information that might help the maintainer decide whether to accept
 our patch or not.
 
+I feel like starting the linux kernel contribution from the analysis tool can
+be easier rather than just dive into the code directly because that can be
+overwhelming for the newcomer. But don't forget that these tools can be
+_wrong_ too, so we still need to make a decision whether the report is a bug
+or not. Remember, a bug in software is just _unexpected behavior_, so it
+depends on the expectation or intention from the software developer. That is
+one of the hard part of software development, understanding the context of the
+code.
+
+For anyone who is interested in contributing to linux kernel, this mentorship
+program is a good starting point. With the mentor guidance, contributing to
+upstream linux kernel can be less _intimidating_.
+
+## What's Next?
+
 At the time of writing this blog post, I am learning about
 [kdump](https://docs.kernel.org/admin-guide/kdump/kdump.html) by using one of
-the solved syzbot's report as the test case. The issue has been solved, so
-what I do is tracking how do we get to the solution using `kdump`.
+the [syzbot's report that has been
+solved](https://syzkaller.appspot.com/bug?extid=a9a4bedfca6aa9d7fa24) as the
+test case. What I am trying to do is tracking how do we get to the solution
+by exploring the `kdump` file.
 
 I made a simple shell script to create a debian image with `kdump` setup to
 reproduce the syzbot's report. So everytime the kernel panic, we can copy
 the dump files into our machine and analyze that using [crash
 utility](https://crash-utility.github.io/). The script is in here:<br>
 https://gist.github.com/bruhtus/00c2e8567f52e1160b9f1bc111a2959c
+
+I am planning to explore the issue from syzbot report and hopefully able to
+make my own reproducer rather than depending on the bot's reproducer. Let's
+see how it goes.
