@@ -25,7 +25,7 @@ With that in mind, this blog post&rsquo;s perspective is from someone who is com
 <meta itemprop=description content="A Brief Intro Before starting the Linux Kernel Mentorship Program from Linux Foundation , I used to work as a web developer. With how chaotic web development has become , I decided to take a career break. I have been interested in the low-level programming, so I use my time during this career break to learn more about low-level programming.
 With that in mind, this blog post&rsquo;s perspective is from someone who is completely new to kernel development and also new to C programming language."><meta itemprop=datePublished content="2026-08-03T05:30:10+07:00">
 <meta itemprop=dateModified content="2026-08-03T05:30:10+07:00">
-<meta itemprop=wordCount content="2198">
+<meta itemprop=wordCount content="2358">
 <meta itemprop=keywords content="Linux,"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
 </head>
@@ -39,7 +39,7 @@ With that in mind, this blog post&rsquo;s perspective is from someone who is com
 <p class=date>
 August 3, 2026
 <span>&#183;</span>
-11 mins
+12 mins
 <span>&#183;</span>
 Robertus Chris
 </p>
@@ -60,7 +60,8 @@ Robertus Chris
 <a style=text-decoration:none href=#lesson-from-first-patch aria-label="Lesson from First Patch">Lesson from First Patch</a></li><li>
 <a style=text-decoration:none href=#the-next-lessons aria-label="The Next Lessons">The Next Lessons</a></li><li>
 <a style=text-decoration:none href=#patchwork aria-label=Patchwork>Patchwork</a></li><li>
-<a style=text-decoration:none href=#summary aria-label=Summary>Summary</a></li></ul>
+<a style=text-decoration:none href=#summary aria-label=Summary>Summary</a></li><li>
+<a style=text-decoration:none href=#whats-next aria-label="What&amp;rsquo;s Next?">What&rsquo;s Next?</a></li></ul>
 </blockquote>
 </details>
 </div>
@@ -297,11 +298,26 @@ this mentorship helped me understand those process better.</p>
 <em>expressing our intention</em>. Assume that the maintainer can not read our mind,
 so add any information that might help the maintainer decide whether to accept
 our patch or not.</p>
+<p>I feel like starting the linux kernel contribution from the analysis tool can
+be easier rather than just dive into the code directly because that can be
+overwhelming for the newcomer. But don&rsquo;t forget that these tools can be
+<em>wrong</em> too, so we still need to make a decision whether the report is a bug
+or not. Remember, a bug in software is just <em>unexpected behavior</em>, so it
+depends on the expectation or intention from the software developer. That is
+one of the hard part of software development, understanding the context of the
+code.</p>
+<p>For anyone who is interested in contributing to linux kernel, this mentorship
+program is a good starting point. With the mentor guidance, contributing to
+upstream linux kernel can be less <em>intimidating</em>.</p>
+<h2 id=whats-next>What&rsquo;s Next?</h2>
 <p>At the time of writing this blog post, I am learning about
 <a href=https://docs.kernel.org/admin-guide/kdump/kdump.html target=_blank rel="noreferrer noopener">kdump</a>
 by using one of
-the solved syzbot&rsquo;s report as the test case. The issue has been solved, so
-what I do is tracking how do we get to the solution using <code>kdump</code>.</p>
+the <a href="https://syzkaller.appspot.com/bug?extid=a9a4bedfca6aa9d7fa24" target=_blank rel="noreferrer noopener">syzbot&rsquo;s report that has been
+solved</a>
+as the
+test case. What I am trying to do is tracking how do we get to the solution
+by exploring the <code>kdump</code> file.</p>
 <p>I made a simple shell script to create a debian image with <code>kdump</code> setup to
 reproduce the syzbot&rsquo;s report. So everytime the kernel panic, we can copy
 the dump files into our machine and analyze that using <a href=https://crash-utility.github.io/ target=_blank rel="noreferrer noopener">crash
@@ -309,6 +325,9 @@ utility</a>
 . The script is in here:<br>
 <a href=https://gist.github.com/bruhtus/00c2e8567f52e1160b9f1bc111a2959c target=_blank rel="noreferrer noopener">https://gist.github.com/bruhtus/00c2e8567f52e1160b9f1bc111a2959c</a>
 </p>
+<p>I am planning to explore the issue from syzbot report and hopefully able to
+make my own reproducer rather than depending on the bot&rsquo;s reproducer. Let&rsquo;s
+see how it goes.</p>
 </div>
 <footer>
 <p>
