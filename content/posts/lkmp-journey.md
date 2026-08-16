@@ -227,7 +227,7 @@ Another lesson that I learned is that some maintainers using
 to handle. So if the subsystem that you worked on have the patchwork setup,
 like [linux kernel
 build](https://patchwork.kernel.org/project/linux-kbuild/list/), you can check
-if your patch in there or not. If your patch is not in the patchwork, it's
+if your patch is in there or not. If your patch is not in the patchwork, it's
 likely either the maintainer is not interested in your patch or your
 submission trigger the patchwork's filter setup by the maintainer (and the
 maintainer missed your patch).
@@ -237,6 +237,11 @@ as most of the newcomer expect instant reply from the maintainer, which might
 not be the case. The maintainer usually respond to the high priority patches
 first and respond to the low priority one after the high priority patches has
 been resolved. So, be patient.
+
+Some subsystem might have different patchwork address, like [linux-media
+subsystem](https://patchwork.linuxtv.org/project/linux-media/list/). So if the
+subsystem that you worked on didn't exist in the previous patchwork address,
+you can try to find the subsystem's patchwork on another address.
 
 Keep in mind that some of the subsystems did not use the patchwork, so you
 might not be able to check whether the maintainer is interested in your patch
