@@ -287,6 +287,6 @@ the dump files into our machine and analyze that using [crash
 utility](https://crash-utility.github.io/). The script is in here:<br>
 https://gist.github.com/bruhtus/00c2e8567f52e1160b9f1bc111a2959c
 
-I am planning to explore the issue from syzbot report and hopefully able to
+I am planning to explore the issue from syzbot's report and hopefully able to
 make my own reproducer rather than depending on the bot's reproducer. Let's
 see how it goes.
