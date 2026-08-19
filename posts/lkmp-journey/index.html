@@ -25,7 +25,7 @@ With that in mind, this blog post&rsquo;s perspective is from someone who is com
 <meta itemprop=description content="A Brief Intro Before starting the Linux Kernel Mentorship Program from Linux Foundation , I used to work as a web developer. With how chaotic web development has become , I decided to take a career break. I have been interested in the low-level programming, so I use my time during this career break to learn more about low-level programming.
 With that in mind, this blog post&rsquo;s perspective is from someone who is completely new to kernel development and also new to C programming language."><meta itemprop=datePublished content="2026-08-03T05:30:10+07:00">
 <meta itemprop=dateModified content="2026-08-03T05:30:10+07:00">
-<meta itemprop=wordCount content="2491">
+<meta itemprop=wordCount content="2499">
 <meta itemprop=keywords content="Linux,"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
 </head>
@@ -287,10 +287,11 @@ to handle. So if the subsystem that you worked on have the patchwork setup,
 like <a href=https://patchwork.kernel.org/project/linux-kbuild/list/ target=_blank rel="noreferrer noopener">linux kernel
 build</a>
 , you can check
-if your patch is in there or not. If your patch is not in the patchwork, it&rsquo;s
-likely either the maintainer is not interested in your patch or your
-submission trigger the patchwork&rsquo;s filter setup by the maintainer (and the
-maintainer missed your patch).</p>
+if your patch is in there or not. If your patch is not in the patchwork with
+&ldquo;Action Required&rdquo; state and not archived filter, it&rsquo;s likely either the
+maintainer is not interested in your patch or your submission trigger the
+patchwork&rsquo;s filter setup by the maintainer (and the maintainer missed your
+patch).</p>
 <p>Checking the patchwork might resolved some of the anxiety from the newcomer,
 as most of the newcomer expect instant reply from the maintainer, which might
 not be the case. The maintainer usually respond to the high priority patches
