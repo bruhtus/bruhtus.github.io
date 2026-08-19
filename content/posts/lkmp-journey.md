@@ -171,6 +171,20 @@ so, like in `drivers/staging/fbtft/README`). The point is to be open whether
 we can test the changes or not, and let the maintainer decide whether they
 want to accept our patch or not.
 
+Even when I don't have the device to test the changes or have no idea how to
+test that changes in virtual machine _yet_, I always run the KUnit test to
+check whether my changes introduces regression or not (assuming the subsystem
+have unit test case). For more information how to run KUnit test, you can
+check below:<br>
+https://docs.kernel.org/dev-tools/kunit/run_wrapper.html
+
+> If you got an error when running the KUnit python script with the error
+> message:<br>
+> `The source tree is not clean, please run 'make ARCH=um mrproper'`<br>
+> Make sure you save your `.config` file with a different
+> name first before running `make ARCH=um mrproper`, because that command
+> will remove your `.config` file too.
+
 Other than that, I also add the `Fixes:` tag. We can put the `Fixes:` tag when
 we fix some problem, and in this case the _undefined behavior_ which means
 anything can happen at that point. The content of the `Fixes:` tag is the
