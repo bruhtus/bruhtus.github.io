@@ -25,7 +25,7 @@ With that in mind, this blog post&rsquo;s perspective is from someone who is com
 <meta itemprop=description content="A Brief Intro Before starting the Linux Kernel Mentorship Program from Linux Foundation , I used to work as a web developer. With how chaotic web development has become , I decided to take a career break. I have been interested in the low-level programming, so I use my time during this career break to learn more about low-level programming.
 With that in mind, this blog post&rsquo;s perspective is from someone who is completely new to kernel development and also new to C programming language."><meta itemprop=datePublished content="2026-08-03T05:30:10+07:00">
 <meta itemprop=dateModified content="2026-08-03T05:30:10+07:00">
-<meta itemprop=wordCount content="2358">
+<meta itemprop=wordCount content="2491">
 <meta itemprop=keywords content="Linux,"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
 </head>
@@ -221,6 +221,21 @@ sometimes not having the device might not be a blocker (unless explicitly said
 so, like in <code>drivers/staging/fbtft/README</code>). The point is to be open whether
 we can test the changes or not, and let the maintainer decide whether they
 want to accept our patch or not.</p>
+<p>Even when I don&rsquo;t have the device to test the changes or have no idea how to
+test that changes in virtual machine <em>yet</em>, I always run the KUnit test to
+check whether my changes introduces regression or not (assuming the subsystem
+have unit test case). For more information how to run KUnit test, you can
+check below:<br>
+<a href=https://docs.kernel.org/dev-tools/kunit/run_wrapper.html target=_blank rel="noreferrer noopener">https://docs.kernel.org/dev-tools/kunit/run_wrapper.html</a>
+</p>
+<blockquote>
+<p>If you got an error when running the KUnit python script with the error
+message:<br>
+<code>The source tree is not clean, please run 'make ARCH=um mrproper'</code><br>
+Make sure you save your <code>.config</code> file with a different
+name first before running <code>make ARCH=um mrproper</code>, because that command
+will remove your <code>.config</code> file too.</p>
+</blockquote>
 <p>Other than that, I also add the <code>Fixes:</code> tag. We can put the <code>Fixes:</code> tag when
 we fix some problem, and in this case the <em>undefined behavior</em> which means
 anything can happen at that point. The content of the <code>Fixes:</code> tag is the
@@ -294,6 +309,10 @@ or not.</p>
 patches rather than the technical aspect of the kernel development, and that&rsquo;s
 what I expected. Submitting patches for the linux kernel can be confusing, so
 this mentorship helped me understand those process better.</p>
+<p>For anyone interested in all the patches that I sent during this mentorship
+duration, you can check my mentorship report below:<br>
+<a href=https://github.com/bruhtus/lkmp-report/blob/master/report.pdf target=_blank rel="noreferrer noopener">https://github.com/bruhtus/lkmp-report/blob/master/report.pdf</a>
+</p>
 <p>Keep in mind that what matters the most when submitting the patch is
 <em>expressing our intention</em>. Assume that the maintainer can not read our mind,
 so add any information that might help the maintainer decide whether to accept
