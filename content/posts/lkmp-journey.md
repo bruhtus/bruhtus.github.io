@@ -254,6 +254,10 @@ patches rather than the technical aspect of the kernel development, and that's
 what I expected. Submitting patches for the linux kernel can be confusing, so
 this mentorship helped me understand those process better.
 
+For anyone interested in all the patches that I sent during this mentorship
+duration, you can check my mentorship report below:<br>
+https://github.com/bruhtus/lkmp-report/blob/master/report.pdf
+
 Keep in mind that what matters the most when submitting the patch is
 _expressing our intention_. Assume that the maintainer can not read our mind,
 so add any information that might help the maintainer decide whether to accept
