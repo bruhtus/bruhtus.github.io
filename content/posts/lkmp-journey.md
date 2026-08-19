@@ -241,10 +241,11 @@ Another lesson that I learned is that some maintainers using
 to handle. So if the subsystem that you worked on have the patchwork setup,
 like [linux kernel
 build](https://patchwork.kernel.org/project/linux-kbuild/list/), you can check
-if your patch is in there or not. If your patch is not in the patchwork, it's
-likely either the maintainer is not interested in your patch or your
-submission trigger the patchwork's filter setup by the maintainer (and the
-maintainer missed your patch).
+if your patch is in there or not. If your patch is not in the patchwork with
+"Action Required" state and not archived filter, it's likely either the
+maintainer is not interested in your patch or your submission trigger the
+patchwork's filter setup by the maintainer (and the maintainer missed your
+patch).
 
 Checking the patchwork might resolved some of the anxiety from the newcomer,
 as most of the newcomer expect instant reply from the maintainer, which might
