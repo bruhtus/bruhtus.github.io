@@ -1,6 +1,6 @@
 ---
 author: Robertus Diawan Chris
-title: "Linux Kernel Mentorship Adventure"
+title: "Linux Kernel Mentorship Spring 2026 Journey"
 date: 2026-08-03T05:30:10+07:00
 tags: [Linux]
 ShowToc: true
