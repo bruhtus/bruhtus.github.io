@@ -298,11 +298,13 @@ At the time of writing this blog post, I am learning about
 the [syzbot's report that has been
 solved](https://syzkaller.appspot.com/bug?extid=a9a4bedfca6aa9d7fa24) as the
 test case. What I am trying to do is tracking how do we get to the solution
-by exploring the `kdump` file.
+by exploring the dump file.
 
 I made a simple shell script to create a debian image with `kdump` setup to
-reproduce the syzbot's report. So everytime the kernel panic, we can copy
-the dump files into our machine and analyze that using [crash
+reproduce the syzbot's report. We can use those debian image in the virtual
+machine like QEMU and reproduce the syzbot's report in it. With `kdump` setup,
+everytime the kernel panic in the virtual machine, we can copy the dump file
+into our machine and analyze that using [crash
 utility](https://crash-utility.github.io/). The script is in here:<br>
 https://gist.github.com/bruhtus/00c2e8567f52e1160b9f1bc111a2959c
 
