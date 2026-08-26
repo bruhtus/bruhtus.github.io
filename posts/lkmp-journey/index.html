@@ -25,7 +25,7 @@ With that in mind, this blog post&rsquo;s perspective is from someone who is com
 <meta itemprop=description content="A Brief Intro Before starting the Linux Kernel Mentorship Program from Linux Foundation , I used to work as a web developer. With how chaotic web development has become , I decided to take a career break. I have been interested in the low-level programming, so I use my time during this career break to learn more about low-level programming.
 With that in mind, this blog post&rsquo;s perspective is from someone who is completely new to kernel development and also new to C programming language."><meta itemprop=datePublished content="2026-08-03T05:30:10+07:00">
 <meta itemprop=dateModified content="2026-08-03T05:30:10+07:00">
-<meta itemprop=wordCount content="2499">
+<meta itemprop=wordCount content="2524">
 <meta itemprop=keywords content="Linux,"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
 </head>
@@ -337,10 +337,12 @@ the <a href="https://syzkaller.appspot.com/bug?extid=a9a4bedfca6aa9d7fa24" targe
 solved</a>
 as the
 test case. What I am trying to do is tracking how do we get to the solution
-by exploring the <code>kdump</code> file.</p>
+by exploring the dump file.</p>
 <p>I made a simple shell script to create a debian image with <code>kdump</code> setup to
-reproduce the syzbot&rsquo;s report. So everytime the kernel panic, we can copy
-the dump files into our machine and analyze that using <a href=https://crash-utility.github.io/ target=_blank rel="noreferrer noopener">crash
+reproduce the syzbot&rsquo;s report. We can use those debian image in the virtual
+machine like QEMU and reproduce the syzbot&rsquo;s report in it. With <code>kdump</code> setup,
+everytime the kernel panic in the virtual machine, we can copy the dump file
+into our machine and analyze that using <a href=https://crash-utility.github.io/ target=_blank rel="noreferrer noopener">crash
 utility</a>
 . The script is in here:<br>
 <a href=https://gist.github.com/bruhtus/00c2e8567f52e1160b9f1bc111a2959c target=_blank rel="noreferrer noopener">https://gist.github.com/bruhtus/00c2e8567f52e1160b9f1bc111a2959c</a>
