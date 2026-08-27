@@ -25,7 +25,7 @@ With that in mind, this blog post&rsquo;s perspective is from someone who is com
 <meta itemprop=description content="A Brief Intro Before starting the Linux Kernel Mentorship Program from Linux Foundation , I used to work as a web developer. With how chaotic web development has become , I decided to take a career break. I have been interested in the low-level programming, so I use my time during this career break to learn more about low-level programming.
 With that in mind, this blog post&rsquo;s perspective is from someone who is completely new to kernel development and also new to C programming language."><meta itemprop=datePublished content="2026-08-03T05:30:10+07:00">
 <meta itemprop=dateModified content="2026-08-03T05:30:10+07:00">
-<meta itemprop=wordCount content="2524">
+<meta itemprop=wordCount content="2550">
 <meta itemprop=keywords content="Linux,"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
 </head>
@@ -216,6 +216,12 @@ maintainer&rsquo;s preferences.</p>
 <p>Anything after the triple dash (<code>---</code>) will be ignored when we apply the patch,
 so we can treat that as a way to communicate with the maintainer outside the
 commit message, like asking for confirmation or something like that.</p>
+<blockquote>
+<p>You can take a look at another patch of mine that give extra information how
+I come to the solution after the triple dash (<code>---</code>):<br>
+<a href=https://lore.kernel.org/linux-kernel-mentees/20260602054133.470293-1-robertusdchris@gmail.com/ target=_blank rel="noreferrer noopener">https://lore.kernel.org/linux-kernel-mentees/20260602054133.470293-1-robertusdchris@gmail.com/</a>
+</p>
+</blockquote>
 <p>The ideal scenario would be to test the changes in a real device, but
 sometimes not having the device might not be a blocker (unless explicitly said
 so, like in <code>drivers/staging/fbtft/README</code>). The point is to be open whether
