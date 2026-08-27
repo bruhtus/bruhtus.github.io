@@ -165,6 +165,10 @@ Anything after the triple dash (`---`) will be ignored when we apply the patch,
 so we can treat that as a way to communicate with the maintainer outside the
 commit message, like asking for confirmation or something like that.
 
+> You can take a look at another patch of mine that give extra information how
+> I come to the solution after the triple dash (`---`):<br>
+> https://lore.kernel.org/linux-kernel-mentees/20260602054133.470293-1-robertusdchris@gmail.com/
+
 The ideal scenario would be to test the changes in a real device, but
 sometimes not having the device might not be a blocker (unless explicitly said
 so, like in `drivers/staging/fbtft/README`). The point is to be open whether
